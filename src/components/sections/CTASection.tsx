@@ -10,19 +10,19 @@ const steps = [
     icon: MessageSquare,
     title: 'Describes tu territorio',
     description:
-      'Conversas con un agente de IA que te hace preguntas específicas sobre tu municipio, sin formularios ni escalas de evaluación.',
+      'Conversas con un agente de IA que te hace preguntas específicas sobre tu municipio, sin formularios ni escalas.',
   },
   {
     icon: Brain,
     title: 'El sistema analiza',
     description:
-      'Dos agentes secuenciales evalúan la entrevista y calculan el nivel de preparación institucional en cinco dimensiones clave.',
+      'Dos agentes evalúan la entrevista y calculan tu nivel de preparación institucional en 6 dimensiones.',
   },
   {
     icon: BarChart2,
     title: 'Recibes tu diagnóstico',
     description:
-      'Un resultado visual claro con tu nivel, fortalezas, brechas y recomendaciones concretas adaptadas a tu municipio.',
+      'Un resultado visual con tu nivel, fortalezas, brechas y recomendaciones adaptadas a tu municipio.',
   },
 ];
 
@@ -38,37 +38,43 @@ export default function CTASection() {
   return (
     <section
       ref={ref}
-      className="py-28 px-4 sm:px-6"
+      className="py-32 md:py-40 px-6 md:px-12"
       style={{
-        background: 'linear-gradient(180deg, #0A0C0F 0%, #0F1419 100%)',
+        background: 'linear-gradient(180deg, #0A0C0F 0%, #0F1419 60%, #131920 100%)',
       }}
     >
-      <div className="max-w-4xl mx-auto flex flex-col items-center gap-16 text-center">
-        {/* Título */}
+      <div className="max-w-5xl mx-auto flex flex-col gap-20">
+
+        {/* EYEBROW + HERO LINE + LEAD */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
           transition={{ duration: 0.55, ease: 'easeOut' }}
-          className="flex flex-col gap-3"
+          className="flex flex-col gap-6 max-w-3xl"
         >
+          <span className="text-xs font-semibold uppercase tracking-widest text-teal">
+            Cómo funciona
+          </span>
+
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold"
+            className="text-4xl md:text-6xl font-bold leading-tight"
             style={{ fontFamily: 'var(--font-syne), sans-serif' }}
           >
-            No un cuestionario.
-            <br />
+            No un cuestionario.{' '}
             <span className="bg-gradient-to-r from-teal to-blue bg-clip-text text-transparent">
               Una conversación.
             </span>
           </h2>
-          <p className="text-base text-muted max-w-lg mx-auto">
+
+          <p className="text-lg md:text-xl text-foreground/90 leading-relaxed">
             El diagnóstico se construye a través del diálogo, no de casillas marcadas.
+            Tu municipio merece una evaluación que entienda su contexto específico.
           </p>
         </motion.div>
 
         {/* Pasos */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {steps.map((step, i) => {
             const Icon = step.icon;
             return (
@@ -78,12 +84,12 @@ export default function CTASection() {
                 initial="hidden"
                 animate={inView ? 'visible' : 'hidden'}
                 transition={{ duration: 0.55, delay: 0.1 + i * 0.12, ease: 'easeOut' }}
-                className="flex flex-col items-center gap-4 text-center"
+                className="glassmorphism p-8 flex flex-col gap-5"
               >
-                <div className="w-12 h-12 rounded-xl bg-teal/10 border border-teal/20 flex items-center justify-center">
-                  <Icon size={22} className="text-teal" />
+                <div className="w-11 h-11 rounded-xl bg-teal/10 border border-teal/20 flex items-center justify-center shrink-0">
+                  <Icon size={20} className="text-teal" />
                 </div>
-                <div className="flex flex-col gap-1.5">
+                <div className="flex flex-col gap-2">
                   <p
                     className="font-semibold text-foreground"
                     style={{ fontFamily: 'var(--font-syne), sans-serif' }}
@@ -97,12 +103,13 @@ export default function CTASection() {
           })}
         </div>
 
-        {/* Botón CTA */}
+        {/* CTA */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
           transition={{ duration: 0.55, delay: 0.45, ease: 'easeOut' }}
+          className="flex flex-col sm:flex-row items-start gap-6"
         >
           <Link
             href="/diagnostico"
@@ -110,7 +117,11 @@ export default function CTASection() {
           >
             Comenzar Diagnóstico →
           </Link>
+          <p className="text-sm text-subtle self-center">
+            Gratuito · Sin registro · Resultados inmediatos
+          </p>
         </motion.div>
+
       </div>
     </section>
   );

@@ -54,8 +54,8 @@
   --amber:      #F59E0B;
   --violet:     #8B5CF6;
   --foreground: #F1F5F9;
-  --muted:      #94A3B8;
-  --subtle:     #475569;
+  --muted:      #CBD5E1;
+  --subtle:     #94A3B8;
 
   /* shadcn tokens mapped to our palette */
   --card:                 #1A1E24;
@@ -66,7 +66,7 @@
   --primary-foreground:   #0A0C0F;
   --secondary:            #252B33;
   --secondary-foreground: #F1F5F9;
-  --muted-foreground:     #94A3B8;
+  --muted-foreground:     #CBD5E1;
   --accent:               #252B33;
   --accent-foreground:    #F1F5F9;
   --destructive:          #EF4444;

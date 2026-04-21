@@ -15,8 +15,9 @@ export default function Navbar() {
   }, []);
 
   const links = [
-    { href: '/#contexto', label: 'Contexto' },
-    { href: '/#ciudades', label: 'Ciudades' },
+    { href: '/#contexto',         label: 'Contexto' },
+    { href: '/#ciudades',         label: 'Ciudades' },
+    { href: '/#recomendaciones',  label: 'Recomendaciones' },
   ];
 
   return (

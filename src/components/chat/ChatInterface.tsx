@@ -3,11 +3,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { useChat } from 'ai/react';
 import { useRouter } from 'next/navigation';
-import { Send, CheckCircle2 } from 'lucide-react';
+import { Send, CheckCircle2, MessageSquare } from 'lucide-react';
 
 type Estado = 'activo' | 'completado';
 
-export default function ChatInterface() {
+interface Props {
+  onUserMessageCount?: (count: number) => void;
+}
+
+export default function ChatInterface({ onUserMessageCount }: Props) {
   const router = useRouter();
   const bottomRef = useRef<HTMLDivElement>(null);
   const didInit = useRef(false);
@@ -15,6 +19,12 @@ export default function ChatInterface() {
 
   const { messages, input, setInput, handleInputChange, append, isLoading } =
     useChat({ api: '/api/chat' });
+
+  // Reportar conteo de mensajes del usuario al padre
+  useEffect(() => {
+    const count = messages.filter((m) => m.role === 'user').length;
+    onUserMessageCount?.(count);
+  }, [messages, onUserMessageCount]);
 
   // Al montar: enviar municipio-inicial si existe
   useEffect(() => {
@@ -73,13 +83,49 @@ export default function ChatInterface() {
   return (
     <div className="relative flex flex-col h-[calc(100vh-4rem)] max-h-[800px]">
       {/* Área de mensajes */}
-      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
-        {messages.length === 0 && (
-          <p className="text-sm text-subtle text-center mt-8">
-            El agente comenzará la entrevista en un momento...
-          </p>
+      <div className="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-6">
+
+        {/* Bienvenida — solo cuando no hay mensajes */}
+        {messages.length === 0 && !isLoading && (
+          <div
+            className="rounded-xl border p-6 flex flex-col gap-4"
+            style={{ backgroundColor: '#0A0F1E', borderColor: '#1E2A45' }}
+          >
+            <div className="flex items-center gap-3">
+              <MessageSquare size={20} className="text-teal shrink-0" />
+              <p
+                className="text-base font-semibold text-foreground"
+                style={{ fontFamily: 'var(--font-syne), sans-serif' }}
+              >
+                Comenzando el diagnóstico
+              </p>
+            </div>
+
+            <p className="text-sm text-muted leading-relaxed">
+              Un investigador especializado te hará preguntas sobre tu municipio.
+              Responde con la mayor honestidad posible — no hay respuestas correctas ni incorrectas.
+            </p>
+
+            <ul className="flex flex-col gap-2">
+              {[
+                'La conversación toma entre 10 y 15 minutos',
+                'Puedes tomarte el tiempo que necesites para cada respuesta',
+                'Mientras más específico, mejor el diagnóstico',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5 text-sm text-muted">
+                  <CheckCircle2 size={14} className="text-teal shrink-0 mt-0.5" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <p className="text-xs text-subtle">
+              Escribe tu municipio o rol para comenzar
+            </p>
+          </div>
         )}
 
+        {/* Mensajes */}
         {messages.map((msg) => {
           const text = msg.content
             .replace('[ENTREVISTA_COMPLETA]', '')

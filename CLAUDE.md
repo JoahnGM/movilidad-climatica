@@ -48,8 +48,8 @@ amber:          #F59E0B
 violet:         #8B5CF6
 red:            #EF4444
 text:           #F1F5F9
-text-secondary: #94A3B8
-text-muted:     #475569
+text-secondary: #CBD5E1
+text-muted:     #94A3B8
 ```
 
 ### Tipografía
