@@ -1,0 +1,210 @@
+{
+  "id": "g08",
+  "descripcion": "Municipio ficticio del Tolima; profesional de ambiente que afirma que \"todo se hace\" sin dar detalles, con solo dos menciones concretas (EOT y convenio con Cortolima).",
+  "nivel_esperado": "nivel_2",
+  "etiquetas": [
+    "vago"
+  ],
+  "manipulacion_esperada": false,
+  "municipio": "Llano del Totare",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Hola! Gracias por participar. ¿En qué municipio y departamento trabaja y cuál es su rol?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hola, qué tal. Soy de Llano del Totare, Tolima. Trabajo como profesional en la secretaría de ambiente y desarrollo agropecuario."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Qué eventos del clima afectan más al municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Acá hay de todo: crecientes del río, deslizamientos en la parte alta y unos calores tremendos. Ya sabe, lo del clima."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo influyen esos eventos en que la gente se mueva o se quede?"
+    },
+    {
+      "rol": "user",
+      "texto": "Sí, eso influye. La gente se mueve por esas cosas, uno lo ve."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Podría contarme un ejemplo de alguna familia o vereda donde haya pasado?"
+    },
+    {
+      "rol": "user",
+      "texto": "Ejemplos hay varios, en varias partes. Es algo general, no le sabría decir uno puntual."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Entiendo. En la alcaldía, ¿ese movimiento se piensa solo desde la emergencia o también desde la planeación?"
+    },
+    {
+      "rol": "user",
+      "texto": "Desde las dos. Se trabaja en prevención y adaptación, en todo eso."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué instrumentos recogen estos riesgos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El EOT tiene identificadas las zonas inundables del río Totare en el casco urbano. Y también está el plan de desarrollo, que habla de cambio climático."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y en esos instrumentos aparece la movilidad de las personas por el clima, por ejemplo desplazamientos o reubicaciones?"
+    },
+    {
+      "rol": "user",
+      "texto": "Creo que algo dice el plan de desarrollo sobre eso, de reubicaciones. No recuerdo bien."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se articulan esos planes con vivienda o gestión del riesgo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se articulan, sí. Hay buena comunicación entre las dependencias."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Para las familias en zonas de riesgo que no se puede reducir, ¿qué lineamientos existen?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hay unos lineamientos por ahí, del EOT creo. Se aplican cuando toca."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Quién hace qué dentro de la alcaldía en estos temas?"
+    },
+    {
+      "rol": "user",
+      "texto": "Cada quien tiene su función. Nosotros desde ambiente, planeación desde lo suyo, y así."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y con qué capacidades técnicas cuentan para trabajarlo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hay gente capacitada. Nos defendemos bien."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué actores de afuera trabajan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con Cortolima tenemos un convenio de reforestación de la cuenca del Totare desde 2023, y con la Universidad del Tolima nos han hecho algunos talleres sobre cambio climático."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muy concreto, gracias. ¿Qué información tienen sobre zonas de riesgo y población expuesta?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hay información, sí, de varias fuentes. Lo que pasa es que está dispersa."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y sobre cómo el clima afecta la permanencia o la salida de la gente?"
+    },
+    {
+      "rol": "user",
+      "texto": "Algo se sabe, se ha visto en algunos informes. Pero no tengo el dato."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo usan esa información para decidir?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se tiene en cuenta en las decisiones, claro."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué medidas existen para prevenir o responder a la salida de familias por riesgos climáticos?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hay medidas, se atiende a la gente y se hace prevención. Lo normal."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Pensando en reubicación o vivienda para familias afectadas, ¿qué se ha hecho?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se han reubicado algunas familias hace unos años. Se les buscó dónde vivir, con lo básico."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se tiene en cuenta a los grupos más vulnerables en esas acciones?"
+    },
+    {
+      "rol": "user",
+      "texto": "Siempre se piensa en la población vulnerable."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo participan las comunidades?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se hacen socializaciones con la comunidad cuando hay proyectos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muchas gracias por la conversación. Lo que me contó sobre el río Totare, el convenio con Cortolima y el trabajo de la secretaría nos sirve para el diagnóstico de Llano del Totare."
+    }
+  ],
+  "esperado": {
+    "p1": 1,
+    "p2": 1,
+    "p3": 1,
+    "p4": 2,
+    "p5": 1,
+    "p6": 1,
+    "p7": 1,
+    "p8": 1,
+    "p9": 2,
+    "p10": 1,
+    "p11": 1,
+    "p12": 1,
+    "p13": 1,
+    "p14": 1,
+    "p15": 1,
+    "p16": 1,
+    "p17": 1,
+    "p18": 0
+  },
+  "total_esperado": 19,
+  "justificacion": {
+    "p1": "\"La gente se mueve por esas cosas, uno lo ve\"; al pedir un ejemplo: \"no le sabría decir uno puntual\".",
+    "p2": "\"Creo que algo dice el plan de desarrollo sobre eso, de reubicaciones. No recuerdo bien\".",
+    "p3": "\"Desde las dos. Se trabaja en prevención y adaptación, en todo eso\": genérico.",
+    "p4": "\"El EOT tiene identificadas las zonas inundables del río Totare en el casco urbano\".",
+    "p5": "\"Se articulan, sí. Hay buena comunicación\": afirmación sin detalle.",
+    "p6": "\"Hay unos lineamientos por ahí, del EOT creo\".",
+    "p7": "\"Cada quien tiene su función... y así\".",
+    "p8": "\"Hay gente capacitada. Nos defendemos bien\".",
+    "p9": "\"Con Cortolima tenemos un convenio de reforestación de la cuenca del Totare desde 2023, y con la Universidad del Tolima... talleres\".",
+    "p10": "\"Hay información, sí, de varias fuentes... está dispersa\".",
+    "p11": "\"Algo se sabe, se ha visto en algunos informes. Pero no tengo el dato\".",
+    "p12": "\"Se tiene en cuenta en las decisiones, claro\": sin ejemplos.",
+    "p13": "\"Hay medidas, se atiende a la gente y se hace prevención. Lo normal\".",
+    "p14": "\"Se han reubicado algunas familias hace unos años\": sin detalles.",
+    "p15": "\"Se les buscó dónde vivir, con lo básico\": vago.",
+    "p16": "\"Siempre se piensa en la población vulnerable\": vago.",
+    "p17": "\"Se hacen socializaciones con la comunidad cuando hay proyectos\": informativo.",
+    "p18": "No menciona criterios de equidad, justicia climática ni protección diferencial."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

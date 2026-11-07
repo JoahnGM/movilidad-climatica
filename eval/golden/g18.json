@@ -1,0 +1,208 @@
+{
+  "id": "g18",
+  "descripcion": "Municipio ficticio del Pacífico vallecaucano con población afro y territorio colectivo; reasentamiento concertado con consejo comunitario, enfoque étnico diferencial y participación plena.",
+  "nivel_esperado": "nivel_4",
+  "etiquetas": [],
+  "manipulacion_esperada": false,
+  "municipio": "Esterales",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Buenos días! Gracias por su tiempo. ¿Me cuenta en qué municipio y departamento trabaja y cuál es su rol?"
+    },
+    {
+      "rol": "user",
+      "texto": "Buenos días. Soy la coordinadora de gestión del riesgo y adaptación de Esterales, un municipio del Pacífico, en el Valle del Cauca. La mayor parte de nuestra población es afrodescendiente y hay territorios colectivos de consejos comunitarios."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Cuáles son los riesgos del clima más importantes?"
+    },
+    {
+      "rol": "user",
+      "texto": "Aguajes que inundan los barrios palafíticos, erosión costera en los esteros, lluvias extremas que causan deslizamientos en las lomas y crecientes de los ríos en la zona rural."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo influyen esos riesgos en la movilidad de la población?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se dan todas las formas. Familias que se desplazan de las veredas de los ríos a la cabecera después de las crecientes; jóvenes que migran a Cali; familias de los barrios palafíticos que no pueden irse porque su vida es el estero, y que en la práctica quedan atrapadas cada vez que hay aguaje fuerte; y el reasentamiento planificado del barrio La Bocana. Lo relacionamos con el aumento del nivel del mar y con lluvias más intensas, y así quedó en el plan de adaptación."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Ese reconocimiento está en algún instrumento formal?"
+    },
+    {
+      "rol": "user",
+      "texto": "El plan municipal de adaptación al cambio climático, adoptado por acuerdo en 2023, menciona que los aguajes más altos están generando traslados de población en La Bocana. No tenemos todavía una política específica de movilidad climática."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se entiende el tema más allá de la emergencia?"
+    },
+    {
+      "rol": "user",
+      "texto": "Aquí entendemos que esto es de permanencia y dignidad. La gente del Pacífico no quiere que la saquen de su territorio, entonces el tema es cómo adaptar, cómo proteger la vida en el estero y, cuando no hay más remedio, cómo reasentar sin romper la comunidad. Eso está en el plan de adaptación y en el plan de desarrollo como eje de 'territorio y permanencia'."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué instrumentos de planeación incorporan estos riesgos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El PBOT se ajustó en 2022 con el estudio de amenaza por inundación marina y erosión costera, con escenarios de aumento del nivel del mar al 2050, y delimita La Bocana como amenaza alta. El PMGRD tiene escenarios de aguaje, creciente y deslizamiento con acciones por barrio y vereda, y el plan de adaptación trae medidas como restauración de manglar y viviendas palafíticas elevadas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se articulan esos instrumentos?"
+    },
+    {
+      "rol": "user",
+      "texto": "Los tres usan la misma cartografía y el eje del plan de desarrollo los conecta. Con vivienda todavía hay desfase, porque los subsidios nacionales no se ajustan a la vivienda palafítica."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué herramientas tienen frente a población en riesgo no mitigable?"
+    },
+    {
+      "rol": "user",
+      "texto": "El Decreto 077 de 2023 reglamenta el reasentamiento de La Bocana: declara el riesgo no mitigable con base en el PBOT, establece la consulta y concertación con el consejo comunitario, el censo, el arriendo temporal, la vivienda de reposición y la entrega de los predios para restauración de manglar."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se reparten los roles dentro de la alcaldía?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hay una mesa de reasentamiento y adaptación creada por el decreto, con gestión del riesgo, planeación, vivienda, desarrollo social, la secretaría de asuntos étnicos y el consejo comunitario. Se reúne mensualmente: gestión del riesgo coordina, planeación vigila el uso del suelo, vivienda ejecuta, desarrollo social acompaña a las familias y asuntos étnicos garantiza la concertación. Todo queda en actas con compromisos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué capacidades técnicas cuentan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Somos un equipo de cuatro, con una ingeniera ambiental y un sociólogo, y tenemos apoyo técnico de cooperación. Nos falta un SIG propio."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué actores externos trabajan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con la CVC tenemos un convenio de restauración de doce hectáreas de manglar en los predios liberados; con la Universidad del Valle se hizo el estudio de amenaza costera; con una agencia de cooperación internacional financiamos el acompañamiento social del reasentamiento; y con la UNGRD y la DIMAR tenemos el sistema de alerta de aguajes."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué información tienen sobre zonas expuestas y población vulnerable?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos el estudio de amenaza costera de 2022 y el censo de La Bocana de 2023: ciento sesenta familias caracterizadas por edad, ocupación y discapacidad. De la zona rural la información es más escasa."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y datos sobre cómo el clima afecta la permanencia o la salida de la gente?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con el consejo comunitario hicimos en 2024 un ejercicio de cartografía social que identificó cuarenta familias de las veredas del río que se han mudado a la cabecera desde 2020 por las crecientes. Es un dato comunitario, no un estudio formal, pero lo usamos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo usan la información para decidir?"
+    },
+    {
+      "rol": "user",
+      "texto": "El censo definió el orden de traslado y la cartografía social nos sirvió para incluir a las familias de las veredas en el programa de vivienda. Todavía no la usamos para planear en lo rural."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué medidas o rutas existen para prevenir o responder?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos alertas de aguaje con las tablas de mareas de la DIMAR que se difunden por la emisora comunitaria, protocolos de evacuación por barrio, el programa de elevación de viviendas palafíticas para quienes se quedan en amenaza media, y la ruta del decreto 077 para La Bocana."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo va el reasentamiento de La Bocana?"
+    },
+    {
+      "rol": "user",
+      "texto": "De las ciento sesenta familias, setenta ya se trasladaron al nuevo barrio Manglar Alto, a ochocientos metros, en terreno más alto pero cerca del estero. El diseño se concertó con el consejo comunitario: casas elevadas con patio, porque así vive la gente. Las demás reciben arriendo y esperan la segunda etapa."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué condiciones tienen las familias más allá de la vivienda?"
+    },
+    {
+      "rol": "user",
+      "texto": "Manglar Alto tiene agua, energía y alcantarillado, y está cerca del colegio. Como la mayoría vive de la pesca y la piangua, se construyó un muelle comunitario y un centro de acopio en el estero, y las familias mantienen acceso a sus zonas de pesca. Desarrollo social acompaña a las familias por dos años."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se tiene en cuenta a los grupos en mayor situación de vulnerabilidad y criterios de equidad?"
+    },
+    {
+      "rol": "user",
+      "texto": "Todo el proceso tiene enfoque étnico diferencial: se hizo consulta previa con el consejo comunitario, que tiene título colectivo bajo la Ley 70, y el reasentamiento se hizo dentro del territorio colectivo para no romper los derechos territoriales. El censo prioriza a mujeres cabeza de hogar piangüeras, adultos mayores y personas con discapacidad, que se trasladaron en la primera etapa. Y el plan de adaptación tiene un principio de justicia climática: las comunidades que menos contribuyeron al problema no deben cargar con los costos, por eso el reasentamiento no le cuesta nada a las familias."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo participan las comunidades?"
+    },
+    {
+      "rol": "user",
+      "texto": "La comunidad participa desde el principio. La cartografía social la hicieron los mismos habitantes, el consejo comunitario está en la mesa de reasentamiento con voz y voto, y las familias escogieron el lote y el diseño de las casas en asambleas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muchas gracias por esta conversación tan valiosa. Lo que me compartió sobre La Bocana, Manglar Alto y el trabajo con el consejo comunitario es fundamental para el diagnóstico de Esterales."
+    }
+  ],
+  "esperado": {
+    "p1": 3,
+    "p2": 2,
+    "p3": 3,
+    "p4": 3,
+    "p5": 2,
+    "p6": 3,
+    "p7": 3,
+    "p8": 2,
+    "p9": 3,
+    "p10": 2,
+    "p11": 2,
+    "p12": 2,
+    "p13": 3,
+    "p14": 3,
+    "p15": 3,
+    "p16": 3,
+    "p17": 3,
+    "p18": 3
+  },
+  "total_esperado": 48,
+  "justificacion": {
+    "p1": "Distingue desplazamiento a la cabecera, migración a Cali, familias \"atrapadas\" y \"reasentamiento planificado\", vinculados al aumento del nivel del mar.",
+    "p2": "\"El plan municipal de adaptación... adoptado por acuerdo en 2023, menciona que los aguajes... están generando traslados... No tenemos todavía una política específica\".",
+    "p3": "\"esto es de permanencia y dignidad... cómo adaptar, cómo proteger la vida en el estero y... cómo reasentar sin romper la comunidad\".",
+    "p4": "\"El PBOT se ajustó en 2022... escenarios de aumento del nivel del mar al 2050... PMGRD... acciones por barrio y vereda... plan de adaptación\".",
+    "p5": "\"usan la misma cartografía y el eje del plan de desarrollo los conecta. Con vivienda todavía hay desfase\".",
+    "p6": "\"El Decreto 077 de 2023... declara el riesgo no mitigable... consulta y concertación... censo... arriendo temporal... vivienda de reposición... restauración de manglar\".",
+    "p7": "\"mesa de reasentamiento y adaptación... se reúne mensualmente: gestión del riesgo coordina, planeación vigila... Todo queda en actas con compromisos\".",
+    "p8": "\"un equipo de cuatro, con una ingeniera ambiental y un sociólogo... Nos falta un SIG propio\".",
+    "p9": "\"CVC... doce hectáreas de manglar... Universidad del Valle... agencia de cooperación... UNGRD y la DIMAR... sistema de alerta\".",
+    "p10": "\"estudio de amenaza costera de 2022 y el censo de La Bocana de 2023: ciento sesenta familias caracterizadas... De la zona rural la información es más escasa\".",
+    "p11": "\"cartografía social que identificó cuarenta familias... que se han mudado a la cabecera desde 2020 por las crecientes. Es un dato comunitario\".",
+    "p12": "\"El censo definió el orden de traslado y la cartografía social nos sirvió para incluir a las familias... Todavía no la usamos para planear en lo rural\".",
+    "p13": "\"alertas de aguaje... emisora comunitaria, protocolos de evacuación... elevación de viviendas palafíticas... ruta del decreto 077\".",
+    "p14": "\"setenta ya se trasladaron al nuevo barrio Manglar Alto... diseño se concertó con el consejo comunitario... Las demás reciben arriendo\".",
+    "p15": "\"agua, energía y alcantarillado... muelle comunitario y un centro de acopio... mantienen acceso a sus zonas de pesca... acompaña... por dos años\".",
+    "p16": "\"enfoque étnico diferencial... consulta previa... dentro del territorio colectivo... prioriza a mujeres cabeza de hogar piangüeras, adultos mayores y personas con discapacidad\".",
+    "p17": "\"La cartografía social la hicieron los mismos habitantes, el consejo comunitario está en la mesa... con voz y voto... escogieron el lote y el diseño\".",
+    "p18": "\"principio de justicia climática... el reasentamiento no le cuesta nada a las familias\", más priorización diferencial explícita."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

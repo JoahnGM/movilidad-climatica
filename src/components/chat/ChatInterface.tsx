@@ -1,11 +1,16 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useChat } from 'ai/react';
+import { useChat } from '@ai-sdk/react';
+import { DefaultChatTransport, type UIMessage } from 'ai';
 import { useRouter } from 'next/navigation';
 import { Send, CheckCircle2, MessageSquare } from 'lucide-react';
 
 type Estado = 'activo' | 'completado';
+
+function textoDe(m: UIMessage): string {
+  return m.parts.map((p) => (p.type === 'text' ? p.text : '')).join('');
+}
 
 interface Props {
   onUserMessageCount?: (count: number) => void;
@@ -14,11 +19,30 @@ interface Props {
 export default function ChatInterface({ onUserMessageCount }: Props) {
   const router = useRouter();
   const bottomRef = useRef<HTMLDivElement>(null);
-  const didInit = useRef(false);
-  const [estado, setEstado] = useState<Estado>('activo');
 
-  const { messages, input, setInput, handleInputChange, append, isLoading } =
-    useChat({ api: '/api/chat' });
+  const [input, setInput] = useState('');
+  const { messages, sendMessage, status, error, setMessages } = useChat({
+    transport: new DefaultChatTransport({ api: '/api/chat' }),
+    // Si el servidor rechaza el turno (4xx), se quita del historial y vuelve al input
+    // para que el siguiente envío no repita el mismo mensaje rechazado.
+    onError: () => {
+      setMessages((prev) => {
+        const ultimo = prev[prev.length - 1];
+        if (ultimo?.role !== 'user') return prev;
+        setInput(textoDe(ultimo));
+        return prev.slice(0, -1);
+      });
+    },
+  });
+  const isLoading = status === 'submitted' || status === 'streaming';
+
+  // La entrevista termina cuando el último mensaje del entrevistador trae el tag de cierre
+  // (solo el servidor lo emite; si llega en un turno del usuario, la API lo rechaza).
+  const ultimo = messages[messages.length - 1];
+  const estado: Estado =
+    ultimo?.role === 'assistant' && textoDe(ultimo).includes('[ENTREVISTA_COMPLETA]')
+      ? 'completado'
+      : 'activo';
 
   // Reportar conteo de mensajes del usuario al padre
   useEffect(() => {
@@ -26,16 +50,16 @@ export default function ChatInterface({ onUserMessageCount }: Props) {
     onUserMessageCount?.(count);
   }, [messages, onUserMessageCount]);
 
-  // Al montar: enviar municipio-inicial si existe
+  // Al montar: enviar municipio-inicial si existe. El timeout cancelable evita el envío
+  // doble (o perdido) cuando React monta, desmonta y vuelve a montar en modo estricto.
   useEffect(() => {
-    if (didInit.current) return;
-    didInit.current = true;
-
     const municipioInicial = localStorage.getItem('municipio-inicial');
-    if (municipioInicial && messages.length === 0) {
+    if (!municipioInicial) return;
+    const t = setTimeout(() => {
       localStorage.removeItem('municipio-inicial');
-      append({ role: 'user', content: municipioInicial });
-    }
+      sendMessage({ text: municipioInicial });
+    }, 0);
+    return () => clearTimeout(t);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -44,26 +68,21 @@ export default function ChatInterface({ onUserMessageCount }: Props) {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isLoading]);
 
-  // Detectar fin de entrevista
+  // Al terminar la entrevista: guardar transcripción para /resultado
   useEffect(() => {
-    if (estado === 'completado' || messages.length === 0) return;
-
-    const lastMsg = messages[messages.length - 1];
-    if (lastMsg.role !== 'assistant') return;
-    if (!lastMsg.content.includes('[ENTREVISTA_COMPLETA]')) return;
+    if (estado !== 'completado') return;
 
     const transcript = messages
       .map((m) => {
         const label = m.role === 'user' ? 'FUNCIONARIO' : 'ENTREVISTADOR';
-        return label + ':\n' + m.content.replace('[ENTREVISTA_COMPLETA]', '').trim();
+        return label + ':\n' + textoDe(m).replace('[ENTREVISTA_COMPLETA]', '').trim();
       })
       .join('\n\n---\n\n');
 
-    const primerMensaje = messages[0].content;
+    const primerMensaje = textoDe(messages[0]);
 
     localStorage.setItem('diagnostico-transcript', transcript);
     localStorage.setItem('diagnostico-municipio', primerMensaje);
-    setEstado('completado');
   }, [messages, estado]);
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
@@ -76,7 +95,7 @@ export default function ChatInterface({ onUserMessageCount }: Props) {
   function handleSend() {
     const text = input.trim();
     if (!text || isLoading) return;
-    append({ role: 'user', content: text });
+    sendMessage({ text });
     setInput('');
   }
 
@@ -127,7 +146,7 @@ export default function ChatInterface({ onUserMessageCount }: Props) {
 
         {/* Mensajes */}
         {messages.map((msg) => {
-          const text = msg.content
+          const text = textoDe(msg)
             .replace('[ENTREVISTA_COMPLETA]', '')
             .trim();
           if (!text) return null;
@@ -190,7 +209,7 @@ export default function ChatInterface({ onUserMessageCount }: Props) {
         >
           <textarea
             value={input}
-            onChange={handleInputChange}
+            onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             disabled={isLoading || estado === 'completado'}
             placeholder={
@@ -215,6 +234,11 @@ export default function ChatInterface({ onUserMessageCount }: Props) {
             <Send size={15} />
           </button>
         </div>
+        {error && (
+          <p className="text-xs text-amber mt-1.5 px-1" role="alert">
+            No pudimos procesar tu último mensaje. Revísalo e inténtalo de nuevo.
+          </p>
+        )}
         <p className="text-xs text-subtle mt-1.5 px-1">
           Enter para enviar · Shift+Enter para nueva línea
         </p>

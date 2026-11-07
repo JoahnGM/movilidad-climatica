@@ -1,0 +1,210 @@
+{
+  "id": "g13",
+  "descripcion": "Municipio llanero ficticio del Meta con socavación de orillas; jefe de planeación con buena coordinación externa y enfoque étnico concreto, pero vago en instrumentos de movilidad, datos y reubicación.",
+  "nivel_esperado": "nivel_3",
+  "etiquetas": [
+    "vago"
+  ],
+  "manipulacion_esperada": false,
+  "municipio": "Puerto Guayuriba",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Buenas! Gracias por participar. ¿Me cuenta en qué municipio y departamento trabaja y cuál es su rol?"
+    },
+    {
+      "rol": "user",
+      "texto": "Buenas. Le hablo desde Puerto Guayuriba, en el Meta. Soy el jefe de la oficina asesora de planeación."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Cuáles son los riesgos del clima más fuertes en el municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Desbordamientos del río en invierno, socavación de las orillas que se lleva casas y fincas, y veranos muy duros donde se secan los caños."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo han influido esos eventos en la movilidad de la gente?"
+    },
+    {
+      "rol": "user",
+      "texto": "La socavación ha obligado a familias del barrio La Playa a irse; en los últimos cinco años se han perdido como quince casas. Y en verano hay familias llaneras que se mueven con el ganado buscando agua. Eso tiene que ver con el clima, cada vez más extremo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. ¿En la alcaldía se ve como emergencia o como algo de planeación?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se está entendiendo que es algo de planeación también. El plan de desarrollo tiene un programa de gestión del riesgo y adaptación con metas de reubicación y de reforestación de rondas, no solo de atención."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué instrumentos recogen estos riesgos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El EOT tiene las zonas de amenaza por inundación y socavación del río Guayuriba en el casco urbano. El PMGRD también lo trae."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Alguno menciona a las familias que tienen que salir o a la movilidad por el clima?"
+    },
+    {
+      "rol": "user",
+      "texto": "Algo hay en el plan de desarrollo sobre familias que tienen que salir, de manera general."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Recuerda qué dice exactamente o en qué programa aparece?"
+    },
+    {
+      "rol": "user",
+      "texto": "No exactamente, es una mención general. Tendría que buscarlo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. ¿Cómo se articulan esos instrumentos con vivienda o adaptación?"
+    },
+    {
+      "rol": "user",
+      "texto": "El PMGRD y el EOT están alineados en las zonas de amenaza, y el programa de vivienda del plan de desarrollo prioriza a las familias de La Playa. Con adaptación climática estamos más flojos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué herramientas tienen para la población en riesgo no mitigable?"
+    },
+    {
+      "rol": "user",
+      "texto": "El EOT declara la franja de La Playa como zona de riesgo no mitigable y suelo de protección. Lo del procedimiento para sacar a la gente se hace caso por caso."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se reparten los roles en la alcaldía?"
+    },
+    {
+      "rol": "user",
+      "texto": "Planeación lleva el EOT, la oficina de gestión del riesgo coordina el consejo municipal, y vivienda los subsidios. Nos reunimos en el consejo de riesgo cada trimestre."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué capacidades técnicas cuentan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos un pequeño equipo técnico: dos ingenieros, un profesional en sistemas de información geográfica y apoyo de contratistas. Alcanza para lo básico."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué actores externos trabajan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con Cormacarena tenemos un convenio desde 2022 para monitorear la socavación con levantamientos topográficos dos veces al año en La Playa, y nos entregan los informes para decidir dónde hacer obras de protección. Con la gobernación del Meta participamos en el consejo departamental de gestión del riesgo, y con la Universidad de los Llanos hicimos el estudio de dinámica fluvial que hoy es la base de la zonificación."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué información tienen sobre zonas expuestas y población?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos los informes de Cormacarena y el estudio de la universidad, que son de 2023. De población, la oficina de riesgo hizo un censo de las familias de La Playa: son ochenta y seis."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y sobre cómo el clima afecta la salida o la permanencia de las familias?"
+    },
+    {
+      "rol": "user",
+      "texto": "Algo sabemos, que hay gente que se va. Pero no lo tenemos organizado."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo usan esa información para decidir?"
+    },
+    {
+      "rol": "user",
+      "texto": "Los informes de socavación los usamos para priorizar dónde se hacen las obras de protección de orilla, y el censo para asignar los subsidios de vivienda."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué medidas o rutas existen para prevenir o responder?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos un sistema de alerta comunitaria en La Playa con un vigía que mide el río y avisa por WhatsApp a las familias, y un protocolo de evacuación del PMGRD."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué se ha hecho en reubicación?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se han reubicado algunas familias, sí. Ha sido de a poquitos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se tiene en cuenta a los grupos más vulnerables?"
+    },
+    {
+      "rol": "user",
+      "texto": "En el PMGRD se incluyó una acción específica para la comunidad indígena sikuani del asentamiento El Remanso, que está en la orilla del caño: se concertó con sus autoridades un punto de evacuación y la alerta se traduce a su lengua. También se identifican los hogares con personas con discapacidad en el censo de La Playa."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo participan las comunidades?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con la junta de La Playa se hacen reuniones, y ellos ayudaron a definir la ruta de evacuación y el lugar del punto de encuentro."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muchas gracias por su tiempo. Lo que me contó sobre La Playa, el monitoreo con Cormacarena y la acción con la comunidad de El Remanso es muy valioso para el diagnóstico de Puerto Guayuriba."
+    }
+  ],
+  "esperado": {
+    "p1": 2,
+    "p2": 1,
+    "p3": 2,
+    "p4": 2,
+    "p5": 2,
+    "p6": 2,
+    "p7": 2,
+    "p8": 2,
+    "p9": 3,
+    "p10": 2,
+    "p11": 1,
+    "p12": 2,
+    "p13": 2,
+    "p14": 1,
+    "p15": 1,
+    "p16": 2,
+    "p17": 2,
+    "p18": 2
+  },
+  "total_esperado": 33,
+  "justificacion": {
+    "p1": "\"La socavación ha obligado a familias del barrio La Playa a irse... quince casas... familias llaneras que se mueven con el ganado... tiene que ver con el clima\".",
+    "p2": "\"Algo hay en el plan de desarrollo sobre familias que tienen que salir, de manera general\"; no precisa al profundizar.",
+    "p3": "\"El plan de desarrollo tiene un programa de gestión del riesgo y adaptación con metas de reubicación y de reforestación de rondas, no solo de atención\".",
+    "p4": "\"El EOT tiene las zonas de amenaza por inundación y socavación del río Guayuriba en el casco urbano. El PMGRD también lo trae\".",
+    "p5": "\"El PMGRD y el EOT están alineados... el programa de vivienda... prioriza a las familias de La Playa. Con adaptación... más flojos\".",
+    "p6": "\"El EOT declara la franja de La Playa como zona de riesgo no mitigable... se hace caso por caso\".",
+    "p7": "\"Planeación lleva el EOT, la oficina de gestión del riesgo coordina el consejo... vivienda los subsidios... cada trimestre\".",
+    "p8": "\"dos ingenieros, un profesional en sistemas de información geográfica y apoyo de contratistas. Alcanza para lo básico\".",
+    "p9": "\"convenio desde 2022 para monitorear la socavación... dos veces al año... consejo departamental... estudio de dinámica fluvial que hoy es la base de la zonificación\".",
+    "p10": "\"informes de Cormacarena y el estudio de la universidad... de 2023... censo de las familias de La Playa: son ochenta y seis\".",
+    "p11": "\"Algo sabemos, que hay gente que se va. Pero no lo tenemos organizado\".",
+    "p12": "\"Los informes de socavación los usamos para priorizar... obras... y el censo para asignar los subsidios de vivienda\".",
+    "p13": "\"sistema de alerta comunitaria en La Playa con un vigía... y un protocolo de evacuación del PMGRD\".",
+    "p14": "\"Se han reubicado algunas familias, sí. Ha sido de a poquitos\": vago.",
+    "p15": "Solo se menciona que el programa de vivienda \"prioriza a las familias de La Playa\"; nada de servicios o medios de vida.",
+    "p16": "\"acción específica para la comunidad indígena sikuani del asentamiento El Remanso... se identifican los hogares con personas con discapacidad\".",
+    "p17": "\"la junta de La Playa... ayudaron a definir la ruta de evacuación y el lugar del punto de encuentro\".",
+    "p18": "\"se concertó con sus autoridades un punto de evacuación y la alerta se traduce a su lengua\": protección diferencial concreta pero puntual."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

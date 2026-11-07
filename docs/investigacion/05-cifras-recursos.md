@@ -1,0 +1,74 @@
+# Cifras verificables y recursos — movilidad climática Colombia (investigado 2026-11-06)
+
+**Nota metodológica:** las cifras IDMC se verificaron directamente en los PDF oficiales GRID 2025 y GRID 2026 (tabla país). Las de UNGRD 2024 provienen del balance de prensa de la UNGRD (26-dic-2024) replicado por varios medios; el archivo primario (XLS anual) existe pero no se pudo abrir. Lo no verificado se marca explícitamente.
+
+## 1. Tabla de cifras
+
+| Cifra | Definición (qué mide) | Fuente | Año dato | URL | Confianza |
+|---|---|---|---|---|---|
+| **91.000** desplazamientos por desastres en Colombia | Movimientos forzados (no personas únicas; incluye evacuaciones) registrados durante 2024 | IDMC, GRID 2025 (tabla país; narrativa p. 77-78) | 2024 | https://api.internal-displacement.org/sites/default/files/publications/documents/idmc-grid-2025-global-report-on-internal-displacement.pdf | Alta |
+| 29.000 desplazamientos por inundaciones en Chocó (ago-nov 2024); 7.900 por sequía en Bolívar/Córdoba/Sucre (primer registro de desplazamiento por sequía en el país) | Desglose parcial por peligro del dato anterior. IDMC no publica desglose completo inundación/deslizamiento/tormenta para Colombia en el PDF | IDMC, GRID 2025 | 2024 | misma | Alta |
+| **388.000** desplazamientos por conflicto y violencia; **7.265.000** personas desplazadas internas (conflicto) a 31-dic-2024 | Flujos del año vs. stock de personas viviendo en desplazamiento. IDMC no reporta stock por desastres para Colombia ("no standalone disaster IDP figure") | IDMC, GRID 2025 | 2024 | misma | Alta |
+| **88.000** desplazamientos por desastres (≈78.000 por inundaciones); 394.000 por conflicto; 7.211.000 PDI conflicto a fin de 2025 | Mismas definiciones, año 2025 | IDMC, GRID 2026 (tabla país) | 2025 | https://api.internal-displacement.org/sites/default/files/2026-05/IDMC-GRID-2026-Global-Report-on-Internal-Displacement.pdf | Alta (88.000/394.000/7,2M leídos en tabla; el ~78.000 de inundaciones viene del resumen web de IDMC) |
+| **351.000** desplazamientos por desastres en 2023 | Flujos 2023 (tormentas, inundaciones, sequías e incendios) | IDMC GRID 2024, citado por MinAmbiente/PNUD 2026 | 2023 | https://www.internal-displacement.org/global-report/grid2024/ | Media-alta (infografía GRID 2024; confirmado en hoja de ruta oficial) |
+| Global: **45,8 M** desplazamientos por desastres; 20,1 M por conflicto; **83,4 M** PDI a fin de 2024 (73,5 M conflicto, 9,8 M desastres) | Contexto global 2024 | IDMC GRID 2025 | 2024 | misma GRID 2025 | Alta |
+| Global 2025: 62,2 M desplazamientos (32,3 M conflicto, 29,9 M desastres); 82,2 M PDI (68,6 M conflicto, 13,6 M desastres) | Contexto global 2025 | IDMC GRID 2026 | 2025 | misma GRID 2026 | Alta |
+| **Definición IDMC**: "internal displacements" = número de movimientos forzados dentro del país registrados en el año (captura movimientos repetidos); "IDPs" = foto del total de personas viviendo en desplazamiento a 31 de diciembre | — | IDMC GRID 2025, p. 6 | — | GRID 2025 | Alta |
+| **~9.000 eventos** de emergencia en **1.024 municipios** (2024); inundaciones: 644 eventos, **>709.000 personas / 186.000 familias** afectadas; movimientos en masa: 704 eventos, **70 fallecidos**; vendavales: 438 eventos, >110.000 personas; crecientes súbitas: 174 eventos, 52.000; incendios forestales: 6.293, >216.000 ha | Personas afectadas = reportadas por consejos municipales de GRD (damnificados, no desplazados) | UNGRD, balance anual (prensa, 26-dic-2024) | 2024 | Primario: https://portal.gestiondelriesgo.gov.co/Documents/Emergencias/REPORTE-ANUAL-DE-EMERGENCIAS-2024.xls ; cobertura: https://www.agronegocios.co/clima/incendios-e-inundaciones-fueron-las-emergencias-que-mas-se-reportaron-para-2024-4029085 | Media (balance oficial vía prensa; XLS no abierto) |
+| 845 emergencias, 408 municipios, 27 departamentos, **57.654 familias** afectadas (temporada de lluvias 2025, corte 24-may-2025) | Corte parcial; no se encontró balance de cierre 2025 | UNGRD (Carlos Carrillo, director) | 2025 | https://www.elheraldo.co/colombia/2025/05/24/ungrd-pide-recursos-para-emergencias-por-las-lluvias-en-27-departamentos/ | Media |
+| **254.531 personas / 94.431 familias** afectadas, 17 fallecidos, 4.099 viviendas destruidas, 18.232 averiadas (temporada de lluvias, corte ~14-feb-2026) | Reporte situacional UNGRD | UNGRD vía Vanguardia | 2026 | https://www.vanguardia.com/colombia/2026/02/15/mas-de-254000-personas-afectadas-por-las-lluvias-en-colombia-cordoba-concentra-la-mayor-emergencia/ | Media |
+| **1.015.056 personas damnificadas**, 537 municipios en calamidad (La Niña ago-2021 a ene-2023); Decreto 2113/2022 declaró desastre nacional (864 municipios, 32 dptos.) | Damnificados acumulados del fenómeno | UNGRD (citado por Gobernación de Córdoba y Radio Nacional) | 2023 | https://radionacional.co/actualidad/medio-ambiente/fenomeno-de-la-nina-colombia-impacto-y-perdidas | Media |
+| 1998-2022: **22,7 M personas afectadas**, 8.141 muertes, >92.000 viviendas destruidas, ~1,8 M viviendas averiadas; eventos más frecuentes: incendios (16.409), inundaciones (15.354), movimientos en masa (9.311) | Acumulado histórico del consolidado UNGRD | PNUD, nota de política PDS 53 (jun-2024), con datos UNGRD | 2022 | https://climatepromise.undp.org/sites/default/files/research_report_document/PDS-Number53%20Climate%20Colombia%20ES.pdf | Alta |
+| **100 % de municipios** con algún grado de riesgo por cambio climático; 59 % (489 municipios) con riesgo medio-muy alto y 25 % (119) alto/muy alto a 2040; 20 dptos. de mayor riesgo concentran 57 % de la población y 69 % del PIB | Índice de riesgo climático municipal (vulnerabilidad × amenaza) | IDEAM-PNUD-MADS-DNP-Cancillería, Tercera Comunicación Nacional, *Análisis de vulnerabilidad y riesgo* | 2017 | https://www4.unfccc.int/sites/SubmissionsStaging/NationalReports/Documents/4617350_Colombia-NC3-1-RESUMEN%20EJECUTIVO%20TCNCC%20COLOMBIA%20A%20LA%20CMNUCC%202017.pdf (ver también cambioclimatico.gov.co) | Media-alta. La Cuarta Comunicación aún no está publicada (prevista dic-2026) |
+| **17 millones** de migrantes climáticos internos en América Latina a 2050 (escenario pesimista); 216 M global; reducción hasta 80 % con acción climática | Proyección de migración interna inducida por clima (modelo gravitacional, 3 escenarios). **No existe cifra desagregada para Colombia** en Groundswell | Banco Mundial, Groundswell (2018, actualizado 2021) | 2021 | https://www.bancomundial.org/es/news/press-release/2021/09/13/climate-change-could-force-216-million-people-to-migrate-within-their-own-countries-by-2050 | Alta (regional); Colombia: no disponible |
+| Gramalote: **984-988 viviendas** (612 VIS propietarios + 372 VIP arrendatarios); entrega del 100 % formalizada el 10-oct-2024; inversión final del último contrato COP 20.381 M | Reasentamiento completo del casco urbano tras el deslizamiento de dic-2010 | Fondo Adaptación (vía Las2orillas, may-2025; cifras oficiales en fondoadaptacion.gov.co no abiertas) | 2024 | https://www.las2orillas.co/asi-lograron-terminar-de-construir-a-gramalote-el-pueblo-que-la-tierra-se-trago-hace-15-anos/ | Media |
+| Bogotá: **20.872 familias** en gestión de reasentamiento, **10.699** con reasentamiento terminado, 7.912 "protegidas" retiradas de zonas de alto riesgo no mitigable; meta PDD 2024-2027: 1.450-2.000 hogares | Programa de reasentamiento CVP por alto riesgo no mitigable (IDIGER) | SDP, ficha Plan de Desarrollo 2024-2027 (Caja de la Vivienda Popular) | 2024 | https://www.sdp.gov.co/sites/default/files/208_caja_de_vivienda_popular.pdf (404 al fetch; cifras vía snippet de búsqueda) | Baja-media: **verificar** |
+| Medellín: 26,1 % del territorio en alto riesgo no mitigable y 11,1 % mitigable (POT 2014); ~3.000 hogares en arrendamiento temporal por riesgo (ISVIMED, 2020) | — | Alcaldía de Medellín / ISVIMED | 2014/2020 | https://www.medellin.gov.co/ndesarrollo/wp-content/uploads/FICHAS/C80/2018/FP/18_FP_PP_C80_ISVIMED.pdf | Baja: sin cifra 2023-2025 |
+| Providencia (Iota, 2020): de 1.976 casas revisadas, 908 colapso total y 935 daño parcial; reconstrucción de viviendas "97 %" en dic-2022 | Daño y reconstrucción (no reasentamiento) | UNGRD / Gobierno | 2020-2022 | https://www.vanguardia.com/colombia/2022/12/13/colombia-dice-que-reconstruccion-de-providencia-tras-iota-esta-casi-completa/ | Media; sin cifra final oficial |
+| La Mojana: 46 predios identificados y 3 comprados para reubicación (ene-2023); inversión Fondo Adaptación COP 1,2 billones (sep-2023) | Reasentamiento en curso; **no se halló número oficial de hogares reasentados** | UNGRD/Fondo Adaptación vía El Espectador | 2023 | https://www.elespectador.com/ambiente/gobierno-adelanta-compra-de-predios-para-damnificados-de-la-mojana-y-cauca/ | Baja |
+
+**No verificado / no existe:** cifra nacional de hogares en zonas de alto riesgo no mitigable (DNP/DANE) — no se encontró en fuente primaria; el Censo 2018 no mide exposición a riesgo. No usar. Groundswell no da cifra para Colombia. IPCC AR6 cap. 12 (Centro y Suramérica) afirma que migración y desplazamiento ligados al clima aumentan en la región, sin cifra Colombia (https://www.ipcc.ch/report/ar6/wg2/).
+
+## 2. Hitos normativos recientes (para contexto de cifras)
+- **Sentencia T-123 de 2024** (16-abr-2024, MP Natalia Ángel Cabo, exp. T-8.480.624): reconoce el desplazamiento forzado interno por factores ambientales (incl. cambio climático) y exhorta al Congreso a crear marco legal. https://www.corteconstitucional.gov.co/Relatoria/2024/T-123-24.htm
+- **Ley de desplazamiento por causas climáticas**: según la hoja de ruta MinAmbiente/PNUD (abr-2026), el PL 425/2025 Cámara – 015/2024 Senado fue aprobado en diciembre de 2025. El informe 07 la identifica como **Ley 2577 de 2026** (sancionada 29-may-2026) — verificar texto completo antes de publicar.
+
+## 3. Catálogo de recursos
+
+**Reportes**
+- IDMC, *Global Report on Internal Displacement 2025 / 2026* (2025, 2026) — cifras anuales de desplazamiento por desastres y conflicto por país. https://www.internal-displacement.org/global-report/grid2025/ · https://www.internal-displacement.org/global-report/grid2026/
+- IDMC, página país Colombia — serie 2008-2025. https://www.internal-displacement.org/countries/colombia/
+- OIM, *Informe sobre las Migraciones en el Mundo 2024* (2024) — contexto global de migración y desplazamiento por desastres. https://worldmigrationreport.iom.int/es/informe-sobre-las-migraciones-en-el-mundo-2024
+- PNUD, *Movilidad climática, adaptación y resiliencia: lecciones de Colombia* (PDS 53, 2024) — diagnóstico institucional colombiano. URL en tabla.
+- MinAmbiente–PNUD, *Hoja de ruta para la política pública de desplazamiento interno asociado a desastres y eventos de evolución lenta* (abr-2026) — marco conceptual y líneas de acción para la política nacional. https://www.minambiente.gov.co/wp-content/uploads/2026/07/UNDP_insumospp_desplazamiento_desastres.pdf
+- IDEAM et al., *Tercera Comunicación Nacional – Análisis de vulnerabilidad y riesgo* (2017) — riesgo climático por municipio. https://www.cambioclimatico.gov.co
+- Banco Mundial, *Groundswell* (2018/2021) — proyecciones de migración climática interna. https://openknowledge.worldbank.org/handle/10986/29461
+
+**Guías**
+- UNDRR–PDD–NRC, *Words into Action: Disaster Displacement* (2019) — cómo integrar desplazamiento en la gestión del riesgo (meta E Sendai). https://www.undrr.org/publication/words-action-guidelines-disaster-displacement (solo inglés confirmado)
+- Platform on Disaster Displacement, checklist y curso (ES disponible). https://disasterdisplacement.org/resource/wiadd/
+- Banco Mundial/GFDRR, *Guía de reasentamiento para poblaciones en riesgo de desastre* (2011, ES). https://www.gfdrr.org/sites/default/files/publication/BM_Gu%C3%ADa_Reasentamiento_FINALPDF.pdf
+- Minvivienda, *Guía metodológica para el inventario de asentamientos en zonas de alto riesgo* (Res. 0448/2014) — cómo levantar el inventario municipal. https://minvivienda.gov.co (buscar Resolución 0448 de 2014)
+- DNP, *Índice Municipal de Riesgo de Desastres ajustado por Capacidades* (actualizado 2024) — comparar riesgo y capacidad municipal. Guía: https://colaboracion.dnp.gov.co/CDT/Prensa/Publicaciones/cartilla_imrc.pdf · Base 2024: https://colaboracion.dnp.gov.co/CDT/PublishingImages/La_Entidad/Directivos/Direccciones/ambiente-y-desarrollo-sostenible/Gestion-del-Riesgo-de-Desastres/IMRC-BASE-DE-DATOS-2024.xlsx
+
+**Datos abiertos**
+- UNGRD, *Consolidado Anual de Emergencias* 1998-2025 (XLS por año). https://portal.gestiondelriesgo.gov.co/Paginas/Consolidado-Atencion-de-Emergencias.aspx
+- IDMC, Internal Displacement Updates – Colombia (eventos, HDX). https://data.humdata.org/dataset/idmc-event-data-for-col
+- datos.gov.co (datasets UNGRD, p. ej. "Emergencias UNGRD 2019"). https://www.datos.gov.co
+- DANE Geoportal (Censo 2018, geovisores). https://geoportal.dane.gov.co
+- IDEAM, escenarios de cambio climático 2011-2100. https://www.cambioclimatico.gov.co
+- Unidad para las Víctimas, RUV (desplazamiento por conflicto, para contraste). https://www.unidadvictimas.gov.co/es/registro-unico-de-victimas-ruv
+
+**Marco legal**
+- Ley 1523/2012 — Política nacional de gestión del riesgo; arts. 37-41 (PMGRD, integración en POT). https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=47141
+- Decreto 1807/2014 (compilado en Decreto 1077/2015) — incorporación del riesgo en POT; define alto riesgo no mitigable y obliga a programar reasentamiento (arts. 18, 20, 26). https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=59488
+- Ley 2169/2021 — Ley de Acción Climática (carbono-neutralidad 2050, metas de resiliencia); no menciona movilidad humana. https://www.minambiente.gov.co/asuntos-legislativos/ley-de-accion-climatica-aprobada-en-el-congreso/
+- CONPES 4058/2021 — Política para la reducción del riesgo de desastres y adaptación a variabilidad climática. https://www.dnp.gov.co (buscar CONPES 4058)
+- Sentencia T-123/2024 — ver arriba.
+
+**Colombia y agenda de movilidad climática**
+- Cancillería–OIM, *Conferencia Regional sobre Movilidad Humana y Cambio Climático*, Bogotá 7-8 nov 2023. https://cancilleria.gov.co/sala-de-prensa/noticias/colombia-sera-la-sede-de-la-primera-conferencia-regional-sobre-movilidad-humana-y-cambio-climatico-en-america-latina-y-el-caribe
+- MinAmbiente, portal *Movilidad Humana y Cambio Climático*. https://www.minambiente.gov.co/cambio-climatico-y-gestion-del-riesgo/movilidad-humana-y-cambio-climatico/
+- Defensoría del Pueblo, *Lineamientos para justicia climática y movilidad humana* (2025). https://www.defensoria.gov.co/w/lineamientos-para-avanzar-en-justicia-climatica-y-movilidad-humana
+
+**Pendientes que requieren una búsqueda adicional:** balance de cierre UNGRD 2025; número y fecha de sanción de la ley de desplazamiento climático (cruzar con informe 07); cifra oficial CVP 2024-2025 y hogares reasentados en La Mojana.

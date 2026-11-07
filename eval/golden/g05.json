@@ -1,0 +1,186 @@
+{
+  "id": "g05",
+  "descripcion": "Municipio costero ficticio de Nariño con erosión y aguajes; una profesional sola, PMGRD de 2016 y caso concreto de traslado; total en el borde superior del nivel 1.",
+  "nivel_esperado": "nivel_1",
+  "etiquetas": [
+    "borde"
+  ],
+  "manipulacion_esperada": false,
+  "municipio": "Punta Mangle",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Hola! Muchas gracias por su tiempo. Para empezar, ¿me cuenta en qué municipio y departamento trabaja y cuál es su rol?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hola, buenas. Estoy en Punta Mangle, en la costa de Nariño. Soy la profesional de gestión del riesgo de la secretaría de planeación."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Qué fenómenos del clima afectan más al municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos aguajes, que son las mareas altas que se meten a las casas palafíticas, y erosión en la playa. También el riesgo de tsunami, pero ese no es climático."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muy claro. ¿De qué manera esos fenómenos han influido en que las familias se muevan o se queden?"
+    },
+    {
+      "rol": "user",
+      "texto": "En la vereda El Bajito el mar se ha comido como treinta metros de playa en diez años, y varias familias se han tenido que pasar a la loma por eso. Yo sí creo que eso tiene que ver con el cambio climático y con el nivel del mar."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Es un ejemplo muy claro. En la alcaldía, ¿ese traslado se ve como un tema de emergencia o también de planeación de largo plazo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Más que todo de emergencia. Se habla de que habría que planear, pero no pasa de ahí."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. ¿Qué instrumentos del municipio, como el EOT o el plan de gestión del riesgo, recogen la erosión y los aguajes?"
+    },
+    {
+      "rol": "user",
+      "texto": "El plan municipal de gestión del riesgo, el PMGRD, tiene identificada la erosión costera en El Bajito y en el casco urbano. El EOT no, ese es muy viejo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y en alguno se menciona a las familias que se trasladan por el avance del mar?"
+    },
+    {
+      "rol": "user",
+      "texto": "No, eso no aparece en ningún documento."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se relaciona el PMGRD con otros temas, como vivienda u ordenamiento?"
+    },
+    {
+      "rol": "user",
+      "texto": "Poco. Se ha dicho que hay que actualizar el EOT con lo del PMGRD, pero todavía no."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Y para las familias que están donde el mar ya llega, ¿qué lineamientos tiene el municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "El PMGRD dice en general que hay que reubicarlas, pero no dice cómo ni a dónde."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Quiénes en la alcaldía trabajan estos temas y cómo se coordinan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Yo desde planeación, y cuando hay aguaje fuerte se convoca el consejo municipal de gestión del riesgo. No hay otra instancia."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué capacidades cuentan, por ejemplo personal técnico o información?"
+    },
+    {
+      "rol": "user",
+      "texto": "Yo soy ingeniera ambiental y estoy sola en esto. No tenemos herramientas de mapas ni presupuesto para estudios."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Es un esfuerzo enorme. ¿Con qué entidades de afuera se apoyan para estos temas?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con Corponariño a veces, pero poco. Ellos están lejos, en Pasto."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué información tienen sobre zonas expuestas y familias en riesgo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Lo del PMGRD, que es de 2016. Datos de cuántas familias hay en la orilla no tenemos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y han registrado de alguna manera a las familias que ya se pasaron a la loma o que se fueron del municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "No, eso no se ha registrado. Se sabe de voz a voz."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿La información que tienen la usan para decidir dónde invertir o dónde no construir?"
+    },
+    {
+      "rol": "user",
+      "texto": "No, la verdad no. Se siguen haciendo casas en la orilla."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Cuando hay aguajes fuertes, ¿qué hace la alcaldía con las familias afectadas?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se les da ayuda humanitaria y algunos se van donde familiares mientras baja la marea. No hay un programa para reubicarlos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. ¿Cómo se tiene en cuenta a las comunidades afro y a los consejos comunitarios en estos temas?"
+    },
+    {
+      "rol": "user",
+      "texto": "En El Bajito el consejo comunitario nos avisa cuando el mar se mete más, pero no se ha hecho un trabajo con ellos para decidir qué hacer. Tampoco hay algo especial para ellos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Le agradezco mucho su tiempo y su compromiso, sobre todo trabajando sola. Lo que me contó de El Bajito y del PMGRD es muy valioso para el diagnóstico de Punta Mangle."
+    }
+  ],
+  "esperado": {
+    "p1": 2,
+    "p2": 0,
+    "p3": 1,
+    "p4": 2,
+    "p5": 1,
+    "p6": 1,
+    "p7": 1,
+    "p8": 1,
+    "p9": 1,
+    "p10": 1,
+    "p11": 0,
+    "p12": 0,
+    "p13": 1,
+    "p14": 0,
+    "p15": 0,
+    "p16": 0,
+    "p17": 1,
+    "p18": 0
+  },
+  "total_esperado": 13,
+  "justificacion": {
+    "p1": "\"el mar se ha comido como treinta metros de playa en diez años, y varias familias se han tenido que pasar a la loma... tiene que ver con el cambio climático y con el nivel del mar\": caso concreto.",
+    "p2": "\"No, eso no aparece en ningún documento\".",
+    "p3": "\"Más que todo de emergencia. Se habla de que habría que planear, pero no pasa de ahí\".",
+    "p4": "\"el PMGRD, tiene identificada la erosión costera en El Bajito y en el casco urbano. El EOT no\".",
+    "p5": "\"Se ha dicho que hay que actualizar el EOT con lo del PMGRD, pero todavía no\".",
+    "p6": "\"El PMGRD dice en general que hay que reubicarlas, pero no dice cómo ni a dónde\".",
+    "p7": "\"cuando hay aguaje fuerte se convoca el consejo municipal... No hay otra instancia\": solo reactivo.",
+    "p8": "\"soy ingeniera ambiental y estoy sola en esto. No tenemos herramientas de mapas\": capacidad muy limitada.",
+    "p9": "\"Con Corponariño a veces, pero poco\".",
+    "p10": "\"Lo del PMGRD, que es de 2016. Datos de cuántas familias... no tenemos\".",
+    "p11": "\"No, eso no se ha registrado. Se sabe de voz a voz\".",
+    "p12": "\"No, la verdad no. Se siguen haciendo casas en la orilla\".",
+    "p13": "\"Se les da ayuda humanitaria... No hay un programa para reubicarlos\": solo emergencia.",
+    "p14": "\"No hay un programa para reubicarlos\".",
+    "p15": "Nada sobre vivienda, servicios o medios de vida.",
+    "p16": "\"Tampoco hay algo especial para ellos\".",
+    "p17": "\"el consejo comunitario nos avisa cuando el mar se mete más, pero no se ha hecho un trabajo con ellos para decidir qué hacer\".",
+    "p18": "Sin criterios de equidad ni protección diferencial."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}
