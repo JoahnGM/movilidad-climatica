@@ -19,6 +19,8 @@ export interface EtapasProps {
   label: string;
   /** Muestra el detalle solo en la etapa actual (por defecto sí). */
   detalleSoloActual?: boolean;
+  /** Textos accesibles de cada estado (por defecto en español). */
+  estados?: Record<EstadoEtapa, string>;
   className?: string;
 }
 
@@ -26,7 +28,9 @@ export interface EtapasProps {
  * Lista vertical de etapas con estado (pendiente · actual · completa). La etapa actual lleva
  * `aria-current="step"`. Para avances de procesos: entrevista por dimensiones, análisis, síntesis.
  */
-export function Etapas({ etapas, label, detalleSoloActual = true, className }: EtapasProps) {
+const ESTADOS_ES: Record<EstadoEtapa, string> = { completa: ' (completa)', actual: ' (en curso)', pendiente: ' (pendiente)' };
+
+export function Etapas({ etapas, label, detalleSoloActual = true, estados = ESTADOS_ES, className }: EtapasProps) {
   return (
     <ol aria-label={label} className={cn('relative flex flex-col', className)}>
       {etapas.map((e, i) => {
@@ -51,9 +55,7 @@ export function Etapas({ etapas, label, detalleSoloActual = true, className }: E
             <div className="flex min-w-0 flex-col gap-0.5 pt-1.5">
               <span className={cn('text-small leading-tight', e.estado === 'pendiente' ? 'text-subtle' : 'text-foreground', e.estado === 'actual' && 'font-medium')}>
                 {e.titulo}
-                <span className="sr-only">
-                  {e.estado === 'completa' ? ' (completa)' : e.estado === 'actual' ? ' (en curso)' : ' (pendiente)'}
-                </span>
+                <span className="sr-only">{estados[e.estado]}</span>
               </span>
               {e.detalle && (!detalleSoloActual || e.estado === 'actual') && (
                 <span className="text-caption text-subtle">{e.detalle}</span>

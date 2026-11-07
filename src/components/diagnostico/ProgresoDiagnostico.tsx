@@ -2,18 +2,12 @@
 
 import { BookOpen, Database, FileSearch, FileText, Network, Scale, ScanSearch, Shield, Sparkles } from 'lucide-react';
 import { Etapas, Mono, ProgressBar, Text, type Etapa, type EstadoEtapa } from '@/components/ds';
+import { useIdioma } from '@/components/i18n/IdiomaProvider';
 
 export type FaseDiagnostico = 'acceso' | 'chat' | 'analizando' | 'resultado' | 'error';
 
-/** Las 6 dimensiones como las ve la persona durante la entrevista, con lo que se explora en cada una. */
-const DIMENSIONES = [
-  { icon: FileSearch, label: 'Reconocimiento y enfoque',        detalle: 'Cómo se entiende la movilidad climática en el territorio' },
-  { icon: BookOpen,   label: 'Instrumentos de planeación',      detalle: 'POT, plan de gestión del riesgo, decretos y políticas' },
-  { icon: Network,    label: 'Capacidad institucional',         detalle: 'Quién hace qué y cómo se coordinan las secretarías' },
-  { icon: Database,   label: 'Información y datos',             detalle: 'Datos de riesgo y población, y cómo se usan' },
-  { icon: Shield,     label: 'Respuestas y rutas de actuación', detalle: 'Prevención, reubicación y vivienda digna' },
-  { icon: Scale,      label: 'Equidad y justicia climática',    detalle: 'Grupos vulnerables, derechos y participación' },
-];
+/** Íconos de las 6 dimensiones (los textos vienen del diccionario: progreso.dimensiones). */
+const ICONOS = [FileSearch, BookOpen, Network, Database, Shield, Scale];
 
 /** Dimensión que se está explorando según los mensajes enviados (≈3 intercambios por dimensión). */
 export function dimensionActiva(mensajes: number): number {
@@ -38,6 +32,8 @@ interface Props {
  * la síntesis (Agente 3) y el resultado. El avance de la entrevista es estimado: la IA decide el ritmo.
  */
 export default function ProgresoDiagnostico({ fase, mensajes, pasoAnalisis }: Props) {
+  const { t } = useIdioma();
+  const tp = t.progreso;
   const entrevistaTerminada = fase === 'analizando' || fase === 'resultado';
   const activa = dimensionActiva(mensajes);
 
@@ -51,10 +47,10 @@ export default function ProgresoDiagnostico({ fase, mensajes, pasoAnalisis }: Pr
   const estadoSintesis: EstadoEtapa = fase === 'resultado' ? 'completa' : fase === 'analizando' && pasoAnalisis >= 2 ? 'actual' : 'pendiente';
 
   const etapas: Etapa[] = [
-    ...DIMENSIONES.map((d, i) => ({ id: `d${i + 1}`, titulo: d.label, detalle: d.detalle, icon: d.icon, estado: estadoDim(i) })),
-    { id: 'analisis', titulo: 'Análisis de la evidencia', detalle: 'Se puntúan las 18 preguntas solo con lo que dijiste', icon: ScanSearch, estado: estadoAnalisis },
-    { id: 'sintesis', titulo: 'Síntesis y recomendaciones', detalle: 'Nivel, brechas y una ruta de acción para tu municipio', icon: Sparkles, estado: estadoSintesis },
-    { id: 'resultado', titulo: 'Tu resultado', icon: FileText, estado: fase === 'resultado' ? 'completa' : 'pendiente' },
+    ...tp.dimensiones.map(([titulo, detalle], i) => ({ id: `d${i + 1}`, titulo, detalle, icon: ICONOS[i], estado: estadoDim(i) })),
+    { id: 'analisis', titulo: tp.analisis[0], detalle: tp.analisis[1], icon: ScanSearch, estado: estadoAnalisis },
+    { id: 'sintesis', titulo: tp.sintesis[0], detalle: tp.sintesis[1], icon: Sparkles, estado: estadoSintesis },
+    { id: 'resultado', titulo: tp.resultado, icon: FileText, estado: fase === 'resultado' ? 'completa' : 'pendiente' },
   ];
 
   // Peso: entrevista 75 %, análisis 20 %, resultado 5 %
@@ -71,19 +67,19 @@ export default function ProgresoDiagnostico({ fase, mensajes, pasoAnalisis }: Pr
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-3">
         <div className="flex items-baseline justify-between gap-3">
-          <Text variant="eyebrow">Progreso del diagnóstico</Text>
+          <Text variant="eyebrow">{tp.titulo}</Text>
           <Mono size="small" tone="muted">{pct}%</Mono>
         </div>
-        <ProgressBar value={pct} max={100} label="Progreso del diagnóstico" animate={false} />
+        <ProgressBar value={pct} max={100} label={tp.titulo} animate={false} />
         <Text variant="caption" tone="muted">
           {fase === 'resultado'
-            ? 'Diagnóstico listo'
-            : `${dimensionesCubiertas} de 6 dimensiones completadas${actual ? ` · ahora: ${actual.titulo.toLowerCase()}` : ''}`}
+            ? tp.listo
+            : `${tp.completadas(dimensionesCubiertas)}${actual ? ` · ${tp.ahora}: ${actual.titulo.toLowerCase()}` : ''}`}
         </Text>
       </div>
       {/* Lista completa en escritorio; en móvil basta la barra y la etapa actual */}
-      <Etapas etapas={etapas} label="Etapas del diagnóstico" className="hidden lg:flex" />
-      <Text variant="caption" tone="muted" className="hidden lg:block">La conversación toma entre 10 y 15 minutos</Text>
+      <Etapas etapas={etapas} label={tp.etapasAria} estados={tp.estadoEtapa} className="hidden lg:flex" />
+      <Text variant="caption" tone="muted" className="hidden lg:block">{tp.duracion}</Text>
     </div>
   );
 }

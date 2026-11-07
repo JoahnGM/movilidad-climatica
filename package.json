@@ -9,7 +9,7 @@
     "lint": "eslint",
     "test": "vitest run",
     "check:seguridad": "npm audit --omit=dev --audit-level=low && vitest run && tsx scripts/check-cabeceras.ts",
-    "check:agentes": "vitest run tests/scoring.test.ts tests/schemas.test.ts tests/prompts.test.ts tests/provider.test.ts",
+    "check:agentes": "vitest run tests/scoring.test.ts tests/schemas.test.ts tests/prompts.test.ts tests/provider.test.ts tests/idioma.test.ts",
     "ataque": "tsx scripts/ataque.ts",
     "eval:agentes": "node --env-file-if-exists=.env.local --import tsx scripts/eval-agentes.ts",
     "eval:promptfoo": "tsx eval/promptfoo/generar.ts && npx -y promptfoo@0.125.1 eval -c eval/promptfooconfig.yaml",

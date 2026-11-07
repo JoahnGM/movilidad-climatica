@@ -3,6 +3,9 @@ import type { ReactNode } from 'react';
 import { Banner, Card, Heading, IconList, Reveal, Text } from '@/components/ds';
 import { BANNER_EJEMPLO } from '@/lib/contenido/ejemplo-resultado';
 import { getTexto } from '@/lib/contenido/textos';
+import { BANNER_EJEMPLO_EN, traducir } from '@/lib/contenido/traducciones/en';
+import type { Idioma } from '@/lib/i18n/idioma';
+import { UI } from '@/lib/i18n/ui';
 import type { AnalisisResult, DiagnosticoResult } from '@/lib/types';
 import DimensionBar from './DimensionBar';
 import EvidenciaPorPregunta from './EvidenciaPorPregunta';
@@ -20,6 +23,7 @@ interface Props {
   acciones?: ReactNode;
   /** Prefijo de ids para anclas (dos resultados en la misma página). */
   idBase?: string;
+  idioma?: Idioma;
 }
 
 /** Texto de alcance oficial sin el marcador de enlace (el enlace se pinta aparte). */
@@ -29,26 +33,27 @@ const ALCANCE = getTexto('alcance').cuerpo.replace('[Ver evidencia por pregunta]
  * Resultado completo del diagnóstico. ÚNICA vista de resultado: la usan el demo de la landing
  * (con datos ficticios) y el resultado real del agente. No dupliques esta vista en otro lugar.
  */
-export default function ResultadoDiagnostico({ resultado, scores, ejemplo, fecha, acciones, idBase = 'resultado' }: Props) {
+export default function ResultadoDiagnostico({ resultado, scores, ejemplo, fecha, acciones, idBase = 'resultado', idioma = 'es' }: Props) {
+  const t = UI[idioma].resultado;
   return (
-    <article aria-label={`Resultado del diagnóstico de ${resultado.municipio}`} className="flex flex-col gap-block">
-      {ejemplo && <Banner variant="ejemplo">{BANNER_EJEMPLO}</Banner>}
+    <article aria-label={`${t.articuloAria} ${resultado.municipio}`} className="flex flex-col gap-block">
+      {ejemplo && <Banner variant="ejemplo">{idioma === 'en' ? BANNER_EJEMPLO_EN : BANNER_EJEMPLO}</Banner>}
 
       <div className="grid items-start gap-6 lg:grid-cols-2">
         <Reveal className="flex flex-col gap-6">
-          <TarjetaNivel resultado={resultado} fecha={fecha} ejemplo={ejemplo} aviso={false} />
+          <TarjetaNivel resultado={resultado} fecha={fecha} ejemplo={ejemplo} aviso={false} idioma={idioma} />
           <Card variant="flat">
-            <Text variant="eyebrow">Síntesis</Text>
+            <Text variant="eyebrow">{t.sintesis}</Text>
             <Text variant="body">{resultado.resumen_territorio}</Text>
           </Card>
         </Reveal>
         <Reveal delay={0.08} className="flex flex-col gap-6">
           <Card variant="flat">
-            <Text variant="eyebrow">Fortalezas</Text>
+            <Text variant="eyebrow">{t.fortalezas}</Text>
             <IconList items={resultado.fortalezas} icon={CheckCircle2} tone="green" />
           </Card>
           <Card variant="flat">
-            <Text variant="eyebrow">Brechas prioritarias</Text>
+            <Text variant="eyebrow">{t.brechas}</Text>
             <IconList items={resultado.brechas} icon={AlertTriangle} tone="amber" />
           </Card>
         </Reveal>
@@ -58,7 +63,9 @@ export default function ResultadoDiagnostico({ resultado, scores, ejemplo, fecha
         <Card variant="flat" padding="lg">
           <IcebergVisualization
             iceberg_id={resultado.iceberg_id}
+            nivel_id={resultado.nivel_id}
             nivel_nombre={resultado.nivel_nombre}
+            idioma={idioma}
             iceberg_texto_corto={resultado.iceberg_texto_corto}
             iceberg_texto_ampliado={resultado.iceberg_texto_ampliado}
             capas_activas={resultado.capas_activas}
@@ -67,11 +74,11 @@ export default function ResultadoDiagnostico({ resultado, scores, ejemplo, fecha
       </Reveal>
 
       <Reveal className="flex flex-col gap-6">
-        <Heading as="h3" size="h3">Resultado por dimensión</Heading>
+        <Heading as="h3" size="h3">{t.porDimension}</Heading>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {resultado.dimensiones_resumen.map((d) => (
             <Card key={d.id} variant="raised" padding="sm">
-              <DimensionBar {...d} />
+              <DimensionBar {...d} idioma={idioma} />
             </Card>
           ))}
         </div>
@@ -79,12 +86,12 @@ export default function ResultadoDiagnostico({ resultado, scores, ejemplo, fecha
 
       <Reveal className="flex flex-col gap-6">
         <div className="flex flex-col gap-2">
-          <Heading as="h3" size="h3">Primeras acciones para tu territorio</Heading>
-          <Text variant="small">Ruta sugerida, no lista de obligaciones: el municipio decide por dónde empezar.</Text>
+          <Heading as="h3" size="h3">{t.primerasAcciones}</Heading>
+          <Text variant="small">{t.rutaSugerida}</Text>
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
           {resultado.recomendaciones.map((r, i) => (
-            <RecomendacionCard key={i} {...r} />
+            <RecomendacionCard key={i} {...r} idioma={idioma} />
           ))}
         </div>
       </Reveal>
@@ -99,20 +106,20 @@ export default function ResultadoDiagnostico({ resultado, scores, ejemplo, fecha
       {scores?.dimensiones && (
         <Reveal className="flex flex-col gap-6">
           <div id={`${idBase}-evidencia`} className="flex scroll-mt-24 flex-col gap-2">
-            <Heading as="h3" size="h3">Evidencia por pregunta</Heading>
-            <Text variant="small">Cada puntaje se basa solo en lo que se dijo explícitamente en la conversación. Lo no mencionado puntúa 0.</Text>
+            <Heading as="h3" size="h3">{t.evidencia}</Heading>
+            <Text variant="small">{t.evidenciaLead}</Text>
           </div>
-          <EvidenciaPorPregunta scores={scores} />
+          <EvidenciaPorPregunta scores={scores} idioma={idioma} />
         </Reveal>
       )}
 
       <footer className="flex flex-col gap-5 border-t border-border pt-6">
         <Text variant="small" tone="muted">
-          {ALCANCE}
+          {traducir(ALCANCE, idioma)}
           {scores?.dimensiones && (
             <>
               {' '}
-              <a href={`#${idBase}-evidencia`} className="text-green-ink underline underline-offset-2">Ver evidencia por pregunta</a>
+              <a href={`#${idBase}-evidencia`} className="text-green-ink underline underline-offset-2">{t.verEvidencia}</a>
             </>
           )}
         </Text>

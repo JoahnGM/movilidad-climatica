@@ -109,6 +109,8 @@ Opciones: `--sin-red` omite (b) para trabajo local sin conexión (CI nunca la us
 
 **Agregar un ejemplo, recurso u obligación**: agrega el ítem con su fuente; los recursos llevan una línea `paraQueSirve` desde la perspectiva de un funcionario municipal.
 
+**Traducir al inglés**: el español es la fuente. Las traducciones viven en `src/lib/contenido/traducciones/en.ts`, indexadas por el texto original EXACTO (`TRADUCCIONES_EN`); la UI las pide con `traducir(texto, idioma)` y, si falta una, muestra el español. Fuentes, años, URLs y nombres propios (instituciones, programas, barrios) no se traducen. Si editas una afirmación o cifra que muestra el home, actualiza también su traducción: `tests/traducciones.test.ts` falla si falta. El ejemplo de resultado en inglés (`EJEMPLO_DIAGNOSTICO_EN`) conserva números, nivel e iceberg del original.
+
 **Agregar un texto largo**: crea `docs/contenido/textos/<id>.md` con metadatos `id`, `titulo`, `version`, `fecha`, y corre `node scripts/check-contenido.mjs --sync-textos`.
 
 **Periodicidad de revisión**
@@ -136,4 +138,5 @@ Opciones: `--sin-red` omite (b) para trabajo local sin conexión (CI nunca la us
 
 | Fecha | Versión | Cambio |
 |---|---|---|
+| 2026-11-07 | 1.1 | Traducciones al inglés del contenido del home y del ejemplo (`traducciones/en.ts`, `tests/traducciones.test.ts`). |
 | 2026-11-06 | 1.0 | Primera versión: contenido como datos tipados, jerarquía de fuentes, `check:contenido` con pruebas a-e, segunda ronda de verificación (Ley 2577, CVP, PAC Barranquilla, Acuerdo 145/2019, UNGRD 2025, Hoja de ruta). |

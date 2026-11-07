@@ -20,6 +20,9 @@ export interface CifraConFuenteProps {
   nota?: string;
   tone?: Tone | 'default';
   size?: 'md' | 'lg';
+  /** Textos de la cita de fuente (por defecto en español). */
+  textoFuente?: string;
+  textoNuevaPestana?: string;
   className?: string;
 }
 
@@ -29,7 +32,7 @@ export interface CifraConFuenteProps {
  *   fuente={c.fuente.institucion} anio={c.anio} enlace={c.fuente.url} nota={c.notas} />`
  */
 export function CifraConFuente({
-  valor, unidad, definicion, fuente, anio, enlace, nota, tone = 'default', size = 'lg', className,
+  valor, unidad, definicion, fuente, anio, enlace, nota, tone = 'default', size = 'lg', textoFuente, textoNuevaPestana, className,
 }: CifraConFuenteProps) {
   return (
     <figure className={cn('flex flex-col gap-3', className)}>
@@ -38,7 +41,7 @@ export function CifraConFuente({
         {unidad && <Text variant="eyebrow">{unidad}</Text>}
         <Text variant="small">{definicion}</Text>
         {nota && <Text variant="caption" tone="muted">{nota}</Text>}
-        <SourceLink fuente={fuente} anio={anio} href={enlace} />
+        <SourceLink fuente={fuente} anio={anio} href={enlace} textoFuente={textoFuente} textoNuevaPestana={textoNuevaPestana} />
       </figcaption>
     </figure>
   );

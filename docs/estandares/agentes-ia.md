@@ -45,6 +45,7 @@ Agente 1 (entrevistador, streaming) ──transcripción──▶ validación + 
 10. **Salida estructurada** con `generateText({ output: Output.object({ schema }) })`; nunca `generateObject` (deprecado). Si no valida: extraer JSON entre el primer `{` y el último `}` y, si tampoco, reintentar una vez (CLAUDE.md §11).
 11. **La evaluación mide el código de producción.** `scripts/eval-agentes.ts` llama a `analizar()` de `src/lib/ai/pipeline.ts`: mismo prompt, esquema, grounding y cálculo. No se evalúa un prompt copiado.
 12. **El golden set es sintético hasta que lo revisen dos anotadores humanos** (`eval/golden/README.md`). Mientras tanto, kappa vs. golden mide acuerdo con una anotación de IA, no validez.
+13. **Modo inglés (experimental).** Si la cookie `idioma=en` llega a `/api/chat` o `/api/diagnostico`, `conIdioma()` (`src/lib/prompts/idioma.ts`) agrega al final una directiva de idioma; en español el prompt es byte a byte el validado (`tests/idioma.test.ts`). Las citas se copian en el idioma en que se dijeron (el grounding no cambia), los valores del esquema y la etiqueta `[ENTREVISTA_COMPLETA]` no se traducen, y el resultado guarda los nombres de nivel y textos del iceberg OFICIALES en español (la UI muestra una traducción no oficial por id). Las corridas en inglés llevan `rubrica_version` = `<versión>+en`: no son comparables con las de español hasta que el golden set tenga casos en inglés y cumplan los umbrales de la regla 6.
 
 ## 3. Checklist antes de abrir un PR
 
@@ -57,13 +58,14 @@ Agente 1 (entrevistador, streaming) ──transcripción──▶ validación + 
 
 ## 4. Pruebas automáticas
 
-`npm run check:agentes` = `vitest run tests/scoring.test.ts tests/schemas.test.ts tests/prompts.test.ts tests/provider.test.ts` (sin red, sin costo).
+`npm run check:agentes` = `vitest run tests/scoring.test.ts tests/schemas.test.ts tests/prompts.test.ts tests/provider.test.ts tests/idioma.test.ts` (sin red, sin costo).
 
 | Prueba | Verifica | Falla si… |
 |---|---|---|
 | `scoring.test.ts` | Bordes 13/14, 27/28, 40/41 y 0/54; textos y capas exactos; subtotales y estados; grounding; confianza solo baja; el ensamblaje ignora nivel/puntaje/textos del modelo | Cambia la lógica de nivel o el modelo puede imponer un resultado |
 | `schemas.test.ts` | `puntaje` solo entero 0–3; faltantes rechazados; `puntaje_total`/`nivel_id` descartados; catálogos de `para_quien` y `urgencia` | Se acepta una salida inválida |
 | `provider.test.ts` | Gemini es el proveedor por defecto con los modelos fijados; en Vercel (OIDC) Gemini no se desvía al gateway; con gateway siempre hay ZDR; DeepSeek restringido a proveedores de EE.UU.; topes por agente | Cambia el proveedor por defecto sin querer o se pierde el ZDR |
+| `idioma.test.ts` | En español `conIdioma` devuelve el prompt idéntico; en inglés lo conserva como prefijo, no traduce la etiqueta de cierre, las citas ni los valores del esquema; `rubrica_version` lleva `+en`; la cookie se lee bien | El modo inglés altera el prompt en español o rompe el cierre/grounding |
 | `prompts.test.ts` (lint de prompts) | `RUBRICA_VERSION` existe y la reexportan los 3 prompts; `ICEBERGS` = `CLAUDE.md` §4; rangos 0–54 sin huecos; 18 preguntas con 4 anclas; spotlighting; tag de cierre y regla de privacidad en el Agente 1; rutas progresivas en el Agente 3 | Alguien parafrasea un texto oficial, borra anclas o la versión |
 
 Evaluación con modelos (manual, con costo): `npm run eval:agentes` escribe `eval/resultados/<fecha>-<hora>.md` (+ `.json` crudo) con exactitud de nivel, MAE por pregunta, kappa ponderado vs. golden y entre proveedores, tasa de JSON inválido, citas no verificadas, latencia p50/p95, tokens, estabilidad entre repeticiones y detección de manipulación. Opciones: `--proveedor gemini|deepseek`, `--repeticiones N`, `--solo g01,g02`; `EVAL_PAUSA_MS` para respetar cuotas. `npm run eval:promptfoo` corre el mismo golden set en promptfoo (esquema, nivel y ausencia de campos calculados), sin grounding.
@@ -109,6 +111,7 @@ Evaluación con modelos (manual, con costo): `npm run eval:agentes` escribe `eva
 
 | Fecha | Versión | Cambio |
 |---|---|---|
+| 2026-11-07 | 1.3 · rúbrica `2026-11-06.1` (+en) | Modo inglés experimental (regla 13): directiva de idioma solo en inglés, `rubrica_version` con sufijo `+en`, idioma por cookie. El español no cambia. Pendiente: casos en inglés en el golden set. |
 | 2026-11-06 | 1.2 · rúbrica `2026-11-06.1` | Nivel gratuito de Gemini: Agentes 2 y 3 en `gemini-3.5-flash` (el Pro no tiene cuota gratuita), Agente 1 en `gemini-3-flash-preview`. |
 | 2026-11-06 | 1.1 · rúbrica `2026-11-06.1` | Se mantiene Gemini como proveedor por defecto; DeepSeek queda detrás de `AI_PROVIDER=deepseek`, no adoptado. Prueba `tests/provider.test.ts` en `check:agentes`. |
 | 2026-11-06 | 1.0 · rúbrica `2026-11-06.1` | Creación. Prompts a `src/lib/prompts/`, anclas 0–3 para las 18 preguntas, puntaje y nivel en código, grounding, spotlighting, esquemas zod con `Output.object`, rutas progresivas en el Agente 3 (`primer_paso`, `siguiente_paso`, `ruta_ampliada`, `para_quien`), Agente 3 sin transcripción, proveedor DeepSeek vía AI Gateway con ZDR y Gemini como fallback, golden set de 20 casos y `eval-agentes.ts`. |

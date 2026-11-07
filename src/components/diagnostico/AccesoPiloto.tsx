@@ -3,6 +3,7 @@
 import { KeyRound } from 'lucide-react';
 import { useState } from 'react';
 import { Button, Card, Heading, Text, TextInput } from '@/components/ds';
+import { useIdioma } from '@/components/i18n/IdiomaProvider';
 
 interface Props {
   /** Se llama cuando el servidor acepta el código (la cookie de acceso ya quedó guardada). */
@@ -13,6 +14,7 @@ interface Props {
 
 /** Código de acceso del piloto cerrado (ACCESS_MODE=passcode), dentro de la sección del diagnóstico. */
 export default function AccesoPiloto({ onAcceso, headingLevel = 'h3' }: Props) {
+  const { t } = useIdioma();
   const [codigo, setCodigo] = useState('');
   const [error, setError] = useState('');
   const [enviando, setEnviando] = useState(false);
@@ -33,9 +35,9 @@ export default function AccesoPiloto({ onAcceso, headingLevel = 'h3' }: Props) {
         return;
       }
       const data = (await res.json().catch(() => ({}))) as { message?: string };
-      setError(data.message ?? 'No pudimos verificar el código.');
+      setError(data.message ?? t.acceso.error);
     } catch {
-      setError('No pudimos verificar el código.');
+      setError(t.acceso.error);
     } finally {
       setEnviando(false);
     }
@@ -48,25 +50,22 @@ export default function AccesoPiloto({ onAcceso, headingLevel = 'h3' }: Props) {
           <KeyRound className="size-5" />
         </span>
         <div className="flex flex-col gap-2">
-          <Heading as={headingLevel} size="h4">Código de acceso</Heading>
-          <Text variant="small">
-            Durante el piloto, el diagnóstico está disponible para los municipios participantes.
-            Ingresa el código que recibiste.
-          </Text>
+          <Heading as={headingLevel} size="h4">{t.acceso.titulo}</Heading>
+          <Text variant="small">{t.acceso.texto}</Text>
         </div>
         <TextInput
-          label="Código de acceso"
+          label={t.acceso.titulo}
           hideLabel
           value={codigo}
           onChange={(e) => setCodigo(e.target.value)}
-          placeholder="Código"
+          placeholder={t.acceso.placeholder}
           autoComplete="off"
           maxLength={100}
           invalid={Boolean(error)}
           hint={error || undefined}
         />
         <Button type="submit" disabled={enviando || !codigo.trim()}>
-          {enviando ? 'Verificando…' : 'Continuar'}
+          {enviando ? t.acceso.verificando : t.acceso.continuar}
         </Button>
       </form>
     </Card>

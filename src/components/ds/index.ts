@@ -54,3 +54,4 @@ export { FeedbackThumbs, type FeedbackThumbsProps, type Voto } from './FeedbackT
 // Efectos (uno protagonista por página)
 export { FondoMontanas, type FondoMontanasProps } from './efectos/FondoMontanas';
 export { TituloIA, type TituloIAProps, type TramoTitulo } from './efectos/TituloIA';
+export { usePlaceholderAnimado } from './efectos/usePlaceholderAnimado';

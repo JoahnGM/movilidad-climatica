@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { ArrowRight, Plus } from 'lucide-react';
 import { Button, Disclosure, DisclosureItem, Tabs, TabsContent, TabsList, TabsTrigger, Text, TextInput } from '@/components/ds';
 import { CabeceraCatalogo, Muestra, Specimen } from '../_catalogo/Specimen';
-import { FeedbackDemo } from '../_catalogo/Demos';
+import { FeedbackDemo, PlaceholderDemo } from '../_catalogo/Demos';
 
 export const metadata: Metadata = { title: 'Interacción' };
 
@@ -35,6 +35,15 @@ export default function Interaccion() {
           <TextInput label="Código de acceso" invalid hint="El código no es válido." defaultValue="ABC" />
           <TextInput label="Deshabilitado" disabled placeholder="No disponible" />
         </div>
+      </Specimen>
+
+      <Specimen nombre="usePlaceholderAnimado" archivo="src/components/ds/efectos/usePlaceholderAnimado.ts"
+        descripcion="Hook: placeholder que se escribe y se borra solo (invitación + ejemplos). Se pausa con el campo enfocado o con texto."
+        codigo={`const placeholder = usePlaceholderAnimado(FRASES, !enfocado && valor === '');
+<TextInput … placeholder={placeholder} onFocus={…} onBlur={…} />`}
+        usar={['El campo principal del hero']} noUsar={['Formularios largos', 'Como única instrucción del campo (la etiqueta sigue siendo obligatoria)']}
+        a11y="El placeholder no se anuncia; la etiqueta del campo no cambia. Con movimiento reducido queda fija la primera frase.">
+        <PlaceholderDemo />
       </Specimen>
 
       <Specimen nombre="Disclosure" archivo="src/components/ds/Disclosure.tsx"

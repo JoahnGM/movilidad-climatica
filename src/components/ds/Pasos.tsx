@@ -14,6 +14,8 @@ export interface Paso {
 
 export interface PasosProps {
   pasos: Paso[];
+  /** Rótulo de cada paso ("Paso", "Step"). */
+  etiquetaPaso?: string;
   className?: string;
 }
 
@@ -21,7 +23,7 @@ export interface PasosProps {
  * "Cómo funciona": línea vertical con nodos que pulsan y una tarjeta por paso.
  * Centrada en escritorio, alineada a la izquierda en móvil. El pulso respeta movimiento reducido.
  */
-export function Pasos({ pasos, className }: PasosProps) {
+export function Pasos({ pasos, etiquetaPaso = 'Paso', className }: PasosProps) {
   return (
     <ol className={cn('relative mx-auto flex w-full max-w-3xl flex-col gap-14', className)}>
       <span aria-hidden="true" className="absolute top-0 bottom-0 left-5 w-px bg-border md:left-1/2" />
@@ -35,7 +37,7 @@ export function Pasos({ pasos, className }: PasosProps) {
             </span>
             <div className="flex flex-col gap-5 rounded-card border border-border bg-surface-raised p-6 shadow-raised md:mt-16 md:p-8">
               <div className="flex flex-col gap-2">
-                <Mono size="caption" tone="muted">Paso {String(i + 1).padStart(2, '0')}</Mono>
+                <Mono size="caption" tone="muted">{etiquetaPaso} {String(i + 1).padStart(2, '0')}</Mono>
                 <Heading as="h3" size="h3">{p.titulo}</Heading>
                 <Text variant="body">{p.descripcion}</Text>
               </div>

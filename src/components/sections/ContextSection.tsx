@@ -3,74 +3,39 @@ import {
   Callout, Card, Chip, CifraConFuente, Heading, IconTile, Reveal, Section, SectionHeader, SourceLink, Text,
 } from '@/components/ds';
 import { DEFINICION_MOVILIDAD_CLIMATICA, getCifra } from '@/lib/contenido';
+import { traducir } from '@/lib/contenido/traducciones/en';
+import type { Idioma } from '@/lib/i18n/idioma';
+import { UI } from '@/lib/i18n/ui';
 
-const FORMAS = [
-  {
-    icon: ArrowRight,
-    titulo: 'Desplazamiento interno',
-    descripcion:
-      'Cuando las personas deben salir de su lugar de residencia de forma involuntaria por inundaciones, tormentas, deslizamientos o erosión.',
-  },
-  {
-    icon: TrendingUp,
-    titulo: 'Migración',
-    descripcion:
-      'Cuando el movimiento ocurre de manera gradual o estratégica, combinando factores climáticos, económicos y sociales.',
-  },
-  {
-    icon: MapPin,
-    titulo: 'Inmovilidad',
-    descripcion:
-      'Cuando las personas permanecen en lugares expuestos a riesgos, ya sea porque no pueden salir o porque deciden quedarse.',
-  },
-  {
-    icon: Lock,
-    titulo: 'Poblaciones atrapadas',
-    descripcion:
-      'Cuando la permanencia no es una elección real, sino el resultado de restricciones materiales, sociales o institucionales.',
-  },
-  {
-    icon: Home,
-    titulo: 'Reubicación planificada',
-    descripcion:
-      'Cuando el traslado se organiza de manera anticipada o institucional frente a riesgos que hacen inviable la permanencia.',
-  },
-];
-
-const AREAS = [
-  'Planeación territorial',
-  'Adaptación climática',
-  'Gestión del riesgo',
-  'Vivienda y hábitat',
-  'Inclusión social',
-  'Resiliencia territorial',
-];
+const ICONOS_FORMAS = [ArrowRight, TrendingUp, MapPin, Lock, Home];
 
 /** Cifras verificadas (docs/contenido/inventario-ui.md reemplaza las tres cifras sin fuente del diseño anterior). */
 const CIFRAS = ['idmc-colombia-desastres-2025', 'idmc-colombia-desastres-2024', 'idmc-colombia-desastres-2023'].map(getCifra);
 const NOTA_DESPLAZAMIENTOS = getCifra('idmc-definicion-desplazamientos');
 
-export default function ContextSection() {
+export default function ContextSection({ idioma = 'es' }: { idioma?: Idioma }) {
+  const t = UI[idioma].contexto;
+  const tr = (texto: string) => traducir(texto, idioma);
   return (
     <Section id="contexto" background="alt" border>
       <SectionHeader
-        eyebrow="Contexto"
-        title="La crisis climática está moviendo a Colombia"
-        lead="En Colombia, el fenómeno no se explica solo por inundaciones o deslizamientos, sino por cómo esos impactos se combinan con desigualdad, debilidad institucional y presión creciente sobre ciudades y territorios."
+        eyebrow={t.eyebrow}
+        title={t.titulo}
+        lead={t.lead}
       />
 
       <div className="flex flex-col gap-6">
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Reveal as="li">
             <Card variant="sage" className="h-full justify-center">
-              <Text variant="eyebrow">¿Qué es la movilidad climática?</Text>
-              <p className="text-body font-medium text-foreground">{DEFINICION_MOVILIDAD_CLIMATICA}</p>
+              <Text variant="eyebrow">{t.queEs}</Text>
+              <p className="text-body font-medium text-foreground">{tr(DEFINICION_MOVILIDAD_CLIMATICA)}</p>
             </Card>
           </Reveal>
-          {FORMAS.map((f, i) => (
+          {t.formas.map((f, i) => (
             <Reveal as="li" key={f.titulo} index={i + 1}>
               <Card variant="raised" className="h-full">
-                <IconTile icon={f.icon} />
+                <IconTile icon={ICONOS_FORMAS[i]} />
                 <Heading as="h3" size="h4">{f.titulo}</Heading>
                 <Text variant="small">{f.descripcion}</Text>
               </Card>
@@ -81,16 +46,16 @@ export default function ContextSection() {
 
       <Reveal>
         <p className="max-w-2xl font-heading text-h3 font-semibold tracking-heading text-foreground text-balance">
-          Los municipios colombianos están en la primera línea de esta crisis.
+          {t.primeraLinea}
         </p>
       </Reveal>
 
       <div className="flex flex-col gap-10">
         <SectionHeader
           as="h3"
-          eyebrow="La evidencia"
-          title="Colombia enfrenta una crisis silenciosa"
-          lead="Los datos oficiales muestran el tamaño del fenómeno — aunque todavía subestiman su verdadera dimensión."
+          eyebrow={t.evidenciaEyebrow}
+          title={t.evidenciaTitulo}
+          lead={t.evidenciaLead}
         />
         <div className="grid border-t border-border md:grid-cols-3">
           {CIFRAS.map((c, i) => (
@@ -98,34 +63,31 @@ export default function ContextSection() {
               <CifraConFuente
                 className="py-8"
                 valor={c.valor}
-                unidad={`${c.unidad ?? ''} · ${c.anio}`}
-                definicion={c.definicion}
+                unidad={`${tr(c.unidad ?? '')} · ${c.anio}`}
+                definicion={tr(c.definicion)}
                 fuente={c.fuente.institucion}
                 anio={c.fuente.anio}
                 enlace={c.fuente.url}
+                textoFuente={UI[idioma].comun.fuente}
+                textoNuevaPestana={UI[idioma].comun.abreNuevaPestana}
               />
             </Reveal>
           ))}
         </div>
         <Reveal>
           <Text variant="small" tone="muted" className="max-w-3xl">
-            <span className="font-medium text-muted">{NOTA_DESPLAZAMIENTOS.valor}.</span> {NOTA_DESPLAZAMIENTOS.definicion}{' '}
-            <SourceLink fuente={NOTA_DESPLAZAMIENTOS.fuente.institucion} anio={NOTA_DESPLAZAMIENTOS.fuente.anio} href={NOTA_DESPLAZAMIENTOS.fuente.url} />
+            <span className="font-medium text-muted">{tr(NOTA_DESPLAZAMIENTOS.valor)}.</span> {tr(NOTA_DESPLAZAMIENTOS.definicion)}{' '}
+            <SourceLink fuente={NOTA_DESPLAZAMIENTOS.fuente.institucion} anio={NOTA_DESPLAZAMIENTOS.fuente.anio} href={NOTA_DESPLAZAMIENTOS.fuente.url} textoFuente={UI[idioma].comun.fuente} textoNuevaPestana={UI[idioma].comun.abreNuevaPestana} />
           </Text>
         </Reveal>
       </div>
 
       <div className="flex flex-col gap-6">
         <Reveal>
-          <Callout variant="info" title="¿Por qué importa para ciudades?">
-            La mayor parte de estas presiones de movilidad tienden a ser internas. Muchas personas
-            no cruzan fronteras internacionales, sino que se desplazan hacia municipios, ciudades
-            intermedias o grandes centros urbanos. Esto vuelve a los territorios locales actores
-            centrales del problema.
-          </Callout>
+          <Callout variant="info" title={t.ciudadesTitulo}>{t.ciudadesTexto}</Callout>
         </Reveal>
         <Reveal className="flex flex-wrap gap-2.5">
-          {AREAS.map((area) => <Chip key={area}>{area}</Chip>)}
+          {t.areas.map((area) => <Chip key={area}>{area}</Chip>)}
         </Reveal>
       </div>
     </Section>

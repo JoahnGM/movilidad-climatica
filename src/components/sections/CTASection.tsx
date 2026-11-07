@@ -1,48 +1,39 @@
 import Link from 'next/link';
 import { ArrowRight, BarChart2, Brain, MessageSquare } from 'lucide-react';
 import { Acento, Button, Pasos, Reveal, Section, SectionHeader, Text, type Paso } from '@/components/ds';
+import AnalisisVistaPrevia from '@/components/diagnostico/AnalisisVistaPrevia';
 import ChatVistaPrevia from '@/components/diagnostico/ChatVistaPrevia';
 import TarjetaNivel from '@/components/resultado/TarjetaNivel';
 import { EJEMPLO_DIAGNOSTICO } from '@/lib/contenido/ejemplo-resultado';
-import AnalisisVistaPrevia from '@/components/diagnostico/AnalisisVistaPrevia';
+import { EJEMPLO_DIAGNOSTICO_EN } from '@/lib/contenido/traducciones/en';
+import type { Idioma } from '@/lib/i18n/idioma';
+import { UI } from '@/lib/i18n/ui';
 
-const PASOS: Paso[] = [
-  {
-    icon: MessageSquare,
-    titulo: 'Describes tu territorio',
-    descripcion: 'Conversas con un agente de IA que te hace preguntas específicas sobre tu municipio, sin formularios ni escalas.',
-    visual: <ChatVistaPrevia />,
-  },
-  {
-    icon: Brain,
-    titulo: 'El sistema analiza',
-    descripcion: 'Dos agentes evalúan la entrevista y calculan tu nivel de preparación institucional en 6 dimensiones.',
-    visual: <AnalisisVistaPrevia />,
-  },
-  {
-    icon: BarChart2,
-    titulo: 'Recibes tu diagnóstico',
-    descripcion: 'Un resultado visual con tu nivel, fortalezas, brechas y recomendaciones adaptadas a tu municipio.',
-    visual: <TarjetaNivel resultado={EJEMPLO_DIAGNOSTICO} ejemplo />,
-  },
-];
+const ICONOS = [MessageSquare, Brain, BarChart2];
 
 /** "Cómo funciona": tres pasos con la interfaz real como ilustración. */
-export default function CTASection() {
+export default function CTASection({ idioma = 'es' }: { idioma?: Idioma }) {
+  const t = UI[idioma].comoFunciona;
+  const visuales = [
+    <ChatVistaPrevia key="chat" idioma={idioma} />,
+    <AnalisisVistaPrevia key="analisis" idioma={idioma} />,
+    <TarjetaNivel key="resultado" resultado={idioma === 'en' ? EJEMPLO_DIAGNOSTICO_EN : EJEMPLO_DIAGNOSTICO} ejemplo idioma={idioma} />,
+  ];
+  const pasos: Paso[] = t.pasos.map((p, i) => ({ icon: ICONOS[i], titulo: p.titulo, descripcion: p.descripcion, visual: visuales[i] }));
   return (
     <Section id="como-funciona">
       <SectionHeader
         align="center"
-        eyebrow="Cómo funciona"
-        title={<>No un cuestionario. <Acento>Una conversación.</Acento></>}
-        lead="El diagnóstico se construye a través del diálogo, no de casillas marcadas. Tu municipio merece una evaluación que entienda su contexto específico."
+        eyebrow={t.eyebrow}
+        title={<>{t.titulo} <Acento>{t.acento}</Acento></>}
+        lead={t.lead}
       />
-      <Pasos pasos={PASOS} />
+      <Pasos pasos={pasos} etiquetaPaso={t.paso} />
       <Reveal className="flex flex-col items-center gap-4 text-center">
         <Button asChild size="lg">
-          <Link href="#diagnostico">Comenzar Diagnóstico <ArrowRight aria-hidden="true" /></Link>
+          <Link href="#diagnostico">{t.comenzar} <ArrowRight aria-hidden="true" /></Link>
         </Button>
-        <Text variant="small" tone="muted" className="font-mono">Gratuito · Sin registro · Resultados inmediatos</Text>
+        <Text variant="small" tone="muted" className="font-mono">{UI[idioma].comun.gratuito}</Text>
       </Reveal>
     </Section>
   );

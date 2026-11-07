@@ -1,6 +1,8 @@
 import { createUIMessageStreamResponse, streamText, toUIMessageStream, type ModelMessage } from 'ai'
 import { resolverModelo, senalTimeout } from '@/lib/ai/provider'
 import { PROMPT_AGENTE_1 } from '@/lib/prompts/agente-1'
+import { conIdioma } from '@/lib/prompts/idioma'
+import { idiomaDeCookies } from '@/lib/i18n/idioma'
 import { leerCuerpoJSON, validarChat } from '@/lib/validacion'
 import { registrar } from '@/lib/seguridad/log'
 import { LIMITES_RUTA, consumir } from '@/lib/seguridad/rate-limit'
@@ -62,7 +64,7 @@ export async function POST(req: Request) {
   try {
     const result = streamText({
       model,
-      instructions: PROMPT_AGENTE_1,
+      instructions: conIdioma(PROMPT_AGENTE_1, 'entrevistador', idiomaDeCookies(req.headers.get('cookie'))),
       messages,
       ...settings,
       maxRetries: 1,

@@ -10,15 +10,18 @@ export interface SourceLinkProps {
   href?: string;
   /** Muestra el prefijo "Fuente:" (por defecto sí). */
   prefijo?: boolean;
+  /** Textos de la interfaz (por defecto en español). */
+  textoFuente?: string;
+  textoNuevaPestana?: string;
   className?: string;
 }
 
 /** Cita de fuente en una línea, en monoespaciada. Abre en pestaña nueva y lo anuncia. */
-export function SourceLink({ fuente, anio, href, prefijo = true, className }: SourceLinkProps) {
+export function SourceLink({ fuente, anio, href, prefijo = true, textoFuente = 'Fuente: ', textoNuevaPestana = '(abre en una pestaña nueva)', className }: SourceLinkProps) {
   const etiqueta = anio ? `${fuente}, ${anio}` : fuente;
   return (
     <span className={cn('font-mono text-caption text-subtle', className)}>
-      {prefijo && 'Fuente: '}
+      {prefijo && textoFuente}
       {href ? (
         <a
           href={href}
@@ -28,7 +31,7 @@ export function SourceLink({ fuente, anio, href, prefijo = true, className }: So
         >
           {etiqueta}
           <ArrowUpRight aria-hidden="true" className="size-3" />
-          <span className="sr-only">(abre en una pestaña nueva)</span>
+          <span className="sr-only">{textoNuevaPestana}</span>
         </a>
       ) : (
         <span>{etiqueta}</span>

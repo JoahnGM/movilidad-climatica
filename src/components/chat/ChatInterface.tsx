@@ -7,6 +7,7 @@ import { ArrowUp, CheckCircle2, Sparkles } from 'lucide-react';
 import { Button, Chip, IconList, Text } from '@/components/ds';
 import { cn } from '@/lib/utils';
 import { CLAVE_MUNICIPIO_INICIAL } from '@/components/diagnostico/eventos';
+import { useIdioma } from '@/components/i18n/IdiomaProvider';
 
 type Estado = 'activo' | 'completado';
 
@@ -24,6 +25,8 @@ interface Props {
 }
 
 export default function ChatInterface({ onUserMessageCount, onCompletado, onRequiereAcceso, className }: Props) {
+  const { t: textos } = useIdioma();
+  const t = textos.chat;
   const scrollRef = useRef<HTMLDivElement>(null);
   const completadoRef = useRef(false);
 
@@ -118,31 +121,24 @@ export default function ChatInterface({ onUserMessageCount, onCompletado, onRequ
           <Sparkles className="size-4" />
         </span>
         <div className="flex min-w-0 flex-col">
-          <span className="text-small font-medium text-foreground">Asistente de diagnóstico</span>
-          <span className="text-caption text-subtle">Estás conversando con un asistente de IA (piloto). Evalúa solo lo que digas; puede equivocarse.</span>
+          <span className="text-small font-medium text-foreground">{t.asistente}</span>
+          <span className="text-caption text-subtle">{t.aviso}</span>
         </div>
-        <Chip variant="experimental" size="sm" className="ml-auto hidden sm:inline-flex">IA · piloto</Chip>
+        <Chip variant="experimental" size="sm" className="ml-auto hidden sm:inline-flex">{t.chip}</Chip>
       </div>
 
       {/* Mensajes */}
-      <div ref={scrollRef} role="log" aria-live="polite" aria-label="Conversación del diagnóstico" className="flex flex-1 flex-col gap-4 overflow-y-auto px-5 py-6">
+      <div ref={scrollRef} role="log" aria-live="polite" aria-label={t.logAria} className="flex flex-1 flex-col gap-4 overflow-y-auto px-5 py-6">
         {messages.length === 0 && !isLoading && (
           <div className="flex flex-col gap-4 rounded-xl bg-surface p-5">
-            <p className="font-heading text-h4 font-semibold tracking-tight text-foreground">Comenzando el diagnóstico</p>
-            <Text variant="small">
-              Un investigador especializado te hará preguntas sobre tu municipio.
-              Responde con la mayor honestidad posible — no hay respuestas correctas ni incorrectas.
-            </Text>
+            <p className="font-heading text-h4 font-semibold tracking-tight text-foreground">{t.bienvenidaTitulo}</p>
+            <Text variant="small">{t.bienvenidaTexto}</Text>
             <IconList
               spacing="tight"
               icon={CheckCircle2}
-              items={[
-                'La conversación toma entre 10 y 15 minutos',
-                'Puedes tomarte el tiempo que necesites para cada respuesta',
-                'Mientras más específico, mejor el diagnóstico',
-              ]}
+              items={t.bienvenidaItems}
             />
-            <Text variant="caption" tone="muted">Escribe tu municipio o rol para comenzar</Text>
+            <Text variant="caption" tone="muted">{t.bienvenidaPie}</Text>
           </div>
         )}
 
@@ -158,7 +154,7 @@ export default function ChatInterface({ onUserMessageCount, onCompletado, onRequ
                   isUser ? 'rounded-2xl rounded-tr-md bg-ink text-on-accent' : 'rounded-2xl rounded-tl-md bg-surface text-foreground',
                 )}
               >
-                <span className="sr-only">{isUser ? 'Tú: ' : 'Asistente: '}</span>
+                <span className="sr-only">{isUser ? t.tu : t.asistenteSr}</span>
                 {text}
               </div>
             </div>
@@ -166,7 +162,7 @@ export default function ChatInterface({ onUserMessageCount, onCompletado, onRequ
         })}
 
         {isLoading && (
-          <div className="flex justify-start" aria-label="El asistente está escribiendo">
+          <div className="flex justify-start" aria-label={t.escribiendo}>
             <div className="rounded-2xl rounded-tl-md bg-surface px-4 py-3.5">
               <div className="flex h-3 items-center gap-1.5">
                 {[0, 1, 2].map((i) => (
@@ -181,14 +177,14 @@ export default function ChatInterface({ onUserMessageCount, onCompletado, onRequ
       {/* Entrada */}
       <div className="border-t border-border p-3">
         <div className="flex items-end gap-2 rounded-2xl border border-border-strong/50 bg-background p-1.5 transition-colors focus-within:border-green">
-          <label htmlFor="chat-respuesta" className="sr-only">Tu respuesta</label>
+          <label htmlFor="chat-respuesta" className="sr-only">{t.campo}</label>
           <textarea
             id="chat-respuesta"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             disabled={isLoading || estado === 'completado'}
-            placeholder={estado === 'completado' ? 'Entrevista finalizada' : 'Escribe tu respuesta...'}
+            placeholder={estado === 'completado' ? t.finalizada : t.placeholder}
             rows={1}
             className="max-h-[96px] min-h-[40px] flex-1 resize-none bg-transparent px-3 py-2 text-small leading-normal text-foreground outline-none placeholder:text-subtle disabled:opacity-50"
             onInput={(e) => {
@@ -201,18 +197,16 @@ export default function ChatInterface({ onUserMessageCount, onCompletado, onRequ
             size="icon"
             onClick={handleSend}
             disabled={isLoading || !input.trim() || estado === 'completado'}
-            aria-label="Enviar respuesta"
+            aria-label={t.enviar}
             className="size-10 hover:translate-y-0"
           >
             <ArrowUp aria-hidden="true" />
           </Button>
         </div>
         {error && (
-          <p className="mt-2 px-1 text-caption text-amber-ink" role="alert">
-            No pudimos procesar tu último mensaje. Revísalo e inténtalo de nuevo.
-          </p>
+          <p className="mt-2 px-1 text-caption text-amber-ink" role="alert">{t.error}</p>
         )}
-        <p className="mt-2 px-1 text-caption text-subtle">Enter para enviar · Shift+Enter para nueva línea</p>
+        <p className="mt-2 px-1 text-caption text-subtle">{t.ayuda}</p>
       </div>
     </div>
   );

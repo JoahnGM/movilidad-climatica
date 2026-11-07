@@ -97,6 +97,7 @@ Tecnología con la sobriedad de una ONG climática. Papel cálido (`#FBFAF6`), t
 | `FeedbackThumbs` | Micro-encuesta 👍/👎 (sin persistencia) | Votaciones de más de 2 opciones |
 | `FondoMontanas` | El hero del home, una vez en todo el sitio | Cualquier otra sección |
 | `TituloIA` | El h1 del hero | Más de una vez por página |
+| `usePlaceholderAnimado` (hook) | Placeholder que se escribe solo en el campo del hero | Formularios largos; reemplazar la etiqueta |
 
 9. **`ds/` no tiene lógica de negocio:** no importa `@/lib/*` (salvo `@/lib/utils`), no usa `fetch` ni `localStorage`. Los datos llegan por props.
 10. **Una sola vista de resultado:** `src/components/resultado/ResultadoDiagnostico.tsx` la usan el demo (`EjemploSection`, con `ejemplo`) y el resultado real del agente (`DiagnosticoSection`). Prohibido duplicarla. *Por qué:* lo que la persona ve en el ejemplo es exactamente lo que recibirá.
@@ -116,7 +117,8 @@ Tecnología con la sobriedad de una ONG climática. Papel cálido (`#FBFAF6`), t
 18. **Disclosure de IA = aviso + competencia + límite, siempre juntos.** Ej.: "Estás conversando con un asistente de IA (piloto). Evalúa solo lo que digas; puede equivocarse." Presenta los límites como propios de la IA generativa, no como defectos (`docs/investigacion/03-confianza-marco-institucional.md`).
 19. **Alcance del resultado:** siempre el texto oficial `getTexto('alcance')` al pie del resultado.
 20. **Sin fuente primaria no se publica una cifra** (`docs/estandares/contenido-y-fuentes.md`). Los textos largos y cifras viven en `src/lib/contenido`, no en el JSX.
-21. **Textos oficiales del iceberg EXACTOS** (CLAUDE.md §4): vienen del resultado; la UI no los reescribe.
+21. **Textos oficiales del iceberg EXACTOS** (CLAUDE.md §4): vienen del resultado; la UI no los reescribe. En inglés se muestra la traducción no oficial de `src/lib/i18n/matriz.ts` (por id), con la nota "Unofficial translation".
+21b. **Dos idiomas (ES fuente, EN traducción).** Ningún texto visible va escrito en un componente: los de interfaz viven en `src/lib/i18n/ui.ts` (`UI.es` / `UI.en`, el tipo obliga a que EN tenga las mismas claves) y el contenido verificado en `src/lib/contenido` (+ `traducciones/en.ts`). Server components reciben `idioma` por prop desde la página; client components usan `useIdioma()`. Las primitivas de `ds/` no conocen el idioma: sus textos por defecto (p. ej. "Fuente:", "Cerrar") se sobrescriben por props. El idioma se guarda en la cookie `idioma` (toggle `SelectorIdioma` en la navbar).
 
 ### Accesibilidad
 
@@ -161,6 +163,7 @@ Tecnología con la sobriedad de una ONG climática. Papel cálido (`#FBFAF6`), t
 - [ ] Probé con teclado (Tab, flechas en Tabs/Disclosure, Esc en Dialog) y con movimiento reducido.
 - [ ] Los datos ficticios llevan banner y badge EJEMPLO; las cifras llevan fuente.
 - [ ] El aviso de IA tiene aviso + competencia + límite.
+- [ ] Todo texto nuevo está en `UI.es` y `UI.en` (o en `src/lib/contenido` con su traducción); revisé la vista en los dos idiomas.
 - [ ] Actualicé este estándar y su historial si cambié una regla.
 
 ## 4. Pruebas automáticas
@@ -217,4 +220,5 @@ Además, Tailwind no genera la paleta por defecto (`--color-*: initial`): una cl
 | Fecha | Versión | Cambio |
 |---|---|---|
 | 2026-11-06 | 1.0 | Primera versión: DS "Cordillera" (modo claro), 39 primitivas, catálogo `/ds`, `check:ds`; migración completa del sitio; diagnóstico integrado en la landing. |
+| 2026-11-07 | 1.2 | Toggle ES/EN (regla 21b), `usePlaceholderAnimado` en el campo del hero, textos por defecto de `SourceLink`, `CifraConFuente`, `Dialog` y `Etapas` sobrescribibles. |
 | 2026-11-07 | 1.1 | Ritmo vertical más compacto (`--space-section` 64–96 px, `--space-block` 40–56 px); `SectionHeader` en dos columnas; regla 13 sobre huecos; el campo de municipio del hero inicia el chat en la landing (`iniciarDiagnostico`). |

@@ -15,11 +15,6 @@ export const TONO_ESTADO: Record<EstadoDimension, Tone> = {
   brecha_critica: 'red',
 };
 
-export const ETIQUETA_ESTADO: Record<EstadoDimension, string> = {
-  fortaleza: 'Fortaleza',
-  en_desarrollo: 'En desarrollo',
-  brecha_critica: 'Brecha crítica',
-};
 
 export const TONO_URGENCIA: Record<UrgenciaType, Tone> = {
   inmediata: 'red',
@@ -27,11 +22,6 @@ export const TONO_URGENCIA: Record<UrgenciaType, Tone> = {
   mediano_plazo: 'blue',
 };
 
-export const ETIQUETA_URGENCIA: Record<UrgenciaType, string> = {
-  inmediata: 'Inmediata',
-  corto_plazo: 'Corto plazo',
-  mediano_plazo: 'Mediano plazo',
-};
 
 /** Número del nivel ("nivel_2" → 2). */
 export const numeroNivel = (id: NivelId) => Number(id.slice(-1));

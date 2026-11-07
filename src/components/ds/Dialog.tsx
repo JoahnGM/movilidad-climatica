@@ -13,6 +13,8 @@ export interface DialogProps {
   /** Descripción accesible (si no hay, se usa el título). */
   description?: string;
   children: ReactNode;
+  /** Nombre accesible del botón de cerrar (por defecto en español). */
+  textoCerrar?: string;
   className?: string;
 }
 
@@ -20,7 +22,7 @@ export interface DialogProps {
  * Diálogo modal accesible (Radix Dialog): `role="dialog"`, `aria-modal`, foco atrapado,
  * Esc y clic afuera cierran, el foco vuelve al disparador. Para textos largos (políticas).
  */
-export function Dialog({ open, onOpenChange, title, description, children, className }: DialogProps) {
+export function Dialog({ open, onOpenChange, title, description, children, textoCerrar = 'Cerrar', className }: DialogProps) {
   return (
     <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
       <DialogPrimitive.Portal>
@@ -34,7 +36,7 @@ export function Dialog({ open, onOpenChange, title, description, children, class
         >
           <div className="flex items-start justify-between gap-4">
             <DialogPrimitive.Title className="font-heading text-h4 font-semibold tracking-tight text-foreground">{title}</DialogPrimitive.Title>
-            <DialogPrimitive.Close aria-label="Cerrar" className="rounded-full p-1.5 text-subtle transition-colors hover:bg-surface hover:text-foreground">
+            <DialogPrimitive.Close aria-label={textoCerrar} className="rounded-full p-1.5 text-subtle transition-colors hover:bg-surface hover:text-foreground">
               <X aria-hidden="true" className="size-5" />
             </DialogPrimitive.Close>
           </div>

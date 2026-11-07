@@ -8,7 +8,9 @@ import AccesoPiloto from '@/components/diagnostico/AccesoPiloto';
 import ProgresoDiagnostico, { type FaseDiagnostico } from '@/components/diagnostico/ProgresoDiagnostico';
 import { CLAVE_MUNICIPIO_INICIAL, EVENTO_INICIAR } from '@/components/diagnostico/eventos';
 import ResultadoDiagnostico from '@/components/resultado/ResultadoDiagnostico';
-import { Button, Card, EmptyState, Reveal, Section, SectionHeader } from '@/components/ds';
+import { Button, Callout, Card, EmptyState, Reveal, Section, SectionHeader } from '@/components/ds';
+import { useIdioma } from '@/components/i18n/IdiomaProvider';
+import type { TextosUI } from '@/lib/i18n/ui';
 import type { AnalisisResult, DiagnosticoAPIResponse, DiagnosticoResult } from '@/lib/types';
 
 const LS_KEYS = {
@@ -23,11 +25,9 @@ function limpiarStorage() {
 }
 
 /** Mensaje para cada error del pipeline (la API no expone detalles internos). */
-function mensajeError(status: number, message?: string): string {
+function mensajeError(t: TextosUI, status: number, message?: string): string {
   if (message) return message;
-  if (status === 429) return 'Hiciste varias solicitudes seguidas. Espera un momento e inténtalo de nuevo.';
-  if (status === 504) return 'El análisis tardó más de lo esperado. Inténtalo de nuevo.';
-  if (status === 503) return 'El diagnóstico no está disponible en este momento.';
+  if (status === 429 || status === 504 || status === 503) return t.diagnostico.errores[status];
   return `Error ${status}`;
 }
 
@@ -41,6 +41,8 @@ interface Props {
  * Persistencia según CLAUDE.md §10: al volver, retoma el resultado o el análisis pendiente.
  */
 export default function DiagnosticoSection({ requiereCodigo }: Props) {
+  const { idioma, t } = useIdioma();
+  const td = t.diagnostico;
   const [fase, setFase] = useState<FaseDiagnostico>(requiereCodigo ? 'acceso' : 'chat');
   const [mensajes, setMensajes] = useState(0);
   const [pasoAnalisis, setPasoAnalisis] = useState(0);
@@ -71,7 +73,7 @@ export default function DiagnosticoSection({ requiereCodigo }: Props) {
         return;
       }
       const data = (await res.json().catch(() => ({}))) as Partial<DiagnosticoAPIResponse> & { error?: boolean; message?: string };
-      if (!res.ok || data.error || !data.resultado || !data.scores) throw new Error(mensajeError(res.status, data.message));
+      if (!res.ok || data.error || !data.resultado || !data.scores) throw new Error(mensajeError(t, res.status, data.message));
       localStorage.setItem(LS_KEYS.resultado, JSON.stringify(data.resultado));
       localStorage.setItem(LS_KEYS.scores, JSON.stringify(data.scores));
       setResultado(data.resultado);
@@ -79,10 +81,10 @@ export default function DiagnosticoSection({ requiereCodigo }: Props) {
       setFase('resultado');
       irAlInicio();
     } catch (err) {
-      setErrorMsg(err instanceof Error ? err.message : 'Error desconocido');
+      setErrorMsg(err instanceof Error ? err.message : td.errores.desconocido);
       setFase('error');
     }
-  }, []);
+  }, [t, td]);
 
   // Al cargar: retomar un resultado guardado o un análisis pendiente
   useEffect(() => {
@@ -134,19 +136,15 @@ export default function DiagnosticoSection({ requiereCodigo }: Props) {
     setTimeout(() => setCopiado(false), 2000);
   }
 
-  const fecha = new Date().toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' });
+  const fecha = new Date().toLocaleDateString(idioma === 'en' ? 'en-US' : 'es-CO', { year: 'numeric', month: 'long', day: 'numeric' });
 
   return (
     <Section id="diagnostico" background="alt" border aria-labelledby="diagnostico-titulo">
       <div ref={inicioRef} className="scroll-mt-24">
         <SectionHeader
-          eyebrow="Diagnóstico"
-          title={<span id="diagnostico-titulo">{fase === 'resultado' ? 'Tu diagnóstico' : 'Comienza la conversación'}</span>}
-          lead={
-            fase === 'resultado'
-              ? 'Tu nivel, tus brechas y una ruta para empezar. Se guarda solo en este navegador.'
-              : 'Responde desde tu experiencia. Al terminar, el resultado aparece aquí mismo.'
-          }
+          eyebrow={td.eyebrow}
+          title={<span id="diagnostico-titulo">{fase === 'resultado' ? td.tituloResultado : td.tituloChat}</span>}
+          lead={fase === 'resultado' ? td.leadResultado : td.leadChat}
         />
       </div>
 
@@ -156,20 +154,21 @@ export default function DiagnosticoSection({ requiereCodigo }: Props) {
           scores={scores}
           fecha={fecha}
           idBase="diagnostico"
+          idioma={idioma}
           acciones={
             <>
-              <Button variant="secondary" onClick={nuevoDiagnostico}><Plus aria-hidden="true" /> Nuevo diagnóstico</Button>
+              <Button variant="secondary" onClick={nuevoDiagnostico}><Plus aria-hidden="true" /> {td.nuevo}</Button>
               <Button variant="secondary" onClick={copiar}>
                 {copiado ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
-                {copiado ? '¡Copiado!' : 'Copiar enlace'}
+                {copiado ? td.copiado : td.copiar}
               </Button>
               <Button variant="ghost" onClick={() => setMostrarTecnico((v) => !v)} aria-expanded={mostrarTecnico}>
                 {mostrarTecnico ? <ChevronUp aria-hidden="true" /> : <ChevronDown aria-hidden="true" />}
-                Ver datos técnicos
+                {td.tecnico}
               </Button>
               {mostrarTecnico && scores && (
                 <Card variant="flat" padding="sm" className="w-full">
-                  <p className="font-mono text-caption uppercase tracking-eyebrow text-subtle">Evaluación técnica — Agente 2 (AnalisisResult)</p>
+                  <p className="font-mono text-caption uppercase tracking-eyebrow text-subtle">{td.tecnicoTitulo}</p>
                   <pre className="max-h-96 overflow-auto font-mono text-caption leading-relaxed text-muted">{JSON.stringify(scores, null, 2)}</pre>
                 </Card>
               )}
@@ -181,7 +180,8 @@ export default function DiagnosticoSection({ requiereCodigo }: Props) {
           <aside className="lg:sticky lg:top-24">
             <ProgresoDiagnostico fase={fase} mensajes={mensajes} pasoAnalisis={pasoAnalisis} />
           </aside>
-          <div className="min-w-0">
+          <div className="flex min-w-0 flex-col gap-4">
+            {td.avisoIdioma && fase !== 'resultado' && <Callout variant="ia">{td.avisoIdioma}</Callout>}
             {fase === 'acceso' && <AccesoPiloto onAcceso={() => setFase('chat')} />}
             {fase === 'chat' && (
               <ChatInterface
@@ -195,14 +195,14 @@ export default function DiagnosticoSection({ requiereCodigo }: Props) {
             {fase === 'error' && (
               <EmptyState
                 icon={AlertCircle}
-                title="Error al generar el diagnóstico"
+                title={td.errorTitulo}
                 description={errorMsg}
                 headingLevel="h3"
                 className="min-h-[480px] max-w-none justify-center"
                 actions={
                   <>
-                    <Button onClick={analizar}><RefreshCw aria-hidden="true" /> Reintentar</Button>
-                    <Button variant="secondary" onClick={nuevoDiagnostico}>Nuevo diagnóstico</Button>
+                    <Button onClick={analizar}><RefreshCw aria-hidden="true" /> {td.reintentar}</Button>
+                    <Button variant="secondary" onClick={nuevoDiagnostico}>{td.nuevo}</Button>
                   </>
                 }
               />

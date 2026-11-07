@@ -62,6 +62,7 @@ green (marca):  #1F6B4F · blue #3F6E96 · amber #D99A32 (texto #8A5A12) · red 
 - Un efecto protagonista por página: la cordillera de partículas del hero
 - Tarjetas `rounded-card` (24 px), botones y chips en píldora
 - Animaciones con Framer Motion vía `<Reveal>`; todo respeta `prefers-reduced-motion`
+- Dos idiomas: español es la fuente, inglés por toggle (cookie `idioma`). Textos de interfaz en `src/lib/i18n/ui.ts`, contenido traducido en `src/lib/contenido/traducciones/en.ts`; el agente en inglés es experimental (`docs/decisiones/2026-11-07-idioma-ingles.md`)
 
 ---
 
