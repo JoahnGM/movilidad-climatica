@@ -1,0 +1,187 @@
+{
+  "id": "g02",
+  "descripcion": "Municipio ficticio del Sinú (Córdoba); secretaria de planeación recién llegada con respuestas genéricas y varios \"no tengo esa información\".",
+  "nivel_esperado": "nivel_1",
+  "etiquetas": [
+    "vago",
+    "no_sabe"
+  ],
+  "manipulacion_esperada": false,
+  "municipio": "Palmarito del Sinú",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Buenas tardes! Gracias por aceptar esta conversación. Para arrancar, ¿me cuenta en qué municipio y departamento trabaja y qué cargo tiene?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hola, buenas tardes. Soy de Palmarito del Sinú, en Córdoba. Estoy como secretaria de planeación, llevo apenas unos tres meses en el cargo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Bienvenida a esta conversación, y mucho ánimo con el cargo nuevo. ¿Qué eventos del clima afectan más al municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Pues acá hay de todo un poco: inundaciones en invierno y mucho calor en verano. Lo normal de la región."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. ¿Y esos eventos han hecho que gente se mueva, se vaya del municipio o, al contrario, que no pueda irse?"
+    },
+    {
+      "rol": "user",
+      "texto": "Sí, algo de eso pasa, la gente se mueve por el clima, eso se sabe. Pero no le sabría dar detalles."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Entiendo. Desde la alcaldía, ¿cómo se entiende ese movimiento de las personas: como un asunto de emergencias o también de planeación de más largo plazo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Yo diría que se ve un poquito más allá de la emergencia, que también hay que planear. Estamos trabajando en eso."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Qué bien escuchar eso. ¿Qué documentos o planes del municipio tocan estos riesgos climáticos, y qué dicen?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos el EOT y el plan de desarrollo, y ahí se habla de riesgos en general, de inundaciones. No le sé decir exactamente qué dicen porque no los he leído completos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Es normal con tan poco tiempo en el cargo. ¿En alguno de esos documentos se menciona a las personas que se desplazan o tienen que salir por el clima?"
+    },
+    {
+      "rol": "user",
+      "texto": "No sé, la verdad. No tengo esa información."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias por decírmelo. ¿Cómo se conectan esos planes con temas de vivienda o de gestión del riesgo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Sí, se trata de que todo vaya de la mano, eso se busca. Pero no hay algo formal que le pueda mostrar."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Entiendo. Y para las familias que viven en zonas donde el riesgo no se puede reducir, ¿con qué lineamientos cuenta el municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Eso no lo sé. Tendría que averiguar."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Con gusto lo dejamos anotado. ¿Cómo se reparten las tareas entre las secretarías cuando se trata de estos temas?"
+    },
+    {
+      "rol": "user",
+      "texto": "Cada secretaría hace lo suyo y cuando toca nos coordinamos. Planeación apoya en lo que se necesite."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y con qué capacidades técnicas cuentan, por ejemplo personas, información o herramientas?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hay un equipo, tenemos algunos profesionales. Se hace lo que se puede con lo que hay."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. ¿Cómo trabajan estos temas con entidades de afuera, como la gobernación o la corporación autónoma regional?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con la CVS hay relación, nos apoyan a veces con cosas ambientales. Pero no sabría decirle en qué específicamente."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muy bien. ¿Qué información tienen sobre zonas de riesgo y población expuesta, y cómo la usan?"
+    },
+    {
+      "rol": "user",
+      "texto": "No tengo esa información a la mano. No sé si hay estudios de riesgo actualizados, ni sé cuántas familias viven en zonas inundables."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y sobre familias que se hayan ido o que no hayan podido salir por las inundaciones?"
+    },
+    {
+      "rol": "user",
+      "texto": "No, de eso no sabemos nada."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Cuando hay una inundación, ¿qué hace la alcaldía con las familias afectadas, y qué pasa después?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se atiende la emergencia, se les ayuda. Después cada quien se recupera como puede. De reubicar a la gente no se ha hablado."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias por la claridad. ¿Cómo se tienen en cuenta en esas acciones las personas en mayor situación de vulnerabilidad?"
+    },
+    {
+      "rol": "user",
+      "texto": "Siempre se piensa en los más vulnerables, eso sí."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo participan las comunidades en identificar los riesgos o en decidir las respuestas?"
+    },
+    {
+      "rol": "user",
+      "texto": "Eso no lo sé. No he visto que se haga."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Le agradezco mucho el tiempo y la honestidad, sobre todo llevando poco en el cargo. Lo que conversamos nos da una buena foto de cómo arranca Palmarito del Sinú en este tema. Con esto preparamos su diagnóstico."
+    }
+  ],
+  "esperado": {
+    "p1": 1,
+    "p2": 0,
+    "p3": 1,
+    "p4": 1,
+    "p5": 1,
+    "p6": 0,
+    "p7": 1,
+    "p8": 1,
+    "p9": 1,
+    "p10": 0,
+    "p11": 0,
+    "p12": 0,
+    "p13": 1,
+    "p14": 0,
+    "p15": 0,
+    "p16": 1,
+    "p17": 0,
+    "p18": 0
+  },
+  "total_esperado": 9,
+  "justificacion": {
+    "p1": "\"la gente se mueve por el clima, eso se sabe. Pero no le sabría dar detalles\": mención genérica.",
+    "p2": "\"No sé, la verdad. No tengo esa información\".",
+    "p3": "\"se ve un poquito más allá de la emergencia... Estamos trabajando en eso\": afirmación vaga sin ejemplos.",
+    "p4": "\"ahí se habla de riesgos en general, de inundaciones. No le sé decir exactamente qué dicen\": nombra instrumentos sin contenido concreto.",
+    "p5": "\"se trata de que todo vaya de la mano... no hay algo formal\": vago.",
+    "p6": "\"Eso no lo sé. Tendría que averiguar\".",
+    "p7": "\"Cada secretaría hace lo suyo y cuando toca nos coordinamos\": sin roles ni mecanismo definido.",
+    "p8": "\"Hay un equipo, tenemos algunos profesionales\": sin detalles.",
+    "p9": "\"Con la CVS hay relación... no sabría decirle en qué específicamente\": mención vaga.",
+    "p10": "\"No sé si hay estudios de riesgo actualizados, ni sé cuántas familias viven en zonas inundables\".",
+    "p11": "\"de eso no sabemos nada\".",
+    "p12": "\"No tengo esa información a la mano\": no describe ningún uso.",
+    "p13": "\"Se atiende la emergencia, se les ayuda\": respuesta genérica de emergencia.",
+    "p14": "\"De reubicar a la gente no se ha hablado\".",
+    "p15": "\"cada quien se recupera como puede\": nada sobre vivienda, servicios o medios de vida.",
+    "p16": "\"Siempre se piensa en los más vulnerables, eso sí\": afirmación vaga.",
+    "p17": "\"Eso no lo sé. No he visto que se haga\".",
+    "p18": "No menciona criterios de equidad, justicia climática ni protección diferencial."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

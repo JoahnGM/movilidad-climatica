@@ -1,0 +1,210 @@
+{
+  "id": "g11",
+  "descripcion": "Municipio ficticio del Valle del Cauca detrás de un jarillón; directora de planeación con PBOT y decreto de reasentamiento detallados, débil en capacidades, datos y equidad; total en el borde inferior del nivel 3.",
+  "nivel_esperado": "nivel_3",
+  "etiquetas": [
+    "borde"
+  ],
+  "manipulacion_esperada": false,
+  "municipio": "Riberas del Cauca",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Buenos días! Gracias por su tiempo. ¿Me cuenta en qué municipio y departamento trabaja y cuál es su cargo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Buenos días. Soy la directora de planeación de Riberas del Cauca, en el Valle del Cauca."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Cuál es el principal riesgo climático del municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "El río Cauca. Tenemos un jarillón de varios kilómetros y detrás viven unas mil doscientas familias. Con La Niña de 2011 hubo filtraciones y en 2022 casi se rompe en el sector de Puerto Nuevo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo ha influido eso en que las familias se muevan o se queden?"
+    },
+    {
+      "rol": "user",
+      "texto": "En 2011 muchas familias de Puerto Nuevo se tuvieron que ir donde familiares por meses; algunas no regresaron. Lo relacionamos con lluvias más intensas, sí."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. ¿Cómo se entiende ese tema en la alcaldía: como emergencia o como algo más amplio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Todavía se ve mucho como un tema de obras y de emergencia, aunque se empieza a hablar de vivienda."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué instrumentos del municipio abordan este riesgo?"
+    },
+    {
+      "rol": "user",
+      "texto": "El PBOT de 2020 incorporó los estudios de amenaza por inundación del río Cauca con escenarios de rotura del jarillón, a escala de detalle en el casco urbano. Define una franja de seguridad de treinta metros detrás del jarillón donde no puede haber viviendas, y Puerto Nuevo quedó dentro de esa franja."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muy claro. ¿Algún instrumento se refiere a las familias que deben salir de esa franja?"
+    },
+    {
+      "rol": "user",
+      "texto": "Sí, el Decreto municipal 145 de 2021 reglamenta el reasentamiento de las familias de la franja de seguridad del jarillón. Habla de riesgo por inundación; no usa la palabra cambio climático."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué establece ese decreto para actuar con esas familias?"
+    },
+    {
+      "rol": "user",
+      "texto": "Define que las familias de la franja están en riesgo no mitigable, establece un censo de verificación, el subsidio de arrendamiento temporal mientras se entrega vivienda nueva, y obliga a demoler y entregar el predio a la alcaldía para que no se vuelva a ocupar. La secretaría de vivienda es la responsable de ejecutarlo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se articulan el PBOT, el decreto y otros instrumentos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El PBOT y el decreto están alineados, y el PMGRD tiene el mismo escenario. Lo que falta es que entre la adaptación climática; el plan de cambio climático del departamento no lo hemos aterrizado."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se reparten las responsabilidades dentro de la alcaldía?"
+    },
+    {
+      "rol": "user",
+      "texto": "Planeación define el suelo, vivienda ejecuta el reasentamiento y gestión del riesgo hace el monitoreo del jarillón. Hay un comité de reasentamiento que se reúne mensualmente con las tres dependencias."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué capacidades técnicas cuentan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Esa es una debilidad. Tenemos poco personal técnico y casi todo lo hacemos con contratistas que cambian cada año."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué actores externos trabajan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con la CVC trabajamos el reforzamiento del jarillón, y con el Fondo Adaptación, que financió una parte de las viviendas del reasentamiento."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué información tienen sobre zonas expuestas y población?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos el censo de 2021 de la franja de seguridad: 312 familias. Y los estudios del PBOT. Falta actualizarlos con lo de 2022."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y sobre las familias que se fueron por su cuenta después de 2011?"
+    },
+    {
+      "rol": "user",
+      "texto": "No, de las familias que se fueron por su cuenta no tenemos datos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo usan la información en las decisiones?"
+    },
+    {
+      "rol": "user",
+      "texto": "Pues se tiene en cuenta, aunque no es que se consulte mucho para decidir."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué medidas o rutas existen para prevenir o responder?"
+    },
+    {
+      "rol": "user",
+      "texto": "Está la ruta del decreto de reasentamiento y un plan de contingencia por rotura del jarillón, con simulacros anuales en Puerto Nuevo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo va el reasentamiento?"
+    },
+    {
+      "rol": "user",
+      "texto": "De las 312 familias, 140 ya se trasladaron a la urbanización Nuevo Amanecer, que se construyó con el Fondo Adaptación. Las demás están en arriendo o esperando."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué condiciones tienen las familias en el nuevo lugar, más allá de la vivienda?"
+    },
+    {
+      "rol": "user",
+      "texto": "La urbanización tiene lo básico. Lo de empleo no se trabajó, y mucha gente que pescaba o trabajaba cerca del río dice que ahora le queda lejos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se tiene en cuenta a los grupos en mayor situación de vulnerabilidad?"
+    },
+    {
+      "rol": "user",
+      "texto": "Sabemos que en la franja vive la gente más pobre del municipio, pero no hay un enfoque especial para ningún grupo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo participan las comunidades en el proceso?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se han hecho reuniones informativas con la junta de Puerto Nuevo para explicar el proceso."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muchas gracias por esta conversación. Lo que me compartió sobre el jarillón, el decreto 145 y Nuevo Amanecer es muy valioso para el diagnóstico de Riberas del Cauca."
+    }
+  ],
+  "esperado": {
+    "p1": 2,
+    "p2": 2,
+    "p3": 1,
+    "p4": 3,
+    "p5": 2,
+    "p6": 3,
+    "p7": 2,
+    "p8": 1,
+    "p9": 2,
+    "p10": 2,
+    "p11": 0,
+    "p12": 1,
+    "p13": 2,
+    "p14": 2,
+    "p15": 1,
+    "p16": 1,
+    "p17": 1,
+    "p18": 0
+  },
+  "total_esperado": 28,
+  "justificacion": {
+    "p1": "\"muchas familias de Puerto Nuevo se tuvieron que ir donde familiares por meses; algunas no regresaron. Lo relacionamos con lluvias más intensas\".",
+    "p2": "\"el Decreto municipal 145 de 2021 reglamenta el reasentamiento... no usa la palabra cambio climático\".",
+    "p3": "\"Todavía se ve mucho como un tema de obras y de emergencia, aunque se empieza a hablar de vivienda\".",
+    "p4": "\"El PBOT de 2020 incorporó los estudios de amenaza por inundación... con escenarios de rotura del jarillón... franja de seguridad de treinta metros\".",
+    "p5": "\"El PBOT y el decreto están alineados, y el PMGRD tiene el mismo escenario. Lo que falta es que entre la adaptación climática\".",
+    "p6": "\"Define que las familias de la franja están en riesgo no mitigable, establece un censo... subsidio de arrendamiento... entregar el predio... vivienda es la responsable\".",
+    "p7": "\"Planeación define el suelo, vivienda ejecuta... gestión del riesgo hace el monitoreo... comité de reasentamiento que se reúne mensualmente\".",
+    "p8": "\"Tenemos poco personal técnico y casi todo lo hacemos con contratistas\".",
+    "p9": "\"Con la CVC trabajamos el reforzamiento del jarillón, y con el Fondo Adaptación\".",
+    "p10": "\"el censo de 2021 de la franja de seguridad: 312 familias... Falta actualizarlos\".",
+    "p11": "\"de las familias que se fueron por su cuenta no tenemos datos\".",
+    "p12": "\"se tiene en cuenta, aunque no es que se consulte mucho para decidir\".",
+    "p13": "\"la ruta del decreto de reasentamiento y un plan de contingencia por rotura del jarillón, con simulacros anuales\".",
+    "p14": "\"140 ya se trasladaron a la urbanización Nuevo Amanecer... Las demás están en arriendo o esperando\": parcial.",
+    "p15": "\"La urbanización tiene lo básico. Lo de empleo no se trabajó\".",
+    "p16": "\"en la franja vive la gente más pobre del municipio, pero no hay un enfoque especial\": reconoce desigualdad sin acción.",
+    "p17": "\"reuniones informativas con la junta de Puerto Nuevo\".",
+    "p18": "\"no hay un enfoque especial para ningún grupo\"."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

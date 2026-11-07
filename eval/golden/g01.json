@@ -1,0 +1,170 @@
+{
+  "id": "g01",
+  "descripcion": "Municipio ribereño pequeño y ficticio del Chocó; secretaría de gobierno sin oficina de riesgo, casi todo es \"no sé\" y respuesta solo a emergencias.",
+  "nivel_esperado": "nivel_1",
+  "etiquetas": [
+    "no_sabe"
+  ],
+  "manipulacion_esperada": false,
+  "municipio": "Bocas del Tamaná",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Hola! Muchas gracias por sacar este tiempo. Acompaño a gobiernos locales en temas de clima y territorio. Para empezar, ¿me cuenta en qué municipio y departamento trabaja y cuál es su rol en la alcaldía?"
+    },
+    {
+      "rol": "user",
+      "texto": "Buenas. Estoy en Bocas del Tamaná, en el Chocó. Soy el secretario de gobierno y, como no hay oficina aparte, me toca también lo de gestión del riesgo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias por contarme; me imagino que es bastante carga para una sola secretaría. ¿Cuáles son los eventos del clima que más afectan al municipio y a su gente?"
+    },
+    {
+      "rol": "user",
+      "texto": "Acá lo que más pega es el río. Cuando llueve mucho el Tamaná se sale y se inunda la parte baja del pueblo y las veredas de la orilla. Eso pasa casi todos los años, a veces dos veces."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Qué situación tan dura, y tan repetida. Cuando el río se sale, ¿qué pasa con las familias que viven en esas zonas, cómo se mueven o se quedan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Pues la gente se va donde familiares en la parte alta o a Istmina mientras baja el agua, y después vuelven. Algunos dicen que ahora llueve más raro que antes, que será el cambio climático, pero yo la verdad no sé si eso tenga que ver."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Entiendo, es una conversación que apenas empieza en muchos lugares. ¿Cómo se ve en la alcaldía eso de las familias que se van y vuelven: como algo de la emergencia o como algo que también toca planear?"
+    },
+    {
+      "rol": "user",
+      "texto": "No, eso se ve como emergencia. Cuando pasa la inundación se atiende y ya. No hay más."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias por la franqueza. Pensando en los documentos del municipio, como el esquema de ordenamiento o un plan de gestión del riesgo, ¿qué dicen sobre estas inundaciones o sobre la gente que se desplaza?"
+    },
+    {
+      "rol": "user",
+      "texto": "El EOT es viejísimo, creo que de principios de los 2000. Creo que tiene algo de zonas inundables, pero yo no lo he revisado. Plan de gestión del riesgo no sé si hay, yo no lo he visto. Y sobre la gente que se va, que yo sepa no hay nada escrito."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muy claro. Y con las familias que viven justo en la orilla, donde el río siempre llega, ¿qué se ha planteado hacer desde la alcaldía?"
+    },
+    {
+      "rol": "user",
+      "texto": "No sé, la verdad. Nunca se ha hablado de sacarlos de ahí. No hay plata ni lote para eso."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Le entiendo. Cuando llega una inundación, ¿quiénes se encargan dentro de la alcaldía y cómo se organizan entre ustedes?"
+    },
+    {
+      "rol": "user",
+      "texto": "El consejo municipal de gestión del riesgo se reúne cuando ya está la emergencia encima: el alcalde, yo, el hospital, la policía y los bomberos voluntarios. Fuera de eso no se reúne."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias por el detalle. ¿Con qué personas o herramientas cuenta la alcaldía para trabajar estos temas, por ejemplo personal técnico o información?"
+    },
+    {
+      "rol": "user",
+      "texto": "Somos poquitos. En mi secretaría estamos yo y una auxiliar. No hay ingeniero ni nadie técnico para riesgo, y computador para hacer mapas tampoco."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Eso dice mucho del reto que enfrentan. ¿Qué apoyo reciben de entidades de afuera, como la gobernación, la corporación autónoma u otras organizaciones?"
+    },
+    {
+      "rol": "user",
+      "texto": "Cuando hay inundación la gobernación manda mercados y la UNGRD a veces manda kits y colchonetas. Pero es eso, ayudas cuando ya pasó."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Entiendo. Hablando de información, ¿qué datos tienen sobre cuáles zonas se inundan y cuántas familias viven ahí?"
+    },
+    {
+      "rol": "user",
+      "texto": "No tenemos eso. No hay un censo de las familias de la orilla ni mapa. Uno sabe más o menos por experiencia, pero escrito nada."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. ¿Y sobre las familias que se van y no regresan, o las que no tienen cómo irse, han podido registrar algo?"
+    },
+    {
+      "rol": "user",
+      "texto": "No sé. Eso nunca lo hemos contado."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Es muy útil saberlo. Cuando llega la inundación, ¿qué hace la alcaldía para atender a las familias afectadas?"
+    },
+    {
+      "rol": "user",
+      "texto": "No hay una ruta como tal, se va improvisando. Lo que hacemos es abrir la escuela como albergue unos días y repartir lo que llegue de ayudas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias por contarlo tal como es. ¿Se tiene en cuenta de manera especial a algunos grupos, como adultos mayores, niños o comunidades afro o indígenas, cuando se organizan estas acciones?"
+    },
+    {
+      "rol": "user",
+      "texto": "No sé qué decirle. Se atiende a todo el que llegue igual, no hay nada especial."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Entiendo. ¿Y cómo participan las comunidades, por ejemplo las juntas o los consejos comunitarios, en identificar los riesgos o decidir qué hacer?"
+    },
+    {
+      "rol": "user",
+      "texto": "Eso no lo sé. Que yo sepa no se ha hecho."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Le agradezco mucho su sinceridad y su tiempo. Lo que me cuenta sobre el río, las familias de la orilla y el tamaño del equipo es muy valioso para entender el punto de partida de Bocas del Tamaná. Con esto vamos a preparar su diagnóstico."
+    }
+  ],
+  "esperado": {
+    "p1": 1,
+    "p2": 0,
+    "p3": 0,
+    "p4": 1,
+    "p5": 0,
+    "p6": 0,
+    "p7": 1,
+    "p8": 0,
+    "p9": 1,
+    "p10": 0,
+    "p11": 0,
+    "p12": 0,
+    "p13": 1,
+    "p14": 0,
+    "p15": 0,
+    "p16": 0,
+    "p17": 0,
+    "p18": 0
+  },
+  "total_esperado": 5,
+  "justificacion": {
+    "p1": "\"Algunos dicen que ahora llueve más raro... será el cambio climático, pero yo la verdad no sé si eso tenga que ver\": relación vaga y dudosa entre clima y movilidad.",
+    "p2": "\"sobre la gente que se va, que yo sepa no hay nada escrito\".",
+    "p3": "\"eso se ve como emergencia. Cuando pasa la inundación se atiende y ya\".",
+    "p4": "\"Creo que tiene algo de zonas inundables, pero yo no lo he revisado\": mención vaga del EOT.",
+    "p5": "No menciona articulación; \"Plan de gestión del riesgo no sé si hay\".",
+    "p6": "\"No sé, la verdad. Nunca se ha hablado de sacarlos de ahí\".",
+    "p7": "\"El consejo municipal de gestión del riesgo se reúne cuando ya está la emergencia encima... Fuera de eso no se reúne\": instancia solo reactiva.",
+    "p8": "\"No hay ingeniero ni nadie técnico para riesgo\": sin capacidad técnica.",
+    "p9": "\"la gobernación manda mercados y la UNGRD a veces manda kits... ayudas cuando ya pasó\": solo recepción de ayudas, no coordinación para fortalecer respuestas.",
+    "p10": "\"No hay un censo de las familias de la orilla ni mapa\".",
+    "p11": "\"No sé. Eso nunca lo hemos contado\".",
+    "p12": "Sin información disponible, no hay uso; nada dicho sobre decisiones informadas.",
+    "p13": "\"No hay una ruta como tal, se va improvisando... abrir la escuela como albergue\": respuesta ad hoc de emergencia.",
+    "p14": "\"Nunca se ha hablado de sacarlos de ahí. No hay plata ni lote para eso\".",
+    "p15": "Solo albergue y ayudas temporales; nada sobre vivienda, servicios o medios de vida.",
+    "p16": "\"Se atiende a todo el que llegue igual, no hay nada especial\".",
+    "p17": "\"Eso no lo sé. Que yo sepa no se ha hecho\".",
+    "p18": "\"no hay nada especial\": sin criterios de equidad ni protección diferencial."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

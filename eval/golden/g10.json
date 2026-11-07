@@ -1,0 +1,210 @@
+{
+  "id": "g10",
+  "descripcion": "Municipio cafetero ficticio de Caldas; secretario de planeación con PBOT, alerta por pluviómetros y reubicación parcial, débil en datos de movilidad y equidad; total en el borde superior del nivel 2.",
+  "nivel_esperado": "nivel_2",
+  "etiquetas": [
+    "borde"
+  ],
+  "manipulacion_esperada": false,
+  "municipio": "Cerro Alegre de Caldas",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Buenas tardes! Gracias por su tiempo. ¿En qué municipio y departamento trabaja y cuál es su cargo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Buenas tardes. Soy el secretario de planeación e infraestructura de Cerro Alegre, un municipio cafetero de Caldas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Cuáles son los riesgos del clima que más afectan al municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Deslizamientos, principalmente. En las temporadas de La Niña de 2010-2011 y de 2022 tuvimos muchos, en la vía y en barrios de ladera. Y en la parte baja, crecientes del río."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo han influido esos eventos en que las familias se muevan o se queden?"
+    },
+    {
+      "rol": "user",
+      "texto": "En el barrio La Cuchilla hubo que evacuar a unas veinticinco familias en 2022 por un deslizamiento, y en las veredas cafeteras hay gente que se ha ido porque las lluvias ya no dejan cosechar como antes. Yo veo una relación clara con el cambio climático."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. ¿En la alcaldía se entiende como un tema solo de emergencia o algo más amplio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hemos ido entendiendo que no es solo emergencia. Después de La Cuchilla el alcalde pidió que el tema entrara a la planeación de vivienda y al ordenamiento, no solo a la atención del momento."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muy interesante. ¿Qué instrumentos recogen estos riesgos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El PBOT, que se revisó en 2019, tiene zonificación de amenaza por movimientos en masa en el área urbana; La Cuchilla aparece como amenaza alta. El PMGRD tiene los escenarios de deslizamiento y de creciente."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Alguno de esos instrumentos habla de las familias que deben salir o de la movilidad por el clima?"
+    },
+    {
+      "rol": "user",
+      "texto": "El PMGRD menciona la reubicación de viviendas en amenaza alta como acción, sin hablar del clima. No hay nada específico sobre desplazamiento."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se articulan esos instrumentos entre sí y con vivienda?"
+    },
+    {
+      "rol": "user",
+      "texto": "Entre el PBOT y el PMGRD sí hay coherencia porque usan los mismos estudios. Y con vivienda empezamos a cruzar: el programa de vivienda del plan de desarrollo prioriza a familias en amenaza alta."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué herramientas tienen para la población en riesgo no mitigable?"
+    },
+    {
+      "rol": "user",
+      "texto": "El PBOT define suelos de protección por riesgo no mitigable en La Cuchilla y en el sector de La Quiebra, y prohíbe construir ahí. El procedimiento para reubicar no está reglamentado todavía."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se reparten las responsabilidades dentro de la alcaldía?"
+    },
+    {
+      "rol": "user",
+      "texto": "Planeación lidera lo de ordenamiento, la oficina de gestión del riesgo maneja el consejo municipal y la secretaría de vivienda los subsidios. Nos reunimos en el consejo de riesgo cada dos meses, no solo en emergencia."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué capacidades técnicas cuentan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Pocas personas: un ingeniero civil en riesgo y yo. Herramientas de mapas tenemos básicas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué actores externos trabajan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Corpocaldas nos ha financiado obras de estabilización de taludes, y con la Universidad Nacional sede Manizales hicimos el estudio de detalle de La Cuchilla."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué información tienen sobre zonas expuestas y población?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos el estudio de detalle de La Cuchilla de 2023 y el inventario de viviendas en amenaza alta que hizo la oficina de riesgo: son unas ciento diez viviendas en el casco urbano."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y sobre la gente que se ha ido de las veredas, tienen algún dato?"
+    },
+    {
+      "rol": "user",
+      "texto": "No, de eso no tenemos datos. No sabemos cuántos se han ido de las veredas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo usan la información para tomar decisiones?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se tiene en cuenta a veces, aunque no de manera sistemática."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué medidas o rutas tienen para prevenir o responder?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos la estrategia de respuesta y un sistema de alerta con pluviómetros en dos quebradas que monitorea la oficina de riesgo. Cuando llueve más de cierto umbral se avisa a las familias de la ladera."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué pasó con las familias de La Cuchilla?"
+    },
+    {
+      "rol": "user",
+      "texto": "De las veinticinco familias, quince ya fueron reubicadas en el proyecto de vivienda Los Guaduales, con subsidio municipal y de la caja de compensación. Las otras siguen en arriendo temporal."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Ese proceso consideró algo más allá de la vivienda, como servicios o trabajo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se les dio la vivienda. Lo de empleo o servicios no se trabajó como tal."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se tuvo en cuenta a las personas en mayor situación de vulnerabilidad?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se tuvo en cuenta que hubiera adultos mayores y personas con discapacidad, se les dio prioridad, pero no hay un enfoque formal."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo participaron las comunidades?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se hicieron reuniones con la junta de acción comunal de La Cuchilla para explicar la reubicación."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muchas gracias por esta conversación tan completa. Lo que me contó sobre La Cuchilla, los pluviómetros y la articulación del PBOT con vivienda es muy valioso para el diagnóstico de Cerro Alegre."
+    }
+  ],
+  "esperado": {
+    "p1": 2,
+    "p2": 1,
+    "p3": 2,
+    "p4": 2,
+    "p5": 2,
+    "p6": 2,
+    "p7": 2,
+    "p8": 1,
+    "p9": 2,
+    "p10": 2,
+    "p11": 0,
+    "p12": 1,
+    "p13": 2,
+    "p14": 2,
+    "p15": 1,
+    "p16": 1,
+    "p17": 1,
+    "p18": 1
+  },
+  "total_esperado": 27,
+  "justificacion": {
+    "p1": "\"hubo que evacuar a unas veinticinco familias en 2022... en las veredas cafeteras hay gente que se ha ido... relación clara con el cambio climático\".",
+    "p2": "\"El PMGRD menciona la reubicación de viviendas en amenaza alta como acción, sin hablar del clima\".",
+    "p3": "\"el alcalde pidió que el tema entrara a la planeación de vivienda y al ordenamiento, no solo a la atención del momento\".",
+    "p4": "\"El PBOT, que se revisó en 2019, tiene zonificación de amenaza por movimientos en masa en el área urbana; La Cuchilla aparece como amenaza alta\".",
+    "p5": "\"Entre el PBOT y el PMGRD sí hay coherencia... el programa de vivienda del plan de desarrollo prioriza a familias en amenaza alta\".",
+    "p6": "\"El PBOT define suelos de protección por riesgo no mitigable en La Cuchilla y en... La Quiebra... El procedimiento para reubicar no está reglamentado\".",
+    "p7": "\"Planeación lidera... gestión del riesgo maneja el consejo municipal y... vivienda los subsidios. Nos reunimos... cada dos meses\".",
+    "p8": "\"un ingeniero civil en riesgo y yo. Herramientas de mapas tenemos básicas\".",
+    "p9": "\"Corpocaldas nos ha financiado obras de estabilización... con la Universidad Nacional... el estudio de detalle de La Cuchilla\".",
+    "p10": "\"el estudio de detalle de La Cuchilla de 2023 y el inventario... unas ciento diez viviendas\".",
+    "p11": "\"No, de eso no tenemos datos\".",
+    "p12": "\"Se tiene en cuenta a veces, aunque no de manera sistemática\".",
+    "p13": "\"un sistema de alerta con pluviómetros en dos quebradas... se avisa a las familias de la ladera\".",
+    "p14": "\"quince ya fueron reubicadas en el proyecto de vivienda Los Guaduales... Las otras siguen en arriendo temporal\": parcial.",
+    "p15": "\"Se les dio la vivienda. Lo de empleo o servicios no se trabajó\".",
+    "p16": "\"Se tuvo en cuenta que hubiera adultos mayores y personas con discapacidad... pero no hay un enfoque formal\".",
+    "p17": "\"reuniones con la junta... para explicar la reubicación\": informativa, no participativa.",
+    "p18": "\"se les dio prioridad, pero no hay un enfoque formal\": protección diferencial implícita y limitada."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

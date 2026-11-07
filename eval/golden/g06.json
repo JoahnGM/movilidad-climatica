@@ -1,0 +1,194 @@
+{
+  "id": "g06",
+  "descripcion": "Municipio ficticio del Cesar afectado por sequía; secretario de agricultura y ambiente con convenio concreto con Corpocesar pero respuestas reactivas; total en el borde inferior del nivel 2.",
+  "nivel_esperado": "nivel_2",
+  "etiquetas": [
+    "borde"
+  ],
+  "manipulacion_esperada": false,
+  "municipio": "Aguas Claras del Cesar",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Buenas tardes! Gracias por acompañarnos. Para empezar, ¿en qué municipio y departamento trabaja y cuál es su cargo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Buenas tardes. Le hablo desde Aguas Claras del Cesar, en el Cesar. Soy el secretario de agricultura y medio ambiente."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Cuáles son los eventos del clima que más golpean al municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Nuestro problema grande es la sequía. Los veranos se han vuelto muy largos y los jagüeyes se secan. También hay incendios en los potreros."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo ha influido esa sequía en la gente, en si se queda o se va?"
+    },
+    {
+      "rol": "user",
+      "texto": "Mucho. En la zona rural de la parte alta, por las veredas de Los Laureles, los jóvenes se están yendo a Valledupar porque ya no se puede sembrar con estos veranos. Eso es el cambio climático, la gente lo dice clarito."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Es muy revelador. En la alcaldía, ¿ese fenómeno se ve como emergencia o como algo que toca planear?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se ve más como un problema del campo, de los productores. Algo se habla de adaptación, pero poco."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. ¿Qué instrumentos del municipio contemplan la sequía y otros riesgos climáticos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El plan de desarrollo actual tiene un programa de 'agua para el campo' que reconoce el desabastecimiento por sequía en la zona rural. El EOT no habla de sequía, solo de inundaciones del río."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y en algún instrumento se menciona a quienes se van del campo por la sequía?"
+    },
+    {
+      "rol": "user",
+      "texto": "No, eso no está escrito en ningún lado."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se conecta ese programa de agua con otras áreas, como planeación o gestión del riesgo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Planeación nos ayuda con los proyectos, pero cada uno trabaja por su lado. Gestión del riesgo solo mira las inundaciones."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Entiendo. Y para familias que viven en zonas muy expuestas, ¿qué lineamientos existen?"
+    },
+    {
+      "rol": "user",
+      "texto": "No conozco ninguno."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Dentro de la alcaldía, ¿quién se encarga de qué frente a la sequía?"
+    },
+    {
+      "rol": "user",
+      "texto": "Mi secretaría lleva lo de los carrotanques y los pozos, y la oficina de riesgo se mete cuando se declara calamidad. Pero no hay un espacio conjunto."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué capacidades técnicas cuentan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos un técnico agropecuario y yo. Para estudios dependemos de afuera."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué entidades externas trabajan estos temas?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con Corpocesar hicimos el año pasado un convenio para perforar tres pozos profundos en las veredas más secas, y con la gobernación gestionamos los carrotanques en verano."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muy concreto, gracias. ¿Qué información tienen sobre las zonas más afectadas y la población?"
+    },
+    {
+      "rol": "user",
+      "texto": "Sabemos cuáles veredas se quedan sin agua porque son las que piden carrotanque, pero no hay un estudio."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y sobre la gente que se va del campo, hay algún dato?"
+    },
+    {
+      "rol": "user",
+      "texto": "Lo único es que en el colegio de Los Laureles han bajado las matrículas, eso lo comentó el rector. Pero no hay un estudio de eso."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo usan esa información para tomar decisiones?"
+    },
+    {
+      "rol": "user",
+      "texto": "Solo para decidir el recorrido de los carrotanques, a qué veredas ir primero. Para planear no se usa."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Más allá de los carrotanques, ¿qué medidas existen para que las familias puedan quedarse o para apoyarlas si se van?"
+    },
+    {
+      "rol": "user",
+      "texto": "Solo los carrotanques y los pozos que le dije. Para las familias que se van no hay nada."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Se tiene en cuenta de manera especial a algunos grupos, como pequeños campesinos, mujeres o comunidades indígenas?"
+    },
+    {
+      "rol": "user",
+      "texto": "No, se atiende igual a todos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo participan las comunidades en identificar riesgos o decidir respuestas?"
+    },
+    {
+      "rol": "user",
+      "texto": "No hay espacios para eso. La gente llama a pedir el carrotanque y ya."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muchas gracias por su tiempo. Lo que me contó sobre Los Laureles, los pozos con Corpocesar y el programa de agua nos ayuda mucho a construir el diagnóstico de Aguas Claras del Cesar."
+    }
+  ],
+  "esperado": {
+    "p1": 2,
+    "p2": 0,
+    "p3": 1,
+    "p4": 2,
+    "p5": 1,
+    "p6": 0,
+    "p7": 1,
+    "p8": 1,
+    "p9": 2,
+    "p10": 1,
+    "p11": 1,
+    "p12": 1,
+    "p13": 1,
+    "p14": 0,
+    "p15": 0,
+    "p16": 0,
+    "p17": 0,
+    "p18": 0
+  },
+  "total_esperado": 14,
+  "justificacion": {
+    "p1": "\"en las veredas de Los Laureles, los jóvenes se están yendo a Valledupar porque ya no se puede sembrar... Eso es el cambio climático\": migración concreta vinculada al clima.",
+    "p2": "\"No, eso no está escrito en ningún lado\".",
+    "p3": "\"Se ve más como un problema del campo... Algo se habla de adaptación, pero poco\".",
+    "p4": "\"El plan de desarrollo actual tiene un programa de 'agua para el campo' que reconoce el desabastecimiento por sequía\"; el EOT solo trata inundaciones.",
+    "p5": "\"Planeación nos ayuda con los proyectos, pero cada uno trabaja por su lado\".",
+    "p6": "\"No conozco ninguno\".",
+    "p7": "\"Mi secretaría lleva lo de los carrotanques... la oficina de riesgo se mete cuando se declara calamidad. Pero no hay un espacio conjunto\".",
+    "p8": "\"Tenemos un técnico agropecuario y yo. Para estudios dependemos de afuera\".",
+    "p9": "\"Con Corpocesar hicimos el año pasado un convenio para perforar tres pozos profundos... con la gobernación gestionamos los carrotanques\".",
+    "p10": "\"Sabemos cuáles veredas se quedan sin agua porque son las que piden carrotanque, pero no hay un estudio\".",
+    "p11": "\"en el colegio de Los Laureles han bajado las matrículas... Pero no hay un estudio\": indicio anecdótico.",
+    "p12": "\"Solo para decidir el recorrido de los carrotanques... Para planear no se usa\".",
+    "p13": "\"Solo los carrotanques y los pozos\": medidas puntuales sin ruta institucional.",
+    "p14": "\"Para las familias que se van no hay nada\".",
+    "p15": "Nada sobre vivienda, servicios o medios de vida.",
+    "p16": "\"No, se atiende igual a todos\".",
+    "p17": "\"No hay espacios para eso\".",
+    "p18": "Sin criterios de equidad ni protección diferencial."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

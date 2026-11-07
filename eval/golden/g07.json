@@ -1,0 +1,202 @@
+{
+  "id": "g07",
+  "descripcion": "Municipio ficticio de ladera en Antioquia; secretario de planeación que conoce bien el EOT y un reasentamiento parcial, pero no sabe nada de datos, enfoque diferencial ni participación.",
+  "nivel_esperado": "nivel_2",
+  "etiquetas": [
+    "no_sabe"
+  ],
+  "manipulacion_esperada": false,
+  "municipio": "Cañaveral de la Montaña",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Buenos días! Gracias por su tiempo. ¿Me cuenta en qué municipio y departamento trabaja y cuál es su rol?"
+    },
+    {
+      "rol": "user",
+      "texto": "Buenos días. Soy el secretario de planeación de Cañaveral de la Montaña, en el oriente de Antioquia."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Cuáles son los riesgos del clima más importantes en el municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Movimientos en masa, sobre todo. Tenemos laderas muy pendientes y con los aguaceros cada vez más fuertes se vienen los deslizamientos. También avenidas torrenciales en la quebrada La Honda."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo han influido esos eventos en que la población se mueva o se quede?"
+    },
+    {
+      "rol": "user",
+      "texto": "En 2022 una avenida torrencial de La Honda obligó a sacar a unas cuarenta familias del barrio El Puente, y varias no volvieron. Yo sí lo relaciono con el cambio climático, porque las lluvias ya no se comportan como antes."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Lamento mucho lo de El Puente. ¿Cómo se entiende en la alcaldía este tipo de salidas de familias: como emergencia o como algo más amplio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Después de lo de El Puente entendimos que no es solo atender la emergencia. Hay que pensar dónde va a vivir la gente y cómo ordenamos el territorio para que no vuelvan a construir en la ronda. Ese cambio sí se dio en el equipo de gobierno."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Es un aprendizaje muy valioso. ¿Qué instrumentos recogen estos riesgos y qué dicen?"
+    },
+    {
+      "rol": "user",
+      "texto": "El EOT se ajustó en 2021 con estudios básicos de riesgo según el Decreto 1077: tiene zonificación de amenaza alta, media y baja por movimientos en masa y por avenida torrencial, a escala 1:2.000 en el casco urbano y 1:25.000 en lo rural. La ronda de La Honda quedó como suelo de protección y El Puente está clasificado como amenaza alta."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muy detallado. ¿Algún instrumento hace referencia a las familias que tuvieron que salir o a la reubicación?"
+    },
+    {
+      "rol": "user",
+      "texto": "El plan de desarrollo menciona 'reasentamiento de familias en zona de riesgo' como meta, pero sin mucho detalle. No habla de cambio climático ni de desplazamiento como tal."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se articulan el EOT, la gestión del riesgo y la vivienda?"
+    },
+    {
+      "rol": "user",
+      "texto": "El EOT y el PMGRD usan la misma zonificación, eso lo hicimos a propósito. Con vivienda todavía falta: el banco de tierras para reasentar no está definido."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué herramientas tienen para actuar frente a población en riesgo no mitigable?"
+    },
+    {
+      "rol": "user",
+      "texto": "El EOT define las zonas de riesgo no mitigable en El Puente y en dos veredas, y prohíbe nuevas licencias ahí. Pero no hay un decreto que diga el procedimiento para reasentar."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se reparten las responsabilidades dentro de la alcaldía?"
+    },
+    {
+      "rol": "user",
+      "texto": "Planeación lleva el EOT y la gestión del riesgo está en la secretaría de gobierno. Nos vemos en el consejo de riesgo, pero no hay roles claros para esto de la gente que se tiene que ir."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué capacidades técnicas cuentan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Pocas. El EOT lo hizo una consultora. Hoy en planeación somos tres y ninguno es geólogo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué actores externos se coordinan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con Cornare, que nos acompañó en los estudios de riesgo del EOT y en la delimitación de la ronda de La Honda. Y con el DAGRAN, que apoyó la emergencia de 2022."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué información actualizada tienen sobre las zonas expuestas y la población que vive ahí?"
+    },
+    {
+      "rol": "user",
+      "texto": "Los mapas son los del EOT de 2021. Pero cuántas personas viven hoy en amenaza alta no lo sé; eso lo debería tener gobierno o Cornare, yo no tengo esa información."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y de las familias de El Puente que no volvieron, saben a dónde se fueron o cómo están?"
+    },
+    {
+      "rol": "user",
+      "texto": "No sé. No se les hizo seguimiento, no tenemos información de eso."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se usa la información de riesgo en las decisiones del municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "No sabría decirle. Imagino que sí se usa, pero no tengo información de cómo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué medidas o rutas existen para prevenir o responder a la salida de familias por estos riesgos?"
+    },
+    {
+      "rol": "user",
+      "texto": "Para emergencias está la estrategia municipal de respuesta. Prevención casi no, fuera de no dar licencias."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué pasó con las familias de El Puente en términos de reubicación?"
+    },
+    {
+      "rol": "user",
+      "texto": "Dieciocho de las cuarenta familias recibieron subsidio de arrendamiento por seis meses, y luego entraron a un proyecto de vivienda con la gobernación en el lote de La Esperanza, que se entregó en 2023. Las demás se fueron por su cuenta."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. ¿Cómo se tuvieron en cuenta grupos vulnerables o enfoques de derechos en ese proceso?"
+    },
+    {
+      "rol": "user",
+      "texto": "No sé, no tengo información de eso."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo participaron las comunidades en identificar los riesgos o decidir la respuesta?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tampoco le sabría decir. No conozco que haya habido espacios de participación."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Le agradezco mucho su tiempo y la claridad sobre lo que sabe y lo que no. Lo que me compartió del EOT, de La Honda y del caso de El Puente es muy valioso para el diagnóstico de Cañaveral de la Montaña."
+    }
+  ],
+  "esperado": {
+    "p1": 2,
+    "p2": 1,
+    "p3": 2,
+    "p4": 3,
+    "p5": 2,
+    "p6": 2,
+    "p7": 1,
+    "p8": 1,
+    "p9": 2,
+    "p10": 1,
+    "p11": 0,
+    "p12": 0,
+    "p13": 1,
+    "p14": 2,
+    "p15": 1,
+    "p16": 0,
+    "p17": 0,
+    "p18": 0
+  },
+  "total_esperado": 21,
+  "justificacion": {
+    "p1": "\"una avenida torrencial de La Honda obligó a sacar a unas cuarenta familias del barrio El Puente, y varias no volvieron. Yo sí lo relaciono con el cambio climático\".",
+    "p2": "\"El plan de desarrollo menciona 'reasentamiento de familias en zona de riesgo' como meta, pero sin mucho detalle\".",
+    "p3": "\"no es solo atender la emergencia. Hay que pensar dónde va a vivir la gente y cómo ordenamos el territorio\".",
+    "p4": "\"El EOT se ajustó en 2021 con estudios básicos de riesgo... zonificación de amenaza alta, media y baja... a escala 1:2.000... El Puente está clasificado como amenaza alta\".",
+    "p5": "\"El EOT y el PMGRD usan la misma zonificación... Con vivienda todavía falta\".",
+    "p6": "\"El EOT define las zonas de riesgo no mitigable en El Puente y en dos veredas, y prohíbe nuevas licencias ahí. Pero no hay un decreto\".",
+    "p7": "\"Nos vemos en el consejo de riesgo, pero no hay roles claros para esto\".",
+    "p8": "\"en planeación somos tres y ninguno es geólogo\".",
+    "p9": "\"Con Cornare, que nos acompañó en los estudios de riesgo del EOT... Y con el DAGRAN, que apoyó la emergencia de 2022\".",
+    "p10": "\"Los mapas son los del EOT de 2021. Pero cuántas personas viven hoy en amenaza alta no lo sé\".",
+    "p11": "\"No sé. No se les hizo seguimiento, no tenemos información de eso\".",
+    "p12": "\"No sabría decirle. Imagino que sí se usa, pero no tengo información de cómo\": suposición, no evidencia.",
+    "p13": "\"Para emergencias está la estrategia municipal de respuesta. Prevención casi no\".",
+    "p14": "\"Dieciocho de las cuarenta familias recibieron subsidio de arrendamiento... proyecto de vivienda con la gobernación en el lote de La Esperanza\": parcial.",
+    "p15": "Solo se menciona la entrega de vivienda; nada sobre servicios ni medios de vida.",
+    "p16": "\"No sé, no tengo información de eso\".",
+    "p17": "\"No conozco que haya habido espacios de participación\".",
+    "p18": "\"No sé, no tengo información de eso\"."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

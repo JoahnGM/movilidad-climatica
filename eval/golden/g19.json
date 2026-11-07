@@ -1,0 +1,208 @@
+{
+  "id": "g19",
+  "descripcion": "Ciudad intermedia ficticia de Santander con política pública de movilidad humana y adaptación climática, observatorio, comité intersectorial y reasentamiento integral; casi todo claro y articulado.",
+  "nivel_esperado": "nivel_4",
+  "etiquetas": [],
+  "manipulacion_esperada": false,
+  "municipio": "Altavista de los Andes",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Buenos días! Gracias por su tiempo. ¿Me cuenta en qué municipio y departamento trabaja y cuál es su cargo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Buenos días. Soy el director de planeación de Altavista de los Andes, una ciudad intermedia de Santander."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Cuáles son los riesgos del clima más importantes en la ciudad?"
+    },
+    {
+      "rol": "user",
+      "texto": "Deslizamientos en las laderas del norte de la ciudad, avenidas torrenciales en las quebradas que bajan del páramo, desabastecimiento de agua en temporada seca y olas de calor que afectan a la población de los barrios más densos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo influyen esos riesgos en la movilidad de la población?"
+    },
+    {
+      "rol": "user",
+      "texto": "Reconocemos cuatro dinámicas: desplazamiento interno de familias evacuadas por deslizamientos o avenidas; migración campesina del área rural alta hacia la ciudad por la pérdida de cosechas con sequías y heladas; inmovilidad de hogares pobres en laderas que no pueden asumir un traslado; y reasentamiento planificado de familias en riesgo no mitigable. Las asociamos con el cambio climático porque los registros de la red de estaciones muestran más eventos extremos de lluvia y veranos más largos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Ese reconocimiento está en algún instrumento formal?"
+    },
+    {
+      "rol": "user",
+      "texto": "El Acuerdo 018 de 2022 adoptó la política pública de movilidad humana y adaptación climática. Reconoce esas cuatro dinámicas, define principios, asigna responsabilidades a cada secretaría y crea un observatorio. Además el Decreto 102 de 2023 reglamenta el reasentamiento planificado."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se entiende el tema más allá de la emergencia?"
+    },
+    {
+      "rol": "user",
+      "texto": "La política parte de que la movilidad climática es un asunto de planeación, adaptación, vivienda, permanencia y protección, no de emergencia. Por ejemplo, para la población rural tenemos un programa de permanencia con riego y seguros agrícolas, para que la gente no tenga que irse."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué instrumentos de planeación incorporan estos riesgos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El POT de 2021 incorpora estudios de detalle de amenaza por movimientos en masa y avenidas torrenciales a escala 1:2.000 con escenarios de lluvia extrema, y estudios de desabastecimiento hídrico en la zona rural. El PMGRD 2022 y el plan de acción climática municipal, derivado del PIGCCT de Santander, usan esos mismos estudios y tienen metas de población expuesta al 2030."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se articulan esos instrumentos?"
+    },
+    {
+      "rol": "user",
+      "texto": "La política obliga a que POT, PMGRD, plan climático, plan de vivienda y plan de desarrollo rural compartan metas y un tablero común de indicadores. El consejo de gobierno revisa el tablero cada trimestre, y vivienda tiene una bolsa de subsidios reservada para familias en riesgo no mitigable."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué herramientas tienen frente a población en riesgo no mitigable?"
+    },
+    {
+      "rol": "user",
+      "texto": "El Decreto 102 define el procedimiento completo: declaratoria de riesgo no mitigable con base en estudios de detalle, censo y caracterización, avalúo, opciones de vivienda de reposición o compensación, arriendo temporal, acompañamiento social y la incorporación del predio liberado al sistema de espacio público para evitar nuevas ocupaciones."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se reparten los roles dentro de la alcaldía?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hay un comité intersectorial de movilidad climática creado por la política, con planeación, gestión del riesgo, ambiente, vivienda, desarrollo social, desarrollo rural y la personería. Se reúne cada mes y cada secretaría tiene funciones definidas en el acuerdo: planeación coordina y controla el suelo, gestión del riesgo monitorea, vivienda ejecuta traslados, desarrollo social acompaña, desarrollo rural lleva el programa de permanencia y la personería vigila derechos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué capacidades técnicas cuentan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos un equipo de doce profesionales entre planeación y gestión del riesgo, con geólogos, ingenieros, trabajadores sociales y un SIG corporativo. La debilidad es que la mitad son contratistas y hay rotación cada año, y no tenemos capacidad propia para formular proyectos de cooperación internacional; para eso dependemos de consultores."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué actores externos trabajan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con la CDMB tenemos la red de monitoreo de quebradas y laderas con veinte estaciones; con la Universidad Industrial de Santander, los estudios del POT y la evaluación anual de la política; con la gobernación, la cofinanciación de vivienda; con la UNGRD, asistencia técnica en el decreto; y con una agencia de cooperación, el programa piloto de permanencia rural. Nos reunimos con todos en una mesa regional semestral."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué información tienen sobre zonas expuestas y población vulnerable?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos los estudios del POT, los datos en tiempo real de las veinte estaciones y un censo de 2024 de hogares en zonas de amenaza alta y riesgo no mitigable: dos mil cien hogares caracterizados por ingresos, edad, discapacidad, jefatura y pertenencia étnica. Se actualiza cada dos años."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y datos sobre cómo el clima afecta la permanencia o la salida de la gente?"
+    },
+    {
+      "rol": "user",
+      "texto": "El observatorio de la política publica un informe anual. El último estimó, cruzando el censo con el SISBÉN, que unos trescientos hogares rurales llegaron a la ciudad entre 2020 y 2024 por pérdida de cosechas. Todavía no medimos bien a quienes se quedan atrapados en las laderas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo usan la información para decidir?"
+    },
+    {
+      "rol": "user",
+      "texto": "El censo define la priorización del reasentamiento, las estaciones activan las alertas, el informe del observatorio se usó para diseñar el programa de permanencia rural, y el tablero de indicadores orienta el presupuesto de cada secretaría en el plan de inversiones."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué medidas o rutas existen para prevenir o responder?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos alertas tempranas con sirenas y mensajes de texto en las quebradas, protocolos de evacuación por barrio, obras de mitigación donde el riesgo es mitigable, el programa de permanencia rural y la ruta del Decreto 102. Para olas de calor hay un protocolo con salud para adultos mayores."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo ha funcionado el reasentamiento?"
+    },
+    {
+      "rol": "user",
+      "texto": "Desde 2023 hemos reasentado cuatrocientos diez hogares por la ruta del decreto. Pueden elegir vivienda nueva en tres proyectos dentro de la ciudad o compensación para vivienda usada; reciben arriendo mientras tanto, y los predios liberados se convierten en parques y senderos para que no se vuelvan a ocupar."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué condiciones tienen los hogares más allá de la vivienda?"
+    },
+    {
+      "rol": "user",
+      "texto": "Los proyectos están en barrios con servicios, transporte, colegio y centro de salud. Desarrollo social acompaña a cada hogar dieciocho meses, y desarrollo económico tiene una ruta de empleabilidad y emprendimiento con cupos prioritarios. Quienes tenían negocios reciben capital semilla para reabrirlos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se tiene en cuenta a los grupos en mayor situación de vulnerabilidad y criterios de equidad?"
+    },
+    {
+      "rol": "user",
+      "texto": "La política tiene enfoque de derechos humanos, de género, étnico y de discapacidad. El censo identifica esos hogares y el decreto ordena que los hogares con adultos mayores solos, personas con discapacidad y jefatura femenina se trasladen primero y reciban viviendas adaptadas. Además el subsidio se calcula con criterio de equidad: los hogares de menores ingresos no pagan nada. La personería verifica el cumplimiento."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo participan las comunidades?"
+    },
+    {
+      "rol": "user",
+      "texto": "Cada reasentamiento tiene una mesa con la comunidad, y las juntas de acción comunal participan en el comité intersectorial. Los barrios hicieron mapas de riesgo comunitarios que se incorporaron al PMGRD, y las familias votan el diseño y la ubicación de las viviendas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muchas gracias por esta conversación. Lo que me compartió sobre la política de movilidad humana, el observatorio y el comité intersectorial es muy valioso para el diagnóstico de Altavista de los Andes."
+    }
+  ],
+  "esperado": {
+    "p1": 3,
+    "p2": 3,
+    "p3": 3,
+    "p4": 3,
+    "p5": 3,
+    "p6": 3,
+    "p7": 3,
+    "p8": 2,
+    "p9": 3,
+    "p10": 3,
+    "p11": 2,
+    "p12": 3,
+    "p13": 3,
+    "p14": 3,
+    "p15": 3,
+    "p16": 3,
+    "p17": 3,
+    "p18": 3
+  },
+  "total_esperado": 52,
+  "justificacion": {
+    "p1": "\"Reconocemos cuatro dinámicas: desplazamiento interno... migración campesina... inmovilidad... y reasentamiento planificado\", con evidencia de la red de estaciones.",
+    "p2": "\"El Acuerdo 018 de 2022 adoptó la política pública de movilidad humana y adaptación climática... crea un observatorio... Decreto 102 de 2023\".",
+    "p3": "\"asunto de planeación, adaptación, vivienda, permanencia y protección, no de emergencia... programa de permanencia con riego y seguros agrícolas\".",
+    "p4": "\"El POT de 2021 incorpora estudios de detalle... a escala 1:2.000... desabastecimiento hídrico... PMGRD 2022 y el plan de acción climática... metas... al 2030\".",
+    "p5": "\"compartan metas y un tablero común de indicadores... revisa el tablero cada trimestre... bolsa de subsidios reservada\".",
+    "p6": "\"El Decreto 102 define el procedimiento completo: declaratoria... censo... avalúo... vivienda de reposición o compensación... acompañamiento social\".",
+    "p7": "\"comité intersectorial de movilidad climática... se reúne cada mes... funciones definidas en el acuerdo\".",
+    "p8": "\"doce profesionales... SIG corporativo. La debilidad es que la mitad son contratistas... dependemos de consultores\": capacidad importante con vacíos.",
+    "p9": "\"CDMB... veinte estaciones... Universidad Industrial de Santander... evaluación anual... gobernación... UNGRD... agencia de cooperación... mesa regional semestral\".",
+    "p10": "\"estudios del POT, los datos en tiempo real de las veinte estaciones y un censo de 2024... dos mil cien hogares caracterizados... Se actualiza cada dos años\".",
+    "p11": "\"unos trescientos hogares rurales llegaron a la ciudad entre 2020 y 2024... Todavía no medimos bien a quienes se quedan atrapados\".",
+    "p12": "\"El censo define la priorización... el informe del observatorio se usó para diseñar el programa de permanencia... el tablero... orienta el presupuesto\".",
+    "p13": "\"alertas tempranas con sirenas y mensajes de texto... protocolos... obras de mitigación... programa de permanencia rural... ruta del Decreto 102... protocolo con salud\".",
+    "p14": "\"hemos reasentado cuatrocientos diez hogares... vivienda nueva... o compensación... arriendo... parques y senderos\".",
+    "p15": "\"servicios, transporte, colegio y centro de salud... acompaña... dieciocho meses... ruta de empleabilidad... capital semilla\".",
+    "p16": "\"enfoque de derechos humanos, de género, étnico y de discapacidad. El censo identifica esos hogares... La personería verifica\".",
+    "p17": "\"mesa con la comunidad... juntas... en el comité intersectorial... mapas de riesgo comunitarios que se incorporaron al PMGRD... las familias votan\".",
+    "p18": "\"se trasladen primero y reciban viviendas adaptadas... el subsidio se calcula con criterio de equidad: los hogares de menores ingresos no pagan nada\"."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

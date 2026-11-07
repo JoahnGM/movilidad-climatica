@@ -3,10 +3,14 @@ export type IcebergId = 'iceberg_1' | 'iceberg_2' | 'iceberg_3' | 'iceberg_4'
 export type DimensionId = 'd1_reconocimiento' | 'd2_instrumentos' | 'd3_capacidad' | 'd4_informacion' | 'd5_respuestas' | 'd6_equidad'
 export type UrgenciaType = 'inmediata' | 'corto_plazo' | 'mediano_plazo'
 export type EstadoDimension = 'fortaleza' | 'en_desarrollo' | 'brecha_critica'
+export type ParaQuien = 'todos' | 'categoria_1_3' | 'categoria_4_6_PDET'
+export type Confianza = 'alta' | 'media' | 'baja'
 
 export interface PreguntaScore {
   puntaje: 0 | 1 | 2 | 3
   evidencia: string
+  /** false si el modelo dio puntaje > 0 con una cita que no aparece en los turnos del funcionario (el puntaje se lleva a 0). */
+  verificada?: boolean
 }
 
 export interface DimensionScore {
@@ -30,10 +34,12 @@ export interface AnalisisResult {
     d6_equidad: DimensionScore
   }
   puntaje_total: number
-  confianza: 'alta' | 'media' | 'baja'
+  confianza: Confianza
   dimension_mas_fuerte: DimensionId
   dimension_mas_debil: DimensionId
   gaps_de_informacion: string[]
+  /** Versión de la rúbrica/prompts con que se calculó (ver src/lib/prompts/version.ts). */
+  rubrica_version?: string
 }
 
 export interface DimensionResumen {
@@ -47,8 +53,16 @@ export interface DimensionResumen {
 export interface Recomendacion {
   dimension: DimensionId
   area: string
+  /** Resumen de una línea de la ruta (lo que muestra RecomendacionCard). */
   accion: string
   urgencia: UrgenciaType
+  /** Sin costo o con recursos existentes, ≤6 meses. */
+  primer_paso?: string
+  /** Requiere decisión administrativa o articulación, 6–18 meses. */
+  siguiente_paso?: string
+  /** Requiere inversión, cooperación o instrumento formal, >18 meses. */
+  ruta_ampliada?: string
+  para_quien?: ParaQuien
 }
 
 export interface DiagnosticoResult {

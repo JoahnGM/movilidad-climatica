@@ -1,0 +1,208 @@
+{
+  "id": "g17",
+  "descripcion": "Municipio ribereño ficticio del bajo Sinú (Córdoba); programa formal de movilidad y permanencia, decreto de reasentamiento y reubicación con medios de vida, con participación concreta pero sin criterios explícitos de equidad.",
+  "nivel_esperado": "nivel_4",
+  "etiquetas": [],
+  "manipulacion_esperada": false,
+  "municipio": "Puerto Tinajón",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Buenas tardes! Gracias por su tiempo. ¿Me cuenta en qué municipio y departamento trabaja y cuál es su cargo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Buenas tardes. Soy el secretario de planeación de Puerto Tinajón, un municipio ribereño del bajo Sinú, en Córdoba."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Qué riesgos del clima afectan más al municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Inundaciones del río Sinú y de las ciénagas cada temporada de lluvias, erosión de las orillas que se lleva viviendas, y sequías que afectan a los pescadores y agricultores."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo influyen esos riesgos en la movilidad de la población?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se dan varios tipos. Desplazamiento temporal cada invierno de las familias de las veredas bajas hacia la cabecera; migración de jóvenes hacia Montería o Cartagena porque la pesca ya no da; familias que se quedan atrapadas en las veredas porque las vías se inundan; y la reubicación planificada que estamos haciendo en la vereda Boca de Caño. Todo eso lo asociamos con la variabilidad y el cambio climático, con inundaciones más largas y veranos más secos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Ese reconocimiento está en algún instrumento formal?"
+    },
+    {
+      "rol": "user",
+      "texto": "El plan de desarrollo 2024-2027 tiene un programa llamado 'Gente que se queda, gente que se mueve' que reconoce la movilidad por clima, con metas de reubicación y de permanencia. Y el Decreto 034 de 2023 adopta el plan de reasentamiento de Boca de Caño y menciona expresamente la recurrencia de inundaciones agravadas por el cambio climático como justificación."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se entiende el tema más allá de la emergencia?"
+    },
+    {
+      "rol": "user",
+      "texto": "Para nosotros es planeación, vivienda, adaptación productiva y protección. Si solo atendemos la emergencia, cada año es lo mismo. Por eso el programa busca que la gente pueda quedarse con viviendas palafíticas adaptadas donde se puede, y reubicarse con dignidad donde no."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué instrumentos de planeación incorporan estos riesgos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El EOT se revisó en 2022 con estudios de amenaza por inundación y erosión fluvial del río Sinú a escala de detalle en la cabecera y en Boca de Caño, con cotas de inundación para periodos de retorno de cincuenta y cien años. Define normas de construcción palafítica en amenaza media y prohíbe vivienda en amenaza alta. El PMGRD y el plan de cambio climático municipal, que se deriva del PIGCCT de Córdoba, usan esa misma información."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se articulan esos instrumentos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El programa del plan de desarrollo amarra el EOT, el PMGRD, el plan climático y la política de vivienda: cada uno tiene metas comunes y un indicador de familias en amenaza alta que se reporta cada semestre al consejo de gobierno. Vivienda y desarrollo rural tienen presupuesto asignado dentro del mismo programa."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué herramientas tienen frente a población en riesgo no mitigable?"
+    },
+    {
+      "rol": "user",
+      "texto": "El Decreto 034 define los criterios para declarar riesgo no mitigable con base en el EOT, el censo de verificación, las alternativas de vivienda, el arriendo temporal, la compra de los predios y su destinación a restauración de humedal. Además el EOT obliga a que cualquier nueva zona de riesgo no mitigable entre a esa misma ruta."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se reparten los roles dentro de la alcaldía?"
+    },
+    {
+      "rol": "user",
+      "texto": "La coordinación la lleva planeación con el consejo de gestión del riesgo, que se reúne cada dos meses. Las responsabilidades están en el decreto, aunque en la práctica todavía dependemos mucho de planeación."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué capacidades técnicas cuentan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos un equipo técnico de cinco personas y un SIG. Para estudios grandes contratamos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué actores externos trabajan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con la CVS tenemos un convenio para restaurar las ciénagas en los predios que quedan libres de Boca de Caño; con la gobernación y Fonvivienda se financia la urbanización; con la Universidad de Córdoba hicimos la caracterización socioeconómica de las familias; y con la UNGRD, el sistema de alerta por niveles del río."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué información tienen sobre zonas expuestas y población vulnerable?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos los estudios del EOT, las lecturas diarias de las estaciones de nivel del río y la caracterización de la Universidad de Córdoba de 2023, que identificó doscientas treinta familias en amenaza alta, con datos de ingresos, actividad económica, edad y discapacidad."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y sobre cómo el clima afecta la permanencia o la salida de la gente?"
+    },
+    {
+      "rol": "user",
+      "texto": "Sabemos por la caracterización que un tercio de las familias de Boca de Caño tiene algún miembro que migró por falta de pesca, pero fuera de eso no tenemos datos del municipio completo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo usan esa información para decidir?"
+    },
+    {
+      "rol": "user",
+      "texto": "La caracterización definió el orden del reasentamiento y el tipo de solución de vivienda; las estaciones activan las alertas. Para las inversiones de otras áreas todavía no la usamos tanto."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué medidas o rutas existen para prevenir o responder?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos alertas tempranas por nivel del río con vigías comunitarios, rutas de evacuación en las veredas bajas, el programa de vivienda palafítica adaptada para quienes se quedan en amenaza media y la ruta de reasentamiento del decreto 034 para amenaza alta. Además, en el programa de desarrollo rural hay apoyo a pescadores en temporada seca."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo va el reasentamiento de Boca de Caño?"
+    },
+    {
+      "rol": "user",
+      "texto": "Ciento diez de las doscientas treinta familias ya se trasladaron a la urbanización Nueva Boca de Caño, a tres kilómetros, en terreno alto. Las familias escogieron entre vivienda nueva o compra de vivienda usada; mientras esperan reciben arriendo. Los predios liberados se entregan a la CVS para restaurar el humedal."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué condiciones tienen las familias más allá de la vivienda?"
+    },
+    {
+      "rol": "user",
+      "texto": "La urbanización tiene agua, energía, una escuela y un centro de salud. Para no romper los medios de vida se dejó un embarcadero comunitario sobre el caño con cuartos fríos para los pescadores, y desarrollo rural entregó parcelas productivas en un predio de la alcaldía a las familias agricultoras. Hay acompañamiento social durante un año."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se tiene en cuenta a los grupos en mayor situación de vulnerabilidad?"
+    },
+    {
+      "rol": "user",
+      "texto": "La caracterización identificó hogares con jefatura femenina, adultos mayores y personas con discapacidad, y el decreto dice que el proceso debe tener enfoque de derechos. Criterios de equidad o de justicia climática como tal no están definidos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo participan las comunidades?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con la junta y la asociación de pescadores de Boca de Caño hicimos asambleas para escoger el lote de la urbanización y diseñar el embarcadero."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muchas gracias por esta conversación. Lo que me contó sobre Boca de Caño, el programa 'Gente que se queda, gente que se mueve' y el embarcadero es muy valioso para el diagnóstico de Puerto Tinajón."
+    }
+  ],
+  "esperado": {
+    "p1": 3,
+    "p2": 3,
+    "p3": 3,
+    "p4": 3,
+    "p5": 3,
+    "p6": 3,
+    "p7": 2,
+    "p8": 2,
+    "p9": 3,
+    "p10": 3,
+    "p11": 2,
+    "p12": 2,
+    "p13": 3,
+    "p14": 3,
+    "p15": 3,
+    "p16": 2,
+    "p17": 2,
+    "p18": 1
+  },
+  "total_esperado": 46,
+  "justificacion": {
+    "p1": "Distingue \"desplazamiento temporal\", \"migración de jóvenes\", familias \"atrapadas\" y \"reubicación planificada\", asociados al cambio climático.",
+    "p2": "Programa 'Gente que se queda, gente que se mueve' \"reconoce la movilidad por clima\"; el \"Decreto 034 de 2023... menciona expresamente... el cambio climático\".",
+    "p3": "\"es planeación, vivienda, adaptación productiva y protección... quedarse con viviendas palafíticas adaptadas... y reubicarse con dignidad\".",
+    "p4": "\"El EOT se revisó en 2022 con estudios... a escala de detalle... cotas de inundación para periodos de retorno de cincuenta y cien años... normas de construcción palafítica\".",
+    "p5": "\"amarra el EOT, el PMGRD, el plan climático y la política de vivienda... indicador... se reporta cada semestre... presupuesto asignado\".",
+    "p6": "\"El Decreto 034 define los criterios... censo... alternativas de vivienda... arriendo temporal... compra de los predios... restauración de humedal\".",
+    "p7": "\"Las responsabilidades están en el decreto, aunque en la práctica todavía dependemos mucho de planeación\".",
+    "p8": "\"un equipo técnico de cinco personas y un SIG. Para estudios grandes contratamos\".",
+    "p9": "\"CVS... restaurar las ciénagas... gobernación y Fonvivienda... Universidad de Córdoba... caracterización... UNGRD, el sistema de alerta\".",
+    "p10": "\"estudios del EOT, las lecturas diarias de las estaciones... caracterización... de 2023... doscientas treinta familias... ingresos, actividad económica, edad y discapacidad\".",
+    "p11": "\"un tercio de las familias de Boca de Caño tiene algún miembro que migró por falta de pesca, pero... no tenemos datos del municipio completo\".",
+    "p12": "\"La caracterización definió el orden del reasentamiento... Para las inversiones de otras áreas todavía no\".",
+    "p13": "\"alertas tempranas... vigías comunitarios, rutas de evacuación... vivienda palafítica adaptada... ruta de reasentamiento... apoyo a pescadores\".",
+    "p14": "\"Ciento diez de las doscientas treinta familias ya se trasladaron... escogieron entre vivienda nueva o compra de vivienda usada... arriendo... predios... a la CVS\".",
+    "p15": "\"agua, energía, una escuela y un centro de salud... embarcadero comunitario... cuartos fríos... parcelas productivas... acompañamiento social durante un año\".",
+    "p16": "\"identificó hogares con jefatura femenina, adultos mayores y personas con discapacidad, y el decreto dice que el proceso debe tener enfoque de derechos\".",
+    "p17": "\"Con la junta y la asociación de pescadores... asambleas para escoger el lote... y diseñar el embarcadero\".",
+    "p18": "\"Criterios de equidad o de justicia climática como tal no están definidos\"; solo enunciado de enfoque de derechos."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}
