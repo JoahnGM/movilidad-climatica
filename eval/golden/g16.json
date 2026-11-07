@@ -1,0 +1,210 @@
+{
+  "id": "g16",
+  "descripcion": "Ciudad intermedia ficticia del norte de Antioquia; política pública y decreto de reasentamiento sólidos con datos en tiempo real, pero débil en seguimiento de movilidad, participación y justicia climática; total en el borde inferior del nivel 4.",
+  "nivel_esperado": "nivel_4",
+  "etiquetas": [
+    "borde"
+  ],
+  "manipulacion_esperada": false,
+  "municipio": "Quebradas Altas",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Buenos días! Gracias por su tiempo. ¿Me cuenta en qué municipio y departamento trabaja y cuál es su rol?"
+    },
+    {
+      "rol": "user",
+      "texto": "Buenos días. Soy la subdirectora de gestión del riesgo y cambio climático del departamento de planeación de Quebradas Altas, una ciudad intermedia del norte de Antioquia."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Cuáles son los riesgos del clima más importantes en la ciudad?"
+    },
+    {
+      "rol": "user",
+      "texto": "Avenidas torrenciales en las seis quebradas que bajan por la ciudad, deslizamientos en las laderas donde están los asentamientos informales, y olas de calor que antes no teníamos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo influyen esos riesgos en la movilidad de la población?"
+    },
+    {
+      "rol": "user",
+      "texto": "Lo tenemos muy claro. Hay desplazamiento interno cuando una avenida torrencial obliga a evacuar; hay familias que se van de la ciudad después de perder la casa; hay población atrapada en las laderas, gente que no tiene a dónde ir; y hacemos reasentamiento planificado de las familias en zonas de riesgo no mitigable. Y lo vinculamos con el cambio climático porque los aguaceros extremos se han duplicado según los registros de la estación de la ciudad."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muy completo. ¿Ese reconocimiento está en algún instrumento formal?"
+    },
+    {
+      "rol": "user",
+      "texto": "Sí. El Acuerdo municipal 012 de 2022, que adoptó la política pública de gestión del riesgo y cambio climático, reconoce explícitamente 'la movilidad humana asociada a eventos climáticos' y dedica un capítulo a reasentamiento planificado y a la población que permanece en zonas expuestas. Ordena que las secretarías incluyan esa población en sus programas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se entiende el tema en la alcaldía, más allá de la emergencia?"
+    },
+    {
+      "rol": "user",
+      "texto": "Precisamente por eso la política dice que esto no es solo emergencia. Lo trabajamos desde ordenamiento, vivienda, adaptación y protección social. La emergencia es apenas una parte."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué instrumentos de planeación incorporan estos riesgos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El POT de 2021 tiene estudios de detalle de amenaza por avenida torrencial en las seis quebradas y por movimientos en masa en las laderas, a escala 1:2.000, con escenarios de lluvias extremas. El PMGRD 2022 está alineado con esos estudios, y el plan de acción climático municipal tiene metas de reducción de población expuesta al 2030."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se articulan esos instrumentos con vivienda y otros sectores?"
+    },
+    {
+      "rol": "user",
+      "texto": "El POT, el PMGRD y el plan climático comparten estudios y metas. Con vivienda se ha avanzado, aunque los subsidios todavía no alcanzan para todo lo que pide la política."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué herramientas tienen frente a población en riesgo no mitigable?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos el Decreto 210 de 2022 que reglamenta el reasentamiento: declara las zonas de riesgo no mitigable con base en el POT, define el censo, la valoración de las mejoras, la compensación económica o la vivienda de reposición, el arriendo temporal y la entrega del predio al municipio para convertirlo en parque lineal."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se reparten los roles dentro de la alcaldía?"
+    },
+    {
+      "rol": "user",
+      "texto": "Mi subdirección coordina, y hay una mesa interinstitucional con vivienda, desarrollo social y obras públicas que se reúne cuando hay casos. Todavía no hay roles escritos para todas las dependencias."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué capacidades técnicas cuentan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos seis profesionales en la subdirección, entre ellos dos geólogos, y un sistema de alerta temprana propio. Nos falta personal social para acompañar a las familias."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué actores externos trabajan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con Corantioquia tenemos un convenio para la red de monitoreo de las quebradas con doce sensores de nivel; con la Universidad de Antioquia hicimos los estudios de detalle del POT; con el DAGRAN cofinanciamos obras de mitigación; y con una ONG internacional de cooperación estamos piloteando un proyecto de soluciones basadas en la naturaleza en la quebrada La Arenosa."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué información tienen sobre zonas expuestas y población vulnerable?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos los estudios del POT actualizados, los datos en tiempo real de los doce sensores y un censo de 2024 de población en zonas de riesgo no mitigable: mil cuatrocientas familias, con caracterización de hogares por edad, discapacidad y jefatura del hogar."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y sobre cómo el clima afecta la permanencia o la salida de la gente?"
+    },
+    {
+      "rol": "user",
+      "texto": "Ahí estamos flojos. Sabemos que hay familias que se van después de las avenidas torrenciales, pero no hacemos seguimiento sistemático."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo usan la información para decidir?"
+    },
+    {
+      "rol": "user",
+      "texto": "Los sensores activan las alertas y el censo define el orden de reasentamiento. Para la inversión de otras secretarías todavía no se usa mucho."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué medidas o rutas existen para prevenir o responder?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos el sistema de alerta temprana con sirenas en las seis quebradas y protocolos de evacuación por barrio, además de la ruta del decreto de reasentamiento. Para quienes se van de la ciudad no hay ruta."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo ha funcionado el reasentamiento?"
+    },
+    {
+      "rol": "user",
+      "texto": "Desde 2022 hemos reasentado a trescientas veinte familias por la ruta del decreto 210. Pueden escoger entre vivienda de reposición en dos proyectos de vivienda de interés prioritario o compensación económica para comprar vivienda usada verificada por la alcaldía. Mientras tanto reciben arriendo temporal, y los predios liberados se convierten en parques lineales para que no se vuelvan a ocupar."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué condiciones tienen las familias más allá de la vivienda?"
+    },
+    {
+      "rol": "user",
+      "texto": "Los proyectos tienen servicios públicos y están cerca de colegios. Para medios de vida hay cupos prioritarios en los programas de empleo de desarrollo económico, aunque no todos los aprovechan."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se tiene en cuenta a los grupos en mayor situación de vulnerabilidad y criterios de equidad?"
+    },
+    {
+      "rol": "user",
+      "texto": "El censo caracteriza hogares con adultos mayores, discapacidad y jefatura femenina, y la política habla de enfoque de derechos. De criterios de justicia climática como tal no hemos avanzado mucho; se mencionan en la política pero no se aplican."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo participan las comunidades?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se socializa el proceso con las juntas de acción comunal antes de cada reasentamiento."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muchas gracias por esta conversación tan completa. Lo que me compartió sobre el Acuerdo 012, el decreto 210 y la red de sensores es muy valioso para el diagnóstico de Quebradas Altas."
+    }
+  ],
+  "esperado": {
+    "p1": 3,
+    "p2": 3,
+    "p3": 3,
+    "p4": 3,
+    "p5": 2,
+    "p6": 3,
+    "p7": 2,
+    "p8": 2,
+    "p9": 3,
+    "p10": 3,
+    "p11": 1,
+    "p12": 2,
+    "p13": 2,
+    "p14": 3,
+    "p15": 2,
+    "p16": 2,
+    "p17": 1,
+    "p18": 1
+  },
+  "total_esperado": 41,
+  "justificacion": {
+    "p1": "Distingue \"desplazamiento interno\", familias que \"se van de la ciudad\", \"población atrapada\" y \"reasentamiento planificado\", vinculados a aguaceros extremos.",
+    "p2": "\"El Acuerdo municipal 012 de 2022... reconoce explícitamente 'la movilidad humana asociada a eventos climáticos' y dedica un capítulo a reasentamiento planificado\".",
+    "p3": "\"la política dice que esto no es solo emergencia. Lo trabajamos desde ordenamiento, vivienda, adaptación y protección social\".",
+    "p4": "\"El POT de 2021 tiene estudios de detalle... a escala 1:2.000, con escenarios de lluvias extremas... plan de acción climático... metas... al 2030\".",
+    "p5": "\"comparten estudios y metas. Con vivienda se ha avanzado, aunque los subsidios todavía no alcanzan\".",
+    "p6": "\"Decreto 210 de 2022... declara las zonas de riesgo no mitigable... censo... compensación económica o la vivienda de reposición... parque lineal\".",
+    "p7": "\"mesa interinstitucional... que se reúne cuando hay casos. Todavía no hay roles escritos para todas las dependencias\".",
+    "p8": "\"seis profesionales... dos geólogos... sistema de alerta temprana propio. Nos falta personal social\".",
+    "p9": "\"Corantioquia... doce sensores de nivel... Universidad de Antioquia... DAGRAN cofinanciamos... ONG internacional... soluciones basadas en la naturaleza\".",
+    "p10": "\"estudios del POT actualizados, los datos en tiempo real de los doce sensores y un censo de 2024... mil cuatrocientas familias, con caracterización\".",
+    "p11": "\"Ahí estamos flojos... no hacemos seguimiento sistemático\".",
+    "p12": "\"Los sensores activan las alertas y el censo define el orden de reasentamiento. Para la inversión de otras secretarías todavía no\".",
+    "p13": "\"alerta temprana con sirenas... protocolos de evacuación por barrio... ruta del decreto... Para quienes se van de la ciudad no hay ruta\".",
+    "p14": "\"hemos reasentado a trescientas veinte familias... vivienda de reposición... o compensación... arriendo temporal... parques lineales\".",
+    "p15": "\"servicios públicos y... cerca de colegios... cupos prioritarios en los programas de empleo... aunque no todos los aprovechan\".",
+    "p16": "\"El censo caracteriza hogares con adultos mayores, discapacidad y jefatura femenina, y la política habla de enfoque de derechos\".",
+    "p17": "\"Se socializa el proceso con las juntas de acción comunal\": informativo.",
+    "p18": "\"De criterios de justicia climática... no hemos avanzado mucho; se mencionan en la política pero no se aplican\"."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

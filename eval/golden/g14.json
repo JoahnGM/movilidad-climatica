@@ -1,0 +1,208 @@
+{
+  "id": "g14",
+  "descripcion": "Municipio costero ficticio de Sucre con erosión y aumento del nivel del mar; secretaria de planeación con reconocimiento amplio, EOT con estudio técnico y reubicación en curso, débil en uso de datos, participación y equidad.",
+  "nivel_esperado": "nivel_3",
+  "etiquetas": [],
+  "manipulacion_esperada": false,
+  "municipio": "Arenales del Golfo",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Hola, buenos días! Gracias por su tiempo. ¿Me cuenta en qué municipio y departamento trabaja y cuál es su cargo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hola, buenos días. Soy la secretaria de planeación y medio ambiente de Arenales del Golfo, en la costa de Sucre, sobre el golfo de Morrosquillo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Qué riesgos del clima afectan más al municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "La erosión costera es lo más grave. También mares de leva, inundaciones por lluvias en los barrios bajos y olas de calor cada vez más seguidas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo influyen esos riesgos en la movilidad de la población?"
+    },
+    {
+      "rol": "user",
+      "texto": "Lo vemos de varias formas. En el sector de Punta Brava la erosión ha hecho retroceder la línea de costa unos cuarenta metros desde 2010, y han salido unas sesenta familias hacia otros barrios o hacia Tolú y Sincelejo. Hay otras familias de pescadores que no se quieren ir porque su sustento es el mar, aunque el agua ya les llegue a la puerta. Y la alcaldía planea una reubicación de las que están en primera línea. Para nosotros eso es claramente efecto del aumento del nivel del mar y de mares de leva más fuertes."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Una lectura muy completa. ¿Cómo se entiende el tema en la alcaldía, más allá de las emergencias?"
+    },
+    {
+      "rol": "user",
+      "texto": "Ya no lo vemos como un tema de emergencia. Es de ordenamiento de la costa, de vivienda, de cómo protegemos a los pescadores para que puedan seguir viviendo del mar aunque se trasladen, y de adaptación con obras y con restauración de manglar."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué instrumentos recogen estos riesgos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El EOT se ajustó en 2022 e incluyó el estudio de amenaza por erosión costera e inundación marina que hizo el INVEMAR, con proyecciones de aumento del nivel del mar al 2040. Delimita una franja de retiro de cincuenta metros en Punta Brava. El PMGRD de 2023 tiene escenarios de erosión, mar de leva e inundación urbana, y el municipio hace parte del POMIUAC del golfo de Morrosquillo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Alguno de esos instrumentos habla de la movilidad de las personas por el clima?"
+    },
+    {
+      "rol": "user",
+      "texto": "El EOT habla de 'relocalización de viviendas en la franja de retiro', pero no menciona migración ni desplazamiento por clima."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se articulan esos instrumentos entre sí y con vivienda?"
+    },
+    {
+      "rol": "user",
+      "texto": "El EOT y el PMGRD comparten la cartografía del INVEMAR. Con vivienda hemos avanzado: el plan de desarrollo tiene una meta de vivienda nueva para familias de la franja. Lo que no está tan amarrado es el POMIUAC, que lo maneja la corporación."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué herramientas tienen frente a población en riesgo no mitigable?"
+    },
+    {
+      "rol": "user",
+      "texto": "La franja de retiro en Punta Brava está declarada como riesgo no mitigable en el EOT. Para el traslado estamos usando el procedimiento de la Ley 1523 y del Decreto 1077; no hay un decreto municipal todavía."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se reparten los roles en la alcaldía?"
+    },
+    {
+      "rol": "user",
+      "texto": "Planeación lidera lo de ordenamiento y adaptación, la oficina de gestión del riesgo maneja el consejo municipal y vivienda los subsidios. Tenemos una mesa costera que se reúne cada dos meses con esas tres áreas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué capacidades técnicas cuentan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos un equipo de cinco personas en planeación, con una bióloga marina y un ingeniero civil, y usamos la información del INVEMAR. Para formular proyectos ante el Sistema General de Regalías nos falta experiencia."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué actores externos trabajan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con Carsucre trabajamos la restauración de quince hectáreas de manglar en Punta Brava como barrera natural, con el INVEMAR el monitoreo anual de la línea de costa, y con la gobernación de Sucre estamos en la comisión conjunta del POMIUAC, donde se prioriza la protección costera de todo el golfo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué información tienen sobre zonas expuestas y población?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos el estudio del INVEMAR y los monitoreos anuales de línea de costa. Sobre población, un censo de 2022 de la franja de retiro: ciento cuarenta viviendas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y sobre las familias que han salido por la erosión?"
+    },
+    {
+      "rol": "user",
+      "texto": "Lo de las sesenta familias que salieron lo sabemos por la junta de acción comunal, más que por un estudio formal."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo usan la información para tomar decisiones?"
+    },
+    {
+      "rol": "user",
+      "texto": "La verdad, los estudios están, pero se usan poco para decidir; muchas veces las inversiones se definen por otras razones."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué medidas o rutas existen para prevenir o responder?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos el protocolo de evacuación por mar de leva con alertas de la DIMAR, y la restauración de manglar como medida de reducción de exposición. Para las familias que salen por su cuenta no hay acompañamiento."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo va la reubicación de la primera línea?"
+    },
+    {
+      "rol": "user",
+      "texto": "Treinta y cinco familias de Punta Brava se van a trasladar al proyecto Villa Manglar, a dos kilómetros del mar, con subsidio del municipio y de Fonvivienda. Llevamos diez casas entregadas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué condiciones tendrán esas familias más allá de la vivienda?"
+    },
+    {
+      "rol": "user",
+      "texto": "El proyecto tiene agua, energía y el colegio cerca. Para los pescadores estamos gestionando un sitio de desembarco y una cava comunitaria en la playa para que no pierdan su sustento, pero todavía está en gestión."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se tiene en cuenta a los grupos en mayor situación de vulnerabilidad y criterios de equidad?"
+    },
+    {
+      "rol": "user",
+      "texto": "En el diagnóstico del PMGRD quedó claro que los más expuestos son las familias de pescadores artesanales y la población afro de Punta Brava, con mayores niveles de pobreza. En el discurso se habla de justicia climática, pero en la práctica no hemos definido criterios concretos para priorizar."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo participan las comunidades?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se han hecho socializaciones del proyecto con la comunidad de Punta Brava."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muchas gracias por esta conversación. Lo que me contó sobre Punta Brava, el estudio del INVEMAR y Villa Manglar es muy valioso para el diagnóstico de Arenales del Golfo."
+    }
+  ],
+  "esperado": {
+    "p1": 3,
+    "p2": 1,
+    "p3": 3,
+    "p4": 3,
+    "p5": 2,
+    "p6": 2,
+    "p7": 2,
+    "p8": 2,
+    "p9": 3,
+    "p10": 2,
+    "p11": 1,
+    "p12": 1,
+    "p13": 2,
+    "p14": 2,
+    "p15": 2,
+    "p16": 2,
+    "p17": 1,
+    "p18": 1
+  },
+  "total_esperado": 35,
+  "justificacion": {
+    "p1": "Describe desplazamiento (\"han salido unas sesenta familias\"), inmovilidad de pescadores y reubicación planificada, vinculados al \"aumento del nivel del mar\".",
+    "p2": "\"El EOT habla de 'relocalización de viviendas en la franja de retiro', pero no menciona migración ni desplazamiento por clima\".",
+    "p3": "\"Ya no lo vemos como un tema de emergencia. Es de ordenamiento de la costa, de vivienda, de cómo protegemos a los pescadores... y de adaptación\".",
+    "p4": "\"El EOT se ajustó en 2022 e incluyó el estudio de amenaza... del INVEMAR, con proyecciones... al 2040... franja de retiro de cincuenta metros... PMGRD de 2023\".",
+    "p5": "\"El EOT y el PMGRD comparten la cartografía... meta de vivienda nueva para familias de la franja. Lo que no está tan amarrado es el POMIUAC\".",
+    "p6": "\"La franja de retiro... declarada como riesgo no mitigable en el EOT... no hay un decreto municipal todavía\".",
+    "p7": "\"Planeación lidera... gestión del riesgo maneja el consejo... vivienda los subsidios... mesa costera que se reúne cada dos meses\".",
+    "p8": "\"cinco personas... una bióloga marina y un ingeniero civil... nos falta experiencia\" en formulación.",
+    "p9": "\"Con Carsucre... restauración de quince hectáreas de manglar... con el INVEMAR el monitoreo anual... comisión conjunta del POMIUAC\".",
+    "p10": "\"el estudio del INVEMAR y los monitoreos anuales... un censo de 2022 de la franja de retiro: ciento cuarenta viviendas\".",
+    "p11": "\"lo sabemos por la junta de acción comunal, más que por un estudio formal\".",
+    "p12": "\"los estudios están, pero se usan poco para decidir\".",
+    "p13": "\"protocolo de evacuación por mar de leva con alertas de la DIMAR, y la restauración de manglar... Para las familias que salen por su cuenta no hay acompañamiento\".",
+    "p14": "\"Treinta y cinco familias... proyecto Villa Manglar... Llevamos diez casas entregadas\": en curso, parcial.",
+    "p15": "\"agua, energía y el colegio cerca... sitio de desembarco y una cava comunitaria... todavía está en gestión\".",
+    "p16": "\"los más expuestos son las familias de pescadores artesanales y la población afro de Punta Brava, con mayores niveles de pobreza\".",
+    "p17": "\"socializaciones del proyecto con la comunidad\": informativo.",
+    "p18": "\"En el discurso se habla de justicia climática, pero en la práctica no hemos definido criterios concretos\"."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

@@ -1,0 +1,208 @@
+{
+  "id": "g20",
+  "descripcion": "Municipio andino ficticio del Cauca con resguardos nasa; reasentamiento dentro del resguardo con medios de vida, enfoque étnico y participación plena, pero baja capacidad técnica propia y articulación limitada a un caso.",
+  "nivel_esperado": "nivel_4",
+  "etiquetas": [],
+  "manipulacion_esperada": false,
+  "municipio": "Piedras Moradas",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Buenas tardes! Gracias por su tiempo. ¿Me cuenta en qué municipio y departamento trabaja y cuál es su cargo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Buenas tardes. Soy el secretario de planeación de Piedras Moradas, en el oriente del Cauca. Buena parte del municipio son resguardos indígenas nasa, y también hay comunidades campesinas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Cuáles son los riesgos del clima más importantes?"
+    },
+    {
+      "rol": "user",
+      "texto": "Avenidas torrenciales del río Moradas y sus quebradas, deslizamientos en las laderas con los aguaceros intensos y, en los últimos años, veranos que secan los nacimientos de agua."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo influyen esos riesgos en la movilidad de la población?"
+    },
+    {
+      "rol": "user",
+      "texto": "En la vereda El Salado una avenida torrencial en 2021 obligó a evacuar a toda la vereda, y después se decidió reasentarla; ese es un caso de reubicación planificada. También hay familias campesinas que han migrado a Popayán o a Cali porque se les secaron los nacimientos. Y hay comunidades indígenas en la parte alta que quedan incomunicadas, atrapadas, cuando se caen las vías. Lo relacionamos con el cambio climático porque las lluvias son más concentradas y los veranos más largos, y eso lo dicen también los mayores de las comunidades."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se entiende el tema más allá de la emergencia?"
+    },
+    {
+      "rol": "user",
+      "texto": "Lo vemos como un tema de territorio. Para las comunidades nasa, salir del territorio no es una opción fácil, entonces tenemos que pensar adaptación, vivienda segura dentro del mismo territorio, agua para que el campesino se quede y protección de los derechos colectivos. La emergencia es solo el comienzo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué instrumentos de planeación incorporan estos riesgos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El EOT se revisó en 2022 con estudios básicos de amenaza por avenidas torrenciales y movimientos en masa, y estudios de detalle en El Salado y en la cabecera. El PMGRD 2023 tiene escenarios de avenida torrencial, deslizamiento y desabastecimiento, y el plan de vida del resguardo incorpora un capítulo de cuidado del territorio frente al clima que se concertó con la alcaldía."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Algún instrumento reconoce la movilidad de la población por el clima?"
+    },
+    {
+      "rol": "user",
+      "texto": "El Acuerdo municipal 009 de 2022 adopta el plan de reasentamiento de El Salado y reconoce que fue causado por la avenida torrencial y por la mayor intensidad de las lluvias. Para la migración campesina no hay nada formal."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se articulan esos instrumentos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El EOT y el PMGRD están alineados, y el plan de reasentamiento de El Salado se coordinó con vivienda y con el plan de vida del resguardo. Con el resto de veredas todavía no hay esa articulación."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué herramientas tienen frente a población en riesgo no mitigable?"
+    },
+    {
+      "rol": "user",
+      "texto": "El EOT declara riesgo no mitigable en El Salado y en dos sectores de la cabecera. Para El Salado el acuerdo define cómo se hace el reasentamiento; para los otros sectores todavía no hay procedimiento."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se reparten los roles dentro de la alcaldía?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hay una mesa de reasentamiento con planeación, gestión del riesgo, vivienda y el cabildo, que se reúne cada mes. Las funciones están claras para El Salado, pero no para otros casos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué capacidades técnicas cuentan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Esa es nuestra debilidad. Somos pocos, dependemos de contratistas y casi todo el conocimiento técnico viene de afuera."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué actores externos trabajan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con la CRC tenemos un convenio de protección de nacimientos de agua con las juntas campesinas; con la gobernación y el Ministerio de Vivienda se financió el nuevo asentamiento de El Salado; con la Universidad del Cauca se hizo el estudio de detalle; y con una organización de cooperación se acompañó el proceso comunitario. El cabildo coordina directamente con todos ellos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué información tienen sobre zonas expuestas y población?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos el estudio de detalle de 2022 y el censo propio que hizo el cabildo de las familias de El Salado: noventa y dos familias. Para el resto del municipio la información es la del EOT, sin datos de población."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y datos sobre cómo el clima afecta la permanencia o la salida de la gente?"
+    },
+    {
+      "rol": "user",
+      "texto": "Las juntas campesinas hicieron un conteo en 2023: veintiocho familias de cuatro veredas se fueron por la falta de agua desde 2019. Es la única cifra que tenemos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo usan esa información para decidir?"
+    },
+    {
+      "rol": "user",
+      "texto": "El censo del cabildo definió quiénes entraban al reasentamiento, y el conteo de las juntas sirvió para priorizar el convenio de nacimientos con la CRC. Para el resto todavía no."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué medidas o rutas existen para prevenir o responder?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos alerta comunitaria con la guardia indígena, que vigila el río y avisa por radio, y el protocolo de evacuación del PMGRD. Para la migración campesina, el convenio de protección de nacimientos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo fue el reasentamiento de El Salado?"
+    },
+    {
+      "rol": "user",
+      "texto": "Las noventa y dos familias se reasentaron entre 2023 y 2024 en el nuevo asentamiento Nueva Esperanza, dentro del mismo resguardo, en un terreno que el cabildo escogió y que tiene estudio de detalle. Se construyeron viviendas con diseño propio y la casa comunitaria; mientras tanto las familias estuvieron en arriendo financiado por la alcaldía. Los predios antiguos quedaron como zona de protección."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué condiciones tienen las familias más allá de la vivienda?"
+    },
+    {
+      "rol": "user",
+      "texto": "Nueva Esperanza tiene acueducto comunitario, energía, escuela y puesto de salud. Cada familia recibió una parcela para su tul, que es la huerta tradicional nasa, y se mantuvo el acceso a las zonas de cultivo. El acompañamiento lo hace el cabildo con la secretaría de desarrollo social."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se tiene en cuenta a los grupos en mayor situación de vulnerabilidad y criterios de equidad?"
+    },
+    {
+      "rol": "user",
+      "texto": "Todo el proceso se hizo con enfoque étnico y de derechos colectivos: hubo consulta previa con el cabildo, el reasentamiento se hizo dentro del resguardo para no romper el vínculo con el territorio, y el censo priorizó a mayores, mujeres cabeza de hogar y personas con discapacidad, que recibieron sus viviendas primero y adaptadas. Para las familias campesinas se aplicó el mismo criterio de priorización."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo participan las comunidades?"
+    },
+    {
+      "rol": "user",
+      "texto": "La comunidad decidió casi todo. La asamblea del cabildo escogió el terreno, la guardia indígena participó en el mapa de riesgo comunitario que se incorporó al PMGRD y las familias definieron el diseño de las casas con los arquitectos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muchas gracias por esta conversación. Lo que me compartió sobre El Salado, Nueva Esperanza y el trabajo con el cabildo es muy valioso para el diagnóstico de Piedras Moradas."
+    }
+  ],
+  "esperado": {
+    "p1": 3,
+    "p2": 2,
+    "p3": 3,
+    "p4": 3,
+    "p5": 2,
+    "p6": 2,
+    "p7": 2,
+    "p8": 1,
+    "p9": 3,
+    "p10": 2,
+    "p11": 2,
+    "p12": 2,
+    "p13": 2,
+    "p14": 3,
+    "p15": 3,
+    "p16": 3,
+    "p17": 3,
+    "p18": 3
+  },
+  "total_esperado": 44,
+  "justificacion": {
+    "p1": "Describe \"reubicación planificada\" de El Salado, migración campesina a Popayán o Cali y comunidades \"atrapadas\", vinculadas al cambio climático.",
+    "p2": "\"El Acuerdo municipal 009 de 2022 adopta el plan de reasentamiento de El Salado y reconoce... la mayor intensidad de las lluvias. Para la migración campesina no hay nada formal\".",
+    "p3": "\"Lo vemos como un tema de territorio... adaptación, vivienda segura dentro del mismo territorio, agua para que el campesino se quede y protección de los derechos colectivos\".",
+    "p4": "\"El EOT se revisó en 2022... estudios de detalle en El Salado y en la cabecera... PMGRD 2023... plan de vida del resguardo... cuidado del territorio frente al clima\".",
+    "p5": "\"el plan de reasentamiento de El Salado se coordinó con vivienda y con el plan de vida... Con el resto de veredas todavía no hay esa articulación\".",
+    "p6": "\"Para El Salado el acuerdo define cómo se hace el reasentamiento; para los otros sectores todavía no hay procedimiento\".",
+    "p7": "\"mesa de reasentamiento... se reúne cada mes. Las funciones están claras para El Salado, pero no para otros casos\".",
+    "p8": "\"Somos pocos, dependemos de contratistas y casi todo el conocimiento técnico viene de afuera\".",
+    "p9": "\"CRC... protección de nacimientos... gobernación y el Ministerio de Vivienda... Universidad del Cauca... organización de cooperación... El cabildo coordina directamente\".",
+    "p10": "\"el estudio de detalle de 2022 y el censo propio... noventa y dos familias. Para el resto del municipio... sin datos de población\".",
+    "p11": "\"conteo en 2023: veintiocho familias de cuatro veredas se fueron por la falta de agua desde 2019. Es la única cifra\".",
+    "p12": "\"El censo del cabildo definió quiénes entraban al reasentamiento, y el conteo... sirvió para priorizar el convenio... Para el resto todavía no\".",
+    "p13": "\"alerta comunitaria con la guardia indígena... protocolo de evacuación del PMGRD... convenio de protección de nacimientos\".",
+    "p14": "\"Las noventa y dos familias se reasentaron... Nueva Esperanza, dentro del mismo resguardo... arriendo financiado... Los predios antiguos quedaron como zona de protección\".",
+    "p15": "\"acueducto comunitario, energía, escuela y puesto de salud... parcela para su tul... acceso a las zonas de cultivo... acompañamiento\".",
+    "p16": "\"enfoque étnico y de derechos colectivos: hubo consulta previa... dentro del resguardo para no romper el vínculo con el territorio\".",
+    "p17": "\"La asamblea del cabildo escogió el terreno, la guardia indígena participó en el mapa de riesgo comunitario... las familias definieron el diseño\".",
+    "p18": "\"el censo priorizó a mayores, mujeres cabeza de hogar y personas con discapacidad, que recibieron sus viviendas primero y adaptadas... mismo criterio\" para campesinos."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

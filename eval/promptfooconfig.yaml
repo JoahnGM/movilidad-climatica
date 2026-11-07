@@ -1,0 +1,36 @@
+# Evaluación del Agente 2 con promptfoo: Gemini vs DeepSeek (vía AI Gateway con ZDR).
+# Ejecutar: npm run eval:promptfoo   (genera eval/promptfoo/generado/ desde el código)
+# La medición autoritativa (con grounding y puntaje en código) es scripts/eval-agentes.ts.
+description: Agente 2 (analista) — golden set
+prompts:
+  - file://promptfoo/generado/prompt.json
+providers:
+  - id: google:gemini-3-flash-preview
+    label: gemini
+    config:
+      temperature: 0
+      generationConfig:
+        responseMimeType: application/json
+  - id: openai:chat:deepseek/deepseek-v4.1-flash-1017
+    label: deepseek
+    config:
+      apiBaseUrl: https://ai-gateway.vercel.sh/v1
+      apiKeyEnvar: AI_GATEWAY_API_KEY
+      response_format: { type: json_object }
+      reasoning_effort: low
+      max_tokens: 4000
+      passthrough:
+        providerOptions:
+          gateway:
+            zeroDataRetention: true
+            only: [baseten, fireworks, togetherai, digitalocean, parasail]
+tests: file://promptfoo/generado/tests.json
+defaultTest:
+  assert:
+    - type: is-json
+    - type: javascript
+      value: file://promptfoo/asserts.cjs:esquema
+    - type: javascript
+      value: file://promptfoo/asserts.cjs:nivel
+    - type: javascript
+      value: file://promptfoo/asserts.cjs:sinTextosOficiales

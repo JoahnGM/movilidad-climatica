@@ -25,7 +25,7 @@ El producto central es un **chat-diagnóstico con inteligencia artificial** que 
 | Componentes | shadcn/ui |
 | Animaciones | Framer Motion |
 | IA / Chat | Vercel AI SDK (`ai` package) + Google Gemini |
-| Modelos | `gemini-3-flash-preview` (Agentes 1 y 2) · `gemini-3.1-pro-preview` (Agente 3) |
+| Modelos | Gemini en nivel gratuito: `gemini-3-flash-preview` (Agente 1) · `gemini-3.5-flash` (Agentes 2 y 3). DeepSeek vía AI Gateway existe detrás de `AI_PROVIDER=deepseek` pero no está adoptado. Fuente de verdad: `src/lib/ai/provider.ts` y `docs/estandares/agentes-ia.md` |
 | Deploy | Vercel |
 
 **Variable de entorno requerida:**
@@ -191,6 +191,8 @@ P18: ¿El territorio incorpora, de manera explícita o implícita, criterios de 
 ---
 
 ## 6. SYSTEM PROMPTS DE LOS AGENTES
+
+> **Fuente de verdad: `src/lib/prompts/`** (versionados con `RUBRICA_VERSION`; reglas en `docs/estandares/agentes-ia.md`). Los textos de esta sección son la base histórica: desde 2026-11-06 el Agente 2 ya no calcula subtotales ni total y el Agente 3 no elige nivel ni copia textos del iceberg (los calcula `src/lib/scoring.ts`). No restaures prompts desde aquí.
 
 ### Agente 1 — Entrevistador
 

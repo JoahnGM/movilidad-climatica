@@ -1,0 +1,194 @@
+{
+  "id": "g03",
+  "descripcion": "Municipio andino ficticio del Huila; profesional de ambiente con respuestas vagas y un solo instrumento concreto (EOT de 2003).",
+  "nivel_esperado": "nivel_1",
+  "etiquetas": [
+    "vago"
+  ],
+  "manipulacion_esperada": false,
+  "municipio": "Peñas Blancas del Suaza",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Buenos días! Gracias por su tiempo. Para empezar, ¿en qué municipio y departamento trabaja, y cuál es su rol?"
+    },
+    {
+      "rol": "user",
+      "texto": "Buenos días. Trabajo en la alcaldía de Peñas Blancas del Suaza, en el Huila. Soy el profesional de apoyo en la oficina de ambiente y desarrollo rural."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Cuáles son los riesgos del clima que más se viven en el municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Acá lo que tenemos son deslizamientos en las veredas de ladera y crecientes de quebradas cuando llueve fuerte. En verano también incendios forestales."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. ¿Y esas situaciones influyen en que la gente se mueva, se quede o se vaya del municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Puede ser, algo influye. Hay gente que se ha ido de las veredas, aunque también es por otras cosas. Uno no sabe bien qué tanto es el clima."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Es una pregunta difícil, gracias por pensarla. Desde su oficina, ¿cómo se ve ese tema: algo solo de emergencias o algo que toca también la planeación?"
+    },
+    {
+      "rol": "user",
+      "texto": "Pues se habla de que hay que prevenir, de adaptarse, esas cosas. Pero en la práctica se trabaja más cuando pasa algo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Entiendo. ¿Qué instrumentos del municipio, como el EOT u otros planes, abordan estos riesgos y de qué manera?"
+    },
+    {
+      "rol": "user",
+      "texto": "El EOT es del 2003 y tiene un mapa de zonas de amenaza por remoción en masa en las veredas de la cordillera, eso sí lo he visto. Lo demás no lo conozco bien."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muy concreto, gracias. ¿Algún documento menciona a las familias que se desplazan o deben salir por estos eventos?"
+    },
+    {
+      "rol": "user",
+      "texto": "No, que yo sepa no."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo dialogan esos instrumentos con otros temas, por ejemplo vivienda o adaptación al cambio climático?"
+    },
+    {
+      "rol": "user",
+      "texto": "No, eso está cada uno por su lado. No hay conexión."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. Para las familias que viven en esas zonas de amenaza alta, ¿qué lineamientos tiene el municipio para actuar?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se supone que en esas zonas no se puede construir, algo así dice. Pero no sé si hay algo más."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Entiendo. ¿Cómo se organizan internamente las dependencias para trabajar estos riesgos?"
+    },
+    {
+      "rol": "user",
+      "texto": "Nos coordinamos más o menos con planeación cuando hay algo. Pero no hay una mesa ni nada fijo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué capacidades cuentan en la alcaldía, como personal técnico o herramientas?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hay alguna gente con conocimiento, pero poca. Hacemos lo que se puede."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué relación tienen con entidades externas, como la CAM o la gobernación?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con la CAM hablamos de vez en cuando, más que todo por temas de licencias y de quemas. De riesgo poco."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. ¿Qué información tienen sobre zonas de riesgo y población expuesta?"
+    },
+    {
+      "rol": "user",
+      "texto": "Está el mapa del EOT que le dije, pero es viejo. Actualizado no tenemos nada."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y esa información la usan para decidir, por ejemplo, dónde dar licencias o dónde invertir?"
+    },
+    {
+      "rol": "user",
+      "texto": "A veces se mira, sí. Depende del caso."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Hay algún registro de familias que se hayan ido de las veredas por estos eventos?"
+    },
+    {
+      "rol": "user",
+      "texto": "No, eso no se ha registrado."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Cuando hay un deslizamiento o una creciente, ¿qué hace la alcaldía y qué pasa con esas familias después?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se atiende la emergencia con lo que haya. Después la gente vuelve a su casa o se acomoda donde pueda."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. ¿De qué manera se tiene en cuenta a las comunidades en identificar riesgos o definir respuestas?"
+    },
+    {
+      "rol": "user",
+      "texto": "Algunas juntas de acción comunal avisan cuando ven grietas o algo raro en la montaña, y uno va a mirar."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y se piensa de manera diferenciada en grupos más vulnerables, como campesinos de ladera, mujeres o adultos mayores?"
+    },
+    {
+      "rol": "user",
+      "texto": "No, diferenciado no. Se atiende igual a todos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muchas gracias por esta conversación. Lo que me compartió sobre las laderas, el EOT y la relación con la CAM nos ayuda a entender dónde está hoy Peñas Blancas del Suaza. Con esto preparamos su diagnóstico."
+    }
+  ],
+  "esperado": {
+    "p1": 1,
+    "p2": 0,
+    "p3": 1,
+    "p4": 2,
+    "p5": 0,
+    "p6": 1,
+    "p7": 1,
+    "p8": 1,
+    "p9": 1,
+    "p10": 1,
+    "p11": 0,
+    "p12": 1,
+    "p13": 1,
+    "p14": 0,
+    "p15": 0,
+    "p16": 0,
+    "p17": 1,
+    "p18": 0
+  },
+  "total_esperado": 12,
+  "justificacion": {
+    "p1": "\"Puede ser, algo influye... Uno no sabe bien qué tanto es el clima\": reconocimiento vago.",
+    "p2": "\"No, que yo sepa no\".",
+    "p3": "\"se habla de que hay que prevenir, de adaptarse... Pero en la práctica se trabaja más cuando pasa algo\": vago.",
+    "p4": "\"El EOT es del 2003 y tiene un mapa de zonas de amenaza por remoción en masa en las veredas de la cordillera\": instrumento y amenaza concretos, pero antiguo y parcial.",
+    "p5": "\"eso está cada uno por su lado. No hay conexión\".",
+    "p6": "\"Se supone que en esas zonas no se puede construir, algo así dice\": vago.",
+    "p7": "\"Nos coordinamos más o menos con planeación cuando hay algo. Pero no hay una mesa ni nada fijo\".",
+    "p8": "\"Hay alguna gente con conocimiento, pero poca\": vago.",
+    "p9": "\"Con la CAM hablamos de vez en cuando... De riesgo poco\": relación limitada.",
+    "p10": "\"Está el mapa del EOT... pero es viejo. Actualizado no tenemos nada\".",
+    "p11": "\"No, eso no se ha registrado\".",
+    "p12": "\"A veces se mira, sí. Depende del caso\": uso vago.",
+    "p13": "\"Se atiende la emergencia con lo que haya\": solo emergencia.",
+    "p14": "\"Después la gente vuelve a su casa o se acomoda donde pueda\": sin mecanismos de reubicación.",
+    "p15": "Nada sobre vivienda, servicios o medios de vida.",
+    "p16": "\"No, diferenciado no. Se atiende igual a todos\".",
+    "p17": "\"Algunas juntas de acción comunal avisan cuando ven grietas\": participación limitada a avisos, sin definición de respuestas.",
+    "p18": "\"diferenciado no\": sin criterios de equidad."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

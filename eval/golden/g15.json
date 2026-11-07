@@ -1,0 +1,210 @@
+{
+  "id": "g15",
+  "descripcion": "Municipio ficticio de meseta en Santander con erosión del escarpe; secretario de planeación con decreto de reasentamiento y comité intersectorial detallados, brechas en datos de migración y equidad; total en el borde superior del nivel 3.",
+  "nivel_esperado": "nivel_3",
+  "etiquetas": [
+    "borde"
+  ],
+  "manipulacion_esperada": false,
+  "municipio": "Mesa Alta de Santander",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Buenas tardes! Gracias por su tiempo. ¿Me cuenta en qué municipio y departamento trabaja y cuál es su cargo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Buenas tardes. Soy el secretario de planeación de Mesa Alta, en Santander."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Cuáles son los riesgos del clima más importantes en el municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "El municipio está sobre una meseta con escarpes muy erosionados. Con los aguaceros intensos se activan cárcavas y deslizamientos en el borde de la mesa, donde están varios barrios. En verano tenemos desabastecimiento de agua e incendios forestales."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo influyen esos riesgos en la movilidad de la población?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos de todo. En el barrio El Mirador, al borde del escarpe, ya hemos tenido que reubicar familias porque la cárcava avanza. En las veredas secas hay campesinos que migran a Bucaramanga por la falta de agua. Y hay familias muy pobres del borde que no tienen cómo irse aunque sepan del riesgo. Para nosotros el cambio climático está acelerando todo eso porque los aguaceros son más concentrados y los veranos más largos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Una mirada muy completa. ¿Cómo se entiende el tema en la alcaldía, más allá de la emergencia?"
+    },
+    {
+      "rol": "user",
+      "texto": "Lo entendemos como un tema estructural. No basta con atender el deslizamiento: hay que ordenar el borde del escarpe, garantizar vivienda segura, agua para que el campesino se quede y proteger a quienes no pueden moverse. Así lo dice el plan de desarrollo en su línea de resiliencia territorial."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué instrumentos recogen estos riesgos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El PBOT de 2022 tiene estudios detallados de amenaza por movimientos en masa y erosión del escarpe a escala 1:2.000, y define una franja de aislamiento en el borde de la mesa. El PMGRD tiene escenarios por erosión, desabastecimiento e incendios. Y en 2023 se adoptó por decreto el plan municipal de adaptación al cambio climático, articulado con el PIGCCT de Santander."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Algún instrumento se refiere a la movilidad de la población por el clima?"
+    },
+    {
+      "rol": "user",
+      "texto": "El plan de adaptación tiene un capítulo sobre 'población en riesgo de desplazamiento por eventos climáticos' en el borde del escarpe y en las veredas secas. Y el Decreto 088 de 2023 regula el reasentamiento de El Mirador."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué establece ese decreto?"
+    },
+    {
+      "rol": "user",
+      "texto": "El decreto declara el riesgo no mitigable en la franja del borde, define el censo de familias, el subsidio de arriendo temporal, la adquisición del predio por la alcaldía y su entrega a la CAS para restauración, y fija que la secretaría de vivienda ejecuta, con plazo de cuatro años."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se articulan los instrumentos entre sí?"
+    },
+    {
+      "rol": "user",
+      "texto": "El PBOT, el PMGRD y el plan de adaptación usan los mismos estudios. Con vivienda, el decreto 088 obliga a coordinar. Lo que falta es articular con desarrollo rural lo del agua en las veredas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se reparten los roles dentro de la alcaldía?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hay un comité de reasentamiento y adaptación creado por el decreto, con planeación, gestión del riesgo, vivienda, desarrollo social y la personería. Se reúne mensualmente y cada uno tiene responsabilidades escritas: planeación hace el seguimiento a la franja, gestión del riesgo el monitoreo, vivienda los traslados, desarrollo social el acompañamiento a las familias, y la personería vigila los derechos. Se levanta acta y se reporta al consejo de gobierno."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué capacidades técnicas cuentan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos un geólogo de planta, dos ingenieros y un SIG municipal. Para obras grandes dependemos de cofinanciación."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué actores externos trabajan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con la CAS tenemos un convenio para la restauración del escarpe con trinchos y revegetalización en los predios que deja la gente reasentada. Con la Universidad Industrial de Santander instalamos inclinómetros en El Mirador que nos envían datos mensuales, y con la gobernación cofinanciamos el proyecto de vivienda. Además la UNGRD nos asesoró en la formulación del decreto."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué información tienen sobre zonas expuestas y población?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos los estudios del PBOT y los datos de los inclinómetros. El censo de la franja de El Mirador es de 2023: noventa y ocho familias. De las veredas secas tenemos menos información."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y sobre los campesinos que migran por la falta de agua?"
+    },
+    {
+      "rol": "user",
+      "texto": "De los campesinos que se van a Bucaramanga sabemos por las juntas, pero no tenemos un dato sistematizado."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo usan la información para tomar decisiones?"
+    },
+    {
+      "rol": "user",
+      "texto": "Los datos de los inclinómetros definen el orden de los traslados: primero las casas donde hay más movimiento. Y los estudios del PBOT se usan para negar licencias en la franja. Para lo rural todavía no usamos información para decidir."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué medidas o rutas existen para prevenir o responder?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos alertas tempranas basadas en los inclinómetros, protocolos de evacuación en El Mirador y la ruta del decreto 088 para reasentar. Para las veredas secas, carrotanques y algunos reservorios."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo va el reasentamiento de El Mirador?"
+    },
+    {
+      "rol": "user",
+      "texto": "Del censo de noventa y ocho familias, cuarenta y cinco ya fueron trasladadas a Altos de la Mesa. Para las otras cincuenta y tres todavía no hay lote; están en arriendo temporal y algunas llevan más de un año esperando."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué condiciones tienen las familias trasladadas, más allá de la vivienda?"
+    },
+    {
+      "rol": "user",
+      "texto": "Altos de la Mesa tiene servicios públicos y transporte. Desarrollo social hace acompañamiento a las familias durante seis meses después del traslado. Lo de medios de vida está más débil: muchas familias tenían tiendas o talleres en El Mirador y no se les ha ayudado a reubicarlos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se tiene en cuenta a los grupos en mayor situación de vulnerabilidad?"
+    },
+    {
+      "rol": "user",
+      "texto": "En el censo identificamos hogares con jefatura femenina, adultos mayores solos y personas con discapacidad, y la personería revisa que el proceso respete sus derechos. De justicia climática se habla poco; no tenemos criterios explícitos más allá de eso."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo participan las comunidades?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con la junta de acción comunal de El Mirador hicimos mesas de trabajo para definir el orden de traslado, y las familias escogieron el diseño de las casas entre tres opciones."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muchas gracias por esta conversación tan detallada. Lo que me compartió sobre El Mirador, el decreto 088 y el comité de reasentamiento es muy valioso para el diagnóstico de Mesa Alta."
+    }
+  ],
+  "esperado": {
+    "p1": 3,
+    "p2": 2,
+    "p3": 3,
+    "p4": 3,
+    "p5": 2,
+    "p6": 3,
+    "p7": 3,
+    "p8": 2,
+    "p9": 3,
+    "p10": 2,
+    "p11": 1,
+    "p12": 2,
+    "p13": 2,
+    "p14": 2,
+    "p15": 2,
+    "p16": 2,
+    "p17": 2,
+    "p18": 1
+  },
+  "total_esperado": 40,
+  "justificacion": {
+    "p1": "Describe reubicación (\"hemos tenido que reubicar familias\"), migración (\"campesinos que migran a Bucaramanga\") e inmovilidad (\"no tienen cómo irse\"), vinculados al clima.",
+    "p2": "\"El plan de adaptación tiene un capítulo sobre 'población en riesgo de desplazamiento por eventos climáticos'... Decreto 088 de 2023\".",
+    "p3": "\"No basta con atender el deslizamiento: hay que ordenar el borde del escarpe, garantizar vivienda segura, agua... proteger a quienes no pueden moverse\".",
+    "p4": "\"El PBOT de 2022 tiene estudios detallados... a escala 1:2.000... franja de aislamiento... plan municipal de adaptación... PIGCCT de Santander\".",
+    "p5": "\"usan los mismos estudios... el decreto 088 obliga a coordinar. Lo que falta es articular con desarrollo rural\".",
+    "p6": "\"declara el riesgo no mitigable... censo... subsidio de arriendo temporal... adquisición del predio... entrega a la CAS... vivienda ejecuta, con plazo de cuatro años\".",
+    "p7": "\"comité de reasentamiento y adaptación... se reúne mensualmente... responsabilidades escritas... Se levanta acta y se reporta al consejo de gobierno\".",
+    "p8": "\"un geólogo de planta, dos ingenieros y un SIG municipal. Para obras grandes dependemos de cofinanciación\".",
+    "p9": "\"Con la CAS... restauración del escarpe... con la Universidad Industrial de Santander... inclinómetros... la gobernación cofinanciamos... la UNGRD nos asesoró\".",
+    "p10": "\"los estudios del PBOT y los datos de los inclinómetros... censo... de 2023: noventa y ocho familias. De las veredas secas tenemos menos información\".",
+    "p11": "\"sabemos por las juntas, pero no tenemos un dato sistematizado\".",
+    "p12": "\"Los datos de los inclinómetros definen el orden de los traslados... estudios del PBOT... para negar licencias... Para lo rural todavía no\".",
+    "p13": "\"alertas tempranas basadas en los inclinómetros, protocolos de evacuación... ruta del decreto 088... Para las veredas secas, carrotanques y algunos reservorios\".",
+    "p14": "\"cuarenta y cinco ya fueron trasladadas... Para las otras cincuenta y tres todavía no hay lote\": implementación parcial.",
+    "p15": "\"servicios públicos y transporte... acompañamiento... seis meses... Lo de medios de vida está más débil\".",
+    "p16": "\"identificamos hogares con jefatura femenina, adultos mayores solos y personas con discapacidad, y la personería revisa que el proceso respete sus derechos\".",
+    "p17": "\"mesas de trabajo para definir el orden de traslado, y las familias escogieron el diseño de las casas\".",
+    "p18": "\"De justicia climática se habla poco; no tenemos criterios explícitos más allá de eso\"."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

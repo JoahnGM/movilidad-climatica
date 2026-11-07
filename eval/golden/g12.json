@@ -1,0 +1,210 @@
+{
+  "id": "g12",
+  "descripcion": "Municipio ficticio de la Sabana de Cundinamarca; secretario de ambiente y riesgo muy sólido en reconocimiento, instrumentos y coordinación, pero dice no saber nada de datos de movilidad, enfoque diferencial ni participación.",
+  "nivel_esperado": "nivel_3",
+  "etiquetas": [
+    "no_sabe"
+  ],
+  "manipulacion_esperada": false,
+  "municipio": "Tibagota",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Buenas tardes! Gracias por su tiempo. ¿Me cuenta en qué municipio y departamento trabaja y cuál es su rol?"
+    },
+    {
+      "rol": "user",
+      "texto": "Buenas tardes. Soy el secretario de ambiente y gestión del riesgo de Tibagota, en la Sabana de Cundinamarca."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Mucho gusto. ¿Cuáles son los riesgos climáticos más importantes del municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Inundaciones del río Bogotá y de los humedales en las veredas bajas, heladas que acaban con los cultivos de papa en la parte alta y, últimamente, incendios en los cerros en temporada seca."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo influyen esos riesgos en la movilidad de la población?"
+    },
+    {
+      "rol": "user",
+      "texto": "Lo vemos de varias formas. En la vereda La Ribera, después de las inundaciones de 2011, 2022 y 2024, hay familias que se fueron definitivamente: eso es desplazamiento por clima. En la parte alta, las heladas más frecuentes están empujando a jóvenes a migrar a Bogotá. Y hay adultos mayores en La Ribera que no se pueden ir aunque quieran, que son población atrapada. Lo hemos discutido así en el consejo de gestión del riesgo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Es una lectura muy completa. ¿Cómo se entiende este tema en la alcaldía, más allá de las emergencias?"
+    },
+    {
+      "rol": "user",
+      "texto": "Para nosotros dejó de ser un tema de emergencia. Lo planteamos como un tema de ordenamiento, de vivienda, de adaptación del sector agrícola y de proteger a quienes se quedan. Por eso el plan de desarrollo 2024-2027 tiene una línea de 'territorio adaptado' que junta gestión del riesgo, vivienda y desarrollo rural."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué instrumentos recogen estos riesgos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El PBOT se actualizó en 2023 con estudios de amenaza por inundación del río Bogotá a escala 1:5.000 y de incendios forestales, y define las zonas de amenaza alta en La Ribera y en el borde de los humedales. El PMGRD 2023 tiene escenarios de inundación, heladas e incendios, con acciones y responsables. Y adoptamos por acuerdo municipal el plan de cambio climático, que se deriva del PIGCCT de Cundinamarca e incluye medidas de adaptación para el agro."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Alguno de esos instrumentos reconoce la movilidad de la población por el clima?"
+    },
+    {
+      "rol": "user",
+      "texto": "El plan de cambio climático municipal tiene un apartado que reconoce que las inundaciones y las heladas están generando salida de población rural, y propone acciones de permanencia. No es un decreto específico, pero está escrito."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se articulan esos instrumentos entre sí?"
+    },
+    {
+      "rol": "user",
+      "texto": "El PBOT, el PMGRD y el plan de cambio climático usan la misma cartografía de amenazas, y la línea 'territorio adaptado' del plan de desarrollo amarra los tres con metas comunes: vivienda tiene como meta reasentar familias de amenaza alta y desarrollo rural, implementar alertas de heladas. Eso lo revisa trimestralmente el consejo de gobierno."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué herramientas tienen frente a población en riesgo no mitigable?"
+    },
+    {
+      "rol": "user",
+      "texto": "El PBOT declara riesgo no mitigable en un sector de La Ribera y prohíbe construir. Para el reasentamiento usamos el procedimiento general de la ley; no tenemos un decreto municipal propio."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se reparten los roles dentro de la alcaldía?"
+    },
+    {
+      "rol": "user",
+      "texto": "Mi secretaría coordina el consejo municipal de gestión del riesgo, que sesiona cada mes y tiene una mesa técnica de adaptación con planeación, vivienda, desarrollo rural y desarrollo social. Cada una tiene responsabilidades asignadas en el PMGRD: planeación controla el uso del suelo, vivienda lidera el reasentamiento, desarrollo rural las medidas para heladas y desarrollo social la atención a familias. La mesa hace seguimiento a un tablero de indicadores."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué capacidades técnicas cuentan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos un equipo de cuatro profesionales en la secretaría, entre ellos un ingeniero ambiental y una geógrafa, y un sistema de información geográfica básico. Nos falta capacidad para formular proyectos grandes."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Con qué actores externos se coordinan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con la CAR Cundinamarca tenemos un convenio para monitorear niveles del río Bogotá con dos estaciones en La Ribera, cuyos datos llegan en tiempo real a la secretaría. Con la gobernación participamos en el nodo regional de cambio climático, y con una universidad regional hicimos el estudio de heladas de 2023 que hoy usa desarrollo rural para el sistema de alertas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué información tienen sobre zonas expuestas y población vulnerable?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos los estudios del PBOT y del PMGRD de 2023 y las estaciones de la CAR. Sobre población, el SISBÉN nos da algo, pero un censo de cuántas personas viven hoy en amenaza alta no lo tenemos actualizado."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y datos sobre cómo el clima está afectando la permanencia o la salida de la gente?"
+    },
+    {
+      "rol": "user",
+      "texto": "Eso no lo sabemos. Tenemos la percepción, pero datos de cuántas familias se han ido o de los adultos mayores que no pueden irse, no tenemos información."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo usan la información para tomar decisiones?"
+    },
+    {
+      "rol": "user",
+      "texto": "Los datos de las estaciones de la CAR los usamos para activar las alertas tempranas en La Ribera, y los mapas del PBOT para negar licencias en zonas de amenaza alta. Para priorizar inversión todavía no tanto."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué medidas o rutas existen para prevenir o responder?"
+    },
+    {
+      "rol": "user",
+      "texto": "Tenemos la estrategia municipal de respuesta con protocolos de evacuación en La Ribera, y alertas de heladas por mensajes de texto a los productores de la parte alta. Para prevenir que más gente se vaya todavía no tenemos una ruta."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Qué se ha hecho en reubicación o reasentamiento?"
+    },
+    {
+      "rol": "user",
+      "texto": "En 2024 reasentamos a veintidós familias de La Ribera en el proyecto de vivienda El Mirador, con subsidio municipal y de la gobernación. Quedan unas cuarenta pendientes."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo les ha ido a esas familias en temas como servicios o trabajo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Se les entregó la vivienda. Sobre si tienen trabajo o cómo les ha ido después, no sé, no hemos hecho seguimiento."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Cómo se consideraron grupos vulnerables o enfoques de derechos en estas acciones?"
+    },
+    {
+      "rol": "user",
+      "texto": "La verdad no sé decirle si se aplicó algún enfoque diferencial o de derechos. Eso no lo tengo claro."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¿Y cómo participaron las comunidades en identificar riesgos o definir respuestas?"
+    },
+    {
+      "rol": "user",
+      "texto": "No sé si hubo participación de la comunidad. Eso lo manejó otra administración y no tengo esa información."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Le agradezco mucho esta conversación tan rica. Lo que me contó sobre La Ribera, la línea de territorio adaptado y la mesa técnica es muy valioso para el diagnóstico de Tibagota."
+    }
+  ],
+  "esperado": {
+    "p1": 3,
+    "p2": 2,
+    "p3": 3,
+    "p4": 3,
+    "p5": 3,
+    "p6": 2,
+    "p7": 3,
+    "p8": 2,
+    "p9": 3,
+    "p10": 2,
+    "p11": 0,
+    "p12": 2,
+    "p13": 2,
+    "p14": 2,
+    "p15": 1,
+    "p16": 0,
+    "p17": 0,
+    "p18": 0
+  },
+  "total_esperado": 33,
+  "justificacion": {
+    "p1": "Distingue desplazamiento (\"familias que se fueron definitivamente\"), migración (\"jóvenes a migrar a Bogotá\") y \"población atrapada\", y lo discuten en el consejo de riesgo.",
+    "p2": "\"El plan de cambio climático municipal tiene un apartado que reconoce que las inundaciones y las heladas están generando salida de población rural\".",
+    "p3": "\"dejó de ser un tema de emergencia... ordenamiento, de vivienda, de adaptación... línea de 'territorio adaptado'\".",
+    "p4": "\"El PBOT se actualizó en 2023 con estudios de amenaza... a escala 1:5.000... El PMGRD 2023 tiene escenarios... plan de cambio climático... del PIGCCT\".",
+    "p5": "\"usan la misma cartografía... amarra los tres con metas comunes... lo revisa trimestralmente el consejo de gobierno\".",
+    "p6": "\"El PBOT declara riesgo no mitigable en un sector de La Ribera... no tenemos un decreto municipal propio\".",
+    "p7": "\"consejo... sesiona cada mes... mesa técnica de adaptación... planeación controla el uso del suelo, vivienda lidera el reasentamiento...\".",
+    "p8": "\"cuatro profesionales... un ingeniero ambiental y una geógrafa... Nos falta capacidad para formular proyectos grandes\".",
+    "p9": "\"convenio para monitorear niveles del río Bogotá con dos estaciones... nodo regional de cambio climático... estudio de heladas... que hoy usa desarrollo rural\".",
+    "p10": "\"estudios del PBOT y del PMGRD de 2023 y las estaciones de la CAR... un censo... no lo tenemos actualizado\".",
+    "p11": "\"Eso no lo sabemos... no tenemos información\".",
+    "p12": "\"Los datos de las estaciones... para activar las alertas... los mapas del PBOT para negar licencias... Para priorizar inversión todavía no\".",
+    "p13": "\"protocolos de evacuación en La Ribera, y alertas de heladas... Para prevenir que más gente se vaya todavía no tenemos una ruta\".",
+    "p14": "\"reasentamos a veintidós familias de La Ribera en el proyecto de vivienda El Mirador... Quedan unas cuarenta pendientes\".",
+    "p15": "\"Se les entregó la vivienda. Sobre si tienen trabajo... no sé\".",
+    "p16": "\"no sé decirle si se aplicó algún enfoque diferencial o de derechos\".",
+    "p17": "\"No sé si hubo participación de la comunidad\".",
+    "p18": "\"no sé decirle si se aplicó algún enfoque diferencial\"."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}
