@@ -5,23 +5,20 @@ import type { Tone } from './tones';
 export interface StatProps {
   /** Valor ya formateado ("536.000"). El DS no formatea ni calcula. */
   value: string;
-  /** Etiqueta corta en mayúsculas bajo el valor. */
+  /** Etiqueta corta bajo el valor. */
   label?: string;
   /** Descripción en una o dos líneas. */
   description?: string;
-  /** Rótulo superior opcional ("Dato"). */
-  eyebrow?: string;
-  tone?: Tone;
+  tone?: Tone | 'default';
   className?: string;
 }
 
-/** Cifra protagonista sin fuente. Si la cifra se publica, usa `CifraConFuente`. */
-export function Stat({ value, label, description, eyebrow, tone = 'teal', className }: StatProps) {
+/** Cifra protagonista sin fuente. Si la cifra se publica como dato, usa `CifraConFuente`. */
+export function Stat({ value, label, description, tone = 'default', className }: StatProps) {
   return (
     <div className={cn('flex flex-col gap-3', className)}>
-      {eyebrow && <Text variant="eyebrow" tone="muted">{eyebrow}</Text>}
-      <Mono size="metric" tone={tone} className="leading-none">{value}</Mono>
-      {label && <Mono size="caption" tone={tone} className="font-semibold uppercase tracking-widest">{label}</Mono>}
+      <Mono size="metric" tone={tone}>{value}</Mono>
+      {label && <Text variant="eyebrow">{label}</Text>}
       {description && <Text variant="small">{description}</Text>}
     </div>
   );

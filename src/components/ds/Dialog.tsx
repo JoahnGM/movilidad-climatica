@@ -10,7 +10,7 @@ export interface DialogProps {
   onOpenChange: (open: boolean) => void;
   /** Título visible y nombre accesible del diálogo. */
   title: string;
-  /** Descripción accesible (si no hay, se oculta). */
+  /** Descripción accesible (si no hay, se usa el título). */
   description?: string;
   children: ReactNode;
   className?: string;
@@ -24,28 +24,21 @@ export function Dialog({ open, onOpenChange, title, description, children, class
   return (
     <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
       <DialogPrimitive.Portal>
-        <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-overlay backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0" />
+        <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-overlay backdrop-blur-[2px] data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0" />
         <DialogPrimitive.Content
           className={cn(
-            'fixed top-1/2 left-1/2 z-50 flex max-h-[85vh] w-[calc(100%-2rem)] max-w-2xl -translate-x-1/2 -translate-y-1/2 flex-col gap-6 overflow-y-auto rounded-xl border border-border-glass bg-surface-raised p-8 shadow-raised',
+            'fixed top-1/2 left-1/2 z-50 flex max-h-[85vh] w-[calc(100%-2rem)] max-w-2xl -translate-x-1/2 -translate-y-1/2 flex-col gap-6 overflow-y-auto rounded-card border border-border bg-surface-raised p-8 shadow-raised',
             'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0',
             className,
           )}
         >
           <div className="flex items-start justify-between gap-4">
-            <DialogPrimitive.Title className="font-heading text-xl font-bold text-foreground">{title}</DialogPrimitive.Title>
-            <DialogPrimitive.Close
-              aria-label="Cerrar"
-              className="rounded-lg p-1 text-subtle transition-colors hover:text-foreground"
-            >
+            <DialogPrimitive.Title className="font-heading text-h4 font-semibold tracking-tight text-foreground">{title}</DialogPrimitive.Title>
+            <DialogPrimitive.Close aria-label="Cerrar" className="rounded-full p-1.5 text-subtle transition-colors hover:bg-surface hover:text-foreground">
               <X aria-hidden="true" className="size-5" />
             </DialogPrimitive.Close>
           </div>
-          {description ? (
-            <DialogPrimitive.Description className="sr-only">{description}</DialogPrimitive.Description>
-          ) : (
-            <DialogPrimitive.Description className="sr-only">{title}</DialogPrimitive.Description>
-          )}
+          <DialogPrimitive.Description className="sr-only">{description ?? title}</DialogPrimitive.Description>
           {children}
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>

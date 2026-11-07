@@ -30,7 +30,7 @@ Un archivo `docs/estandares/<tema>.md` que responde, en este orden:
 |---|---|---|---|
 | Seguridad de la API y del pipeline | `seguridad.md` | Seguridad & IA | pendiente |
 | Agentes de IA: prompts, rúbrica, evaluación, proveedor | `agentes-ia.md` | Seguridad & IA | pendiente |
-| Design system | `design-system.md` | Design System | pendiente |
+| Design system | `design-system.md` | Design System | v1.0 (2026-11-06) |
 | Contenido y fuentes | `contenido-y-fuentes.md` | Contenido & fuentes | pendiente |
 | Medición, analítica y feedback | `medicion-y-feedback.md` | Pilotaje & medición | pendiente |
 

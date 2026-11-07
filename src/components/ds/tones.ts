@@ -2,41 +2,40 @@
  * Tonos semánticos del DS. Cada tono mapea a clases completas de Tailwind
  * (literales, para que Tailwind las detecte).
  *
- * Significado:
- *  teal    → acción principal, marca, fortaleza, nivel 4
+ *  green   → marca, acción principal, fortaleza, nivel 4, evidencia
  *  blue    → información, en desarrollo, nivel 3, mediano plazo
  *  amber   → advertencia, brecha, nivel 2, corto plazo, ejemplo
  *  red     → crítico, nivel 1, urgencia inmediata
  *  violet  → IA y funciones experimentales
  *  neutral → sin carga semántica
  */
-export type Tone = 'teal' | 'blue' | 'amber' | 'red' | 'violet' | 'neutral';
+export type Tone = 'green' | 'blue' | 'amber' | 'red' | 'violet' | 'neutral';
 
-export const TONES: readonly Tone[] = ['teal', 'blue', 'amber', 'red', 'violet', 'neutral'];
+export const TONES: readonly Tone[] = ['green', 'blue', 'amber', 'red', 'violet', 'neutral'];
 
 /** Texto con contraste AA (≥4.5:1) sobre cualquier superficie del DS. */
 export const toneText: Record<Tone, string> = {
-  teal: 'text-teal',
-  blue: 'text-blue',
-  amber: 'text-amber',
-  red: 'text-red-light',
-  violet: 'text-violet-light',
+  green: 'text-green-ink',
+  blue: 'text-blue-ink',
+  amber: 'text-amber-ink',
+  red: 'text-red-ink',
+  violet: 'text-violet-ink',
   neutral: 'text-muted',
 };
 
-/** Borde suave (tarjetas, chips). */
+/** Borde suave. */
 export const toneBorder: Record<Tone, string> = {
-  teal: 'border-teal/40',
-  blue: 'border-blue/40',
+  green: 'border-green/30',
+  blue: 'border-blue/30',
   amber: 'border-amber/40',
-  red: 'border-red/40',
-  violet: 'border-violet/50',
-  neutral: 'border-border-glass',
+  red: 'border-red/30',
+  violet: 'border-violet/30',
+  neutral: 'border-border',
 };
 
-/** Borde izquierdo de acento (4px). */
+/** Borde izquierdo de acento (3px). */
 export const toneAccent: Record<Tone, string> = {
-  teal: 'border-l-teal',
+  green: 'border-l-green',
   blue: 'border-l-blue',
   amber: 'border-l-amber',
   red: 'border-l-red',
@@ -44,29 +43,19 @@ export const toneAccent: Record<Tone, string> = {
   neutral: 'border-l-border-strong',
 };
 
-/** Fondo tenue (10%). */
+/** Fondo tenue. */
 export const toneSoftBg: Record<Tone, string> = {
-  teal: 'bg-teal/10',
+  green: 'bg-green/10',
   blue: 'bg-blue/10',
-  amber: 'bg-amber/10',
+  amber: 'bg-amber/15',
   red: 'bg-red/10',
   violet: 'bg-violet/10',
-  neutral: 'bg-glass',
+  neutral: 'bg-surface',
 };
 
-/** Fondo muy tenue (5%) para bloques grandes. */
-export const toneWashBg: Record<Tone, string> = {
-  teal: 'bg-teal/5',
-  blue: 'bg-blue/5',
-  amber: 'bg-amber/5',
-  red: 'bg-red/5',
-  violet: 'bg-violet/5',
-  neutral: 'bg-glass',
-};
-
-/** Relleno sólido (barras, puntos, botones). */
+/** Relleno sólido (barras, puntos). */
 export const toneSolid: Record<Tone, string> = {
-  teal: 'bg-teal',
+  green: 'bg-green',
   blue: 'bg-blue',
   amber: 'bg-amber',
   red: 'bg-red',

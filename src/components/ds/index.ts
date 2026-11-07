@@ -1,5 +1,5 @@
 /**
- * Design system — punto de entrada único. Importa siempre desde `@/components/ds`.
+ * Design system "Cordillera" — punto de entrada único. Importa siempre desde `@/components/ds`.
  * Cada componente exportado aquí DEBE aparecer en el catálogo /ds (check:ds lo verifica).
  * Estándar: docs/estandares/design-system.md
  */
@@ -18,10 +18,10 @@ export { Reveal, type RevealProps } from './Reveal';
 export { SkipLink } from './SkipLink';
 
 // Tipografía
-export { Heading, Text, Mono, type HeadingProps, type TextProps, type MonoProps, type TextTone } from './Typography';
+export { Heading, Acento, Text, Mono, type HeadingProps, type TextProps, type MonoProps, type TextTone } from './Typography';
 
 // Superficies y avisos
-export { GlassCard, type GlassCardProps } from './GlassCard';
+export { Card, type CardProps } from './Card';
 export { Callout, type CalloutProps } from './Callout';
 export { Banner, type BannerProps } from './Banner';
 export { EmptyState, type EmptyStateProps } from './EmptyState';
@@ -40,9 +40,17 @@ export { ProgressBar, type ProgressBarProps } from './ProgressBar';
 export { Timeline, type TimelineProps, type TimelineItem } from './Timeline';
 export { IconList, type IconListProps } from './IconList';
 
+// Procesos
+export { Pasos, type PasosProps, type Paso } from './Pasos';
+export { Etapas, type EtapasProps, type Etapa, type EstadoEtapa } from './Etapas';
+
 // Interacción
 export { Button, buttonVariants, type ButtonProps } from './Button';
 export { TextInput, type TextInputProps } from './TextInput';
 export { Disclosure, DisclosureItem, type DisclosureItemProps } from './Disclosure';
 export { Tabs, TabsList, TabsTrigger, TabsContent } from './Tabs';
 export { FeedbackThumbs, type FeedbackThumbsProps, type Voto } from './FeedbackThumbs';
+
+// Efectos (uno protagonista por página)
+export { FondoMontanas, type FondoMontanasProps } from './efectos/FondoMontanas';
+export { TituloIA, type TituloIAProps, type TramoTitulo } from './efectos/TituloIA';

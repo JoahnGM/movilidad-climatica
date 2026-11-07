@@ -12,12 +12,12 @@ export const badgeVariants = cva(
     variants: {
       size: {
         sm: 'px-2 py-0.5 text-caption',
-        md: 'px-3 py-1 text-caption font-semibold',
+        md: 'px-2.5 py-1 text-caption',
       },
       variant: {
-        soft: '',
+        soft: 'border-transparent',
         outline: 'bg-transparent',
-        solid: 'border-transparent text-on-accent',
+        solid: 'border-transparent',
       },
     },
     defaultVariants: { size: 'md', variant: 'soft' },
@@ -25,8 +25,12 @@ export const badgeVariants = cva(
 );
 
 const SOLID: Record<Tone, string> = {
-  teal: 'bg-teal', blue: 'bg-blue', amber: 'bg-amber',
-  red: 'bg-red', violet: 'bg-violet', neutral: 'bg-muted',
+  green: 'bg-green text-on-accent',
+  blue: 'bg-blue text-on-accent',
+  amber: 'bg-amber text-foreground',
+  red: 'bg-red text-on-accent',
+  violet: 'bg-violet text-on-accent',
+  neutral: 'bg-ink text-on-accent',
 };
 
 export type BadgeProps = ComponentProps<'span'> &
@@ -40,8 +44,9 @@ export function Badge({ tone = 'neutral', size, variant = 'soft', className, ...
     <span
       className={cn(
         badgeVariants({ size, variant }),
-        variant === 'solid' ? SOLID[tone] : [toneText[tone], toneBorder[tone]],
+        variant === 'solid' ? SOLID[tone] : toneText[tone],
         variant === 'soft' && toneSoftBg[tone],
+        variant === 'outline' && toneBorder[tone],
         className,
       )}
       {...props}
@@ -49,26 +54,23 @@ export function Badge({ tone = 'neutral', size, variant = 'soft', className, ...
   );
 }
 
-/* ── Chip: etiqueta temática (áreas, zonas) y chip "Piloto experimental" ─ */
+/* ── Chip: etiqueta temática y chip "Piloto experimental" ─────────────── */
 
-export const chipVariants = cva(
-  'inline-flex w-fit items-center gap-1.5 rounded-full border whitespace-nowrap [&_svg]:shrink-0',
-  {
-    variants: {
-      variant: {
-        /** Tema o etiqueta descriptiva */
-        default: 'border-border-glass text-muted',
-        /** Funcionalidad en piloto o experimental (IA) */
-        experimental: 'border-violet/50 bg-violet/10 text-violet-light font-semibold',
-      },
-      size: {
-        sm: 'px-3 py-1 text-caption [&_svg]:size-3',
-        md: 'px-4 py-1.5 text-small [&_svg]:size-3.5',
-      },
+export const chipVariants = cva('inline-flex w-fit items-center gap-1.5 rounded-full border whitespace-nowrap [&_svg]:shrink-0', {
+  variants: {
+    variant: {
+      /** Tema o etiqueta descriptiva */
+      default: 'border-border bg-surface-raised text-muted',
+      /** Funcionalidad en piloto o experimental (IA) */
+      experimental: 'border-transparent bg-sage text-green-ink font-medium',
     },
-    defaultVariants: { variant: 'default', size: 'md' },
+    size: {
+      sm: 'px-2.5 py-1 text-caption [&_svg]:size-3',
+      md: 'px-3.5 py-1.5 text-small [&_svg]:size-3.5',
+    },
   },
-);
+  defaultVariants: { variant: 'default', size: 'md' },
+});
 
 export type ChipProps = ComponentProps<'span'> & VariantProps<typeof chipVariants>;
 

@@ -1,6 +1,6 @@
 import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { toneBorder, toneSoftBg, toneText, type Tone } from './tones';
+import { toneSoftBg, toneText, type Tone } from './tones';
 
 export interface IconTileProps {
   icon: LucideIcon;
@@ -9,16 +9,15 @@ export interface IconTileProps {
   className?: string;
 }
 
-/** Ícono decorativo dentro de un cuadro tenue (pasos, categorías). */
-export function IconTile({ icon: Icon, tone = 'teal', size = 'md', className }: IconTileProps) {
+/** Ícono decorativo dentro de un cuadro tenue (features, pasos, categorías). */
+export function IconTile({ icon: Icon, tone = 'green', size = 'md', className }: IconTileProps) {
   return (
     <span
       aria-hidden="true"
       className={cn(
-        'inline-flex shrink-0 items-center justify-center rounded-lg border',
-        size === 'md' ? 'size-11 [&_svg]:size-5' : 'size-8 [&_svg]:size-4',
+        'inline-flex shrink-0 items-center justify-center rounded-lg',
+        size === 'md' ? 'size-10 [&_svg]:size-5' : 'size-8 [&_svg]:size-4',
         toneSoftBg[tone],
-        toneBorder[tone],
         toneText[tone],
         className,
       )}

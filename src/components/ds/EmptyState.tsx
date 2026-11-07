@@ -1,9 +1,9 @@
 import type { LucideIcon } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import { GlassCard } from './GlassCard';
+import { Card } from './Card';
 import { Heading, Text } from './Typography';
-import { toneText, type Tone } from './tones';
+import { toneSoftBg, toneText, type Tone } from './tones';
 
 export interface EmptyStateProps {
   icon: LucideIcon;
@@ -20,11 +20,13 @@ export interface EmptyStateProps {
 /** Estado vacío o de error: ícono + título + explicación + acciones. */
 export function EmptyState({ icon: Icon, title, description, actions, tone = 'amber', headingLevel = 'h2', className }: EmptyStateProps) {
   return (
-    <GlassCard padding="lg" className={cn('mx-auto w-full max-w-md items-center text-center', className)}>
-      <Icon aria-hidden="true" className={cn('size-10', toneText[tone])} />
-      <Heading as={headingLevel} size="h4" className="text-xl">{title}</Heading>
+    <Card variant="raised" padding="lg" className={cn('mx-auto w-full max-w-md items-center text-center', className)}>
+      <span aria-hidden="true" className={cn('flex size-12 items-center justify-center rounded-full', toneSoftBg[tone], toneText[tone])}>
+        <Icon className="size-6" />
+      </span>
+      <Heading as={headingLevel} size="h4">{title}</Heading>
       {description && <Text variant="small">{description}</Text>}
-      {actions && <div className="mt-2 flex w-full flex-col gap-3 sm:flex-row [&>*]:flex-1">{actions}</div>}
-    </GlassCard>
+      {actions && <div className="mt-2 flex w-full flex-col gap-3 sm:flex-row sm:justify-center">{actions}</div>}
+    </Card>
   );
 }

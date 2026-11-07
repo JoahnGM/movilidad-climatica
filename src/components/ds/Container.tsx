@@ -5,15 +5,15 @@ import { cn } from '@/lib/utils';
 export const containerVariants = cva('mx-auto w-full px-gutter', {
   variants: {
     size: {
-      /** 768px — textos largos, formularios, nota metodológica */
+      /** 768px — textos largos, formularios */
       prose: 'max-w-3xl',
-      /** 1024px — secciones del home y páginas de contenido (por defecto) */
+      /** 1024px — contenido centrado */
       content: 'max-w-5xl',
-      /** 1152px — navbar, footer y vistas de dos columnas */
+      /** 1152px — navbar, footer, secciones del home (por defecto) */
       wide: 'max-w-6xl',
     },
   },
-  defaultVariants: { size: 'content' },
+  defaultVariants: { size: 'wide' },
 });
 
 export type ContainerProps = ComponentProps<'div'> & VariantProps<typeof containerVariants>;

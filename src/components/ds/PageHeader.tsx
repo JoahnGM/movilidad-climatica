@@ -14,13 +14,15 @@ export interface PageHeaderProps {
   breadcrumb?: Crumb[];
   eyebrow?: string;
   description?: ReactNode;
-  /** Elemento a la derecha del título (badge de nivel, acciones). */
+  /** Elemento a la derecha del título (badge, acciones). */
   aside?: ReactNode;
+  /** Nivel del título (h1 por defecto; h2 solo en demos o páginas que ya tienen h1). */
+  headingLevel?: 'h1' | 'h2';
   className?: string;
 }
 
-/** Encabezado de página interna (no home): migas + título h1 + descripción + elemento lateral. */
-export function PageHeader({ title, breadcrumb, eyebrow, description, aside, className }: PageHeaderProps) {
+/** Encabezado de página interna: migas + título h1 + descripción + elemento lateral. */
+export function PageHeader({ title, breadcrumb, eyebrow, description, aside, headingLevel = 'h1', className }: PageHeaderProps) {
   return (
     <header className={cn('flex flex-col gap-4', className)}>
       {breadcrumb && breadcrumb.length > 0 && (
@@ -43,9 +45,9 @@ export function PageHeader({ title, breadcrumb, eyebrow, description, aside, cla
         </nav>
       )}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-2">
           {eyebrow && <Text variant="eyebrow">{eyebrow}</Text>}
-          <Heading as="h1" size="h2">{title}</Heading>
+          <Heading as={headingLevel} size="h2">{title}</Heading>
           {description && <Text variant="small">{description}</Text>}
         </div>
         {aside}

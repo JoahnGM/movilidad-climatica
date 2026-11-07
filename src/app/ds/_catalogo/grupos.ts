@@ -14,7 +14,7 @@ export const GRUPOS: GrupoCatalogo[] = [
     primitivas: [],
   },
   {
-    slug: 'layout',
+    slug: 'estructura',
     titulo: 'Layout',
     descripcion: 'Estructura de página: anchos, secciones, encabezados y animación de entrada.',
     primitivas: ['Container', 'Section', 'SectionHeader', 'PageHeader', 'Reveal', 'MotionProvider', 'SkipLink'],
@@ -22,14 +22,14 @@ export const GRUPOS: GrupoCatalogo[] = [
   {
     slug: 'tipografia',
     titulo: 'Tipografía',
-    descripcion: 'Títulos en Syne, texto en Inter y cifras en JetBrains Mono.',
-    primitivas: ['Heading', 'Text', 'Mono'],
+    descripcion: 'Títulos en Instrument Sans, acento en Instrument Serif itálica y cifras en Geist Mono.',
+    primitivas: ['Heading', 'Acento', 'Text', 'Mono'],
   },
   {
     slug: 'superficies',
     titulo: 'Superficies y avisos',
     descripcion: 'Tarjetas, avisos destacados, franjas, estados vacíos, diálogos y esqueletos de carga.',
-    primitivas: ['GlassCard', 'Callout', 'Banner', 'EmptyState', 'Dialog', 'Skeleton'],
+    primitivas: ['Card', 'Callout', 'Banner', 'EmptyState', 'Dialog', 'Skeleton'],
   },
   {
     slug: 'etiquetas',
@@ -48,5 +48,11 @@ export const GRUPOS: GrupoCatalogo[] = [
     titulo: 'Interacción',
     descripcion: 'Botones, campos, acordeones, pestañas y la micro-encuesta 👍/👎.',
     primitivas: ['Button', 'TextInput', 'Disclosure', 'DisclosureItem', 'Tabs', 'TabsList', 'TabsTrigger', 'TabsContent', 'FeedbackThumbs'],
+  },
+  {
+    slug: 'procesos',
+    titulo: 'Procesos y efectos',
+    descripcion: '"Cómo funciona", etapas de avance y los dos efectos de la marca: cordillera y titular IA.',
+    primitivas: ['Pasos', 'Etapas', 'FondoMontanas', 'TituloIA'],
   },
 ];

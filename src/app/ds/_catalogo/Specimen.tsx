@@ -36,14 +36,14 @@ export function Specimen({ nombre, descripcion, codigo, usar, noUsar, a11y, chil
 
       <div
         className={cn(
-          'flex flex-col gap-6 rounded-xl border border-dashed border-border-strong/40 p-6 md:p-8',
+          'flex flex-col gap-6 rounded-card border border-dashed border-border-strong/50 p-6 md:p-8',
           fondo === 'alt' ? 'bg-background-alt' : 'bg-background',
         )}
       >
         {children}
       </div>
 
-      <details className="group rounded-xl border border-border bg-surface">
+      <details className="group rounded-xl border border-border bg-surface-raised">
         <summary className="cursor-pointer list-none px-5 py-3 text-small font-medium text-muted transition-colors hover:text-foreground [&::-webkit-details-marker]:hidden">
           <span className="inline-block transition-transform group-open:rotate-90" aria-hidden="true">▸</span> Código
         </summary>
@@ -54,8 +54,8 @@ export function Specimen({ nombre, descripcion, codigo, usar, noUsar, a11y, chil
 
       <div className="grid gap-4 md:grid-cols-2">
         <div className="flex flex-col gap-2">
-          <Text variant="eyebrow" tone="teal">Úsala para</Text>
-          <ul className="flex list-disc flex-col gap-1 pl-5 text-small text-muted marker:text-teal">
+          <Text variant="eyebrow" tone="green">Úsala para</Text>
+          <ul className="flex list-disc flex-col gap-1 pl-5 text-small text-muted marker:text-green">
             {usar.map((u) => <li key={u}>{u}</li>)}
           </ul>
         </div>
@@ -68,7 +68,7 @@ export function Specimen({ nombre, descripcion, codigo, usar, noUsar, a11y, chil
       </div>
       {a11y && (
         <Text variant="small" tone="muted">
-          <span className="font-semibold text-muted">Accesibilidad y estados: </span>
+          <span className="font-medium text-muted">Accesibilidad y estados: </span>
           {a11y}
         </Text>
       )}

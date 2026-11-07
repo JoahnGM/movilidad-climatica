@@ -10,8 +10,8 @@ const ITEMS = [{ slug: '', titulo: 'Inicio' }, ...GRUPOS];
 export function CatalogoNav() {
   const pathname = usePathname();
   return (
-    <nav aria-label="Catálogo del design system" className="lg:sticky lg:top-24 lg:self-start">
-      <p className="mb-3 hidden text-caption font-semibold uppercase tracking-widest text-subtle lg:block">
+    <nav aria-label="Catálogo del design system" className="min-w-0 lg:sticky lg:top-24 lg:self-start">
+      <p className="mb-3 hidden font-mono text-caption uppercase tracking-eyebrow text-subtle lg:block">
         Design system
       </p>
       <ul className="-mx-gutter flex gap-1 overflow-x-auto px-gutter pb-2 [scrollbar-width:none] lg:mx-0 lg:flex-col lg:px-0">
@@ -25,7 +25,7 @@ export function CatalogoNav() {
                 aria-current={activo ? 'page' : undefined}
                 className={cn(
                   'block rounded-lg px-3 py-2 text-small transition-colors',
-                  activo ? 'bg-teal/10 text-teal' : 'text-muted hover:bg-glass hover:text-foreground',
+                  activo ? 'bg-sage text-green-ink font-medium' : 'text-muted hover:bg-surface hover:text-foreground',
                 )}
               >
                 {g.titulo}

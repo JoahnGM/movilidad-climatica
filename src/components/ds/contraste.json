@@ -1,16 +1,17 @@
 {
-  "$comment": "Pares de contraste que el DS garantiza. Fuente única para scripts/check-ds.mjs y el catálogo /ds/fundamentos. Tokens = nombres de --color-* en src/app/globals.css. 'glass' se compone sobre 'background'.",
-  "fondos": ["background", "background-alt", "surface", "surface-raised", "glass"],
+  "$comment": "Pares de contraste que el DS garantiza. Fuente única para scripts/check-ds.mjs y el catálogo /ds/fundamentos. Tokens = nombres de --color-* en src/app/globals.css.",
+  "fondos": ["background", "background-alt", "surface", "surface-raised", "sage"],
   "grupos": [
-    { "uso": "Texto normal (AA 4.5:1)", "min": 4.5, "textos": ["foreground", "muted", "subtle", "teal", "blue", "amber", "violet-light", "red-light"] },
-    { "uso": "Texto grande ≥24px o negrita ≥19px, íconos y bordes de control (AA 3:1)", "min": 3, "textos": ["violet", "red", "border-strong"] }
+    { "uso": "Texto normal (AA 4.5:1)", "min": 4.5, "textos": ["foreground", "muted", "subtle", "green-ink", "blue-ink", "amber-ink", "red-ink", "violet-ink"] },
+    { "uso": "Bordes de control e íconos (AA 3:1)", "min": 3, "textos": ["border-strong", "green", "blue", "red", "violet"] }
   ],
   "especiales": [
-    { "texto": "on-accent", "fondo": "teal", "min": 4.5, "uso": "Botón primario" },
-    { "texto": "on-accent", "fondo": "amber", "min": 4.5, "uso": "Badge sólido ámbar" },
+    { "texto": "on-accent", "fondo": "ink", "min": 4.5, "uso": "Botón primario" },
+    { "texto": "on-accent", "fondo": "green", "min": 4.5, "uso": "Botón primario en hover, badge sólido verde" },
+    { "texto": "on-accent", "fondo": "blue", "min": 4.5, "uso": "Badge sólido azul" },
+    { "texto": "foreground", "fondo": "amber", "min": 4.5, "uso": "Badge sólido ámbar" },
     { "texto": "on-accent", "fondo": "red", "min": 4.5, "uso": "Badge sólido rojo" },
     { "texto": "on-accent", "fondo": "violet", "min": 4.5, "uso": "Badge sólido violeta" },
-    { "texto": "on-accent", "fondo": "blue", "min": 4.5, "uso": "Badge sólido azul" },
-    { "texto": "teal", "fondo": "background", "min": 3, "uso": "Anillo de foco (:focus-visible)" }
+    { "texto": "green", "fondo": "background", "min": 3, "uso": "Anillo de foco (:focus-visible)" }
   ]
 }

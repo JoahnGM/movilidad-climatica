@@ -1,103 +1,108 @@
 /*
- * Design system — tokens (fuente única de verdad).
+ * Design system "Cordillera" — tokens (fuente única de verdad).
  * Estándar: docs/estandares/design-system.md · Catálogo vivo: /ds
  *
  * Reglas rápidas:
  *  - Este archivo es el ÚNICO lugar con valores de color literales (hex/rgb).
  *  - Los componentes usan clases Tailwind generadas desde estos tokens
- *    (bg-background, text-muted, border-border, py-section, text-h2, …).
- *  - Solo hay modo oscuro: el fondo azul institucional es la base. No existe
- *    una variante clara (ver docs/decisiones/2026-11-06-design-system.md).
- *  - Si cambias un valor aquí, corre `npm run check:ds` (verifica contraste AA).
+ *    (bg-background, text-muted, border-border, text-green, py-section, text-h2, …).
+ *  - Modo claro único: papel cálido + tinta verde bosque. Ver
+ *    docs/decisiones/2026-11-06-design-system.md.
+ *  - Si cambias un color, corre `npm run check:ds` (verifica contraste AA).
  */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
-
 /* ── 1. Tokens ──────────────────────────────────────────────────────────
  * Los nombres de @theme generan las clases: --color-muted → text-muted,
- * --spacing-section → py-section, --text-h2 → text-h2, --radius-xl → rounded-xl.
- * `static` emite siempre las variables en :root (las usan el mapeo shadcn y ds/).
+ * --spacing-section → py-section, --text-h2 → text-h2, --radius-card → rounded-card.
+ * `static` emite siempre las variables en :root (las usan shadcn, ds/ y los efectos).
  */
 @theme static {
-  /* Sin paleta por defecto de Tailwind: solo existen los colores de abajo.
-     `text-slate-400`, `bg-teal-500`, etc. no generan CSS. */
+  /* Sin paleta por defecto de Tailwind: solo existen los colores de abajo. */
   --color-*: initial;
 
-  /* Color — fondos y superficies (de más profundo a más elevado) */
-  --color-background:     #0A0F1E;                 /* fondo institucional base */
-  --color-background-alt: #0C1223;                 /* secciones alternas */
-  --color-surface:        #0F1629;                 /* paneles sólidos (chat, tracker) */
-  --color-surface-raised: #151E36;                 /* diálogos, menús */
-  --color-glass:          rgb(255 255 255 / 0.05); /* glassmorphism oficial */
-  --color-glass-hover:    rgb(255 255 255 / 0.08);
-  --color-overlay:        rgb(5 8 18 / 0.8);       /* fondo detrás de diálogos */
+  /* Fondos y superficies */
+  --color-background:     #FBFAF6; /* papel: fondo base */
+  --color-background-alt: #F4F2EB; /* secciones alternas */
+  --color-surface:        #F2F0E8; /* tarjetas planas */
+  --color-surface-raised: #FFFFFF; /* tarjetas elevadas, chat, diálogos */
+  --color-sage:           #E7EEE4; /* superficie de acento suave */
+  --color-overlay:        rgb(22 53 46 / 0.35); /* fondo detrás de diálogos */
 
-  /* Color — bordes */
-  --color-border:         #1E2A45;                 /* divisores y bordes de panel */
-  --color-border-glass:   rgb(255 255 255 / 0.1);  /* borde de GlassCard */
-  --color-border-strong:  #64748B;                 /* bordes de controles (≥3:1) */
+  /* Bordes */
+  --color-border:         #E2DED2; /* divisores y bordes de tarjeta */
+  --color-border-strong:  #74847E; /* bordes de controles (≥3:1) */
 
-  /* Color — texto (muted y subtle conservan su nombre histórico) */
-  --color-foreground:     #F1F5F9;                 /* texto principal */
-  --color-muted:          #CBD5E1;                 /* texto de apoyo */
-  --color-subtle:         #94A3B8;                 /* metadatos, eyebrows, pies */
-  --color-on-accent:      #0A0F1E;                 /* texto sobre teal/amber sólidos */
+  /* Texto (tinta verde bosque) */
+  --color-foreground:     #16352E; /* texto principal */
+  --color-muted:          #3F5852; /* texto de apoyo */
+  --color-subtle:         #596A64; /* metadatos, eyebrows, pies */
+  --color-on-accent:      #FFFFFF; /* texto sobre verde, rojo, violeta y azul sólidos */
+  --color-ink:            #16352E; /* fondo oscuro de CTA y burbuja del usuario */
 
-  /* Color — acentos oficiales (CLAUDE.md §3) */
-  --color-teal:           #2DD4BF;
-  --color-blue:           #60A5FA;
-  --color-amber:          #F59E0B;
-  --color-violet:         #8B5CF6;
-  --color-red:            #EF4444;
-  /* Variantes para texto pequeño: violet y red no llegan a AA sobre superficies elevadas */
-  --color-violet-light:   #A78BFA;
-  --color-red-light:      #F87171;
+  /* Tonos. `X` = relleno (barras, puntos, botones); `X-ink` = texto AA sobre cualquier superficie */
+  --color-green:          #1F6B4F; /* marca, acción principal, fortaleza, nivel 4 */
+  --color-green-ink:      #1F6B4F;
+  --color-blue:           #3F6E96; /* información, en desarrollo, nivel 3 */
+  --color-blue-ink:       #3F6E96;
+  --color-amber:          #D99A32; /* advertencia, brecha, nivel 2, ejemplo */
+  --color-amber-ink:      #8A5A12;
+  --color-red:            #C2523C; /* crítico, nivel 1, urgencia inmediata */
+  --color-red-ink:        #A63D2A;
+  --color-violet:         #7B61C9; /* IA y funciones experimentales */
+  --color-violet-ink:     #5B44A8;
 
-  /* Solo para componentes heredados (chat) y ds/: prohibido en páginas (check:ds) */
+  /* Solo para heredados y efectos: prohibido en páginas (check:ds) */
   --color-white:          #FFFFFF;
   --color-black:          #000000;
 
-  /* Radios: rounded-lg (inputs, botones) · rounded-xl (tarjetas) · rounded-full (chips) */
-  --radius-sm:  0.375rem;
-  --radius-md:  0.5rem;
-  --radius-lg:  0.625rem;
-  --radius-xl:  0.875rem;
-  --radius-2xl: 1.125rem;
+  /* Radios: rounded-control (botones, inputs) · rounded-card (tarjetas) · rounded-full (chips) */
+  --radius-sm:      0.375rem;
+  --radius-md:      0.5rem;
+  --radius-lg:      0.75rem;
+  --radius-xl:      1rem;
+  --radius-2xl:     1.5rem;
+  --radius-control: 999px;
+  --radius-card:    1.5rem;
 
   /* Sombras */
-  --shadow-glass:  0 1px 0 0 rgb(255 255 255 / 0.04) inset, 0 8px 24px -12px rgb(0 0 0 / 0.6);
-  --shadow-raised: 0 24px 48px -16px rgb(0 0 0 / 0.7);
-  --shadow-glow:   0 0 0 1px rgb(45 212 191 / 0.3), 0 8px 32px -8px rgb(45 212 191 / 0.35);
+  --shadow-card:   0 1px 2px rgb(22 53 46 / 0.04);
+  --shadow-raised: 0 1px 2px rgb(22 53 46 / 0.05), 0 16px 40px -16px rgb(22 53 46 / 0.18);
 
-  /* Familias: Syne (títulos) · Inter (UI y cuerpo) · JetBrains Mono (cifras) */
-  --font-sans:    var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-syne), var(--font-inter), sans-serif;
-  --font-mono:    var(--font-jetbrains), ui-monospace, monospace;
+  /* Familias: Instrument Sans (UI y títulos) · Instrument Serif itálica (acento humano) · Geist Mono (datos) */
+  --font-sans:    var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-accent:  var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-mono:    var(--font-geist-mono), ui-monospace, monospace;
 
   /* Escala tipográfica nombrada (fluida, sin breakpoints) */
-  --text-display:              clamp(2.75rem, 1.5rem + 5vw, 4.5rem);
-  --text-display--line-height: 1.05;
-  --text-h1:                   clamp(2.25rem, 1.4rem + 3.4vw, 3.75rem);
-  --text-h1--line-height:      1.1;
-  --text-h2:                   clamp(1.875rem, 1.3rem + 2.2vw, 3rem);
-  --text-h2--line-height:      1.15;
-  --text-h3:                   clamp(1.375rem, 1.1rem + 1vw, 1.875rem);
-  --text-h3--line-height:      1.25;
-  --text-h4:                   1.125rem;
-  --text-h4--line-height:      1.35;
-  --text-lead:                 clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --text-display:              clamp(2.5rem, 1.4rem + 4.4vw, 4.5rem);
+  --text-display--line-height: 1.02;
+  --text-h1:                   clamp(2.25rem, 1.5rem + 3vw, 3.5rem);
+  --text-h1--line-height:      1.05;
+  --text-h2:                   clamp(1.875rem, 1.35rem + 2vw, 3rem);
+  --text-h2--line-height:      1.08;
+  --text-h3:                   clamp(1.375rem, 1.15rem + 0.8vw, 1.75rem);
+  --text-h3--line-height:      1.2;
+  --text-h4:                   1.1875rem;
+  --text-h4--line-height:      1.3;
+  --text-lead:                 clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
   --text-lead--line-height:    1.6;
   --text-body:                 1rem;
-  --text-body--line-height:    1.65;
-  --text-small:                0.875rem;
-  --text-small--line-height:   1.6;
+  --text-body--line-height:    1.6;
+  --text-small:                0.9375rem;
+  --text-small--line-height:   1.55;
   --text-caption:              0.75rem;
   --text-caption--line-height: 1.5;
-  --text-metric:               clamp(2.75rem, 1.8rem + 3.6vw, 4.5rem);
+  --text-metric:               clamp(2.75rem, 1.9rem + 3.4vw, 4rem);
   --text-metric--line-height:  1;
+
+  /* Tracking de títulos */
+  --tracking-display: -0.04em;
+  --tracking-heading: -0.03em;
+  --tracking-eyebrow: 0.12em;
 
   /* Curva de movimiento → ease-out-soft */
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
@@ -105,36 +110,36 @@
 
 :root {
   /* Espaciado nombrado (además de la escala 4px de Tailwind) */
-  --space-gutter:  clamp(1rem, 4vw, 3rem);    /* padding lateral del Container */
-  --space-section: clamp(5rem, 10vw, 10rem);  /* padding vertical de Section */
-  --space-block:   clamp(3rem, 6vw, 5rem);    /* separación entre bloques de una sección */
-  --space-stack:   1.25rem;                   /* separación dentro de una tarjeta */
-  --space-card:    clamp(1.5rem, 3vw, 2rem);  /* padding de GlassCard */
+  --space-gutter:  clamp(1.25rem, 4vw, 2rem);  /* padding lateral del Container */
+  --space-section: clamp(5rem, 9vw, 8rem);     /* padding vertical de Section */
+  --space-block:   clamp(3rem, 5vw, 4rem);     /* separación entre bloques de una sección */
+  --space-stack:   1.25rem;                    /* separación dentro de una tarjeta */
+  --space-card:    clamp(1.5rem, 3vw, 2rem);   /* padding de Card */
 
   /* Movimiento (espejo en src/components/ds/motion.ts; check:ds verifica que coincidan) */
   --motion-fast:     150ms;
   --motion-base:     300ms;
-  --motion-slow:     550ms;
-  --motion-distance: 24px;
+  --motion-slow:     600ms;
+  --motion-distance: 20px;
 
   /* Mapeo shadcn → tokens (temiza src/components/ui/** sin editarlo) */
   --radius:               var(--radius-lg);
   --background:           var(--color-background);
   --foreground:           var(--color-foreground);
-  --card:                 var(--color-surface);
+  --card:                 var(--color-surface-raised);
   --card-foreground:      var(--color-foreground);
   --popover:              var(--color-surface-raised);
   --popover-foreground:   var(--color-foreground);
-  --primary:              var(--color-teal);
+  --primary:              var(--color-ink);
   --primary-foreground:   var(--color-on-accent);
-  --secondary:            var(--color-surface-raised);
+  --secondary:            var(--color-surface);
   --secondary-foreground: var(--color-foreground);
   --muted-foreground:     var(--color-muted);
-  --accent:               var(--color-surface-raised);
+  --accent:               var(--color-surface);
   --accent-foreground:    var(--color-foreground);
   --destructive:          var(--color-red);
   --input:                var(--color-border-strong);
-  --ring:                 var(--color-teal);
+  --ring:                 var(--color-green);
 }
 
 @theme inline {
@@ -162,80 +167,61 @@
   --color-card-foreground:      var(--card-foreground);
 }
 
-/* ── 3. Base ──────────────────────────────────────────────────────────── */
+/* ── 2. Base ──────────────────────────────────────────────────────────── */
 @layer base {
   * {
     @apply border-border;
   }
   html {
     @apply font-sans;
-    color-scheme: dark;
+    color-scheme: light;
+    scroll-behavior: smooth;
     scroll-padding-top: 5rem; /* compensa la navbar fija en anclas */
   }
   body {
     @apply bg-background text-foreground antialiased;
   }
   ::selection {
-    @apply bg-teal/30 text-foreground;
+    @apply bg-green/20 text-foreground;
   }
   /* Foco visible y consistente en todo el sitio */
   :focus-visible {
-    outline: 2px solid var(--color-teal);
+    outline: 2px solid var(--color-green);
     outline-offset: 2px;
-    border-radius: var(--radius-sm);
   }
 }
 
 /* Movimiento reducido: desactiva animaciones y transiciones CSS.
    Las de Framer Motion se controlan con <MotionProvider> (reducedMotion="user"). */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
 
-/* ── 4. Utilidades del DS ─────────────────────────────────────────────── */
+/* ── 3. Utilidades del DS ─────────────────────────────────────────────── */
 @layer utilities {
-  /* Glassmorphism oficial (CLAUDE.md §3). Preferir <GlassCard>. */
-  .glass {
-    background-color: var(--color-glass);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid var(--color-border-glass);
+  /* Acento humano: serif itálica (frases clave del titular, nunca párrafos) */
+  .font-accent {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
   }
-  /* Obsoleta: solo la usan componentes de chat pendientes de migrar. */
-  .glassmorphism {
-    background-color: var(--color-glass);
-    backdrop-filter: blur(8px);
-    border: 1px solid var(--color-border-glass);
-    border-radius: var(--radius-xl);
+  /* Halo suave en la parte alta de una sección */
+  .bg-halo {
+    background-image: radial-gradient(ellipse 70% 55% at 50% 0%, rgb(190 220 170 / 0.45), transparent 70%);
   }
-  /* Rejilla decorativa del hero */
-  .bg-grid {
-    background-image:
-      linear-gradient(rgb(255 255 255 / 0.024) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(255 255 255 / 0.024) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-  /* Halos decorativos de sección */
-  .bg-glow-teal {
-    background-image: radial-gradient(ellipse 70% 50% at 50% 0%, rgb(45 212 191 / 0.05), transparent);
-  }
-  .bg-glow-hero {
-    background-image: radial-gradient(ellipse 60% 50% at 50% 40%, rgb(45 212 191 / 0.07), transparent);
-  }
-  .bg-wash {
-    background-image: linear-gradient(135deg, rgb(45 212 191 / 0.03) 0%, rgb(96 165 250 / 0.03) 100%);
-  }
-  .text-gradient {
-    background-image: linear-gradient(90deg, var(--color-teal), var(--color-blue));
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-  }
+}
+
+@keyframes pulso-nodo {
+  0% { transform: scale(1); opacity: 0.45; }
+  100% { transform: scale(2.2); opacity: 0; }
 }

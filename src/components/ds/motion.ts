@@ -7,10 +7,10 @@ export const MOTION = {
   fast: 0.15,
   /** 300ms — abrir/cerrar, acordeones, diálogos */
   base: 0.3,
-  /** 550ms — entrada de bloques al hacer scroll */
-  slow: 0.55,
+  /** 600ms — entrada de bloques al hacer scroll */
+  slow: 0.6,
   /** Desplazamiento vertical del fade-in, en px */
-  distance: 24,
+  distance: 20,
   /** Curva por defecto (--ease-out-soft) */
   ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
   /** Retraso entre elementos hermanos en una cuadrícula */

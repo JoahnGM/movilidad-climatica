@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useSyncExternalStore } from 'react';
 import contraste from '@/components/ds/contraste.json';
 import { cn } from '@/lib/utils';
 
@@ -41,13 +41,17 @@ function ratio(a: RGBA, b: RGBA): number {
   return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
 }
 
+const sinSuscripcion = () => () => {};
+
+/** Valores actuales de los tokens (vacío en el servidor; se leen en el cliente). */
 function useTokens(nombres: string[]) {
-  const [valores, setValores] = useState<Record<string, string>>({});
   const clave = nombres.join(',');
-  useEffect(() => {
-    setValores(Object.fromEntries(clave.split(',').map((n) => [n, leerToken(n)])));
-  }, [clave]);
-  return valores;
+  const snapshot = useSyncExternalStore(
+    sinSuscripcion,
+    () => clave.split(',').map((n) => `${n}=${leerToken(n)}`).join('|'),
+    () => '',
+  );
+  return Object.fromEntries(snapshot ? snapshot.split('|').map((p) => p.split('=') as [string, string]) : []);
 }
 
 export interface ColorToken {
@@ -61,10 +65,10 @@ export function MuestrasColor({ tokens }: { tokens: ColorToken[] }) {
   return (
     <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {tokens.map((t) => (
-        <li key={t.nombre} className="flex items-center gap-3 rounded-xl border border-border bg-surface p-3">
+        <li key={t.nombre} className="flex items-center gap-3 rounded-xl border border-border bg-surface-raised p-3">
           <span
             aria-hidden="true"
-            className="size-12 shrink-0 rounded-lg border border-border-glass bg-(--muestra)"
+            className="size-12 shrink-0 rounded-lg border border-border bg-(--muestra)"
             style={{ '--muestra': `var(--color-${t.nombre})` } as React.CSSProperties}
           />
           <span className="flex min-w-0 flex-col">
@@ -93,7 +97,7 @@ export function TablaContraste() {
   const fondo = (n: string) => componer(aRgba(v[n]) as RGBA, base);
 
   const celda = (r: number, min: number) => (
-    <td className={cn('px-3 py-2 text-right font-mono tabular-nums', r >= min ? 'text-muted' : 'text-red-light font-semibold')}>
+    <td className={cn('px-3 py-2 text-right font-mono tabular-nums', r >= min ? 'text-muted' : 'font-semibold text-red-ink')}>
       {r.toFixed(2)}
       <span className="sr-only">{r >= min ? ' cumple' : ' no cumple'}</span>
     </td>
@@ -102,7 +106,7 @@ export function TablaContraste() {
   return (
     <div className="flex flex-col gap-8">
       {contraste.grupos.map((g) => (
-        <div key={g.uso} className="overflow-x-auto rounded-xl border border-border">
+        <div key={g.uso} className="relative overflow-x-auto rounded-xl border border-border">
           <table className="w-full min-w-[40rem] text-small">
             <caption className="px-3 py-3 text-left text-small font-medium text-foreground">
               {g.uso} — mínimo {g.min}:1
@@ -134,7 +138,7 @@ export function TablaContraste() {
           </table>
         </div>
       ))}
-      <div className="overflow-x-auto rounded-xl border border-border">
+      <div className="relative overflow-x-auto rounded-xl border border-border">
         <table className="w-full min-w-[32rem] text-small">
           <caption className="px-3 py-3 text-left text-small font-medium text-foreground">Pares especiales</caption>
           <thead className="bg-surface text-caption text-subtle">

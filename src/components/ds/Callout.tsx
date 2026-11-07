@@ -2,9 +2,9 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { AlertTriangle, Info, Lightbulb, OctagonAlert, Sparkles, type LucideIcon } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import { toneAccent, toneText, toneWashBg, type Tone } from './tones';
+import { toneAccent, toneSoftBg, toneText, type Tone } from './tones';
 
-export const calloutVariants = cva('flex gap-4 rounded-xl border border-border-glass border-l-4 p-6', {
+export const calloutVariants = cva('flex gap-4 rounded-xl border-l-[3px] p-5 md:p-6', {
   variants: {
     variant: {
       /** Definición o idea clave */
@@ -25,7 +25,7 @@ export const calloutVariants = cva('flex gap-4 rounded-xl border border-border-g
 type CalloutVariant = NonNullable<VariantProps<typeof calloutVariants>['variant']>;
 
 const DEFAULTS: Record<CalloutVariant, { tone: Tone; icon: LucideIcon }> = {
-  nota: { tone: 'teal', icon: Lightbulb },
+  nota: { tone: 'green', icon: Lightbulb },
   info: { tone: 'blue', icon: Info },
   ia: { tone: 'violet', icon: Sparkles },
   advertencia: { tone: 'amber', icon: AlertTriangle },
@@ -33,7 +33,7 @@ const DEFAULTS: Record<CalloutVariant, { tone: Tone; icon: LucideIcon }> = {
 };
 
 export interface CalloutProps extends VariantProps<typeof calloutVariants> {
-  /** Rótulo en mayúsculas (eyebrow) sobre el contenido. */
+  /** Rótulo monoespaciado sobre el contenido. */
   title?: string;
   children: ReactNode;
   /** Sobrescribe el tono de la variante (p. ej. color del nivel). */
@@ -49,16 +49,11 @@ export function Callout({ variant = 'nota', tone, title, icon, children, classNa
   const t = tone ?? DEFAULTS[v].tone;
   const Icon = icon === false ? null : (icon ?? DEFAULTS[v].icon);
   return (
-    <div
-      role="note"
-      className={cn(calloutVariants({ variant }), toneAccent[t], toneWashBg[t], className)}
-    >
+    <div role="note" className={cn(calloutVariants({ variant }), toneAccent[t], toneSoftBg[t], className)}>
       {Icon && <Icon aria-hidden="true" className={cn('mt-0.5 size-5 shrink-0', toneText[t])} />}
-      <div className="flex min-w-0 flex-col gap-3">
-        {title && (
-          <p className="text-caption font-semibold uppercase tracking-widest text-subtle">{title}</p>
-        )}
-        <div className="text-body text-foreground md:text-lead">{children}</div>
+      <div className="flex min-w-0 flex-col gap-2">
+        {title && <p className="font-mono text-caption uppercase tracking-eyebrow text-subtle">{title}</p>}
+        <div className="text-body text-foreground">{children}</div>
       </div>
     </div>
   );

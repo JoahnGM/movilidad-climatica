@@ -1,24 +1,26 @@
 import type { Metadata } from 'next';
-import { Syne, Inter, JetBrains_Mono } from 'next/font/google';
+import { Geist_Mono, Instrument_Sans, Instrument_Serif } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
+import { MotionProvider, SkipLink } from '@/components/ds';
 
-const syne = Syne({
+const instrumentSans = Instrument_Sans({
   subsets: ['latin'],
-  weight: ['700', '800'],
-  variable: '--font-syne',
+  weight: ['400', '500', '600'],
+  variable: '--font-instrument-sans',
 });
 
-const inter = Inter({
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: '400',
+  style: ['normal', 'italic'],
+  variable: '--font-instrument-serif',
+});
+
+const geistMono = Geist_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
-  variable: '--font-inter',
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '600'],
-  variable: '--font-jetbrains',
+  variable: '--font-geist-mono',
 });
 
 export const metadata: Metadata = {
@@ -33,11 +35,14 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${syne.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${instrumentSans.variable} ${instrumentSerif.variable} ${geistMono.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
-        {children}
+        <MotionProvider>
+          <SkipLink />
+          <Navbar />
+          {children}
+        </MotionProvider>
       </body>
     </html>
   );
