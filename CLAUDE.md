@@ -20,7 +20,7 @@ El producto central es un **chat-diagnóstico con inteligencia artificial** que 
 
 | Capa | Tecnología |
 |---|---|
-| Framework | Next.js 14 (App Router, TypeScript) |
+| Framework | Next.js 16 (App Router, TypeScript) |
 | Estilos | Tailwind CSS |
 | Componentes | shadcn/ui |
 | Animaciones | Framer Motion |
@@ -170,18 +170,18 @@ P18: ¿El territorio incorpora, de manera explícita o implícita, criterios de 
 ## 5. ARQUITECTURA DE AGENTES
 
 ```
-[Agente 1: Entrevistador] → streaming, gemini-1.5-flash
+[Agente 1: Entrevistador] → streaming, gemini-3-flash-preview
   Cubre las 6 dimensiones conversacionalmente
   Termina con [ENTREVISTA_COMPLETA]
          ↓ transcript
 
-[Agente 2: Analista] → generateText, gemini-1.5-flash
+[Agente 2: Analista] → generateText, gemini-3-flash-preview
   Evalúa las 18 preguntas con escala 0-3
   Solo usa evidencia explícita del transcript
   Si no se mencionó → puntaje 0
          ↓ scores JSON con evidencias
 
-[Agente 3: Sintetizador] → generateText, gemini-1.5-pro
+[Agente 3: Sintetizador] → generateText, gemini-3.1-pro-preview
   Determina nivel según puntaje total
   Usa textos EXACTOS del iceberg oficial
   Produce resultado final grounded
@@ -602,3 +602,19 @@ La página `/resultado` lee de localStorage al cargar. Si no hay datos, redirige
 - No modificar archivos dentro de `src/components/ui/` (son de shadcn)
 - No parafrasear los textos oficiales del iceberg
 - No asignar puntaje sin evidencia explícita del transcript
+
+---
+
+## 13. ESTÁNDARES ALWAYS-ON (leer antes de tocar cada tema)
+
+Cada tema del proyecto tiene un estándar vivo en `docs/estandares/`. **Antes de modificar código de un tema, lee su estándar y cumple su checklist.** La convención completa está en `docs/estandares/README.md`; los informes de investigación que sustentan cada estándar están en `docs/investigacion/`; las decisiones con consecuencias futuras, en `docs/decisiones/`.
+
+| Tema | Estándar | Script de verificación | Cubre |
+|---|---|---|---|
+| Seguridad de la API y del pipeline | `docs/estandares/seguridad.md` | `npm run check:seguridad` | `src/app/api/**`, `src/proxy.ts`, `next.config.ts`, validación de entrada, cabeceras, logging |
+| Agentes de IA | `docs/estandares/agentes-ia.md` | `npm run check:agentes` | prompts, rúbrica, esquemas, proveedor/modelo, golden set, umbrales |
+| Design system | `docs/estandares/design-system.md` | `npm run check:ds` | tokens, `src/components/ds/**`, uso de shadcn, accesibilidad |
+| Contenido y fuentes | `docs/estandares/contenido-y-fuentes.md` | `npm run check:contenido` | `src/lib/contenido/**`, cifras, ciudades, recursos, textos |
+| Medición y feedback | `docs/estandares/medicion-y-feedback.md` | `npm run check:medicion` | eventos de analítica, micro-encuesta, qué nunca se guarda |
+
+Regla general: un PR que toca un tema sin actualizar su estándar y sus pruebas no está terminado. El plan de trabajo vigente está en `docs/plan-feedback.md`.
