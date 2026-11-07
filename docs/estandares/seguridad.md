@@ -15,7 +15,7 @@
 | Logging | `src/lib/seguridad/log.ts` |
 | Cabeceras HTTP | `next.config.ts` |
 | Proveedor y retención de datos | `src/lib/ai/provider.ts` (detalle en `docs/estandares/agentes-ia.md`) |
-| Configuración fuera del repo | Regla WAF, clave de Gemini de pago y alertas de facturación, variables de entorno en Vercel (§6) |
+| Configuración fuera del repo | Regla WAF, clave de Gemini, variables de entorno en Vercel (§6) |
 
 ## 2. Reglas obligatorias
 
@@ -38,7 +38,7 @@ Orden de controles en cada ruta de IA (no se reordena): **kill switch → rate l
 15. **Logging mínimo.** Solo los campos de `EventoLog` (request id, ruta, status, latencia, motivo técnico, tokens, puntaje total, flag y patrones de manipulación, citas no verificadas, modelo, hash de IP). Nunca transcripción, municipio, nombres, cargos, prompts ni respuestas del modelo. *Por qué: datos personales (Ley 1581/2012); los logs de Vercel no son un lugar para guardarlos.*
 16. **Cabeceras** en `next.config.ts` para todas las rutas: CSP sin nonce, HSTS (2 años, `includeSubDomains; preload`), `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy` (cámara, micrófono, geolocalización, pago, USB apagados), `X-Frame-Options: DENY`, sin `X-Powered-By`. La única ruta enmarcable es la del proxy de BotID (mismo origen).
 17. **Acceso del piloto** (`ACCESS_MODE=passcode`): `POST /api/acceso` compara con `timingSafeEqual` contra todos los códigos; firma un JWT HS256 (`jose`) con solo la huella del código (`sub`), en cookie `mc_acceso` `httpOnly; Secure; SameSite=Lax; 7 días`. `src/proxy.ts` lo exige en `/diagnostico`, `/api/chat` y `/api/diagnostico`. Quitar un código de `ACCESS_CODES` lo revoca de inmediato. Sin `ACCESS_JWT_SECRET` (≥ 32 caracteres) el acceso falla cerrado. `x-acceso-etiqueta` es una cabecera interna: el proxy la borra siempre antes de fijarla.
-18. **Proveedor y retención.** Producción usa Gemini directo con una clave de **nivel de pago** (el gratuito usa los prompts para mejorar productos de Google). Si algún día se usa AI Gateway (Gemini con `AI_GATEWAY_API_KEY` o `AI_PROVIDER=deepseek`), va siempre con `zeroDataRetention: true` y, para DeepSeek, solo proveedores de EE.UU. con ZDR. Nunca la API oficial de DeepSeek (ADR `2026-11-06-proveedor-ia-gateway-zdr`).
+18. **Proveedor y retención.** Producción usa Gemini directo en **nivel gratuito** (decisión del equipo): Google puede usar el contenido para mejorar sus productos, así que la política de datos debe decirlo y pedir que no se escriban datos personales (§7). Si algún día se usa AI Gateway (Gemini con `AI_GATEWAY_API_KEY` o `AI_PROVIDER=deepseek`), va siempre con `zeroDataRetention: true` y, para DeepSeek, solo proveedores de EE.UU. con ZDR. Nunca la API oficial de DeepSeek (ADR `2026-11-06-proveedor-ia-gateway-zdr`).
 19. **Secretos.** Ninguna clave en el repositorio. `.env.example` lista todas las variables sin valores; `.env*` está en `.gitignore`.
 
 ## 3. Checklist antes de abrir un PR
@@ -99,8 +99,8 @@ Orden de controles en cada ruta de IA (no se reordena): **kill switch → rate l
    - Hobby permite una sola regla; esta es la que debe existir. En Pro, agregar dos más: `^/api/diagnostico$` → 5 solicitudes / 10 min por IP; `^/api/acceso$` → 5 solicitudes / 10 min por IP.
    - Probar primero con acción *Log* durante un día y luego cambiar a *Deny*.
 2. **BotID Deep Analysis** (solo Pro, $1 por 1.000 verificaciones): Firewall → Configure → Vercel BotID Deep Analysis. BotID Basic queda activo sin configuración.
-3. **Clave de Gemini y costos:** la clave de `GOOGLE_GENERATIVE_AI_API_KEY` debe ser de un proyecto de Google Cloud con **facturación activa** (nivel de pago). En Google Cloud → Billing → Budgets & alerts, crear un presupuesto mensual (sugerido para el piloto: USD 20) con alertas al 50/75/100 %. Solo si se adopta AI Gateway: presupuesto en AI Gateway → Budgets, con créditos del gateway (el BYOK no cuenta contra el presupuesto).
-4. **Variables de entorno:** `GOOGLE_GENERATIVE_AI_API_KEY` (de pago), `AI_PROVIDER=gemini` (o sin definir), `DIAGNOSTICO_ENABLED`, `ACCESS_MODE`, `ACCESS_CODES`, `ACCESS_JWT_SECRET`, `LOG_IP_SALT`. No definir `AI_GATEWAY_API_KEY` salvo que se adopte el gateway.
+3. **Clave de Gemini y cuota:** `GOOGLE_GENERATIVE_AI_API_KEY` en nivel gratuito. Las cuotas son **por proyecto de Google Cloud y por modelo** (no por clave; ~20 solicitudes/día por modelo, se reinician a medianoche hora del Pacífico), y alcanzan para ~1 entrevista completa al día. Si la clave local y la de Vercel son del mismo proyecto, comparten la cuota. Ver las cuotas activas en AI Studio → Rate limits. Para el taller de pilotaje, activar facturación en el proyecto (no requiere cambios de código) y crear un presupuesto con alertas en Google Cloud → Billing → Budgets & alerts.
+4. **Variables de entorno:** `GOOGLE_GENERATIVE_AI_API_KEY` (sí se define), `AI_PROVIDER=gemini` (o sin definir), `DIAGNOSTICO_ENABLED`, `ACCESS_MODE`, `ACCESS_CODES`, `ACCESS_JWT_SECRET`, `LOG_IP_SALT`. No definir `AI_GATEWAY_API_KEY` salvo que se adopte el gateway.
 5. **Plan:** Hobby es "uso personal, no comercial"; el piloto con gobiernos debe ir en **Pro** (más reglas WAF, BotID Deep Analysis, retención de logs de 1 día).
 
 ## 7. Decisiones y fuentes
@@ -111,21 +111,24 @@ Orden de controles en cada ruta de IA (no se reordena): **kill switch → rate l
 
 ### Texto para la política de datos (para la sesión de Contenido)
 
-> Condición: este texto solo es cierto cuando producción use una clave de Gemini de **nivel de pago**. La clave revisada el 2026-11-06 era gratuita; no publicar hasta confirmar el cambio en Vercel.
+> Escrito para Gemini en **nivel gratuito** (decisión del equipo, 2026-11-06). Si se activa la facturación, cambiar el segundo párrafo: en el nivel de pago Google no usa el contenido para mejorar sus productos.
 
 **Cómo procesamos tus respuestas**
 
-Las respuestas que escribes en el chat se envían a un modelo de inteligencia artificial para conducir la entrevista y generar tu diagnóstico. Usamos la API de Google Gemini en su modalidad de pago, en la que Google no utiliza el contenido de las conversaciones para mejorar sus productos ni entrenar sus modelos. Google puede conservar temporalmente las solicitudes con fines de seguridad y prevención de abusos, según sus términos de servicio.
+Las respuestas que escribes en el chat se envían a un modelo de inteligencia artificial de Google (Gemini) para conducir la entrevista y generar tu diagnóstico.
+
+Usamos la modalidad gratuita de la API de Gemini. En esa modalidad, Google puede conservar y usar el contenido de las conversaciones para mejorar sus productos, y personas revisoras pueden leerlo. **Por eso te pedimos no escribir nombres de personas, números de documento, datos de contacto ni información sensible**: basta con hablar del municipio y del cargo o área en la que trabajas.
 
 La plataforma no guarda tu conversación en sus servidores. La transcripción y el resultado se conservan solo en tu navegador (almacenamiento local) hasta que inicies un nuevo diagnóstico o borres los datos del navegador. Los registros técnicos del servicio no contienen el texto de la conversación, el nombre del municipio ni datos personales; solo información operativa como la hora, la duración y el puntaje total.
 
 Para cumplir la Ley 1581 de 2012 y los lineamientos de la Circular Externa 002 de 2024 de la Superintendencia de Industria y Comercio sobre datos personales en sistemas de inteligencia artificial, aplicamos minimización de datos: el diagnóstico no necesita tu nombre, tu número de documento ni datos de contacto, y te pedimos no incluirlos. Basta con el cargo o el área en la que trabajas. El resultado es una herramienta de apoyo: el puntaje refleja solo lo que se dijo en la entrevista y debe ser revisado por el equipo de la entidad antes de usarse en decisiones.
 
-**[verificar]** antes de publicar: (a) en los términos vigentes de la API de Gemini (ai.google.dev, "Gemini API Additional Terms"), el plazo de conservación por monitoreo de abusos y que el nivel de pago excluye el uso para mejorar productos; (b) el país de procesamiento de Google y la vigencia de la lista de países adecuados de la SIC (Circular Única, Título V); (c) que la clave de Vercel sea de un proyecto con facturación activa.
+**[verificar]** antes de publicar: (a) en los términos vigentes de la API de Gemini (ai.google.dev, "Gemini API Additional Terms", sección de servicios no pagos) el alcance exacto del uso del contenido y la revisión humana; (b) el país de procesamiento de Google y la vigencia de la lista de países adecuados de la SIC (Circular Única, Título V).
 
 ## 8. Historial
 
 | Fecha | Versión | Cambio |
 |---|---|---|
-| 2026-11-06 | 1.1 | El equipo decide mantener Gemini con clave de pago y no migrar a DeepSeek: proveedor por defecto `gemini`, Gemini nunca se desvía al gateway por OIDC, texto de política y pasos manuales ajustados. |
+| 2026-11-06 | 1.2 | El equipo decide quedarse en el nivel gratuito de Gemini: modelos sin Pro, texto de política que declara el uso de datos por Google y pide no escribir datos personales, cuotas por proyecto documentadas. |
+| 2026-11-06 | 1.1 | El equipo decide mantener Gemini y no migrar a DeepSeek: proveedor por defecto `gemini`, Gemini nunca se desvía al gateway por OIDC, texto de política y pasos manuales ajustados. |
 | 2026-11-06 | 1.0 | Creación (sesión Seguridad & IA, fase 1 de `docs/plan-feedback.md`). Validación de entrada, anti-manipulación, grounding, puntaje en código, BotID, rate limit, kill switch, errores genéricos, logging mínimo, cabeceras, passcode, AI SDK 7, next 16.4.5. |

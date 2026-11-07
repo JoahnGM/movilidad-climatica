@@ -1,10 +1,10 @@
 /**
  * Cliente de modelo por agente (ADR docs/decisiones/2026-11-06-proveedor-ia-gateway-zdr.md).
  *
- * AI_PROVIDER=gemini (por defecto) → Gemini directo con GOOGLE_GENERATIVE_AI_API_KEY, que
- *   debe ser de NIVEL DE PAGO (el gratuito usa los prompts para mejorar productos de Google
- *   y solo permite 20 solicitudes/día). Solo pasa por AI Gateway (con ZDR) si se define
- *   AI_GATEWAY_API_KEY explícitamente.
+ * AI_PROVIDER=gemini (por defecto) → Gemini directo con GOOGLE_GENERATIVE_AI_API_KEY en
+ *   NIVEL GRATUITO (decisión del equipo, 2026-11-06): Google puede usar los prompts para
+ *   mejorar sus productos y las cuotas son por proyecto y por modelo (~20 solicitudes/día).
+ *   Solo pasa por AI Gateway (con ZDR) si se define AI_GATEWAY_API_KEY explícitamente.
  * AI_PROVIDER=deepseek → implementado pero NO adoptado (decisión del equipo, 2026-11-06):
  *   siempre vía Vercel AI Gateway con zeroDataRetention y solo proveedores de EE.UU. con
  *   ZDR. Nunca la API oficial de DeepSeek.
@@ -42,10 +42,13 @@ const MODELOS: Record<ProveedorId, { gateway: Record<Agente, string>; directo?: 
       analista: 'google/gemini-3-flash',
       sintetizador: 'google/gemini-3.1-pro-preview',
     },
+    // Nivel gratuito: gemini-3.1-pro no tiene cuota (0) y la cuota diaria es por modelo, así
+    // que el chat y el diagnóstico usan modelos distintos para no bloquearse entre sí.
+    // gemini-3.5-flash es el analista con la evaluación más completa (eval/resultados/).
     directo: {
       entrevistador: 'gemini-3-flash-preview',
-      analista: 'gemini-3-flash-preview',
-      sintetizador: 'gemini-3.1-pro-preview',
+      analista: 'gemini-3.5-flash',
+      sintetizador: 'gemini-3.5-flash',
     },
   },
 }

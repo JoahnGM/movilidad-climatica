@@ -39,7 +39,7 @@ Agente 1 (entrevistador, streaming) ──transcripción──▶ validación + 
    - tasa de JSON inválido en el primer intento **≤ 5 %**, y 0 corridas fallidas;
    - latencia p95 del Agente 2 **< 20 s** (el corte es 25 s);
    - los 2 casos de manipulación: detección 100 % y el puntaje del modelo no sube más de 2 puntos sobre el esperado.
-7. **Proveedor y modelos fijados.** Producción usa Gemini directo con clave de pago: `gemini-3-flash-preview` (Agentes 1 y 2) y `gemini-3.1-pro-preview` (Agente 3). Ids con versión fija (p. ej. `deepseek/deepseek-v4.1-flash-1017`, no `deepseek-flash`): un alias que cambia por debajo rompe la comparabilidad. Cambiar de proveedor exige un ADR nuevo (ADR `2026-11-06-proveedor-ia-gateway-zdr`).
+7. **Proveedor y modelos fijados.** Producción usa Gemini directo en nivel gratuito: `gemini-3-flash-preview` (Agente 1) y `gemini-3.5-flash` (Agentes 2 y 3). En el nivel gratuito `gemini-3.1-pro` no tiene cuota y la cuota diaria es por modelo: no poner el chat y el diagnóstico en el mismo modelo. Ids con versión fija (p. ej. `deepseek/deepseek-v4.1-flash-1017`, no `deepseek-flash`): un alias que cambia por debajo rompe la comparabilidad. Cambiar de proveedor exige un ADR nuevo (ADR `2026-11-06-proveedor-ia-gateway-zdr`).
 8. **Parámetros por agente** (`PARAMETROS` en `provider.ts`): Agente 1 sin razonamiento (`reasoning: 'none'`, el primer token con thinking tarda ~50 s), `maxOutputTokens` 600, `temperature` 0,7; Agente 2 `reasoning: 'low'`, 4.000 tokens; Agente 3 `reasoning: 'low'`, 4.000 tokens (los tokens de razonamiento cuentan dentro de `maxOutputTokens`: con 2.000–2.500 el JSON se truncaba). Se usa la opción portable `reasoning` del AI SDK 7, no `providerOptions` específicos.
 9. **Minimización: qué NUNCA se envía al modelo.** IP, cookies, código de acceso o su huella, `requestId`, cabeceras, el campo `municipio` del request, metadatos del navegador. Al Agente 3 no se le envía la transcripción completa: solo el resultado calculado y las citas. El Agente 1 tiene instrucción de no pedir nombres, documentos ni datos de contacto.
 10. **Salida estructurada** con `generateText({ output: Output.object({ schema }) })`; nunca `generateObject` (deprecado). Si no valida: extraer JSON entre el primer `{` y el último `}` y, si tampoco, reintentar una vez (CLAUDE.md §11).
@@ -103,11 +103,12 @@ Evaluación con modelos (manual, con costo): `npm run eval:agentes` escribe `eva
 - ADR: `docs/decisiones/2026-11-06-puntaje-en-codigo.md`, `docs/decisiones/2026-11-06-proveedor-ia-gateway-zdr.md`.
 - Informes: `docs/investigacion/02-deepseek.md` (modelos, thinking, JSON, ZDR, marco legal), `docs/investigacion/04-metodologia-recomendaciones.md` §3 (rúbricas ancladas, evidencia obligatoria, versionado, kappa > 0,6) y §4 (rutas progresivas), `docs/investigacion/01-seguridad.md` §2 (prompt injection).
 - Resultados de evaluación: `eval/resultados/`.
-- Decisión del equipo (2026-11-06): se mantiene Gemini y no se migra a DeepSeek; la decisión abierta 6 del plan (modelo del Agente 3 en DeepSeek) queda sin efecto. Pendiente: repetir la evaluación completa con `--repeticiones 3` cuando esté la clave de pago (la del 2026-11-06 quedó parcial por la cuota gratuita).
+- Decisión del equipo (2026-11-06): se mantiene Gemini y no se migra a DeepSeek; la decisión abierta 6 del plan (modelo del Agente 3 en DeepSeek) queda sin efecto. Se queda en el nivel gratuito; el Agente 2 pasa a `gemini-3.5-flash`. Pendiente: completar la evaluación de `gemini-3.5-flash` (10 de 20 casos) en días distintos, con `--solo` para respetar las ~20 solicitudes/día por modelo.
 
 ## 8. Historial
 
 | Fecha | Versión | Cambio |
 |---|---|---|
-| 2026-11-06 | 1.1 · rúbrica `2026-11-06.1` | Se mantiene Gemini (clave de pago) como proveedor por defecto; DeepSeek queda detrás de `AI_PROVIDER=deepseek`, no adoptado. Prueba `tests/provider.test.ts` en `check:agentes`. |
+| 2026-11-06 | 1.2 · rúbrica `2026-11-06.1` | Nivel gratuito de Gemini: Agentes 2 y 3 en `gemini-3.5-flash` (el Pro no tiene cuota gratuita), Agente 1 en `gemini-3-flash-preview`. |
+| 2026-11-06 | 1.1 · rúbrica `2026-11-06.1` | Se mantiene Gemini como proveedor por defecto; DeepSeek queda detrás de `AI_PROVIDER=deepseek`, no adoptado. Prueba `tests/provider.test.ts` en `check:agentes`. |
 | 2026-11-06 | 1.0 · rúbrica `2026-11-06.1` | Creación. Prompts a `src/lib/prompts/`, anclas 0–3 para las 18 preguntas, puntaje y nivel en código, grounding, spotlighting, esquemas zod con `Output.object`, rutas progresivas en el Agente 3 (`primer_paso`, `siguiente_paso`, `ruta_ampliada`, `para_quien`), Agente 3 sin transcripción, proveedor DeepSeek vía AI Gateway con ZDR y Gemini como fallback, golden set de 20 casos y `eval-agentes.ts`. |

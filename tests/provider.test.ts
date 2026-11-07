@@ -10,18 +10,20 @@ function limpiar() {
 }
 
 describe('resolverModelo', () => {
-  it('por defecto usa Gemini directo con los modelos fijados', () => {
+  it('por defecto usa Gemini directo con modelos que tienen cuota en el nivel gratuito', () => {
     limpiar()
     expect(proveedorActivo()).toBe('gemini')
     expect(resolverModelo('entrevistador').etiqueta).toBe('google:gemini-3-flash-preview')
-    expect(resolverModelo('analista').etiqueta).toBe('google:gemini-3-flash-preview')
-    expect(resolverModelo('sintetizador').etiqueta).toBe('google:gemini-3.1-pro-preview')
+    expect(resolverModelo('analista').etiqueta).toBe('google:gemini-3.5-flash')
+    expect(resolverModelo('sintetizador').etiqueta).toBe('google:gemini-3.5-flash')
+    // gemini-3.1-pro no tiene cuota en el nivel gratuito
+    for (const a of ['entrevistador', 'analista', 'sintetizador'] as const) expect(resolverModelo(a).etiqueta).not.toMatch(/pro/)
   })
 
   it('en Vercel (VERCEL_OIDC_TOKEN) Gemini sigue directo, no por el gateway', () => {
     limpiar()
     process.env.VERCEL_OIDC_TOKEN = 'token'
-    expect(resolverModelo('analista').etiqueta).toBe('google:gemini-3-flash-preview')
+    expect(resolverModelo('analista').etiqueta).toBe('google:gemini-3.5-flash')
     expect(resolverModelo('analista').settings.providerOptions).toBeUndefined()
   })
 
