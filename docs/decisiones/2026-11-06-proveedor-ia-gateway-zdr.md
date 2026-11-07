@@ -1,25 +1,25 @@
-# Proveedor de IA: DeepSeek vía Vercel AI Gateway con retención cero; Gemini como fallback
+# Proveedor de IA: se mantiene Gemini (nivel de pago); DeepSeek queda implementado pero no adoptado
 
-Fecha: 2026-11-06 · Estado: aceptada (por defecto, reversible con `AI_PROVIDER`) · Sesión: Seguridad & IA
+Fecha: 2026-11-06 · Estado: aceptada (decisión del equipo) · Sesión: Seguridad & IA
 
 ## Contexto
-El plan (`docs/plan-feedback.md` §2.2 y decisión abierta 1) propone migrar de Gemini a DeepSeek por costo. Las entrevistas contienen datos personales (cargo, municipio, a veces nombres) de funcionarios públicos colombianos. La API oficial de DeepSeek procesa y almacena en China, retiene mientras exista la cuenta, puede usar los datos para entrenar y no ofrece retención cero; China no figura en la lista de países con nivel adecuado de la SIC (Ley 1581/2012 art. 26; Circular SIC 005/2017). Además, al revisar el proyecto se encontró que la clave de Gemini configurada localmente es de **nivel gratuito**, que Google puede usar para mejorar sus productos, y que no tiene cuota para `gemini-3.1-pro` (el Agente 3 actual no puede correr con ella).
+El plan (`docs/plan-feedback.md` §2.2 y decisión abierta 1) proponía migrar de Gemini a DeepSeek por costo, y la recomendación técnica era hacerlo solo vía Vercel AI Gateway con retención cero (ZDR), nunca con la API oficial de DeepSeek (datos en China, sin ZDR, posible uso para entrenamiento; China no está en la lista de países adecuados de la SIC).
+
+Al revisar el proyecto se encontró que la clave de Gemini en uso era de **nivel gratuito**: Google puede usar los prompts para mejorar sus productos, el límite es de 20 solicitudes/día por modelo (una entrevista usa ~20) y no hay cuota para `gemini-3.1-pro`, el modelo del Agente 3.
 
 ## Decisión
-- `AI_PROVIDER=deepseek` (por defecto): DeepSeek V4.1 Flash `deepseek/deepseek-v4.1-flash-1017` para los tres agentes, **siempre vía Vercel AI Gateway** con `providerOptions.gateway.zeroDataRetention: true`.
-- Además del ZDR, el gateway se restringe con `only`/`order` a proveedores de EE.UU. con acuerdo ZDR: `baseten, fireworks, togetherai, digitalocean, parasail` (configurable con `AI_GATEWAY_PROVIDERS`). Se excluye a Alibaba aunque el gateway lo marque con ZDR, por ser un proveedor chino cuya región de procesamiento no está documentada.
-- `AI_PROVIDER=gemini`: fallback. Vía gateway (con ZDR) si hay credencial del gateway; si no, directo con `GOOGLE_GENERATIVE_AI_API_KEY`, que debe ser de nivel de pago.
-- Agente 1 sin razonamiento; Agentes 2 y 3 con `reasoning: 'low'`. El modelo del Agente 3 (Flash vs. V4 Pro) se decide con el golden set cuando haya créditos del gateway.
-- Se usan créditos del gateway, no BYOK, para que el presupuesto del gateway sea un tope real.
+- **Se mantiene Gemini** como proveedor (`AI_PROVIDER=gemini`, valor por defecto): `gemini-3-flash-preview` para los Agentes 1 y 2 y `gemini-3.1-pro-preview` para el Agente 3, llamados directo con `GOOGLE_GENERATIVE_AI_API_KEY`.
+- **La clave se reemplaza por una de nivel de pago**, en el que Google no usa los prompts para mejorar sus productos. Es una acción manual del equipo en `.env.local` y en Vercel.
+- **No se migra a DeepSeek.** El código queda disponible detrás de `AI_PROVIDER=deepseek`, siempre vía AI Gateway con `zeroDataRetention: true` y solo proveedores de EE.UU. con ZDR (`baseten, fireworks, togetherai, digitalocean, parasail`; se excluye a Alibaba). No es el camino por defecto ni está evaluado.
+- Gemini pasa por AI Gateway (con ZDR) **solo** si se define `AI_GATEWAY_API_KEY` de forma explícita. No se usa `VERCEL_OIDC_TOKEN` como señal porque existe en todos los despliegues de Vercel y desviaría el tráfico a un gateway sin créditos.
 
 ## Consecuencias
-- Nunca se usa `@ai-sdk/deepseek` ni `DEEPSEEK_API_KEY`. Cambiar de proveedor es una variable de entorno, sin redeploy de código.
-- Requiere AI Gateway con créditos (o plan Pro) y un presupuesto con alertas; sin eso, producción debe quedarse en `AI_PROVIDER=gemini` con clave de pago.
-- **Al momento de esta decisión no había `AI_GATEWAY_API_KEY`**: DeepSeek no se pudo evaluar con el golden set; la evaluación registrada es solo de Gemini Flash directo. La migración efectiva de cada agente queda condicionada a cumplir los umbrales de `docs/estandares/agentes-ia.md` §2.
-- La política de datos solo puede afirmar retención cero cuando producción use el gateway (texto en `docs/estandares/seguridad.md` §7).
-- Si la lista de proveedores con ZDR cambia, el gateway puede quedarse sin proveedor elegible y fallar: hay que revisar la página de endpoints del modelo al cambiarlo.
+- No hace falta cuenta ni presupuesto de AI Gateway; el control de costos queda en los topes de código (`maxOutputTokens`, timeout, kill switch, rate limit) y en el presupuesto o alertas de facturación de Google Cloud.
+- La política de datos debe describir el procesamiento por la API de Gemini de pago (texto en `docs/estandares/seguridad.md` §7), no la retención cero del gateway.
+- Si en el futuro se quiere DeepSeek o retención cero contractual, basta con credenciales del gateway y cambiar una variable, pero antes hay que correr el golden set y cumplir los umbrales de `docs/estandares/agentes-ia.md` §2, y registrar un ADR nuevo.
+- Con la clave gratuita, la evaluación registrada el 2026-11-06 quedó parcial (`eval/resultados/`). Hay que repetirla completa, con `--repeticiones 3`, cuando esté la clave de pago.
 
 ## Alternativas descartadas
-- **API oficial de DeepSeek:** sin ZDR, datos en China, uso para entrenamiento; incompatible con la Circular SIC 002/2024 y mala señal para entidades públicas.
-- **Azure AI Foundry directo (UE):** viable, pero agrega otra cuenta, otra SDK y otra facturación; el gateway ya enruta a proveedores con ZDR y permite fallback. Se puede reconsiderar si se exige residencia en UE.
-- **Quedarse en Gemini directo:** más simple, pero hoy con clave gratuita (uso para entrenamiento) y sin cuota para el modelo Pro.
+- **Migrar a DeepSeek vía AI Gateway con ZDR:** menor costo por token y retención cero, pero exige otra cuenta y créditos, y no hay benchmark en español; el equipo prefirió no cambiar de proveedor.
+- **API oficial de DeepSeek:** sin ZDR, datos en China; incompatible con la Circular SIC 002/2024.
+- **Seguir con la clave gratuita de Gemini:** uso de prompts para entrenamiento, 20 solicitudes/día y sin acceso al modelo del Agente 3.

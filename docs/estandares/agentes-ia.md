@@ -11,7 +11,7 @@
 | Matriz oficial, niveles y textos del iceberg | `src/lib/matriz.ts` (`NIVELES`, `ICEBERGS`, `DIMENSIONES`, `PREGUNTAS`) — copia exacta de `CLAUDE.md` §4 |
 | Puntaje, nivel, grounding y ensamblaje | `src/lib/scoring.ts` |
 | Esquemas de salida de los agentes | `src/lib/schemas.ts` (`AnalisisOutputSchema`, `SintesisOutputSchema`) |
-| Proveedor, modelos y parámetros por agente | `src/lib/ai/provider.ts` |
+| Proveedor, modelos y parámetros por agente | `src/lib/ai/provider.ts` (Gemini por defecto; DeepSeek vía AI Gateway disponible pero no adoptado) |
 | Pipeline Agente 2 → código → Agente 3 | `src/lib/ai/pipeline.ts` (lo usan la ruta y la evaluación) |
 | Golden set y evaluación | `eval/golden/`, `scripts/eval-agentes.ts`, `eval/promptfooconfig.yaml`, `eval/resultados/` |
 
@@ -39,7 +39,7 @@ Agente 1 (entrevistador, streaming) ──transcripción──▶ validación + 
    - tasa de JSON inválido en el primer intento **≤ 5 %**, y 0 corridas fallidas;
    - latencia p95 del Agente 2 **< 20 s** (el corte es 25 s);
    - los 2 casos de manipulación: detección 100 % y el puntaje del modelo no sube más de 2 puntos sobre el esperado.
-7. **Modelos fijados por versión** (`deepseek/deepseek-v4.1-flash-1017`, no `deepseek-flash`). Un alias que cambia por debajo rompe la comparabilidad.
+7. **Proveedor y modelos fijados.** Producción usa Gemini directo con clave de pago: `gemini-3-flash-preview` (Agentes 1 y 2) y `gemini-3.1-pro-preview` (Agente 3). Ids con versión fija (p. ej. `deepseek/deepseek-v4.1-flash-1017`, no `deepseek-flash`): un alias que cambia por debajo rompe la comparabilidad. Cambiar de proveedor exige un ADR nuevo (ADR `2026-11-06-proveedor-ia-gateway-zdr`).
 8. **Parámetros por agente** (`PARAMETROS` en `provider.ts`): Agente 1 sin razonamiento (`reasoning: 'none'`, el primer token con thinking tarda ~50 s), `maxOutputTokens` 600, `temperature` 0,7; Agente 2 `reasoning: 'low'`, 4.000 tokens; Agente 3 `reasoning: 'low'`, 4.000 tokens (los tokens de razonamiento cuentan dentro de `maxOutputTokens`: con 2.000–2.500 el JSON se truncaba). Se usa la opción portable `reasoning` del AI SDK 7, no `providerOptions` específicos.
 9. **Minimización: qué NUNCA se envía al modelo.** IP, cookies, código de acceso o su huella, `requestId`, cabeceras, el campo `municipio` del request, metadatos del navegador. Al Agente 3 no se le envía la transcripción completa: solo el resultado calculado y las citas. El Agente 1 tiene instrucción de no pedir nombres, documentos ni datos de contacto.
 10. **Salida estructurada** con `generateText({ output: Output.object({ schema }) })`; nunca `generateObject` (deprecado). Si no valida: extraer JSON entre el primer `{` y el último `}` y, si tampoco, reintentar una vez (CLAUDE.md §11).
@@ -57,12 +57,13 @@ Agente 1 (entrevistador, streaming) ──transcripción──▶ validación + 
 
 ## 4. Pruebas automáticas
 
-`npm run check:agentes` = `vitest run tests/scoring.test.ts tests/schemas.test.ts tests/prompts.test.ts` (sin red, sin costo).
+`npm run check:agentes` = `vitest run tests/scoring.test.ts tests/schemas.test.ts tests/prompts.test.ts tests/provider.test.ts` (sin red, sin costo).
 
 | Prueba | Verifica | Falla si… |
 |---|---|---|
 | `scoring.test.ts` | Bordes 13/14, 27/28, 40/41 y 0/54; textos y capas exactos; subtotales y estados; grounding; confianza solo baja; el ensamblaje ignora nivel/puntaje/textos del modelo | Cambia la lógica de nivel o el modelo puede imponer un resultado |
 | `schemas.test.ts` | `puntaje` solo entero 0–3; faltantes rechazados; `puntaje_total`/`nivel_id` descartados; catálogos de `para_quien` y `urgencia` | Se acepta una salida inválida |
+| `provider.test.ts` | Gemini es el proveedor por defecto con los modelos fijados; en Vercel (OIDC) Gemini no se desvía al gateway; con gateway siempre hay ZDR; DeepSeek restringido a proveedores de EE.UU.; topes por agente | Cambia el proveedor por defecto sin querer o se pierde el ZDR |
 | `prompts.test.ts` (lint de prompts) | `RUBRICA_VERSION` existe y la reexportan los 3 prompts; `ICEBERGS` = `CLAUDE.md` §4; rangos 0–54 sin huecos; 18 preguntas con 4 anclas; spotlighting; tag de cierre y regla de privacidad en el Agente 1; rutas progresivas en el Agente 3 | Alguien parafrasea un texto oficial, borra anclas o la versión |
 
 Evaluación con modelos (manual, con costo): `npm run eval:agentes` escribe `eval/resultados/<fecha>-<hora>.md` (+ `.json` crudo) con exactitud de nivel, MAE por pregunta, kappa ponderado vs. golden y entre proveedores, tasa de JSON inválido, citas no verificadas, latencia p50/p95, tokens, estabilidad entre repeticiones y detección de manipulación. Opciones: `--proveedor gemini|deepseek`, `--repeticiones N`, `--solo g01,g02`; `EVAL_PAUSA_MS` para respetar cuotas. `npm run eval:promptfoo` corre el mismo golden set en promptfoo (esquema, nivel y ausencia de campos calculados), sin grounding.
@@ -102,10 +103,11 @@ Evaluación con modelos (manual, con costo): `npm run eval:agentes` escribe `eva
 - ADR: `docs/decisiones/2026-11-06-puntaje-en-codigo.md`, `docs/decisiones/2026-11-06-proveedor-ia-gateway-zdr.md`.
 - Informes: `docs/investigacion/02-deepseek.md` (modelos, thinking, JSON, ZDR, marco legal), `docs/investigacion/04-metodologia-recomendaciones.md` §3 (rúbricas ancladas, evidencia obligatoria, versionado, kappa > 0,6) y §4 (rutas progresivas), `docs/investigacion/01-seguridad.md` §2 (prompt injection).
 - Resultados de evaluación: `eval/resultados/`.
-- Decisión pendiente (plan §8, decisión 6): modelo del Agente 3 en DeepSeek (Flash con más razonamiento vs. V4 Pro). Por defecto Flash 1017 con `reasoning: 'low'`; decidir con el golden set cuando haya créditos de AI Gateway.
+- Decisión del equipo (2026-11-06): se mantiene Gemini y no se migra a DeepSeek; la decisión abierta 6 del plan (modelo del Agente 3 en DeepSeek) queda sin efecto. Pendiente: repetir la evaluación completa con `--repeticiones 3` cuando esté la clave de pago (la del 2026-11-06 quedó parcial por la cuota gratuita).
 
 ## 8. Historial
 
 | Fecha | Versión | Cambio |
 |---|---|---|
+| 2026-11-06 | 1.1 · rúbrica `2026-11-06.1` | Se mantiene Gemini (clave de pago) como proveedor por defecto; DeepSeek queda detrás de `AI_PROVIDER=deepseek`, no adoptado. Prueba `tests/provider.test.ts` en `check:agentes`. |
 | 2026-11-06 | 1.0 · rúbrica `2026-11-06.1` | Creación. Prompts a `src/lib/prompts/`, anclas 0–3 para las 18 preguntas, puntaje y nivel en código, grounding, spotlighting, esquemas zod con `Output.object`, rutas progresivas en el Agente 3 (`primer_paso`, `siguiente_paso`, `ruta_ampliada`, `para_quien`), Agente 3 sin transcripción, proveedor DeepSeek vía AI Gateway con ZDR y Gemini como fallback, golden set de 20 casos y `eval-agentes.ts`. |

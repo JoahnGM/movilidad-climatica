@@ -1,11 +1,13 @@
 /**
  * Cliente de modelo por agente (ADR docs/decisiones/2026-11-06-proveedor-ia-gateway-zdr.md).
  *
- * AI_PROVIDER=deepseek (por defecto) → Vercel AI Gateway con zeroDataRetention forzado
- *   y solo proveedores de EE.UU./UE con acuerdo ZDR. Nunca la API oficial de DeepSeek.
- * AI_PROVIDER=gemini → Gemini. Vía AI Gateway (ZDR) si hay AI_GATEWAY_API_KEY;
- *   si no, directo con GOOGLE_GENERATIVE_AI_API_KEY (usar nivel de pago: el gratuito
- *   usa los prompts para entrenar).
+ * AI_PROVIDER=gemini (por defecto) → Gemini directo con GOOGLE_GENERATIVE_AI_API_KEY, que
+ *   debe ser de NIVEL DE PAGO (el gratuito usa los prompts para mejorar productos de Google
+ *   y solo permite 20 solicitudes/día). Solo pasa por AI Gateway (con ZDR) si se define
+ *   AI_GATEWAY_API_KEY explícitamente.
+ * AI_PROVIDER=deepseek → implementado pero NO adoptado (decisión del equipo, 2026-11-06):
+ *   siempre vía Vercel AI Gateway con zeroDataRetention y solo proveedores de EE.UU. con
+ *   ZDR. Nunca la API oficial de DeepSeek.
  */
 import { createGateway, type LanguageModel } from 'ai'
 import { createGoogle } from '@ai-sdk/google'
@@ -63,11 +65,12 @@ const PROVEEDORES_ZDR_DEEPSEEK = ['baseten', 'fireworks', 'togetherai', 'digital
 export const TIMEOUT_LLM_MS = 25_000
 
 export function proveedorActivo(): ProveedorId {
-  return process.env.AI_PROVIDER === 'gemini' ? 'gemini' : 'deepseek'
+  return process.env.AI_PROVIDER === 'deepseek' ? 'deepseek' : 'gemini'
 }
 
-const usaGateway = (p: ProveedorId) =>
-  p === 'deepseek' || Boolean(process.env.AI_GATEWAY_API_KEY || process.env.VERCEL_OIDC_TOKEN)
+// Gemini solo usa el gateway si se pide con AI_GATEWAY_API_KEY. No se usa VERCEL_OIDC_TOKEN
+// como señal: existe en todos los despliegues de Vercel y desviaría Gemini al gateway sin créditos.
+const usaGateway = (p: ProveedorId) => p === 'deepseek' || Boolean(process.env.AI_GATEWAY_API_KEY)
 
 function listaEnv(nombre: string): string[] | undefined {
   const v = process.env[nombre]?.split(',').map((s) => s.trim()).filter(Boolean)
