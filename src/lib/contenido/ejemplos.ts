@@ -38,7 +38,7 @@ export const EJEMPLOS: Ejemplo[] = [
     tipoMovilidad: 'desplazamiento',
     lugar: 'La Mojana (Sucre, Bolívar, Córdoba, Antioquia)',
     texto:
-      'Tras la ruptura del dique de Cara de Gato en 2021, miles de familias quedaron damnificadas. El Gobierno identificó 46 predios para reasentarlas, pero no hay una cifra oficial de hogares reasentados.',
+      'Tras la ruptura del dique de Cara de Gato en 2021, miles de familias quedaron damnificadas. El Gobierno inició la compra de predios para reasentarlas, pero no hay una cifra oficial de hogares reasentados.',
     fuente: EL_ESPECTADOR_MOJANA,
     publicable: true,
   },
