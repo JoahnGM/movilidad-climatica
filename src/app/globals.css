@@ -1,107 +1,241 @@
+/*
+ * Design system — tokens (fuente única de verdad).
+ * Estándar: docs/estandares/design-system.md · Catálogo vivo: /ds
+ *
+ * Reglas rápidas:
+ *  - Este archivo es el ÚNICO lugar con valores de color literales (hex/rgb).
+ *  - Los componentes usan clases Tailwind generadas desde estos tokens
+ *    (bg-background, text-muted, border-border, py-section, text-h2, …).
+ *  - Solo hay modo oscuro: el fondo azul institucional es la base. No existe
+ *    una variante clara (ver docs/decisiones/2026-11-06-design-system.md).
+ *  - Si cambias un valor aquí, corre `npm run check:ds` (verifica contraste AA).
+ */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
-  /* Design system colors */
-  --color-background: var(--background);
-  --color-surface: var(--surface);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-subtle: var(--subtle);
-  --color-border: var(--border);
-  --color-teal: var(--teal);
-  --color-blue: var(--blue);
-  --color-amber: var(--amber);
-  --color-violet: var(--violet);
+/* ── 1. Tokens ──────────────────────────────────────────────────────────
+ * Los nombres de @theme generan las clases: --color-muted → text-muted,
+ * --spacing-section → py-section, --text-h2 → text-h2, --radius-xl → rounded-xl.
+ * `static` emite siempre las variables en :root (las usan el mapeo shadcn y ds/).
+ */
+@theme static {
+  /* Sin paleta por defecto de Tailwind: solo existen los colores de abajo.
+     `text-slate-400`, `bg-teal-500`, etc. no generan CSS. */
+  --color-*: initial;
 
-  /* shadcn tokens */
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
+  /* Color — fondos y superficies (de más profundo a más elevado) */
+  --color-background:     #0A0F1E;                 /* fondo institucional base */
+  --color-background-alt: #0C1223;                 /* secciones alternas */
+  --color-surface:        #0F1629;                 /* paneles sólidos (chat, tracker) */
+  --color-surface-raised: #151E36;                 /* diálogos, menús */
+  --color-glass:          rgb(255 255 255 / 0.05); /* glassmorphism oficial */
+  --color-glass-hover:    rgb(255 255 255 / 0.08);
+  --color-overlay:        rgb(5 8 18 / 0.8);       /* fondo detrás de diálogos */
 
-  /* Fonts */
-  --font-sans: var(--font-inter);
-  --font-heading: var(--font-syne);
-  --font-mono: var(--font-jetbrains);
+  /* Color — bordes */
+  --color-border:         #1E2A45;                 /* divisores y bordes de panel */
+  --color-border-glass:   rgb(255 255 255 / 0.1);  /* borde de GlassCard */
+  --color-border-strong:  #64748B;                 /* bordes de controles (≥3:1) */
+
+  /* Color — texto (muted y subtle conservan su nombre histórico) */
+  --color-foreground:     #F1F5F9;                 /* texto principal */
+  --color-muted:          #CBD5E1;                 /* texto de apoyo */
+  --color-subtle:         #94A3B8;                 /* metadatos, eyebrows, pies */
+  --color-on-accent:      #0A0F1E;                 /* texto sobre teal/amber sólidos */
+
+  /* Color — acentos oficiales (CLAUDE.md §3) */
+  --color-teal:           #2DD4BF;
+  --color-blue:           #60A5FA;
+  --color-amber:          #F59E0B;
+  --color-violet:         #8B5CF6;
+  --color-red:            #EF4444;
+  /* Variantes para texto pequeño: violet y red no llegan a AA sobre superficies elevadas */
+  --color-violet-light:   #A78BFA;
+  --color-red-light:      #F87171;
+
+  /* Solo para componentes heredados (chat) y ds/: prohibido en páginas (check:ds) */
+  --color-white:          #FFFFFF;
+  --color-black:          #000000;
+
+  /* Radios: rounded-lg (inputs, botones) · rounded-xl (tarjetas) · rounded-full (chips) */
+  --radius-sm:  0.375rem;
+  --radius-md:  0.5rem;
+  --radius-lg:  0.625rem;
+  --radius-xl:  0.875rem;
+  --radius-2xl: 1.125rem;
+
+  /* Sombras */
+  --shadow-glass:  0 1px 0 0 rgb(255 255 255 / 0.04) inset, 0 8px 24px -12px rgb(0 0 0 / 0.6);
+  --shadow-raised: 0 24px 48px -16px rgb(0 0 0 / 0.7);
+  --shadow-glow:   0 0 0 1px rgb(45 212 191 / 0.3), 0 8px 32px -8px rgb(45 212 191 / 0.35);
+
+  /* Familias: Syne (títulos) · Inter (UI y cuerpo) · JetBrains Mono (cifras) */
+  --font-sans:    var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-syne), var(--font-inter), sans-serif;
+  --font-mono:    var(--font-jetbrains), ui-monospace, monospace;
+
+  /* Escala tipográfica nombrada (fluida, sin breakpoints) */
+  --text-display:              clamp(2.75rem, 1.5rem + 5vw, 4.5rem);
+  --text-display--line-height: 1.05;
+  --text-h1:                   clamp(2.25rem, 1.4rem + 3.4vw, 3.75rem);
+  --text-h1--line-height:      1.1;
+  --text-h2:                   clamp(1.875rem, 1.3rem + 2.2vw, 3rem);
+  --text-h2--line-height:      1.15;
+  --text-h3:                   clamp(1.375rem, 1.1rem + 1vw, 1.875rem);
+  --text-h3--line-height:      1.25;
+  --text-h4:                   1.125rem;
+  --text-h4--line-height:      1.35;
+  --text-lead:                 clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --text-lead--line-height:    1.6;
+  --text-body:                 1rem;
+  --text-body--line-height:    1.65;
+  --text-small:                0.875rem;
+  --text-small--line-height:   1.6;
+  --text-caption:              0.75rem;
+  --text-caption--line-height: 1.5;
+  --text-metric:               clamp(2.75rem, 1.8rem + 3.6vw, 4.5rem);
+  --text-metric--line-height:  1;
+
+  /* Curva de movimiento → ease-out-soft */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 :root {
-  /* Design system palette */
-  --background: #0A0C0F;
-  --surface:    #1A1E24;
-  --border:     #252B33;
-  --teal:       #2DD4BF;
-  --blue:       #60A5FA;
-  --amber:      #F59E0B;
-  --violet:     #8B5CF6;
-  --foreground: #F1F5F9;
-  --muted:      #CBD5E1;
-  --subtle:     #94A3B8;
+  /* Espaciado nombrado (además de la escala 4px de Tailwind) */
+  --space-gutter:  clamp(1rem, 4vw, 3rem);    /* padding lateral del Container */
+  --space-section: clamp(5rem, 10vw, 10rem);  /* padding vertical de Section */
+  --space-block:   clamp(3rem, 6vw, 5rem);    /* separación entre bloques de una sección */
+  --space-stack:   1.25rem;                   /* separación dentro de una tarjeta */
+  --space-card:    clamp(1.5rem, 3vw, 2rem);  /* padding de GlassCard */
 
-  /* shadcn tokens mapped to our palette */
-  --card:                 #1A1E24;
-  --card-foreground:      #F1F5F9;
-  --popover:              #1A1E24;
-  --popover-foreground:   #F1F5F9;
-  --primary:              #2DD4BF;
-  --primary-foreground:   #0A0C0F;
-  --secondary:            #252B33;
-  --secondary-foreground: #F1F5F9;
-  --muted-foreground:     #CBD5E1;
-  --accent:               #252B33;
-  --accent-foreground:    #F1F5F9;
-  --destructive:          #EF4444;
-  --input:                #252B33;
-  --ring:                 #2DD4BF;
-  --radius:               0.625rem;
+  /* Movimiento (espejo en src/components/ds/motion.ts; check:ds verifica que coincidan) */
+  --motion-fast:     150ms;
+  --motion-base:     300ms;
+  --motion-slow:     550ms;
+  --motion-distance: 24px;
+
+  /* Mapeo shadcn → tokens (temiza src/components/ui/** sin editarlo) */
+  --radius:               var(--radius-lg);
+  --background:           var(--color-background);
+  --foreground:           var(--color-foreground);
+  --card:                 var(--color-surface);
+  --card-foreground:      var(--color-foreground);
+  --popover:              var(--color-surface-raised);
+  --popover-foreground:   var(--color-foreground);
+  --primary:              var(--color-teal);
+  --primary-foreground:   var(--color-on-accent);
+  --secondary:            var(--color-surface-raised);
+  --secondary-foreground: var(--color-foreground);
+  --muted-foreground:     var(--color-muted);
+  --accent:               var(--color-surface-raised);
+  --accent-foreground:    var(--color-foreground);
+  --destructive:          var(--color-red);
+  --input:                var(--color-border-strong);
+  --ring:                 var(--color-teal);
 }
 
+@theme inline {
+  /* Espaciado nombrado → py-section, gap-block, p-card, px-gutter, gap-stack */
+  --spacing-gutter:  var(--space-gutter);
+  --spacing-section: var(--space-section);
+  --spacing-block:   var(--space-block);
+  --spacing-stack:   var(--space-stack);
+  --spacing-card:    var(--space-card);
+
+  /* shadcn (los componentes de ui/ usan estas clases) */
+  --color-ring:                 var(--ring);
+  --color-input:                var(--input);
+  --color-destructive:          var(--destructive);
+  --color-accent:               var(--accent);
+  --color-accent-foreground:    var(--accent-foreground);
+  --color-muted-foreground:     var(--muted-foreground);
+  --color-secondary:            var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-primary:              var(--primary);
+  --color-primary-foreground:   var(--primary-foreground);
+  --color-popover:              var(--popover);
+  --color-popover-foreground:   var(--popover-foreground);
+  --color-card:                 var(--card);
+  --color-card-foreground:      var(--card-foreground);
+}
+
+/* ── 3. Base ──────────────────────────────────────────────────────────── */
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   html {
     @apply font-sans;
+    color-scheme: dark;
+    scroll-padding-top: 5rem; /* compensa la navbar fija en anclas */
   }
   body {
-    background-color: #0A0C0F;
-    color: #F1F5F9;
-    @apply antialiased;
+    @apply bg-background text-foreground antialiased;
+  }
+  ::selection {
+    @apply bg-teal/30 text-foreground;
+  }
+  /* Foco visible y consistente en todo el sitio */
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
   }
 }
 
+/* Movimiento reducido: desactiva animaciones y transiciones CSS.
+   Las de Framer Motion se controlan con <MotionProvider> (reducedMotion="user"). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── 4. Utilidades del DS ─────────────────────────────────────────────── */
 @layer utilities {
-  .glassmorphism {
-    background: rgb(255 255 255 / 0.05);
+  /* Glassmorphism oficial (CLAUDE.md §3). Preferir <GlassCard>. */
+  .glass {
+    background-color: var(--color-glass);
     backdrop-filter: blur(8px);
-    border: 1px solid rgb(255 255 255 / 0.1);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border-glass);
+  }
+  /* Obsoleta: solo la usan componentes de chat pendientes de migrar. */
+  .glassmorphism {
+    background-color: var(--color-glass);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border-glass);
     border-radius: var(--radius-xl);
   }
-
-  .font-heading {
-    font-family: var(--font-syne), sans-serif;
+  /* Rejilla decorativa del hero */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgb(255 255 255 / 0.024) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.024) 1px, transparent 1px);
+    background-size: 60px 60px;
   }
-
-  .font-mono {
-    font-family: var(--font-jetbrains), monospace;
+  /* Halos decorativos de sección */
+  .bg-glow-teal {
+    background-image: radial-gradient(ellipse 70% 50% at 50% 0%, rgb(45 212 191 / 0.05), transparent);
+  }
+  .bg-glow-hero {
+    background-image: radial-gradient(ellipse 60% 50% at 50% 40%, rgb(45 212 191 / 0.07), transparent);
+  }
+  .bg-wash {
+    background-image: linear-gradient(135deg, rgb(45 212 191 / 0.03) 0%, rgb(96 165 250 / 0.03) 100%);
+  }
+  .text-gradient {
+    background-image: linear-gradient(90deg, var(--color-teal), var(--color-blue));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
 }
