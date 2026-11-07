@@ -1,58 +1,38 @@
-import { Clock } from 'lucide-react';
-import type { DimensionId, UrgenciaType } from '@/lib/types';
+import { Badge, Card, Text } from '@/components/ds';
+import type { Idioma } from '@/lib/i18n/idioma';
+import { UI } from '@/lib/i18n/ui';
+import type { Recomendacion } from '@/lib/types';
+import { TONO_URGENCIA } from './tonos';
 
-interface Props {
-  dimension: DimensionId;
-  area: string;
-  accion: string;
-  urgencia: UrgenciaType;
-}
+/** Campos de la ruta progresiva: opcionales (resultados viejos no los traen). */
+type Props = Pick<Recomendacion, 'dimension' | 'area' | 'accion' | 'urgencia'> &
+  Partial<Pick<Recomendacion, 'primer_paso' | 'siguiente_paso' | 'ruta_ampliada' | 'para_quien'>> & { idioma?: Idioma };
 
-const URGENCIA_COLOR: Record<UrgenciaType, string> = {
-  inmediata:      '#EF4444',
-  corto_plazo:    '#F59E0B',
-  mediano_plazo:  '#60A5FA',
-};
+const CLAVES_RUTA = ['primer_paso', 'siguiente_paso', 'ruta_ampliada'] as const;
 
-const URGENCIA_LABEL: Record<UrgenciaType, string> = {
-  inmediata:     'Inmediata',
-  corto_plazo:   'Corto plazo',
-  mediano_plazo: 'Mediano plazo',
-};
-
-export default function RecomendacionCard({ area, accion, urgencia }: Props) {
-  const color = URGENCIA_COLOR[urgencia];
-  const label = URGENCIA_LABEL[urgencia];
-
+export default function RecomendacionCard({ area, accion, urgencia, primer_paso, siguiente_paso, ruta_ampliada, para_quien, idioma = 'es' }: Props) {
+  const t = UI[idioma].resultado;
+  const tono = TONO_URGENCIA[urgencia];
+  const pasos = { primer_paso, siguiente_paso, ruta_ampliada };
+  const conRuta = CLAVES_RUTA.filter((c) => pasos[c]);
   return (
-    <div
-      className="glassmorphism p-6 flex flex-col gap-5 border-l-4"
-      style={{ borderLeftColor: color }}
-    >
-      {/* Badge de urgencia */}
-      <span
-        className="text-xs font-semibold uppercase tracking-wider"
-        style={{ color }}
-      >
-        {label}
-      </span>
-
-      {/* Área */}
-      <p
-        className="font-semibold text-foreground text-sm leading-snug"
-        style={{ fontFamily: 'var(--font-syne), sans-serif' }}
-      >
-        {area}
-      </p>
-
-      {/* Acción */}
-      <p className="text-sm text-muted leading-relaxed">{accion}</p>
-
-      {/* Urgencia con ícono */}
-      <div className="flex items-center gap-1.5" style={{ color }}>
-        <Clock size={13} />
-        <span className="text-xs">{label}</span>
+    <Card as="article" variant="raised" accent={tono} className="h-full">
+      <div className="flex flex-wrap items-center gap-2">
+        <Badge tone={tono} size="sm">{t.urgencias[urgencia]}</Badge>
+        {para_quien && t.paraQuien[para_quien] && <Badge size="sm">{t.paraQuien[para_quien]}</Badge>}
       </div>
-    </div>
+      <h4 className="font-heading text-h4 font-semibold tracking-tight text-foreground">{area}</h4>
+      <Text variant="small">{accion}</Text>
+      {conRuta.length > 0 && (
+        <ol aria-label={t.ruta} className="mt-1 flex flex-col gap-3 border-t border-border pt-4">
+          {conRuta.map((c) => (
+            <li key={c} className="flex flex-col gap-0.5">
+              <span className="font-mono text-caption text-subtle">{t.pasosRuta[c][0]} · {t.pasosRuta[c][1]}</span>
+              <span className="text-small text-foreground">{pasos[c]}</span>
+            </li>
+          ))}
+        </ol>
+      )}
+    </Card>
   );
 }

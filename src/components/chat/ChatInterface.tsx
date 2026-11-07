@@ -3,8 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport, type UIMessage } from 'ai';
-import { useRouter } from 'next/navigation';
-import { Send, CheckCircle2, MessageSquare } from 'lucide-react';
+import { ArrowUp, CheckCircle2, Sparkles } from 'lucide-react';
+import { Button, Chip, IconList, Text } from '@/components/ds';
+import { cn } from '@/lib/utils';
+import { CLAVE_MUNICIPIO_INICIAL } from '@/components/diagnostico/eventos';
+import { useIdioma } from '@/components/i18n/IdiomaProvider';
 
 type Estado = 'activo' | 'completado';
 
@@ -14,18 +17,26 @@ function textoDe(m: UIMessage): string {
 
 interface Props {
   onUserMessageCount?: (count: number) => void;
+  /** Se llama una vez cuando el entrevistador cierra la entrevista (ya guardada en localStorage). */
+  onCompletado?: () => void;
+  /** El servidor pidió código de acceso (piloto cerrado). */
+  onRequiereAcceso?: () => void;
+  className?: string;
 }
 
-export default function ChatInterface({ onUserMessageCount }: Props) {
-  const router = useRouter();
-  const bottomRef = useRef<HTMLDivElement>(null);
+export default function ChatInterface({ onUserMessageCount, onCompletado, onRequiereAcceso, className }: Props) {
+  const { t: textos } = useIdioma();
+  const t = textos.chat;
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const completadoRef = useRef(false);
 
   const [input, setInput] = useState('');
   const { messages, sendMessage, status, error, setMessages } = useChat({
     transport: new DefaultChatTransport({ api: '/api/chat' }),
     // Si el servidor rechaza el turno (4xx), se quita del historial y vuelve al input
     // para que el siguiente envío no repita el mismo mensaje rechazado.
-    onError: () => {
+    onError: (e) => {
+      if (/código de acceso/i.test(e.message)) onRequiereAcceso?.();
       setMessages((prev) => {
         const ultimo = prev[prev.length - 1];
         if (ultimo?.role !== 'user') return prev;
@@ -40,7 +51,7 @@ export default function ChatInterface({ onUserMessageCount }: Props) {
   // (solo el servidor lo emite; si llega en un turno del usuario, la API lo rechaza).
   const ultimo = messages[messages.length - 1];
   const estado: Estado =
-    ultimo?.role === 'assistant' && textoDe(ultimo).includes('[ENTREVISTA_COMPLETA]')
+    status !== 'streaming' && ultimo?.role === 'assistant' && textoDe(ultimo).includes('[ENTREVISTA_COMPLETA]')
       ? 'completado'
       : 'activo';
 
@@ -53,24 +64,26 @@ export default function ChatInterface({ onUserMessageCount }: Props) {
   // Al montar: enviar municipio-inicial si existe. El timeout cancelable evita el envío
   // doble (o perdido) cuando React monta, desmonta y vuelve a montar en modo estricto.
   useEffect(() => {
-    const municipioInicial = localStorage.getItem('municipio-inicial');
+    const municipioInicial = localStorage.getItem(CLAVE_MUNICIPIO_INICIAL);
     if (!municipioInicial) return;
     const t = setTimeout(() => {
-      localStorage.removeItem('municipio-inicial');
+      localStorage.removeItem(CLAVE_MUNICIPIO_INICIAL);
       sendMessage({ text: municipioInicial });
     }, 0);
     return () => clearTimeout(t);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Scroll automático al último mensaje
+  // Scroll automático al último mensaje, solo dentro del panel (no mueve la página)
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const el = scrollRef.current;
+    if (el) el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
   }, [messages, isLoading]);
 
-  // Al terminar la entrevista: guardar transcripción para /resultado
+  // Al terminar la entrevista: guardar transcripción y avisar al padre
   useEffect(() => {
-    if (estado !== 'completado') return;
+    if (estado !== 'completado' || completadoRef.current) return;
+    completadoRef.current = true;
 
     const transcript = messages
       .map((m) => {
@@ -79,11 +92,12 @@ export default function ChatInterface({ onUserMessageCount }: Props) {
       })
       .join('\n\n---\n\n');
 
-    const primerMensaje = textoDe(messages[0]);
+    const primerMensaje = textoDe(messages.find((m) => m.role === 'user') ?? messages[0]);
 
     localStorage.setItem('diagnostico-transcript', transcript);
     localStorage.setItem('diagnostico-municipio', primerMensaje);
-  }, [messages, estado]);
+    onCompletado?.();
+  }, [messages, estado, onCompletado]);
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -94,179 +108,106 @@ export default function ChatInterface({ onUserMessageCount }: Props) {
 
   function handleSend() {
     const text = input.trim();
-    if (!text || isLoading) return;
+    if (!text || isLoading || estado === 'completado') return;
     sendMessage({ text });
     setInput('');
   }
 
   return (
-    <div className="relative flex flex-col h-[calc(100vh-4rem)] max-h-[800px]">
-      {/* Área de mensajes */}
-      <div className="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-6">
+    <div className={cn('flex h-[min(680px,calc(100svh-9rem))] min-h-[480px] flex-col overflow-hidden rounded-card border border-border bg-surface-raised shadow-raised', className)}>
+      {/* Encabezado: aviso de IA + competencia + límite, siempre juntos */}
+      <div className="flex items-center gap-3 border-b border-border px-5 py-3.5">
+        <span aria-hidden="true" className="flex size-8 shrink-0 items-center justify-center rounded-full bg-sage text-green-ink">
+          <Sparkles className="size-4" />
+        </span>
+        <div className="flex min-w-0 flex-col">
+          <span className="text-small font-medium text-foreground">{t.asistente}</span>
+          <span className="text-caption text-subtle">{t.aviso}</span>
+        </div>
+        <Chip variant="experimental" size="sm" className="ml-auto hidden sm:inline-flex">{t.chip}</Chip>
+      </div>
 
-        {/* Bienvenida — solo cuando no hay mensajes */}
+      {/* Mensajes */}
+      <div ref={scrollRef} role="log" aria-live="polite" aria-label={t.logAria} className="flex flex-1 flex-col gap-4 overflow-y-auto px-5 py-6">
         {messages.length === 0 && !isLoading && (
-          <div
-            className="rounded-xl border p-6 flex flex-col gap-4"
-            style={{ backgroundColor: '#0A0F1E', borderColor: '#1E2A45' }}
-          >
-            <div className="flex items-center gap-3">
-              <MessageSquare size={20} className="text-teal shrink-0" />
-              <p
-                className="text-base font-semibold text-foreground"
-                style={{ fontFamily: 'var(--font-syne), sans-serif' }}
-              >
-                Comenzando el diagnóstico
-              </p>
-            </div>
-
-            <p className="text-sm text-muted leading-relaxed">
-              Un investigador especializado te hará preguntas sobre tu municipio.
-              Responde con la mayor honestidad posible — no hay respuestas correctas ni incorrectas.
-            </p>
-
-            <ul className="flex flex-col gap-2">
-              {[
-                'La conversación toma entre 10 y 15 minutos',
-                'Puedes tomarte el tiempo que necesites para cada respuesta',
-                'Mientras más específico, mejor el diagnóstico',
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm text-muted">
-                  <CheckCircle2 size={14} className="text-teal shrink-0 mt-0.5" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <p className="text-xs text-subtle">
-              Escribe tu municipio o rol para comenzar
-            </p>
+          <div className="flex flex-col gap-4 rounded-xl bg-surface p-5">
+            <p className="font-heading text-h4 font-semibold tracking-tight text-foreground">{t.bienvenidaTitulo}</p>
+            <Text variant="small">{t.bienvenidaTexto}</Text>
+            <IconList
+              spacing="tight"
+              icon={CheckCircle2}
+              items={t.bienvenidaItems}
+            />
+            <Text variant="caption" tone="muted">{t.bienvenidaPie}</Text>
           </div>
         )}
 
-        {/* Mensajes */}
         {messages.map((msg) => {
-          const text = textoDe(msg)
-            .replace('[ENTREVISTA_COMPLETA]', '')
-            .trim();
+          const text = textoDe(msg).replace('[ENTREVISTA_COMPLETA]', '').trim();
           if (!text) return null;
-
           const isUser = msg.role === 'user';
           return (
-            <div
-              key={msg.id}
-              className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}
-            >
+            <div key={msg.id} className={cn('flex', isUser ? 'justify-end' : 'justify-start')}>
               <div
-                className={`max-w-[80%] rounded-xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
-                  isUser
-                    ? 'bg-teal/20 border border-teal/30 text-foreground'
-                    : 'border text-foreground'
-                }`}
-                style={
-                  isUser
-                    ? {}
-                    : { backgroundColor: '#0F1629', borderColor: '#1E2A45' }
-                }
+                className={cn(
+                  'max-w-[85%] whitespace-pre-wrap px-4 py-3 text-small leading-relaxed',
+                  isUser ? 'rounded-2xl rounded-tr-md bg-ink text-on-accent' : 'rounded-2xl rounded-tl-md bg-surface text-foreground',
+                )}
               >
+                <span className="sr-only">{isUser ? t.tu : t.asistenteSr}</span>
                 {text}
               </div>
             </div>
           );
         })}
 
-        {/* Typing indicator */}
         {isLoading && (
-          <div className="flex justify-start">
-            <div
-              className="rounded-xl px-4 py-3 border"
-              style={{ backgroundColor: '#0F1629', borderColor: '#1E2A45' }}
-            >
-              <div className="flex gap-1.5 items-center h-4">
+          <div className="flex justify-start" aria-label={t.escribiendo}>
+            <div className="rounded-2xl rounded-tl-md bg-surface px-4 py-3.5">
+              <div className="flex h-3 items-center gap-1.5">
                 {[0, 1, 2].map((i) => (
-                  <span
-                    key={i}
-                    className="w-1.5 h-1.5 rounded-full bg-muted animate-bounce"
-                    style={{ animationDelay: `${i * 150}ms` }}
-                  />
+                  <span key={i} className="size-1.5 animate-bounce rounded-full bg-subtle" style={{ animationDelay: `${i * 150}ms` }} />
                 ))}
               </div>
             </div>
           </div>
         )}
-
-        <div ref={bottomRef} />
       </div>
 
-      {/* Input area */}
-      <div
-        className="border-t px-4 py-3"
-        style={{ borderColor: '#1E2A45', backgroundColor: '#0A0F1E' }}
-      >
-        <div
-          className="flex gap-2 items-end rounded-xl border p-2"
-          style={{ backgroundColor: '#0F1629', borderColor: '#1E2A45' }}
-        >
+      {/* Entrada */}
+      <div className="border-t border-border p-3">
+        <div className="flex items-end gap-2 rounded-2xl border border-border-strong/50 bg-background p-1.5 transition-colors focus-within:border-green">
+          <label htmlFor="chat-respuesta" className="sr-only">{t.campo}</label>
           <textarea
+            id="chat-respuesta"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             disabled={isLoading || estado === 'completado'}
-            placeholder={
-              estado === 'completado'
-                ? 'Entrevista finalizada'
-                : 'Escribe tu respuesta...'
-            }
+            placeholder={estado === 'completado' ? t.finalizada : t.placeholder}
             rows={1}
-            className="flex-1 resize-none bg-transparent text-sm text-foreground placeholder:text-subtle outline-none min-h-[36px] max-h-[84px] py-1.5 px-1 disabled:opacity-50"
-            style={{ lineHeight: '1.5' }}
+            className="max-h-[96px] min-h-[40px] flex-1 resize-none bg-transparent px-3 py-2 text-small leading-normal text-foreground outline-none placeholder:text-subtle disabled:opacity-50"
             onInput={(e) => {
               const el = e.currentTarget;
               el.style.height = 'auto';
-              el.style.height = Math.min(el.scrollHeight, 84) + 'px';
+              el.style.height = Math.min(el.scrollHeight, 96) + 'px';
             }}
           />
-          <button
+          <Button
+            size="icon"
             onClick={handleSend}
             disabled={isLoading || !input.trim() || estado === 'completado'}
-            className="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg bg-teal text-[#0A0F1E] hover:bg-teal/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            aria-label={t.enviar}
+            className="size-10 hover:translate-y-0"
           >
-            <Send size={15} />
-          </button>
+            <ArrowUp aria-hidden="true" />
+          </Button>
         </div>
         {error && (
-          <p className="text-xs text-amber mt-1.5 px-1" role="alert">
-            No pudimos procesar tu último mensaje. Revísalo e inténtalo de nuevo.
-          </p>
+          <p className="mt-2 px-1 text-caption text-amber-ink" role="alert">{t.error}</p>
         )}
-        <p className="text-xs text-subtle mt-1.5 px-1">
-          Enter para enviar · Shift+Enter para nueva línea
-        </p>
+        <p className="mt-2 px-1 text-caption text-subtle">{t.ayuda}</p>
       </div>
-
-      {/* Overlay de completado */}
-      {estado === 'completado' && (
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center rounded-xl">
-          <div className="glassmorphism p-8 flex flex-col items-center gap-4 text-center max-w-sm mx-4">
-            <CheckCircle2 className="text-teal w-12 h-12" />
-            <h3
-              className="text-xl font-bold text-foreground"
-              style={{ fontFamily: 'var(--font-syne), sans-serif' }}
-            >
-              Entrevista completada
-            </h3>
-            <p className="text-sm text-muted">
-              El sistema ahora analizará tu territorio
-            </p>
-            <button
-              onClick={() => router.push('/resultado')}
-              className="w-full py-3 bg-teal text-[#0A0F1E] font-semibold rounded-xl hover:bg-teal/90 transition-colors text-sm"
-            >
-              Ver mi diagnóstico →
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

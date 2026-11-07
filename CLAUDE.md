@@ -37,32 +37,32 @@ GOOGLE_GENERATIVE_AI_API_KEY=...
 
 ## 3. DESIGN SYSTEM
 
-### Colores
+**Design system "Cordillera" (modo claro). Fuente de verdad: `docs/estandares/design-system.md`; tokens en `src/app/globals.css`; primitivas en `@/components/ds`; catálogo vivo en `/ds`; verificación `npm run check:ds`.** Lo de abajo es solo el resumen.
+
+### Colores (tokens; nunca literales fuera de globals.css)
 ```
-background:     #0A0F1E   → azul institucional profundo (NO negro puro)
-surface:        #0F1629
-border:         #1E2A45
-teal (accent):  #2DD4BF
-blue (accent):  #60A5FA
-amber:          #F59E0B
-violet:         #8B5CF6
-red:            #EF4444
-text:           #F1F5F9
-text-secondary: #CBD5E1
-text-muted:     #94A3B8
+background:     #FBFAF6   → papel cálido (fondo base)
+background-alt: #F4F2EB   → secciones alternas
+surface:        #F2F0E8   → tarjeta plana
+surface-raised: #FFFFFF   → tarjeta elevada, chat
+sage:           #E7EEE4   → acento suave
+foreground:     #16352E   → tinta verde bosque
+muted / subtle: #3F5852 / #596A64
+green (marca):  #1F6B4F · blue #3F6E96 · amber #D99A32 (texto #8A5A12) · red #C2523C (texto #A63D2A) · violet #7B61C9 (IA)
 ```
 
 ### Tipografía
-- **Syne 700–800** → títulos, display, hero
-- **Inter 400–500** → body, UI general, chat
-- **JetBrains Mono 400–600** → números, datos, métricas
+- **Instrument Sans 500–600** → títulos y UI (tracking negativo)
+- **Instrument Serif itálica** → una frase de acento en títulos clave (`<Acento>`)
+- **Geist Mono 400–500** → cifras, eyebrows, fuentes
 
 ### Principios visuales
-- Fondo azul institucional profundo (`#0A0F1E`), no negro puro
-- Cards glassmorphism: `bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl`
-- Border radius: `rounded-xl` (cards), `rounded-lg` (inputs)
-- Nunca fondos blancos como base
-- Animaciones con Framer Motion (fade-in on scroll)
+- Modo claro único; papel cálido + tinta verde bosque
+- La interfaz real ilustra el producto (el demo y el resultado usan el mismo componente)
+- Un efecto protagonista por página: la cordillera de partículas del hero
+- Tarjetas `rounded-card` (24 px), botones y chips en píldora
+- Animaciones con Framer Motion vía `<Reveal>`; todo respeta `prefers-reduced-motion`
+- Dos idiomas: español es la fuente, inglés por toggle (cookie `idioma`). Textos de interfaz en `src/lib/i18n/ui.ts`, contenido traducido en `src/lib/contenido/traducciones/en.ts`; el agente en inglés es experimental (`docs/decisiones/2026-11-07-idioma-ingles.md`)
 
 ---
 
@@ -422,13 +422,14 @@ RESPONDE ÚNICAMENTE CON ESTE JSON (sin texto adicional, sin markdown, sin backt
 src/
 ├── app/
 │   ├── layout.tsx
-│   ├── page.tsx
+│   ├── page.tsx                       ← landing completa, incluye el diagnóstico (#diagnostico)
 │   ├── not-found.tsx
+│   ├── ds/                            ← catálogo vivo del design system (noindex)
 │   ├── diagnostico/
-│   │   ├── page.tsx
-│   │   └── loading.tsx
+│   │   ├── page.tsx                   ← redirige a /#diagnostico
+│   │   └── acceso/page.tsx            ← código de acceso del piloto
 │   ├── resultado/
-│   │   └── page.tsx
+│   │   └── page.tsx                   ← redirige a /#diagnostico
 │   └── api/
 │       ├── chat/route.ts              ← Agente 1 (streaming)
 │       └── diagnostico/route.ts       ← Agentes 2 + 3 (secuencial)

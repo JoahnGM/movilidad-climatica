@@ -1,3 +1,4 @@
+import { idiomaDeCookies } from '@/lib/i18n/idioma'
 import { ErrorAgente, ejecutarDiagnostico } from '@/lib/ai/pipeline'
 import { leerCuerpoJSON, validarDiagnostico } from '@/lib/validacion'
 import { registrar, type EventoLog } from '@/lib/seguridad/log'
@@ -57,6 +58,7 @@ export async function POST(req: Request) {
       textosUsuario,
       manipulacion: false,
       signal: req.signal,
+      idioma: idiomaDeCookies(req.headers.get('cookie')),
     })
     fin(200, {
       tokensEntrada: meta.uso.entrada,

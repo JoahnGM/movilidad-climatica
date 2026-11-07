@@ -7,7 +7,8 @@ import { generateText, NoObjectGeneratedError, Output } from 'ai'
 import type { z } from 'zod'
 import { PROMPT_AGENTE_2, mensajeAgente2 } from '../prompts/agente-2'
 import { PROMPT_AGENTE_3, mensajeAgente3 } from '../prompts/agente-3'
-import { RUBRICA_VERSION } from '../prompts/version'
+import { conIdioma, versionRubrica } from '../prompts/idioma'
+import type { Idioma } from '../i18n/idioma'
 import { AnalisisOutputSchema, SintesisOutputSchema, type AnalisisOutput } from '../schemas'
 import {
   ajustarConfianza, aplanarDimensiones, aplicarGrounding, calcularResultado,
@@ -106,12 +107,12 @@ export interface Analisis {
 }
 
 /** Agente 2 + grounding + cálculo. Separado para que la evaluación pueda medirlo solo. */
-export async function analizar(transcripcion: string, textosUsuario: string[], signal?: AbortSignal): Promise<Analisis> {
+export async function analizar(transcripcion: string, textosUsuario: string[], signal?: AbortSignal, idioma: Idioma = 'es'): Promise<Analisis> {
   const r = await generarConEsquema({
     agente: 'analista',
     paso: 'analista',
     schema: AnalisisOutputSchema,
-    instrucciones: PROMPT_AGENTE_2,
+    instrucciones: conIdioma(PROMPT_AGENTE_2, 'analista', idioma),
     prompt: mensajeAgente2(transcripcion, idSpotlight()),
     signal,
   })
@@ -142,11 +143,14 @@ export async function ejecutarDiagnostico(params: {
   textosUsuario: string[]
   manipulacion: boolean
   signal?: AbortSignal
+  /** Idioma de la entrevista y del resultado (por defecto español). */
+  idioma?: Idioma
 }): Promise<ResultadoPipeline> {
-  const analisis = await analizar(params.transcripcion, params.textosUsuario, params.signal)
+  const idioma = params.idioma ?? 'es'
+  const analisis = await analizar(params.transcripcion, params.textosUsuario, params.signal, idioma)
   const { modelo, puntajes, calculado } = analisis
   const confianza = ajustarConfianza(modelo.confianza, analisis.invalidadas.length, params.manipulacion)
-  const scores = ensamblarAnalisis({ modelo, puntajes, calculado, confianza, rubricaVersion: RUBRICA_VERSION })
+  const scores = ensamblarAnalisis({ modelo, puntajes, calculado, confianza, rubricaVersion: versionRubrica(idioma) })
 
   // El Agente 3 recibe el resultado calculado y las citas; no la transcripción completa.
   const datos = {
@@ -163,7 +167,7 @@ export async function ejecutarDiagnostico(params: {
     agente: 'sintetizador',
     paso: 'sintetizador',
     schema: SintesisOutputSchema,
-    instrucciones: PROMPT_AGENTE_3,
+    instrucciones: conIdioma(PROMPT_AGENTE_3, 'sintetizador', idioma),
     prompt: mensajeAgente3(datos, idSpotlight()),
     signal: params.signal,
   })
