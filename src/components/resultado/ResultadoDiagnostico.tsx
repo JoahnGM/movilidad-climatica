@@ -1,6 +1,6 @@
 import { AlertTriangle, CheckCircle2, MessageSquareQuote } from 'lucide-react';
 import type { ReactNode } from 'react';
-import { Banner, Callout, Card, Heading, IconList, Reveal, Text } from '@/components/ds';
+import { Banner, Card, Heading, IconList, Reveal, Text } from '@/components/ds';
 import { BANNER_EJEMPLO } from '@/lib/contenido/ejemplo-resultado';
 import { getTexto } from '@/lib/contenido/textos';
 import type { AnalisisResult, DiagnosticoResult } from '@/lib/types';
@@ -9,7 +9,6 @@ import EvidenciaPorPregunta from './EvidenciaPorPregunta';
 import IcebergVisualization from './IcebergVisualization';
 import RecomendacionCard from './RecomendacionCard';
 import TarjetaNivel from './TarjetaNivel';
-import { TONO_NIVEL } from './tonos';
 
 interface Props {
   resultado: DiagnosticoResult;
@@ -31,28 +30,19 @@ const ALCANCE = getTexto('alcance').cuerpo.replace('[Ver evidencia por pregunta]
  * (con datos ficticios) y el resultado real del agente. No dupliques esta vista en otro lugar.
  */
 export default function ResultadoDiagnostico({ resultado, scores, ejemplo, fecha, acciones, idBase = 'resultado' }: Props) {
-  const tono = TONO_NIVEL[resultado.nivel_id];
   return (
     <article aria-label={`Resultado del diagnóstico de ${resultado.municipio}`} className="flex flex-col gap-block">
       {ejemplo && <Banner variant="ejemplo">{BANNER_EJEMPLO}</Banner>}
 
-      <div className="grid items-start gap-8 lg:grid-cols-[1.05fr_1fr]">
+      <div className="grid items-start gap-6 lg:grid-cols-2">
         <Reveal className="flex flex-col gap-6">
           <TarjetaNivel resultado={resultado} fecha={fecha} ejemplo={ejemplo} aviso={false} />
-          <Card variant="flat">
-            <IcebergVisualization
-              iceberg_id={resultado.iceberg_id}
-              nivel_nombre={resultado.nivel_nombre}
-              iceberg_texto_corto={resultado.iceberg_texto_corto}
-              capas_activas={resultado.capas_activas}
-            />
-          </Card>
-        </Reveal>
-        <Reveal delay={0.08} className="flex flex-col gap-6">
           <Card variant="flat">
             <Text variant="eyebrow">Síntesis</Text>
             <Text variant="body">{resultado.resumen_territorio}</Text>
           </Card>
+        </Reveal>
+        <Reveal delay={0.08} className="flex flex-col gap-6">
           <Card variant="flat">
             <Text variant="eyebrow">Fortalezas</Text>
             <IconList items={resultado.fortalezas} icon={CheckCircle2} tone="green" />
@@ -64,6 +54,18 @@ export default function ResultadoDiagnostico({ resultado, scores, ejemplo, fecha
         </Reveal>
       </div>
 
+      <Reveal>
+        <Card variant="flat" padding="lg">
+          <IcebergVisualization
+            iceberg_id={resultado.iceberg_id}
+            nivel_nombre={resultado.nivel_nombre}
+            iceberg_texto_corto={resultado.iceberg_texto_corto}
+            iceberg_texto_ampliado={resultado.iceberg_texto_ampliado}
+            capas_activas={resultado.capas_activas}
+          />
+        </Card>
+      </Reveal>
+
       <Reveal className="flex flex-col gap-6">
         <Heading as="h3" size="h3">Resultado por dimensión</Heading>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -73,10 +75,6 @@ export default function ResultadoDiagnostico({ resultado, scores, ejemplo, fecha
             </Card>
           ))}
         </div>
-      </Reveal>
-
-      <Reveal>
-        <Callout tone={tono} icon={false}>{resultado.iceberg_texto_ampliado}</Callout>
       </Reveal>
 
       <Reveal className="flex flex-col gap-6">

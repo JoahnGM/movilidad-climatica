@@ -60,12 +60,15 @@ export default function ContextSection() {
       />
 
       <div className="flex flex-col gap-6">
-        <Reveal>
-          <Callout variant="nota" title="¿Qué es la movilidad climática?">{DEFINICION_MOVILIDAD_CLIMATICA}</Callout>
-        </Reveal>
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <Reveal as="li">
+            <Card variant="sage" className="h-full justify-center">
+              <Text variant="eyebrow">¿Qué es la movilidad climática?</Text>
+              <p className="text-body font-medium text-foreground">{DEFINICION_MOVILIDAD_CLIMATICA}</p>
+            </Card>
+          </Reveal>
           {FORMAS.map((f, i) => (
-            <Reveal as="li" key={f.titulo} index={i}>
+            <Reveal as="li" key={f.titulo} index={i + 1}>
               <Card variant="raised" className="h-full">
                 <IconTile icon={f.icon} />
                 <Heading as="h3" size="h4">{f.titulo}</Heading>
@@ -83,13 +86,12 @@ export default function ContextSection() {
       </Reveal>
 
       <div className="flex flex-col gap-10">
-        <Reveal className="flex max-w-2xl flex-col gap-5">
-          <Text variant="eyebrow">La evidencia</Text>
-          <Heading as="h3" size="h2">Colombia enfrenta una crisis silenciosa</Heading>
-          <Text variant="lead">
-            Los datos oficiales muestran el tamaño del fenómeno — aunque todavía subestiman su verdadera dimensión.
-          </Text>
-        </Reveal>
+        <SectionHeader
+          as="h3"
+          eyebrow="La evidencia"
+          title="Colombia enfrenta una crisis silenciosa"
+          lead="Los datos oficiales muestran el tamaño del fenómeno — aunque todavía subestiman su verdadera dimensión."
+        />
         <div className="grid border-t border-border md:grid-cols-3">
           {CIFRAS.map((c, i) => (
             <Reveal key={c.id} index={i} className={i > 0 ? 'border-t border-border md:border-t-0 md:border-l md:pl-8' : 'md:pr-8'}>

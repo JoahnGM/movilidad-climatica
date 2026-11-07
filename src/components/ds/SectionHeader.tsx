@@ -15,13 +15,28 @@ export interface SectionHeaderProps {
   className?: string;
 }
 
-/** Encabezado de sección: eyebrow + título + lead, ancho de lectura limitado, con fade-in. */
+/**
+ * Encabezado de sección con fade-in. `start` (por defecto): en escritorio, título a la izquierda y
+ * lead a la derecha, alineados abajo (usa todo el ancho, sin columna vacía). `center`: apilado y centrado.
+ */
 export function SectionHeader({ eyebrow, title, lead, as = 'h2', align = 'start', className }: SectionHeaderProps) {
+  const titulo = <Heading as={as} size={as === 'h1' ? 'h1' : as === 'h3' ? 'h3' : 'h2'}>{title}</Heading>;
+  if (align === 'center') {
+    return (
+      <Reveal className={cn('mx-auto flex max-w-2xl flex-col items-center gap-5 text-center', className)}>
+        {eyebrow && <Text variant="eyebrow">{eyebrow}</Text>}
+        {titulo}
+        {lead && <Text variant="lead">{lead}</Text>}
+      </Reveal>
+    );
+  }
   return (
-    <Reveal className={cn('flex max-w-2xl flex-col gap-5', align === 'center' && 'mx-auto items-center text-center', className)}>
-      {eyebrow && <Text variant="eyebrow">{eyebrow}</Text>}
-      <Heading as={as} size={as === 'h1' ? 'h1' : as === 'h3' ? 'h3' : 'h2'}>{title}</Heading>
-      {lead && <Text variant="lead">{lead}</Text>}
+    <Reveal className={cn('grid gap-5 lg:grid-cols-2 lg:items-end lg:gap-16', className)}>
+      <div className="flex max-w-2xl flex-col gap-5">
+        {eyebrow && <Text variant="eyebrow">{eyebrow}</Text>}
+        {titulo}
+      </div>
+      {lead && <Text variant="lead" className="max-w-xl lg:pb-1">{lead}</Text>}
     </Reveal>
   );
 }

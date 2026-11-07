@@ -6,6 +6,7 @@ import ChatInterface from '@/components/chat/ChatInterface';
 import DiagnosticoLoader from '@/components/chat/DiagnosticoLoader';
 import AccesoPiloto from '@/components/diagnostico/AccesoPiloto';
 import ProgresoDiagnostico, { type FaseDiagnostico } from '@/components/diagnostico/ProgresoDiagnostico';
+import { CLAVE_MUNICIPIO_INICIAL, EVENTO_INICIAR } from '@/components/diagnostico/eventos';
 import ResultadoDiagnostico from '@/components/resultado/ResultadoDiagnostico';
 import { Button, Card, EmptyState, Reveal, Section, SectionHeader } from '@/components/ds';
 import type { AnalisisResult, DiagnosticoAPIResponse, DiagnosticoResult } from '@/lib/types';
@@ -110,6 +111,22 @@ export default function DiagnosticoSection({ requiereCodigo }: Props) {
     setFase(requiereCodigo ? 'acceso' : 'chat');
     irAlInicio();
   }
+
+  // Inicio desde el campo del hero: el chat toma el municipio como primer mensaje al montarse.
+  useEffect(() => {
+    function alIniciar() {
+      if (fase === 'resultado' || fase === 'error') {
+        nuevoDiagnostico();
+      } else if (fase === 'chat' && mensajes === 0) {
+        setChatKey((k) => k + 1); // remonta el chat para que envíe el municipio guardado
+      } else if (fase === 'chat' || fase === 'analizando') {
+        localStorage.removeItem(CLAVE_MUNICIPIO_INICIAL); // no interrumpir una conversación en curso
+      }
+      // fase 'acceso': el municipio queda guardado y se envía al entrar al chat
+    }
+    window.addEventListener(EVENTO_INICIAR, alIniciar);
+    return () => window.removeEventListener(EVENTO_INICIAR, alIniciar);
+  });
 
   async function copiar() {
     await navigator.clipboard.writeText(`${window.location.origin}/#diagnostico`);

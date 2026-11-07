@@ -20,7 +20,7 @@ const publicables = (as: Afirmacion[]) => as.filter((a) => a.publicable !== fals
 
 function Afirmaciones({ items }: { items: Afirmacion[] }) {
   return (
-    <ul className="flex flex-col gap-3">
+    <ul className="grid gap-x-10 gap-y-4 md:grid-cols-2">
       {publicables(items).map((a) => {
         const f = fuenteDe(a);
         return (
@@ -61,18 +61,18 @@ export default function CitiesSection() {
                 </div>
                 <p className="font-heading text-h3 font-semibold tracking-heading text-foreground text-balance">{c.mensajeClave.texto}</p>
               </Card>
-              <div className="grid gap-4 md:grid-cols-2">
+              <Card variant="raised" padding="none" className="divide-y divide-border">
                 {CAMPOS.map(({ clave, titulo }) => {
                   const items = publicables(c[clave]);
                   if (items.length === 0) return null;
                   return (
-                    <Card key={clave} variant="raised" className={clave === 'contexto' ? 'md:col-span-2' : undefined}>
+                    <div key={clave} className="grid gap-4 p-card lg:grid-cols-[12rem_minmax(0,1fr)] lg:gap-10">
                       <Heading as="h3" size="h4">{titulo}</Heading>
                       <Afirmaciones items={items} />
-                    </Card>
+                    </div>
                   );
                 })}
-              </div>
+              </Card>
             </TabsContent>
           ))}
         </Tabs>

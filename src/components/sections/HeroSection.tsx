@@ -1,8 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { Button, Container, FondoMontanas, Reveal, Text, TituloIA, type TramoTitulo } from '@/components/ds';
+import { Button, Container, FondoMontanas, Reveal, Text, TextInput, TituloIA, type TramoTitulo } from '@/components/ds';
+import { iniciarDiagnostico } from '@/components/diagnostico/eventos';
 import ChatVistaPrevia from '@/components/diagnostico/ChatVistaPrevia';
 import TarjetaNivel from '@/components/resultado/TarjetaNivel';
 import { EJEMPLO_DIAGNOSTICO } from '@/lib/contenido/ejemplo-resultado';
@@ -15,6 +17,13 @@ const TRAMOS: TramoTitulo[] = [
 const CIUDADES = ['Bogotá', 'Medellín', 'Barranquilla'];
 
 export default function HeroSection() {
+  const [municipio, setMunicipio] = useState('');
+
+  function handleStart(e: React.FormEvent) {
+    e.preventDefault();
+    iniciarDiagnostico(municipio);
+  }
+
   return (
     <>
       <section className="relative flex min-h-svh flex-col overflow-hidden pt-16">
@@ -31,16 +40,26 @@ export default function HeroSection() {
               Una conversación guiada por IA construye una línea base de la preparación institucional de tu municipio frente a la movilidad climática.
             </Text>
           </Reveal>
-          <Reveal delay={0.2} className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <Button asChild size="lg">
-              <Link href="#diagnostico">Iniciar Diagnóstico <ArrowRight aria-hidden="true" /></Link>
-            </Button>
-            <Button asChild size="lg" variant="secondary">
-              <Link href="#ejemplo">Ver ejemplo de resultado</Link>
-            </Button>
+          <Reveal delay={0.2} className="w-full max-w-xl">
+            <form onSubmit={handleStart} className="flex flex-col gap-3 sm:flex-row sm:items-end">
+              <TextInput
+                label="¿En qué municipio trabajas?"
+                hideLabel
+                size="lg"
+                value={municipio}
+                onChange={(e) => setMunicipio(e.target.value)}
+                placeholder="¿En qué municipio trabajas?"
+                autoComplete="address-level2"
+                maxLength={120}
+              />
+              <Button type="submit" size="lg" className="h-13 shrink-0">
+                Iniciar Diagnóstico <ArrowRight aria-hidden="true" />
+              </Button>
+            </form>
           </Reveal>
           <Text variant="small" tone="muted">
-            O explora los casos de{' '}
+            <Link href="#ejemplo" className="font-medium text-green-ink underline-offset-2 hover:underline">Ver ejemplo de resultado</Link>
+            {' · '}O explora los casos de{' '}
             {CIUDADES.map((c, i) => (
               <span key={c}>
                 {i > 0 && ' · '}

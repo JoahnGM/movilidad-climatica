@@ -6,6 +6,7 @@ import { DefaultChatTransport, type UIMessage } from 'ai';
 import { ArrowUp, CheckCircle2, Sparkles } from 'lucide-react';
 import { Button, Chip, IconList, Text } from '@/components/ds';
 import { cn } from '@/lib/utils';
+import { CLAVE_MUNICIPIO_INICIAL } from '@/components/diagnostico/eventos';
 
 type Estado = 'activo' | 'completado';
 
@@ -60,10 +61,10 @@ export default function ChatInterface({ onUserMessageCount, onCompletado, onRequ
   // Al montar: enviar municipio-inicial si existe. El timeout cancelable evita el envío
   // doble (o perdido) cuando React monta, desmonta y vuelve a montar en modo estricto.
   useEffect(() => {
-    const municipioInicial = localStorage.getItem('municipio-inicial');
+    const municipioInicial = localStorage.getItem(CLAVE_MUNICIPIO_INICIAL);
     if (!municipioInicial) return;
     const t = setTimeout(() => {
-      localStorage.removeItem('municipio-inicial');
+      localStorage.removeItem(CLAVE_MUNICIPIO_INICIAL);
       sendMessage({ text: municipioInicial });
     }, 0);
     return () => clearTimeout(t);

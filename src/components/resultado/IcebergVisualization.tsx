@@ -5,6 +5,8 @@ interface Props {
   iceberg_id: IcebergId;
   nivel_nombre: string;
   iceberg_texto_corto: string;
+  /** Texto ampliado oficial (opcional): acompaña al corto bajo las capas. */
+  iceberg_texto_ampliado?: string;
   capas_activas: string[];
 }
 
@@ -19,17 +21,18 @@ const RELLENO: Record<IcebergId, string> = {
 };
 
 /** Iceberg oficial (imagen por nivel) + texto corto exacto + capas activas. */
-export default function IcebergVisualization({ iceberg_id, nivel_nombre, iceberg_texto_corto, capas_activas }: Props) {
+export default function IcebergVisualization({ iceberg_id, nivel_nombre, iceberg_texto_corto, iceberg_texto_ampliado, capas_activas }: Props) {
   return (
-    <figure className="flex flex-col gap-5">
+    <figure className="grid items-center gap-8 md:grid-cols-[auto_minmax(0,1fr)] md:gap-12">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`/icebergs/${iceberg_id}.png`}
         alt={`Iceberg del nivel ${nivel_nombre}: ${capas_activas.length} de 4 capas visibles`}
-        className="w-full rounded-xl border border-border object-contain"
+        className="mx-auto max-h-[28rem] w-auto max-w-full rounded-xl border border-border object-contain"
       />
-      <figcaption className="flex flex-col gap-4">
-        <Text variant="body" tone="default">{iceberg_texto_corto}</Text>
+      <figcaption className="flex flex-col gap-5">
+        <Text variant="eyebrow">Tu iceberg</Text>
+        <p className="font-heading text-h4 font-medium tracking-tight text-foreground text-balance">{iceberg_texto_corto}</p>
         <ol aria-label="Capas del iceberg" className="flex flex-col gap-1.5">
           {CAPAS.map((n) => {
             const activa = n <= capas_activas.length;
@@ -42,6 +45,9 @@ export default function IcebergVisualization({ iceberg_id, nivel_nombre, iceberg
             );
           })}
         </ol>
+        {iceberg_texto_ampliado && (
+          <Text variant="body" className="border-t border-border pt-5">{iceberg_texto_ampliado}</Text>
+        )}
       </figcaption>
     </figure>
   );

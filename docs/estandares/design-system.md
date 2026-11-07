@@ -68,7 +68,7 @@ Tecnología con la sobriedad de una ONG climática. Papel cálido (`#FBFAF6`), t
 |---|---|---|
 | `Container` | Ancho máximo + gutter | Dentro de `Section` (ya lo trae) |
 | `Section` | Cada sección de página (fondo, ritmo, `id`) | Bloques dentro de tarjetas |
-| `SectionHeader` | Eyebrow + título + lead de sección | Títulos de tarjeta |
+| `SectionHeader` | Eyebrow + título + lead de sección (en escritorio: título a la izquierda, lead a la derecha) | Títulos de tarjeta |
 | `PageHeader` | Páginas internas (`/sobre`, `/metodologia`, `/recursos`) | El home |
 | `Reveal` | Fade-in al hacer scroll (`index` escalona) | Contenido crítico above-the-fold |
 | `MotionProvider` | Una vez en `app/layout.tsx` | Anidarlo |
@@ -105,7 +105,7 @@ Tecnología con la sobriedad de una ONG climática. Papel cálido (`#FBFAF6`), t
 ### Composición de página
 
 12. **Ritmo vertical:** cada sección es una `Section`; alterna `background="base"` y `"alt"`; usa `border` cuando dos secciones del mismo fondo se tocan.
-13. **Anchos:** `wide` (1152 px) para secciones y navegación; títulos y párrafos limitados a `max-w-2xl`/`max-w-3xl` (ya lo hace `SectionHeader`).
+13. **Anchos y huecos:** `wide` (1152 px) para secciones y navegación; títulos y párrafos limitados a `max-w-2xl`/`max-w-xl` (ya lo hace `SectionHeader`). Sin huecos: una cuadrícula de N tarjetas llena todas sus celdas (si sobra una, úsala para la definición o un mensaje clave), dos columnas vecinas tienen altura similar y los listados largos de altura variable van en filas (etiqueta + contenido), no en tarjetas sueltas.
 14. **Jerarquía:** un `h1` por página (el hero o el `PageHeader`); `h2` por sección; `h3`/`h4` dentro.
 15. **El producto se muestra, no se describe:** ilustra con piezas reales (`TarjetaNivel`, `ChatVistaPrevia`, `AnalisisVistaPrevia`), no con íconos genéricos ni stock.
 16. **Un efecto protagonista por página.** El resto del movimiento es sutil (fade-in de 20 px).
@@ -217,3 +217,4 @@ Además, Tailwind no genera la paleta por defecto (`--color-*: initial`): una cl
 | Fecha | Versión | Cambio |
 |---|---|---|
 | 2026-11-06 | 1.0 | Primera versión: DS "Cordillera" (modo claro), 39 primitivas, catálogo `/ds`, `check:ds`; migración completa del sitio; diagnóstico integrado en la landing. |
+| 2026-11-07 | 1.1 | Ritmo vertical más compacto (`--space-section` 64–96 px, `--space-block` 40–56 px); `SectionHeader` en dos columnas; regla 13 sobre huecos; el campo de municipio del hero inicia el chat en la landing (`iniciarDiagnostico`). |

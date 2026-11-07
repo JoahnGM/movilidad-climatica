@@ -39,7 +39,7 @@ export function Pasos({ pasos, className }: PasosProps) {
                 <Heading as="h3" size="h3">{p.titulo}</Heading>
                 <Text variant="body">{p.descripcion}</Text>
               </div>
-              {p.visual && <div className="rounded-[calc(var(--radius-card)-0.5rem)] bg-surface p-4 sm:p-6">{p.visual}</div>}
+              {p.visual && <div className="flex justify-center rounded-[calc(var(--radius-card)-0.5rem)] bg-surface p-4 sm:p-6 [&>*]:w-full [&>*]:max-w-md">{p.visual}</div>}
             </div>
           </Reveal>
         );

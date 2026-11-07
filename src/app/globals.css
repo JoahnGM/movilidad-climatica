@@ -111,8 +111,8 @@
 :root {
   /* Espaciado nombrado (además de la escala 4px de Tailwind) */
   --space-gutter:  clamp(1.25rem, 4vw, 2rem);  /* padding lateral del Container */
-  --space-section: clamp(5rem, 9vw, 8rem);     /* padding vertical de Section */
-  --space-block:   clamp(3rem, 5vw, 4rem);     /* separación entre bloques de una sección */
+  --space-section: clamp(4rem, 7vw, 6rem);     /* padding vertical de Section */
+  --space-block:   clamp(2.5rem, 4vw, 3.5rem); /* separación entre bloques de una sección */
   --space-stack:   1.25rem;                    /* separación dentro de una tarjeta */
   --space-card:    clamp(1.5rem, 3vw, 2rem);   /* padding de Card */
 

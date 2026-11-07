@@ -35,7 +35,7 @@ export default function Estructura() {
       </Specimen>
 
       <Specimen nombre="SectionHeader" archivo="src/components/ds/SectionHeader.tsx"
-        descripcion="Eyebrow monoespaciado + título + lead, con fade-in. align start o center."
+        descripcion="Eyebrow monoespaciado + título + lead, con fade-in. align=&quot;start&quot; (por defecto) pone en escritorio el título a la izquierda y el lead a la derecha, sin columna vacía; align=&quot;center&quot; apila y centra."
         codigo={`<SectionHeader eyebrow="Casos de estudio" title="Tres ciudades. Tres realidades." lead="…" />`}
         usar={['Encabezado de cada Section']} noUsar={['Títulos dentro de tarjetas (usa Heading size="h4")']}
         a11y="Por defecto renderiza h2; usa as=&quot;h1&quot; solo si es el título de la página.">
