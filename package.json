@@ -12,7 +12,8 @@
     "check:agentes": "vitest run tests/scoring.test.ts tests/schemas.test.ts tests/prompts.test.ts tests/provider.test.ts",
     "ataque": "tsx scripts/ataque.ts",
     "eval:agentes": "node --env-file-if-exists=.env.local --import tsx scripts/eval-agentes.ts",
-    "eval:promptfoo": "tsx eval/promptfoo/generar.ts && npx -y promptfoo@0.125.1 eval -c eval/promptfooconfig.yaml"
+    "eval:promptfoo": "tsx eval/promptfoo/generar.ts && npx -y promptfoo@0.125.1 eval -c eval/promptfooconfig.yaml",
+    "check:contenido": "node scripts/check-contenido.mjs"
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.113",
