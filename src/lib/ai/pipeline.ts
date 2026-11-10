@@ -149,7 +149,7 @@ export async function ejecutarDiagnostico(params: {
   const idioma = params.idioma ?? 'es'
   const analisis = await analizar(params.transcripcion, params.textosUsuario, params.signal, idioma)
   const { modelo, puntajes, calculado } = analisis
-  const confianza = ajustarConfianza(modelo.confianza, analisis.invalidadas.length, params.manipulacion)
+  const confianza = ajustarConfianza(modelo.confianza, analisis.invalidadas.length, params.manipulacion, modelo.perfil_entrevistado)
   const scores = ensamblarAnalisis({ modelo, puntajes, calculado, confianza, rubricaVersion: versionRubrica(idioma) })
 
   // El Agente 3 recibe el resultado calculado y las citas; no la transcripción completa.
@@ -162,6 +162,7 @@ export async function ejecutarDiagnostico(params: {
     preguntas: puntajes,
     gaps_de_informacion: scores.gaps_de_informacion,
     contexto_territorial: modelo.contexto_territorial,
+    perfil_entrevistado: modelo.perfil_entrevistado,
   }
   const sintesis = await generarConEsquema({
     agente: 'sintetizador',

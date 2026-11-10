@@ -45,7 +45,7 @@ export function Specimen({ nombre, descripcion, codigo, usar, noUsar, a11y, chil
 
       <details className="group rounded-xl border border-border bg-surface-raised">
         <summary className="cursor-pointer list-none px-5 py-3 text-small font-medium text-muted transition-colors hover:text-foreground [&::-webkit-details-marker]:hidden">
-          <span className="inline-block transition-transform group-open:rotate-90" aria-hidden="true">▸</span> Código
+          <span className="[display:inline-block] transition-transform group-open:rotate-90" aria-hidden="true">▸</span> Código
         </summary>
         <pre className="overflow-x-auto border-t border-border px-5 py-4 font-mono text-caption leading-relaxed text-muted">
           <code>{codigo.trim()}</code>

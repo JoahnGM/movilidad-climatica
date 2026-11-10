@@ -1,7 +1,8 @@
 'use client';
 
-import { useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { MOTION } from '../motion';
 
 /**
  * Titular que "se escribe solo" con sugerencias fantasma estilo autocompletado de IA
@@ -32,6 +33,44 @@ export interface TituloIAProps {
   retraso?: number;
   /** Elemento semántico (h1 por defecto: es el titular del hero). */
   as?: 'h1' | 'h2' | 'p';
+  /**
+   * `escribir`: teclea con sugerencia fantasma (efecto original).
+   * `suave`: las palabras aparecen en cascada con fundido, leve subida y desenfoque que se
+   * aclara (patrón de heroes tipo Linear/Vercel). Es el que usa el hero del home.
+   */
+  efecto?: 'escribir' | 'suave';
+}
+
+/** Entrada suave por palabras. El texto está completo desde el inicio (sin saltos de layout). */
+function TituloSuave({ tramos, className, retraso, as: Comp }: Required<Pick<TituloIAProps, 'tramos' | 'retraso' | 'as'>> & { className?: string }) {
+  const reducir = useReducedMotion();
+  let indice = 0;
+  return (
+    <Comp className={className}>
+      {tramos.map((t, i) => {
+        const palabras = (t.escribe + t.fantasma).split(/(\s+)/);
+        return (
+          <span key={i} className={t.className}>
+            {palabras.map((p, j) => {
+              if (!p.trim()) return p;
+              const n = indice++;
+              return (
+                <motion.span
+                  key={j}
+                  className="[display:inline-block] will-change-transform"
+                  initial={reducir ? { opacity: 0 } : { opacity: 0, y: '0.35em', filter: 'blur(10px)' }}
+                  animate={reducir ? { opacity: 1 } : { opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ duration: reducir ? MOTION.base : 0.9, ease: MOTION.ease, delay: retraso / 1000 + n * MOTION.stagger }}
+                >
+                  {p}
+                </motion.span>
+              );
+            })}
+          </span>
+        );
+      })}
+    </Comp>
+  );
 }
 
 /** Posición de la animación: tramo actual, letras tecleadas y si la sugerencia está visible. */
@@ -39,7 +78,14 @@ type Estado = { tramo: number; letras: number; sugerencia: boolean; terminado: b
 
 const esperar = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-export function TituloIA({ tramos, className, claseFantasma = 'opacity-30', retraso = 500, as: Comp = 'h1' }: TituloIAProps) {
+export function TituloIA(props: TituloIAProps) {
+  if (props.efecto === 'suave') {
+    return <TituloSuave tramos={props.tramos} className={props.className} retraso={props.retraso ?? 150} as={props.as ?? 'h1'} />;
+  }
+  return <TituloEscribe {...props} />;
+}
+
+function TituloEscribe({ tramos, className, claseFantasma = 'opacity-30', retraso = 500, as: Comp = 'h1' }: TituloIAProps) {
   const [estado, setE] = useState<Estado>({ tramo: 0, letras: 0, sugerencia: false, terminado: false });
   // Con movimiento reducido se muestra el texto completo desde el inicio
   const reducir = useReducedMotion();
@@ -87,7 +133,7 @@ export function TituloIA({ tramos, className, claseFantasma = 'opacity-30', retr
                 {t.escribe.slice(0, e.letras)}
                 <span
                   aria-hidden="true"
-                  className="mx-[0.02em] inline-block animate-pulse bg-current align-baseline"
+                  className="mx-[0.02em] [display:inline-block] animate-pulse bg-current align-baseline"
                   style={{ width: '0.05em', height: '0.78em', transform: 'translateY(0.1em)' }}
                 />
                 {e.sugerencia && <span className={claseFantasma}>{t.fantasma}</span>}

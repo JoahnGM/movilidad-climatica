@@ -1,10 +1,11 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { AlertCircle, Check, ChevronDown, ChevronUp, Copy, Plus, RefreshCw } from 'lucide-react';
+import { AlertCircle, ChevronDown, ChevronUp, Plus, RefreshCw } from 'lucide-react';
 import ChatInterface from '@/components/chat/ChatInterface';
 import DiagnosticoLoader from '@/components/chat/DiagnosticoLoader';
 import AccesoPiloto from '@/components/diagnostico/AccesoPiloto';
+import BotonCompartir from '@/components/compartir/BotonCompartir';
 import ProgresoDiagnostico, { type FaseDiagnostico } from '@/components/diagnostico/ProgresoDiagnostico';
 import { CLAVE_MUNICIPIO_INICIAL, EVENTO_INICIAR } from '@/components/diagnostico/eventos';
 import ResultadoDiagnostico from '@/components/resultado/ResultadoDiagnostico';
@@ -50,7 +51,6 @@ export default function DiagnosticoSection({ requiereCodigo }: Props) {
   const [scores, setScores] = useState<AnalisisResult | null>(null);
   const [errorMsg, setErrorMsg] = useState('');
   const [chatKey, setChatKey] = useState(0);
-  const [copiado, setCopiado] = useState(false);
   const [mostrarTecnico, setMostrarTecnico] = useState(false);
   const inicioRef = useRef<HTMLDivElement>(null);
 
@@ -130,12 +130,6 @@ export default function DiagnosticoSection({ requiereCodigo }: Props) {
     return () => window.removeEventListener(EVENTO_INICIAR, alIniciar);
   });
 
-  async function copiar() {
-    await navigator.clipboard.writeText(`${window.location.origin}/#diagnostico`);
-    setCopiado(true);
-    setTimeout(() => setCopiado(false), 2000);
-  }
-
   const fecha = new Date().toLocaleDateString(idioma === 'en' ? 'en-US' : 'es-CO', { year: 'numeric', month: 'long', day: 'numeric' });
 
   return (
@@ -158,10 +152,7 @@ export default function DiagnosticoSection({ requiereCodigo }: Props) {
           acciones={
             <>
               <Button variant="secondary" onClick={nuevoDiagnostico}><Plus aria-hidden="true" /> {td.nuevo}</Button>
-              <Button variant="secondary" onClick={copiar}>
-                {copiado ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
-                {copiado ? td.copiado : td.copiar}
-              </Button>
+              <BotonCompartir />
               <Button variant="ghost" onClick={() => setMostrarTecnico((v) => !v)} aria-expanded={mostrarTecnico}>
                 {mostrarTecnico ? <ChevronUp aria-hidden="true" /> : <ChevronDown aria-hidden="true" />}
                 {td.tecnico}

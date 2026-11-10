@@ -13,21 +13,25 @@ export interface RevealProps {
   className?: string;
   /** Elemento a renderizar (por defecto `div`). */
   as?: 'div' | 'li' | 'article';
+  /**
+   * Anima al montar en vez de al entrar en vista. Úsalo en el primer pantallazo (hero): con
+   * `whileInView` y margen −80 px, un bloque cerca del borde inferior no aparecía sin scroll.
+   */
+  alMontar?: boolean;
 }
 
 /**
  * Fade-in hacia arriba cuando el bloque entra en pantalla (una sola vez).
  * Con movimiento reducido solo anima la opacidad (ver MotionProvider).
  */
-export function Reveal({ children, delay = 0, index = 0, className, as = 'div' }: RevealProps) {
+export function Reveal({ children, delay = 0, index = 0, className, as = 'div', alMontar = false }: RevealProps) {
   const Comp = motion[as];
   return (
     <Comp
       className={className}
       variants={fadeUp}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
+      {...(alMontar ? { animate: 'visible' } : { whileInView: 'visible', viewport: { once: true, margin: '-80px' } })}
       transition={{ duration: MOTION.slow, ease: MOTION.ease, delay: delay + index * MOTION.stagger }}
     >
       {children}

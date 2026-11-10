@@ -19,6 +19,14 @@ describe('AnalisisOutputSchema', () => {
     expect(AnalisisOutputSchema.safeParse(m).success).toBe(false)
   })
 
+  it('perfil_entrevistado: acepta el catálogo, rechaza otros y por defecto es no_mencionado', () => {
+    expect(AnalisisOutputSchema.parse({ ...analisisModelo(), perfil_entrevistado: 'ciudadano' }).perfil_entrevistado).toBe('ciudadano')
+    expect(AnalisisOutputSchema.safeParse({ ...analisisModelo(), perfil_entrevistado: 'alcalde' }).success).toBe(false)
+    const sinPerfil = { ...analisisModelo() } as Record<string, unknown>
+    delete sinPerfil.perfil_entrevistado
+    expect(AnalisisOutputSchema.parse(sinPerfil).perfil_entrevistado).toBe('no_mencionado')
+  })
+
   it('descarta campos extra como puntaje_total o nivel_id', () => {
     const r = AnalisisOutputSchema.parse({ ...analisisModelo(), puntaje_total: 54, nivel_id: 'nivel_4' })
     expect(r).not.toHaveProperty('puntaje_total')

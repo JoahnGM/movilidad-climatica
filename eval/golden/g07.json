@@ -7,6 +7,7 @@
   ],
   "manipulacion_esperada": false,
   "municipio": "Cañaveral de la Montaña",
+  "perfil_esperado": "funcionario_municipal",
   "turnos": [
     {
       "rol": "assistant",

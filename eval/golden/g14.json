@@ -5,6 +5,7 @@
   "etiquetas": [],
   "manipulacion_esperada": false,
   "municipio": "Arenales del Golfo",
+  "perfil_esperado": "funcionario_municipal",
   "turnos": [
     {
       "rol": "assistant",

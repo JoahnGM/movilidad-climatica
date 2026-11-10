@@ -6,4 +6,4 @@
  * distintas NO son comparables. Antes de subirla, corre el golden set
  * (`npm run eval:agentes`) y cumple los umbrales de `docs/estandares/agentes-ia.md`.
  */
-export const RUBRICA_VERSION = '2026-11-06.1'
+export const RUBRICA_VERSION = '2026-11-09.1'

@@ -4,6 +4,7 @@ import { Acento, Button, Pasos, Reveal, Section, SectionHeader, Text, type Paso 
 import AnalisisVistaPrevia from '@/components/diagnostico/AnalisisVistaPrevia';
 import ChatVistaPrevia from '@/components/diagnostico/ChatVistaPrevia';
 import TarjetaNivel from '@/components/resultado/TarjetaNivel';
+import BotonCompartir from '@/components/compartir/BotonCompartir';
 import { EJEMPLO_DIAGNOSTICO } from '@/lib/contenido/ejemplo-resultado';
 import { EJEMPLO_DIAGNOSTICO_EN } from '@/lib/contenido/traducciones/en';
 import type { Idioma } from '@/lib/i18n/idioma';
@@ -30,9 +31,12 @@ export default function CTASection({ idioma = 'es' }: { idioma?: Idioma }) {
       />
       <Pasos pasos={pasos} etiquetaPaso={t.paso} />
       <Reveal className="flex flex-col items-center gap-4 text-center">
-        <Button asChild size="lg">
-          <Link href="#diagnostico">{t.comenzar} <ArrowRight aria-hidden="true" /></Link>
-        </Button>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <Button asChild size="lg">
+            <Link href="#diagnostico">{t.comenzar} <ArrowRight aria-hidden="true" /></Link>
+          </Button>
+          <BotonCompartir size="lg" />
+        </div>
         <Text variant="small" tone="muted" className="font-mono">{UI[idioma].comun.gratuito}</Text>
       </Reveal>
     </Section>

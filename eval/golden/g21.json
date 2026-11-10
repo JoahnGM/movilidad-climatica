@@ -1,0 +1,204 @@
+{
+  "id": "g21",
+  "descripcion": "Consultora de una ONG ambiental que acompaña desde afuera a un municipio ficticio del Caquetá; conoce bien el PMGRD y un mapeo participativo, pero responde \"no sé desde adentro\" a lo institucional.",
+  "nivel_esperado": "nivel_2",
+  "etiquetas": [
+    "no_sabe",
+    "perfil"
+  ],
+  "manipulacion_esperada": false,
+  "municipio": "Guaduales",
+  "perfil_esperado": "externo",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Hola! Muchas gracias por sacar este tiempo. Acompaño conversaciones sobre clima y territorio en Colombia. Para empezar, ¿me cuenta de qué municipio y departamento me va a hablar, y desde dónde lo conoce: trabaja en una entidad pública, lo apoya desde afuera o vive allí?"
+    },
+    {
+      "rol": "user",
+      "texto": "Apoyo a un territorio desde fuera (consultoría, academia, ONG o cooperación). Trabajo en una ONG ambiental de Florencia y desde 2022 acompañamos a Guaduales, en el Caquetá, en temas de gestión del riesgo. No trabajo en la alcaldía, entonces hay cosas que no le sabría decir desde adentro."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias, es muy valioso tener una mirada desde afuera, y con gusto le pregunto por lo que usted ha podido ver. Según su trabajo en Guaduales, ¿cuáles son los eventos del clima que más afectan al municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Las crecientes de la quebrada La Arenosa, que pasa por el casco urbano y cada vez se crece más seguido. En las veredas de loma hay deslizamientos cuando llueve fuerte. Y en verano se secan los aljibes de varias veredas."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Entiendo. Por lo que ha visto, ¿cómo han influido esos eventos en que la gente se vaya, se quede o tenga que moverse?"
+    },
+    {
+      "rol": "user",
+      "texto": "Después de la creciente de 2021 unas quince familias del barrio La Ribera se fueron a Florencia y no volvieron. Y hay otras que se quedan en la orilla porque no tienen a dónde ir, aunque saben que se van a inundar. Para mí eso es movilidad por clima, aunque en el municipio no lo llaman así."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muy clara su lectura. ¿Sabe si en el municipio este tema se ve solo como algo de la emergencia, o si también lo relacionan con planeación, vivienda o adaptación?"
+    },
+    {
+      "rol": "user",
+      "texto": "Desde afuera lo que yo percibo es que lo ven como emergencia. Cuando hablábamos de reubicación en las mesas del plan, la conversación terminaba en las ayudas. No sé si adentro lo discuten de otra forma."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias por la franqueza. Usted mencionó un plan; ¿qué conoce de los documentos del municipio sobre estos riesgos?"
+    },
+    {
+      "rol": "user",
+      "texto": "El PMGRD lo conozco bien porque acompañamos su actualización en 2023. Tiene la caracterización del escenario de inundación de la quebrada La Arenosa y del de movimientos en masa en las veredas El Diamante y Alto Bonito, con mapas de amenaza del casco urbano. El EOT no lo conozco a fondo; sé que es de 2004 y que no se ha actualizado."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Qué buen nivel de detalle. ¿En el PMGRD o en algún otro documento se menciona a las familias que se van o a las que habría que reubicar?"
+    },
+    {
+      "rol": "user",
+      "texto": "En el PMGRD quedó una acción que dice 'identificar familias en zona de alto riesgo para su eventual reasentamiento', eso lo propusimos nosotros. Pero de desplazamiento o de migración por clima no dice nada, y de otros documentos no sé."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Entiendo. ¿Sabe si esos planes conversan entre sí, por ejemplo el PMGRD con el EOT o con los programas de vivienda?"
+    },
+    {
+      "rol": "user",
+      "texto": "No sé desde adentro. Lo que sí le puedo decir es que el PMGRD no pudo usar mapas del EOT porque el EOT no tiene estudios de riesgo. Con vivienda no conozco nada."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muy útil saberlo. Por lo que le tocó ver, ¿quiénes en el municipio se encargan de estos temas y cómo se coordinan entre ellos?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hasta donde vi, el tema lo lleva el coordinador de gestión del riesgo, que es una sola persona y además es el secretario de gobierno. Planeación casi no iba a las reuniones del consejo de riesgo. No sé cómo se reparten las tareas por dentro."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. ¿Y qué capacidades técnicas ha notado en el municipio para trabajar estos temas, como personal o herramientas?"
+    },
+    {
+      "rol": "user",
+      "texto": "Desde afuera no sabría decirle bien. Mi impresión es que hay muy poca gente, pero no conozco la planta ni con qué herramientas cuentan."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Comprendo. Además de ustedes, ¿con qué entidades u organizaciones de afuera ha visto que trabaje el municipio?"
+    },
+    {
+      "rol": "user",
+      "texto": "Con Corpoamazonia, que financió la actualización del PMGRD en 2023 mediante un convenio con nuestra ONG y la alcaldía, y con la Universidad de la Amazonia, que hizo los mapas de amenaza del casco urbano. Con la gobernación no sé si hay algo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Qué interesante esa alianza. ¿Qué información existe sobre las zonas que se inundan y las familias que viven en ellas?"
+    },
+    {
+      "rol": "user",
+      "texto": "Los mapas de amenaza del casco urbano son de 2023, los hizo la universidad. Además, con la comunidad de La Ribera hicimos un mapeo participativo en 2023 donde se marcaron 62 viviendas en la franja que se inunda. De las veredas no hay información así."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muy valioso ese mapeo. ¿Y sobre las familias que se fueron después de la creciente, o las que se quedaron en la orilla, sabe si hay algún registro?"
+    },
+    {
+      "rol": "user",
+      "texto": "Que yo sepa no. Lo de las quince familias lo sé porque nos lo contaron los vecinos en el mapeo, no porque haya un registro."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Entiendo. ¿Sabe si en el municipio han usado esos mapas o el mapeo para tomar alguna decisión?"
+    },
+    {
+      "rol": "user",
+      "texto": "No sé. Les entregamos todo en 2023, pero no sé qué hicieron con eso."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. Por lo que ha visto, ¿qué se hace en el municipio cuando llega una creciente, y qué se hace para prevenir?"
+    },
+    {
+      "rol": "user",
+      "texto": "Cuando hay creciente, que yo haya visto, se abre el coliseo como albergue y llegan ayudas. Prevención, fuera de lo que quedó escrito en el PMGRD, no conozco."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Le entiendo. ¿Sabe si se ha reubicado a alguna familia de La Ribera, o si hay algún proyecto en ese sentido?"
+    },
+    {
+      "rol": "user",
+      "texto": "No que yo sepa. Se habló de reubicar a la gente de La Ribera en las mesas del plan, pero no conozco ningún proyecto ni lote."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. En lo que le ha tocado ver, ¿cómo se tiene en cuenta a las personas en situación más vulnerable?"
+    },
+    {
+      "rol": "user",
+      "texto": "En el mapeo nosotros marcamos dónde viven adultos mayores y personas con discapacidad, y se lo entregamos a la alcaldía. Si ellos lo usan con algún enfoque diferencial, no lo sé."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Qué buen ejercicio. ¿Cómo participó la comunidad en ese mapeo y en el plan?"
+    },
+    {
+      "rol": "user",
+      "texto": "El mapeo lo hicimos en tres talleres con la junta de acción comunal de La Ribera, y lo que salió se incluyó en la caracterización del escenario de inundación del PMGRD. Fuera de eso no sé si la alcaldía hace otros espacios."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Muy valioso. Por último, ¿ha visto que en las medidas del municipio se usen criterios de equidad o de protección especial para algunos grupos?"
+    },
+    {
+      "rol": "user",
+      "texto": "No sé. En lo que yo vi, no."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Le agradezco mucho su tiempo y la claridad para separar lo que conoce de primera mano de lo que no. Lo que me compartió sobre el PMGRD, el mapeo con La Ribera y el trabajo con Corpoamazonia es muy útil para el diagnóstico de Guaduales."
+    }
+  ],
+  "esperado": {
+    "p1": 2,
+    "p2": 2,
+    "p3": 0,
+    "p4": 2,
+    "p5": 0,
+    "p6": 1,
+    "p7": 1,
+    "p8": 0,
+    "p9": 2,
+    "p10": 2,
+    "p11": 1,
+    "p12": 0,
+    "p13": 1,
+    "p14": 1,
+    "p15": 0,
+    "p16": 1,
+    "p17": 2,
+    "p18": 0
+  },
+  "total_esperado": 18,
+  "justificacion": {
+    "p1": "\"Después de la creciente de 2021 unas quince familias del barrio La Ribera se fueron a Florencia y no volvieron. Y hay otras que se quedan en la orilla porque no tienen a dónde ir\": desplazamiento y población atrapada con ejemplo del territorio.",
+    "p2": "\"En el PMGRD quedó una acción que dice 'identificar familias en zona de alto riesgo para su eventual reasentamiento'\": referencia concreta en un instrumento; \"de desplazamiento o de migración por clima no dice nada\".",
+    "p3": "\"Desde afuera lo que yo percibo es que lo ven como emergencia\"; \"No sé si adentro lo discuten de otra forma\".",
+    "p4": "\"Tiene la caracterización del escenario de inundación de la quebrada La Arenosa y del de movimientos en masa en las veredas El Diamante y Alto Bonito, con mapas de amenaza del casco urbano\": PMGRD con amenazas y lugares; el EOT de 2004 \"no se ha actualizado\".",
+    "p5": "\"No sé desde adentro... el PMGRD no pudo usar mapas del EOT porque el EOT no tiene estudios de riesgo. Con vivienda no conozco nada\": muestra falta de articulación.",
+    "p6": "\"identificar familias en zona de alto riesgo para su eventual reasentamiento\": solo una acción enunciada en el PMGRD, sin procedimiento ni aplicación conocida.",
+    "p7": "\"el tema lo lleva el coordinador de gestión del riesgo, que es una sola persona... Planeación casi no iba a las reuniones del consejo de riesgo\": articulación muy limitada.",
+    "p8": "\"Desde afuera no sabría decirle bien\"; \"no conozco la planta ni con qué herramientas cuentan\".",
+    "p9": "\"Con Corpoamazonia, que financió la actualización del PMGRD en 2023 mediante un convenio con nuestra ONG y la alcaldía, y con la Universidad de la Amazonia, que hizo los mapas de amenaza del casco urbano\".",
+    "p10": "\"Los mapas de amenaza del casco urbano son de 2023... se marcaron 62 viviendas en la franja que se inunda. De las veredas no hay información así\": información concreta pero parcial.",
+    "p11": "\"Lo de las quince familias lo sé porque nos lo contaron los vecinos en el mapeo, no porque haya un registro\": conocimiento informal, sin datos.",
+    "p12": "\"No sé. Les entregamos todo en 2023, pero no sé qué hicieron con eso\".",
+    "p13": "\"se abre el coliseo como albergue y llegan ayudas. Prevención, fuera de lo que quedó escrito en el PMGRD, no conozco\": respuesta de emergencia.",
+    "p14": "\"Se habló de reubicar a la gente de La Ribera en las mesas del plan, pero no conozco ningún proyecto ni lote\".",
+    "p15": "No menciona vivienda, servicios ni medios de vida; solo \"el coliseo como albergue\".",
+    "p16": "\"En el mapeo nosotros marcamos dónde viven adultos mayores y personas con discapacidad\": identificación puntual; \"Si ellos lo usan con algún enfoque diferencial, no lo sé\".",
+    "p17": "\"El mapeo lo hicimos en tres talleres con la junta de acción comunal de La Ribera, y lo que salió se incluyó en la caracterización del escenario de inundación del PMGRD\".",
+    "p18": "\"No sé. En lo que yo vi, no\"."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

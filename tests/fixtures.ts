@@ -32,5 +32,6 @@ export function analisisModelo(valores: Partial<Record<PreguntaId, [number, stri
     confianza: 'alta',
     gaps_de_informacion: [],
     contexto_territorial: { riesgos_principales: [], categoria_municipal: 'no_mencionada', pdet: 'no_mencionado' },
+    perfil_entrevistado: 'funcionario_municipal',
   }
 }
