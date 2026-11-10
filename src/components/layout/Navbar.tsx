@@ -34,10 +34,10 @@ export default function Navbar() {
         scrolled || menuOpen ? 'border-border bg-background/85' : 'border-transparent bg-background/0',
       )}
     >
-      <Container className="flex h-16 items-center justify-between gap-4">
+      <Container className="flex h-16 items-center justify-between gap-2 md:gap-4">
         <div className="flex min-w-0 items-center gap-3">
           <Link href="/" aria-label={t.nav.inicioAria} className="shrink-0">
-            <Logo />
+            <Logo compactoEnMovil />
           </Link>
           <Chip variant="experimental" size="sm" className="hidden lg:inline-flex">{t.comun.pilotoExperimental}</Chip>
         </div>
@@ -50,8 +50,8 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <BotonCompartir forma="icono" variant="ghost" className="hidden md:inline-flex" />
+        <div className="flex items-center gap-1 md:gap-2">
+          <BotonCompartir forma="icono" variant="ghost" />
           <SelectorIdioma />
           <Button asChild size="sm" className="hidden sm:inline-flex">
             <Link href="/#diagnostico">{t.nav.diagnostico}</Link>
@@ -82,7 +82,6 @@ export default function Navbar() {
             <Button asChild className="mt-2">
               <Link href="/#diagnostico" onClick={() => setMenuOpen(false)}>{t.nav.diagnostico}</Link>
             </Button>
-            <BotonCompartir className="mt-1" />
           </Container>
         </div>
       )}
