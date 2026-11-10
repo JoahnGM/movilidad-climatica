@@ -428,6 +428,8 @@ Independientes del plan, conviene aplicarlas pronto:
 
 Origen: revisión informal de la app con colegas (nota de voz del 8-nov) más notas de producto del equipo. Pendiente: el screenshot de referencia para la home (10.1).
 
+**Estado (9-nov-2026):** R1, R2, R4 y R5 implementados en la rama `claude/feedback-ronda-2`. R3 (ejemplo con caso real) espera saber si el equipo tiene trabajo de campo para un caso anonimizado; el problema de fondo es credibilidad, no Bogotá en sí. R5 tiene pendiente correr `eval:agentes` con 3 repeticiones.
+
 ### 10.1 Home: máximo 3 elementos (R1)
 
 **Feedback:** la primera página tiene demasiada información. Principio de atención: mostrar solo 3 cosas.
