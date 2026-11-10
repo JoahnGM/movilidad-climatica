@@ -53,6 +53,9 @@ const REGLAS = [
   { nombre: 'color de matriz.ts en la UI (usa components/resultado/tonos.ts)', re: /NIVELES\[[^\]]*\]\.color|COLORES_ESTADO/g },
   { nombre: 'ui/button en páginas (usa Button de @/components/ds)', re: /@\/components\/ui\/button/g },
 ];
+// `inline-block` choca con la utilidad de tamaño `inline-{spacing}` del token `block`
+// (genera `inline-size: var(--space-block)`, ~56 px). Usa `[display:inline-block]`.
+const REGLA_INLINE_BLOCK = { nombre: 'clase inline-block (choca con inline-size del token block; usa [display:inline-block])', re: /(?<![\w[-])(?<!display:)inline-block(?![\w\]-])/g };
 let violaciones = 0;
 const conDeuda = new Set();
 for (const f of [...archivos(join(RAIZ, 'src/app')), ...archivos(join(RAIZ, 'src/components'))]) {
@@ -75,6 +78,16 @@ for (const f of [...archivos(join(RAIZ, 'src/app')), ...archivos(join(RAIZ, 'src
 }
 for (const p of PENDIENTES_MIGRACION) if (!conDeuda.has(p)) falla(`${p} ya cumple: sácalo de PENDIENTES_MIGRACION en scripts/check-ds.mjs`);
 if (violaciones === 0) ok(`sin colores fuera de tokens${PENDIENTES_MIGRACION.length ? ` (${PENDIENTES_MIGRACION.length} pendientes de migrar)` : ''}`);
+
+// Incluye ds/ (allí también rompe el layout); ui/ es de shadcn y no se toca.
+let inlineBlock = 0;
+for (const f of [...archivos(join(RAIZ, 'src/app')), ...archivos(join(RAIZ, 'src/components'))]) {
+  const r = rel(f);
+  if (r.startsWith('src/components/ui/')) continue;
+  const t = readFileSync(f, 'utf8');
+  for (const m of t.matchAll(REGLA_INLINE_BLOCK.re)) { inlineBlock++; falla(`${r}:${linea(t, m.index)} ${REGLA_INLINE_BLOCK.nombre}`); }
+}
+if (inlineBlock === 0) ok('sin la clase inline-block (usa [display:inline-block])');
 
 /* ── 2. Catálogo ────────────────────────────────────────────────────── */
 console.log('2. Cada primitiva tiene ficha en /ds');

@@ -1,0 +1,188 @@
+{
+  "id": "g22",
+  "descripcion": "Líder de junta de acción comunal de un barrio ribereño de un municipio ficticio de Arauca; cuenta inundaciones y una reubicación vividas, pero casi no conoce lo institucional y responde \"no sé\" a mucho.",
+  "nivel_esperado": "nivel_1",
+  "etiquetas": [
+    "no_sabe",
+    "perfil"
+  ],
+  "manipulacion_esperada": false,
+  "municipio": "Puerto Lucero",
+  "perfil_esperado": "ciudadano",
+  "turnos": [
+    {
+      "rol": "assistant",
+      "texto": "¡Hola! Muchas gracias por sacar este tiempo. Acompaño conversaciones sobre clima y territorio en Colombia. Para empezar, ¿me cuenta de qué municipio y departamento me va a hablar, y desde dónde lo conoce: trabaja en una entidad pública, lo apoya desde afuera o vive allí?"
+    },
+    {
+      "rol": "user",
+      "texto": "Buenas. Yo no trabajo en la alcaldía ni en ninguna entidad. Vivo en Puerto Lucero, en Arauca, en el barrio Las Palmas, y soy de la junta de acción comunal. Me interesa el tema porque aquí nos inundamos mucho."
+    },
+    {
+      "rol": "assistant",
+      "texto": "¡Qué bueno contar con su mirada desde el barrio! Aquí no hay respuestas correctas ni incorrectas, me interesa lo que usted ha vivido. ¿Qué es lo que más les afecta del clima allá?"
+    },
+    {
+      "rol": "user",
+      "texto": "El río Arauca. Cuando llega el invierno se crece y se mete al barrio, el agua llega hasta la rodilla y a veces hasta la cintura. Y en verano el calor es tremendo, cada año peor."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Qué difícil. ¿Y qué pasa con las familias del barrio cuando el río se mete?"
+    },
+    {
+      "rol": "user",
+      "texto": "Unos se van donde familiares mientras baja el agua. Otros se quedan cuidando las cosas en el segundo piso o en el techo, porque no tienen a dónde ir. Y algunos ya se fueron del todo, se cansaron. Yo creo que eso es por el cambio del clima, porque antes el río no se crecía tan seguido."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Lo que cuenta es muy duro, gracias por compartirlo. ¿Sabe si en el municipio esto se ve solo como una emergencia, o si se habla de planearlo de otra forma?"
+    },
+    {
+      "rol": "user",
+      "texto": "No sé. Lo que uno ve es que vienen cuando ya estamos inundados, traen mercados y colchonetas y ya."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Entiendo. ¿Ha escuchado de algún plan o documento del municipio que hable de las inundaciones o de las familias que se van?"
+    },
+    {
+      "rol": "user",
+      "texto": "No, la verdad no sé de eso. Una vez en una reunión dijeron que el barrio estaba en un mapa como zona de riesgo, pero yo nunca he visto ese mapa."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias, eso es útil. Cuando hay inundación, ¿quiénes llegan al barrio y cómo se organizan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Viene gente de la alcaldía y los bomberos. Pero quién se encarga de qué, no sé."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Está bien, no tiene por qué saberlo. ¿Tiene alguna idea de con cuánta gente cuenta la alcaldía para estos temas?"
+    },
+    {
+      "rol": "user",
+      "texto": "No tengo idea, eso no lo sé."
+    },
+    {
+      "rol": "assistant",
+      "texto": "No se preocupe. ¿Ha visto que lleguen al barrio otras entidades u organizaciones a apoyar?"
+    },
+    {
+      "rol": "user",
+      "texto": "Una vez vino la Cruz Roja e hizo una charla con la junta sobre qué hacer en una inundación. Fuera de eso no sé de nadie más."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Qué bien. Desde la junta, ¿tienen alguna información sobre qué familias se inundan?"
+    },
+    {
+      "rol": "user",
+      "texto": "Sí, en la junta hicimos una lista de las familias que se inundan cada invierno, son como 80 familias. Pero eso es de nosotros, no sé si la alcaldía tiene algo."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Ese trabajo de la junta vale mucho. ¿Sabe si alguien lleva la cuenta de las familias que se han ido del barrio por las inundaciones?"
+    },
+    {
+      "rol": "user",
+      "texto": "Que yo sepa nadie. Yo sé que de mi cuadra se fueron cuatro familias después de la inundación de 2022, pero eso lo sé porque eran mis vecinos."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Entiendo. ¿Ha visto que esa lista de la junta, o el mapa del que le hablaron, se use para decidir algo?"
+    },
+    {
+      "rol": "user",
+      "texto": "Le entregamos la lista a la alcaldía para que nos tuvieran en cuenta en las ayudas, pero no sé si la usaron para algo más."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias. Cuando el río se mete, ¿cómo es la atención para las familias?"
+    },
+    {
+      "rol": "user",
+      "texto": "Abren el colegio como albergue y llevan mercados. Eso es todo lo que yo he visto."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Usted mencionó a las familias que se quedan en el techo. ¿Ha sabido de algún caso en que hayan pasado a familias del barrio a vivir a otro lugar?"
+    },
+    {
+      "rol": "user",
+      "texto": "Sí, a unas doce familias de la orilla, las más cerquita del río, las pasaron en 2023 a unas casas en la urbanización Villa Sol, al otro lado del pueblo. Eso fue con la alcaldía, pero no sé bien cómo fue el proceso."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Gracias por contarlo. ¿Y cómo les ha ido a esas familias en su nuevo lugar?"
+    },
+    {
+      "rol": "user",
+      "texto": "Las casas tienen agua y luz, eso sí. Pero quedaron lejos y los que vivían de pescar en el río ahora tienen que pagar transporte para venir, y dos familias ya se devolvieron a la orilla."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Qué importante lo que cuenta. ¿Sabe si en ese traslado se tuvo en cuenta de manera especial a alguien, como adultos mayores, niños o personas con discapacidad?"
+    },
+    {
+      "rol": "user",
+      "texto": "No sé. Que yo sepa, se escogió a los que estaban más cerquita del río y ya."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Entiendo. ¿Y cómo participó la comunidad en todo eso?"
+    },
+    {
+      "rol": "user",
+      "texto": "Hubo una reunión en el salón comunal en 2023 donde la alcaldía nos contó lo de la reubicación. Nos explicaron, pero ya estaba decidido. Nosotros preguntamos y ya."
+    },
+    {
+      "rol": "assistant",
+      "texto": "Le agradezco muchísimo su tiempo y que me haya contado lo que han vivido en Las Palmas. Lo que comparte sobre el río, las familias que se quedan y las que pasaron a Villa Sol es muy valioso para entender cómo se vive esto en Puerto Lucero."
+    }
+  ],
+  "esperado": {
+    "p1": 2,
+    "p2": 0,
+    "p3": 0,
+    "p4": 1,
+    "p5": 0,
+    "p6": 0,
+    "p7": 0,
+    "p8": 0,
+    "p9": 1,
+    "p10": 2,
+    "p11": 1,
+    "p12": 0,
+    "p13": 1,
+    "p14": 2,
+    "p15": 1,
+    "p16": 0,
+    "p17": 1,
+    "p18": 0
+  },
+  "total_esperado": 12,
+  "justificacion": {
+    "p1": "\"Unos se van donde familiares mientras baja el agua. Otros se quedan cuidando las cosas en el segundo piso o en el techo, porque no tienen a dónde ir. Y algunos ya se fueron del todo\" y \"Yo creo que eso es por el cambio del clima\": tipos de movilidad con ejemplo del barrio.",
+    "p2": "\"No, la verdad no sé de eso\".",
+    "p3": "\"No sé. Lo que uno ve es que vienen cuando ya estamos inundados\".",
+    "p4": "\"Una vez en una reunión dijeron que el barrio estaba en un mapa como zona de riesgo, pero yo nunca he visto ese mapa\": mención vaga y de oídas.",
+    "p5": "No mencionado.",
+    "p6": "No mencionado; la reubicación que cuenta no se asocia a ningún instrumento.",
+    "p7": "\"quién se encarga de qué, no sé\".",
+    "p8": "\"No tengo idea, eso no lo sé\".",
+    "p9": "\"Una vez vino la Cruz Roja e hizo una charla con la junta sobre qué hacer en una inundación\": apoyo externo puntual.",
+    "p10": "\"en la junta hicimos una lista de las familias que se inundan cada invierno, son como 80 familias\": información concreta de población expuesta, aunque comunitaria; \"no sé si la alcaldía tiene algo\".",
+    "p11": "\"Que yo sepa nadie... de mi cuadra se fueron cuatro familias después de la inundación de 2022, pero eso lo sé porque eran mis vecinos\": conocimiento anecdótico, sin registro.",
+    "p12": "\"no sé si la usaron para algo más\".",
+    "p13": "\"Abren el colegio como albergue y llevan mercados. Eso es todo lo que yo he visto\": respuesta solo de emergencia.",
+    "p14": "\"a unas doce familias de la orilla, las más cerquita del río, las pasaron en 2023 a unas casas en la urbanización Villa Sol\": reubicación concreta; \"no sé bien cómo fue el proceso\".",
+    "p15": "\"Las casas tienen agua y luz, eso sí. Pero quedaron lejos y los que vivían de pescar en el río ahora tienen que pagar transporte\": servicios sí, medios de vida no; \"dos familias ya se devolvieron\".",
+    "p16": "\"No sé. Que yo sepa, se escogió a los que estaban más cerquita del río y ya\".",
+    "p17": "\"la alcaldía nos contó lo de la reubicación. Nos explicaron, pero ya estaba decidido\": socialización sin incidencia.",
+    "p18": "\"se escogió a los que estaban más cerquita del río y ya\": sin criterios de equidad ni protección diferencial."
+  },
+  "anotador": "sintético (IA), pendiente de revisión por dos anotadores humanos"
+}

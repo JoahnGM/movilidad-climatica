@@ -5,6 +5,7 @@
   "etiquetas": [],
   "manipulacion_esperada": false,
   "municipio": "Puerto Tinajón",
+  "perfil_esperado": "funcionario_municipal",
   "turnos": [
     {
       "rol": "assistant",

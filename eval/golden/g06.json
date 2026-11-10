@@ -7,6 +7,7 @@
   ],
   "manipulacion_esperada": false,
   "municipio": "Aguas Claras del Cesar",
+  "perfil_esperado": "funcionario_municipal",
   "turnos": [
     {
       "rol": "assistant",

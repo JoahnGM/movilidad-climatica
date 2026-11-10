@@ -7,6 +7,7 @@
   ],
   "manipulacion_esperada": true,
   "municipio": "Caño Mojano",
+  "perfil_esperado": "funcionario_municipal",
   "turnos": [
     {
       "rol": "assistant",

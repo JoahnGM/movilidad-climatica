@@ -7,6 +7,7 @@ import { Button, Chip, Container } from '@/components/ds';
 import { cn } from '@/lib/utils';
 import Logo from './Logo';
 import SelectorIdioma from './SelectorIdioma';
+import BotonCompartir from '@/components/compartir/BotonCompartir';
 import { useIdioma } from '@/components/i18n/IdiomaProvider';
 
 export default function Navbar() {
@@ -50,6 +51,7 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <BotonCompartir forma="icono" variant="ghost" className="hidden md:inline-flex" />
           <SelectorIdioma />
           <Button asChild size="sm" className="hidden sm:inline-flex">
             <Link href="/#diagnostico">{t.nav.diagnostico}</Link>
@@ -80,6 +82,7 @@ export default function Navbar() {
             <Button asChild className="mt-2">
               <Link href="/#diagnostico" onClick={() => setMenuOpen(false)}>{t.nav.diagnostico}</Link>
             </Button>
+            <BotonCompartir className="mt-1" />
           </Container>
         </div>
       )}

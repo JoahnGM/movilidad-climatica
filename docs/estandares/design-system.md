@@ -70,7 +70,7 @@ Tecnología con la sobriedad de una ONG climática. Papel cálido (`#FBFAF6`), t
 | `Section` | Cada sección de página (fondo, ritmo, `id`) | Bloques dentro de tarjetas |
 | `SectionHeader` | Eyebrow + título + lead de sección (en escritorio: título a la izquierda, lead a la derecha) | Títulos de tarjeta |
 | `PageHeader` | Páginas internas (`/sobre`, `/metodologia`, `/recursos`) | El home |
-| `Reveal` | Fade-in al hacer scroll (`index` escalona) | Contenido crítico above-the-fold |
+| `Reveal` | Fade-in al hacer scroll (`index` escalona); `alMontar` para el primer pantallazo | Contenido crítico above-the-fold sin `alMontar` |
 | `MotionProvider` | Una vez en `app/layout.tsx` | Anidarlo |
 | `SkipLink` | Una vez en `app/layout.tsx`; cada página tiene `<main id="contenido">` | — |
 | `Heading` / `Acento` | Títulos / una frase serif por título clave | Párrafos |
@@ -96,8 +96,8 @@ Tecnología con la sobriedad de una ONG climática. Papel cálido (`#FBFAF6`), t
 | `Tabs` + `TabsList`/`TabsTrigger`/`TabsContent` | Fichas paralelas (ciudades) | Navegación entre páginas |
 | `FeedbackThumbs` | Micro-encuesta 👍/👎 (sin persistencia) | Votaciones de más de 2 opciones |
 | `FondoMontanas` | El hero del home, una vez en todo el sitio | Cualquier otra sección |
-| `TituloIA` | El h1 del hero | Más de una vez por página |
-| `usePlaceholderAnimado` (hook) | Placeholder que se escribe solo en el campo del hero | Formularios largos; reemplazar la etiqueta |
+| `TituloIA` | El h1 del hero (`efecto="suave"`; `"escribir"` queda disponible) | Más de una vez por página |
+| `usePlaceholderAnimado` (hook) | Placeholder que se escribe solo en un campo de entrada protagonista (hoy sin uso en el home) | Formularios largos; reemplazar la etiqueta |
 
 9. **`ds/` no tiene lógica de negocio:** no importa `@/lib/*` (salvo `@/lib/utils`), no usa `fetch` ni `localStorage`. Los datos llegan por props.
 10. **Una sola vista de resultado:** `src/components/resultado/ResultadoDiagnostico.tsx` la usan el demo (`EjemploSection`, con `ejemplo`) y el resultado real del agente (`DiagnosticoSection`). Prohibido duplicarla. *Por qué:* lo que la persona ve en el ejemplo es exactamente lo que recibirá.
@@ -119,6 +119,8 @@ Tecnología con la sobriedad de una ONG climática. Papel cálido (`#FBFAF6`), t
 20. **Sin fuente primaria no se publica una cifra** (`docs/estandares/contenido-y-fuentes.md`). Los textos largos y cifras viven en `src/lib/contenido`, no en el JSX.
 21. **Textos oficiales del iceberg EXACTOS** (CLAUDE.md §4): vienen del resultado; la UI no los reescribe. En inglés se muestra la traducción no oficial de `src/lib/i18n/matriz.ts` (por id), con la nota "Unofficial translation".
 21b. **Dos idiomas (ES fuente, EN traducción).** Ningún texto visible va escrito en un componente: los de interfaz viven en `src/lib/i18n/ui.ts` (`UI.es` / `UI.en`, el tipo obliga a que EN tenga las mismas claves) y el contenido verificado en `src/lib/contenido` (+ `traducciones/en.ts`). Server components reciben `idioma` por prop desde la página; client components usan `useIdioma()`. Las primitivas de `ds/` no conocen el idioma: sus textos por defecto (p. ej. "Fuente:", "Cerrar") se sobrescriben por props. El idioma se guarda en la cookie `idioma` (toggle `SelectorIdioma` en la navbar).
+
+21c. **Nunca la clase `inline-block`.** El token de espaciado `block` genera la utilidad de tamaño `inline-block` (`inline-size: var(--space-block)`, ~56 px), que aplasta el elemento. Usa `[display:inline-block]`. `check:ds` lo verifica.
 
 ### Accesibilidad
 
@@ -220,5 +222,7 @@ Además, Tailwind no genera la paleta por defecto (`--color-*: initial`): una cl
 | Fecha | Versión | Cambio |
 |---|---|---|
 | 2026-11-06 | 1.0 | Primera versión: DS "Cordillera" (modo claro), 39 primitivas, catálogo `/ds`, `check:ds`; migración completa del sitio; diagnóstico integrado en la landing. |
+| 2026-11-09 | 1.4 | Hero centrado en la pantalla encima de la cordillera; `TituloIA efecto="suave"` (cascada de palabras con fundido y desenfoque) reemplaza el tecleo en el hero; `Reveal alMontar` para bajada y acciones; bajo el titular, dos botones (principal + secundario "Ver un ejemplo de resultado") sin letra chica; regla 21c y verificación de `inline-block` en `check:ds`. |
+| 2026-11-09 | 1.3 | Hero de tres elementos (plan-feedback §10.1 y §10.4), centrado y apoyado en el valle de la cordillera (halo de papel detrás del texto; sin `Reveal` en el primer pantallazo): cordillera, titular-pregunta con bajada y una sola acción ("Empezar mi diagnóstico") con línea de fricción y enlace al ejemplo. Sale el campo de municipio (lo pregunta el chat) y la vista previa del resultado (vive en "Cómo funciona" y en el ejemplo). Bienvenida del chat con cuatro opciones de perfil apiladas (botón `secondary` a lo ancho, `rounded-xl`) y banner `info` en el resultado cuando quien respondió no es funcionario (plan-feedback §10.5). Compartir (plan-feedback §10.2): `src/components/compartir/BotonCompartir.tsx` (hoja nativa en pantallas táctiles; en escritorio, menú con copiar enlace —con respaldo si el navegador bloquea el portapapeles—, WhatsApp y correo); solo comparte el enlace de la plataforma con `?ref=compartir`. Imagen de vista previa en `src/app/opengraph-image.tsx`: como `ImageResponse` solo acepta estilos en línea, el JSX vive en `src/lib/og/` y lee los colores de `globals.css`. |
 | 2026-11-07 | 1.2 | Toggle ES/EN (regla 21b), `usePlaceholderAnimado` en el campo del hero, textos por defecto de `SourceLink`, `CifraConFuente`, `Dialog` y `Etapas` sobrescribibles. |
 | 2026-11-07 | 1.1 | Ritmo vertical más compacto (`--space-section` 64–96 px, `--space-block` 40–56 px); `SectionHeader` en dos columnas; regla 13 sobre huecos; el campo de municipio del hero inicia el chat en la landing (`iniciarDiagnostico`). |

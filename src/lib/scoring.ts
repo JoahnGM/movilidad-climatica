@@ -7,7 +7,7 @@ import { DIMENSIONES, ICEBERGS, NIVELES, PREGUNTAS, PUNTAJE_MAXIMO, getNivelFrom
 import type { AnalisisOutput, SintesisOutput } from './schemas'
 import type {
   AnalisisResult, Confianza, DiagnosticoResult, DimensionId, DimensionResumen,
-  DimensionScore, EstadoDimension, IcebergId, NivelId, PreguntaScore,
+  DimensionScore, EstadoDimension, IcebergId, NivelId, PerfilEntrevistado, PreguntaScore,
 } from './types'
 
 export type Puntaje = 0 | 1 | 2 | 3
@@ -149,12 +149,32 @@ export function calcularResultado(puntajes: Puntajes): ResultadoCalculado {
 
 const ORDEN_CONFIANZA: Confianza[] = ['baja', 'media', 'alta']
 
-/** La confianza solo puede bajar: manipulación o ≥3 citas no verificadas → baja; 1–2 → máximo media. */
-export function ajustarConfianza(delModelo: Confianza, invalidadas: number, manipulacion: boolean): Confianza {
+/**
+ * Tope de confianza según quién respondió (plan-feedback §10.5). Lo que sabe alguien de fuera
+ * de la institución no es evidencia institucional directa: actor externo o perfil no dicho →
+ * máximo media; ciudadanía → baja. Funcionarios municipales o departamentales: sin tope.
+ */
+export function topeConfianzaPorPerfil(perfil: PerfilEntrevistado): Confianza {
+  if (perfil === 'ciudadano') return 'baja'
+  if (perfil === 'externo' || perfil === 'no_mencionado') return 'media'
+  return 'alta'
+}
+
+/**
+ * La confianza solo puede bajar: manipulación o ≥3 citas no verificadas → baja; 1–2 → máximo media;
+ * y nunca supera el tope del perfil de quien respondió.
+ */
+export function ajustarConfianza(
+  delModelo: Confianza,
+  invalidadas: number,
+  manipulacion: boolean,
+  perfil: PerfilEntrevistado,
+): Confianza {
   let tope: Confianza = 'alta'
   if (manipulacion || invalidadas >= 3) tope = 'baja'
   else if (invalidadas > 0) tope = 'media'
-  return ORDEN_CONFIANZA[Math.min(ORDEN_CONFIANZA.indexOf(delModelo), ORDEN_CONFIANZA.indexOf(tope))]
+  const topes = [delModelo, tope, topeConfianzaPorPerfil(perfil)].map((c) => ORDEN_CONFIANZA.indexOf(c))
+  return ORDEN_CONFIANZA[Math.min(...topes)]
 }
 
 // ─── Ensamblaje ───────────────────────────────────────────────────────────────
@@ -181,6 +201,7 @@ export function ensamblarAnalisis(params: {
     dimension_mas_fuerte: calculado.dimension_mas_fuerte,
     dimension_mas_debil: calculado.dimension_mas_debil,
     gaps_de_informacion: modelo.gaps_de_informacion.slice(0, 10),
+    perfil_entrevistado: modelo.perfil_entrevistado,
     rubrica_version: rubricaVersion,
   }
 }

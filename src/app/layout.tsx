@@ -27,8 +27,16 @@ const geistMono = Geist_Mono({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { meta } = UI[await obtenerIdioma()];
-  return { title: meta.titulo, description: meta.descripcion };
+  const idioma = await obtenerIdioma();
+  const { meta } = UI[idioma];
+  return {
+    title: meta.titulo,
+    description: meta.descripcion,
+    // Vista previa al compartir el enlace (WhatsApp, correo, redes). La imagen la genera
+    // src/app/opengraph-image.tsx; en Vercel, Next usa la URL del despliegue como base.
+    openGraph: { title: meta.titulo, description: meta.descripcion, type: 'website', locale: idioma === 'en' ? 'en_US' : 'es_CO', siteName: meta.titulo },
+    twitter: { card: 'summary_large_image', title: meta.titulo, description: meta.descripcion },
+  };
 }
 
 export default async function RootLayout({

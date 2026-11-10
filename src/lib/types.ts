@@ -5,6 +5,8 @@ export type UrgenciaType = 'inmediata' | 'corto_plazo' | 'mediano_plazo'
 export type EstadoDimension = 'fortaleza' | 'en_desarrollo' | 'brecha_critica'
 export type ParaQuien = 'todos' | 'categoria_1_3' | 'categoria_4_6_PDET'
 export type Confianza = 'alta' | 'media' | 'baja'
+/** Desde dónde conoce el territorio la persona entrevistada (lo dice ella; no se deduce). */
+export type PerfilEntrevistado = 'funcionario_municipal' | 'funcionario_departamental' | 'externo' | 'ciudadano' | 'no_mencionado'
 
 export interface PreguntaScore {
   puntaje: 0 | 1 | 2 | 3
@@ -38,6 +40,8 @@ export interface AnalisisResult {
   dimension_mas_fuerte: DimensionId
   dimension_mas_debil: DimensionId
   gaps_de_informacion: string[]
+  /** Perfil de quien respondió. Ausente en resultados anteriores a la rúbrica 2026-11-09.1. */
+  perfil_entrevistado?: PerfilEntrevistado
   /** Versión de la rúbrica/prompts con que se calculó (ver src/lib/prompts/version.ts). */
   rubrica_version?: string
 }

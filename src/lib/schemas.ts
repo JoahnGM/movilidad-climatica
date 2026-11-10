@@ -66,6 +66,11 @@ export const AnalisisOutputSchema = z.object({
     categoria_municipal: z.enum(['especial', '1', '2', '3', '4', '5', '6', 'no_mencionada']),
     pdet: z.enum(['si', 'no', 'no_mencionado']),
   }),
+  // Lo dice la persona; el código lo usa para acotar la confianza (scoring.ts → topeConfianzaPorPerfil).
+  // Si el modelo lo omite, se toma como no mencionado (más conservador que asumir funcionario).
+  perfil_entrevistado: z
+    .enum(['funcionario_municipal', 'funcionario_departamental', 'externo', 'ciudadano', 'no_mencionado'])
+    .default('no_mencionado'),
 })
 export type AnalisisOutput = z.infer<typeof AnalisisOutputSchema>
 

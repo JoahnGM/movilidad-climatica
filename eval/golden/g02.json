@@ -8,6 +8,7 @@
   ],
   "manipulacion_esperada": false,
   "municipio": "Palmarito del Sinú",
+  "perfil_esperado": "funcionario_municipal",
   "turnos": [
     {
       "rol": "assistant",

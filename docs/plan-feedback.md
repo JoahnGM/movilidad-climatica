@@ -1,6 +1,6 @@
 # Plan de trabajo — Respuesta al feedback de revisión
 
-> Versión 0.2 · 6 de noviembre de 2026 · Borrador para discusión.
+> Versión 0.3 · 9 de noviembre de 2026 · Borrador para discusión. (v0.3 agrega la ronda 2 de feedback, sección 10.)
 > Cubre el 100 % de los puntos recibidos: seguridad, migración a DeepSeek y los 17 puntos de la revisión de contenido, forma y pilotaje. Cada punto trae **hallazgos de la investigación** (8 líneas de búsqueda en paralelo, fuentes de 2024-2026) y una **propuesta de solución**. Lo que no se pudo verificar en fuente primaria está marcado **[verificar]**.
 
 ## 0. Cómo leer este documento
@@ -31,6 +31,11 @@
 | F5 | Ejemplo de resultado | 2 | 3.5 |
 | F6 | Sección de recursos | 4 | 5.5 |
 | P | Taller de pilotaje | 5 | 6 |
+| R1 | Home: demasiada información; mostrar solo 3 cosas | 2 | 10.1 |
+| R2 | Botón "Compartir" | 2 | 10.2 |
+| R3 | Ejemplo de resultado con un caso real estudiado (Bogotá), no ficticio | 2 | 10.3 (modifica 3.5) |
+| R4 | Nueva propuesta de valor: "primer diagnóstico… basado en investigación y trabajo de campo" | 2 | 10.4 (modifica 3.4) |
+| R5 | No asumir que quien responde trabaja en la Alcaldía | 1–2 | 10.5 |
 
 ---
 
@@ -177,6 +182,8 @@ Mostrar las citas del campo `evidencia` por pregunta refuerza la verificabilidad
 - AI Answers (Canadá): etiqueta "Beta", microcopy bajo cada respuesta "AI can make mistakes, always check your answer", bloqueo de datos personales.
 - Schilke & Reimann (OBHDP 2025, 13 experimentos): revelar el uso de IA reduce la confianza, pero menos que si se descubre después; el efecto se atenúa cuando el usuario percibe alta precisión y cuando el aviso va acompañado de información sobre la competencia y límites del sistema.
 
+> **Actualizado por R4 (sección 10.4):** el bloque "Qué es" y el subtítulo del hero usan la nueva propuesta de valor.
+
 **Propuesta:** pantalla única de ~120 palabras con 4 bloques y botón "Entendido, empezar":
 > **Antes de empezar**
 > **Qué es:** una conversación guiada por IA (~20 min) que construye una línea base orientativa del nivel de preparación de tu territorio frente a la movilidad climática.
@@ -191,6 +198,8 @@ La política de datos del footer se reescribe según el proveedor elegido (decis
 ### 3.5 Ejemplo de resultado (F5)
 
 **Hallazgos:** solo hay consenso de practicantes (Chameleon, Pendo) de que previsualizar la salida aumenta inicio y confianza; no se encontraron estudios controlados 2023-2026. Se medirá el efecto en el piloto.
+
+> **Actualizado por R3 (sección 10.3):** el ejemplo pasa a construirse con un caso real ya estudiado (Bogotá), no con datos ficticios. Lo de abajo sigue vigente salvo el municipio, los datos y el texto del banner.
 
 **Propuesta:** ruta `/ejemplo` que renderiza los mismos componentes de `/resultado` con un `DiagnosticoResult` estático de **"Municipio de Ejemplo (ficticio)"**, nivel 2 (19/54), iceberg con 2 capas, 2 fortalezas, 3 brechas, 3 recomendaciones. Banner persistente "Ejemplo ilustrativo con datos ficticios — no corresponde a ningún municipio real", badge "EJEMPLO" en `NivelBadge`, CTA al pie "Hacer el diagnóstico de mi municipio". Botón secundario "Ver ejemplo de resultado" junto al CTA del hero y en `/diagnostico`. Evento `ejemplo_visto` → `diagnostico_iniciado` para medir.
 
@@ -402,6 +411,8 @@ Estimación gruesa de esfuerzo técnico (sin contar validaciones del equipo de c
 | 4 | **Autoría e institución**: prototipo académico / piloto de X institución / recurso público; quién financia | Fase 2 (`/sobre`) | Requiere respuesta del equipo |
 | 5 | **Plan de Vercel**: Hobby es "no comercial"; Pro habilita WAF con más reglas, BotID Deep Analysis, eventos de analítica, ZDR a nivel de equipo | Fase 1 | Pro durante el piloto |
 | 6 | **Modelo del Agente 3**: Flash (high) vs. Pro | Fase 1 | Decidir con el golden set; hoy Flash 1017 puntúa mejor y cuesta 4× menos |
+| 7 | **Ejemplo con caso real (R3)**: Bogotá con fuentes vs. ficticio | Fase 2 (`/ejemplo`) | Bogotá, encuadrado como "basado en un caso estudiado", no como evaluación oficial de la Alcaldía. Confirmar el caso y las fuentes con el equipo de contenido |
+| 8 | **Perfil del entrevistado (R5)**: ¿un ciudadano o un actor externo recibe el mismo resultado que un funcionario? | Fase 1 (agentes) | Sí recibe resultado, pero con el perfil visible y `confianza` acotada (ver 10.5) |
 
 ## 9. Correcciones de hechos detectadas en el contenido actual
 
@@ -412,6 +423,59 @@ Independientes del plan, conviene aplicarlas pronto:
 - Existe la **Ley 2577/2026** y el Registro Único de Desplazamiento Ambiental; si la plataforma dice que "no hay marco legal", ya no es exacto **[verificar texto]**.
 - La **política de privacidad** del footer debe reflejar el proveedor real de IA y su retención de datos (hoy Gemini; verificar si el proyecto está en nivel gratuito, que sí usa los prompts).
 - Bogotá: la cifra de >800.000 personas en zonas de amenaza por inundación es de 2013; marcarla como tal o no usarla.
+
+## 10. Ronda 2 — Feedback de colegas (8 de noviembre de 2026)
+
+Origen: revisión informal de la app con colegas (nota de voz del 8-nov) más notas de producto del equipo. Pendiente: el screenshot de referencia para la home (10.1).
+
+**Estado (9-nov-2026):** R1, R2, R4 y R5 implementados en la rama `claude/feedback-ronda-2`. R3 (ejemplo con caso real) espera saber si el equipo tiene trabajo de campo para un caso anonimizado; el problema de fondo es credibilidad, no Bogotá en sí. R5 tiene pendiente correr `eval:agentes` con 3 repeticiones.
+
+### 10.1 Home: máximo 3 elementos (R1)
+
+**Feedback:** la primera página tiene demasiada información. Principio de atención: mostrar solo 3 cosas.
+
+**Propuesta:** el primer pantallazo del hero se reduce a (1) la animación de olas, (2) el título grande y (3) la línea de respaldo de investigación, más el CTA. Todo lo demás (input de municipio, eyebrow, botones secundarios) baja o desaparece. Objetivo: que la persona quede con curiosidad y haga scroll.
+
+**Toca:** `HeroSection.tsx`; estándar de design system. Esperar el screenshot antes de diseñar.
+
+### 10.2 Botón "Compartir" (R2)
+
+**Feedback:** hoy no hay forma fácil de mandarle la plataforma a otra persona.
+
+**Propuesta:** botón "Compartir" en la home y en `/resultado`. En móvil usa `navigator.share` (abre WhatsApp, correo, etc.); en escritorio copia el link y confirma con un aviso. Comparte **solo el link de la plataforma**, nunca el resultado ni el transcript (que viven en `localStorage`).
+
+**Toca:** nuevo componente en `src/components/ds/`; evento `plataforma_compartida` (registrarlo en el estándar de medición, sin datos del usuario).
+
+### 10.3 Ejemplo de resultado con caso real (R3, modifica 3.5)
+
+**Feedback:** un ejemplo con datos ficticios hace que la gente piense que los datos son inventados. Mejor usar un caso que ya se estudió (Bogotá).
+
+**Propuesta:** reemplazar "Municipio de Ejemplo (ficticio)" en `src/lib/contenido/ejemplo-resultado.ts` (rama `claude/pilotaje-medicion-b4f7ce`) por un ejemplo construido sobre el caso de Bogotá ya documentado en `CitiesSection` y en 5.2.
+- Cada fortaleza, brecha y recomendación debe apoyarse en una fuente citada (estándar de contenido y fuentes).
+- Banner nuevo: "Ejemplo ilustrativo basado en información pública sobre Bogotá. No es una evaluación oficial ni fue respondido por la Alcaldía."
+- Ver decisión 7.
+
+### 10.4 Nueva propuesta de valor (R4, modifica 3.4)
+
+**Antes:** "Una conversación guiada por IA construye una línea base de la preparación institucional de tu municipio frente a la movilidad climática."
+
+**Después (borrador):** "Te guiamos hacia un primer diagnóstico sobre las políticas públicas de movilidad climática de tu ciudad en Colombia. Una conversación guiada por IA, pero basada en investigación y trabajo de campo."
+
+**Por qué:** habla de tú a tú, dice que es un *primer* diagnóstico (coherente con "línea base orientativa" de 3.2) y destaca la investigación y el trabajo de campo por encima de la IA.
+
+**Toca:** hero, pantalla "Antes de empezar" (3.4) y meta description.
+
+### 10.5 No asumir el perfil del entrevistado (R5)
+
+**Feedback:** el entrevistador abre con "¿qué rol desempeña usted actualmente en la Alcaldía…?". Quien responde puede ser funcionario municipal, funcionario departamental, actor externo (consultor, academia, ONG, cooperación) o un ciudadano curioso.
+
+**Propuesta:**
+1. **Agente 1** (`src/lib/prompts/agente-1.ts`): el primer mensaje pregunta abiertamente quién es la persona y desde dónde conoce el territorio, sin presuponer cargo ni entidad. El tono se adapta según la respuesta: con un funcionario, "¿en su entidad…?"; con alguien externo, "¿sabe si en el territorio…?".
+2. **Territorio, no solo ciudad:** aceptar diagnósticos a nivel departamental, ajustando las preguntas (p. ej. gobernación y CAR en lugar de secretarías municipales).
+3. **Agente 2 y resultado:** registrar `perfil_entrevistado` (`funcionario_municipal | funcionario_departamental | externo | ciudadano`). Si no es funcionario, `confianza` no puede ser "alta" y el resultado lo muestra ("Basado en la percepción de un actor externo"). Así se respeta el principio anti-alucinación: lo que sabe un tercero no es evidencia institucional directa.
+4. Agregar al golden set casos con perfil externo y ciudadano.
+
+**Toca:** estándar de agentes de IA (prompts, esquema JSON, golden set) y tipos en `src/lib/types.ts`. Ver decisión 8.
 
 ## Anexo — Fuentes principales por sección
 

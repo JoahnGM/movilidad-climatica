@@ -138,7 +138,24 @@ export default function ChatInterface({ onUserMessageCount, onCompletado, onRequ
               icon={CheckCircle2}
               items={t.bienvenidaItems}
             />
-            <Text variant="caption" tone="muted">{t.bienvenidaPie}</Text>
+            <div className="flex flex-col gap-2.5 border-t border-border pt-4">
+              <Text variant="small" className="font-medium text-foreground">{t.bienvenidaPie}</Text>
+              {/* El perfil se envía como primer mensaje: el entrevistador no asume que trabaja en la alcaldía. */}
+              <ul aria-label={t.perfilesAria} className="grid gap-2 sm:grid-cols-2">
+                {t.perfiles.map((perfil) => (
+                  <li key={perfil} className="flex">
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      className="h-auto min-h-11 w-full justify-start rounded-xl py-2.5 text-left whitespace-normal hover:translate-y-0"
+                      onClick={() => sendMessage({ text: perfil })}
+                    >
+                      {perfil}
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         )}
 

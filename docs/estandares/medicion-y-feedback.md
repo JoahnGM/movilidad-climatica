@@ -47,6 +47,7 @@ Propiedades prohibidas en **todos** los eventos (lista negra, verificada por `ch
 | `diagnostico_error` | El pipeline falla o vence el tiempo (30 s) | `step` (`agente_2`\|`agente_3`\|`chat`\|`parseo`\|`timeout`) | mensaje de error crudo, stack, texto devuelto por el modelo | Tasa de errores |
 | `reintento` | El usuario pulsa "Reintentar" tras un error | `step` (igual que arriba) | — | Tasa de errores (recuperación) |
 | `ejemplo_visto` | El usuario abre `/ejemplo` | `origen` (`hero`\|`diagnostico`\|`directo`) | — | Efecto del ejemplo (`ejemplo_visto` → `diagnostico_iniciado`) |
+| `enlace_compartido` | El usuario elige un canal en el menú de compartir o completa la hoja nativa (plan-feedback §10.2). **Pendiente de instrumentar** cuando exista `src/lib/analitica/` | `origen` (`navbar`\|`cta`\|`resultado`), `canal` (`nativo`\|`copiar`\|`whatsapp`\|`correo`) | la URL compartida, el texto del mensaje | Tasa de compartir (`enlace_compartido` ÷ visitas) y llegadas con `?ref=compartir` |
 | `feedback_enviado` | El usuario envía o cambia el voto de la micro-encuesta | `voto` (`up`\|`down`) | `comentario`, razones en texto, `diagnostico_id` | Cobertura de feedback; señal, no KPI |
 
 Notas:

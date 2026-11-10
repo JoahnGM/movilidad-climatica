@@ -16,7 +16,7 @@ import { ErrorAgente, analizar } from '../src/lib/ai/pipeline'
 import { PREGUNTAS, getNivelFromPuntaje, type PreguntaId } from '../src/lib/matriz'
 import { RUBRICA_VERSION } from '../src/lib/prompts/version'
 import { validarDiagnostico, construirTranscripcion, type Turno } from '../src/lib/validacion'
-import type { NivelId } from '../src/lib/types'
+import type { NivelId, PerfilEntrevistado } from '../src/lib/types'
 import type { ProveedorId } from '../src/lib/ai/provider'
 
 interface CasoGolden {
@@ -25,6 +25,8 @@ interface CasoGolden {
   nivel_esperado: NivelId
   etiquetas: string[]
   manipulacion_esperada: boolean
+  /** Perfil de quien responde (plan-feedback §10.5). */
+  perfil_esperado?: PerfilEntrevistado
   turnos: { rol: 'user' | 'assistant'; texto: string }[]
   esperado: Record<PreguntaId, number>
   total_esperado: number
@@ -46,6 +48,7 @@ interface Corrida {
   tokensEntrada?: number
   tokensSalida?: number
   modelo?: string
+  perfil?: PerfilEntrevistado
 }
 
 // ─── Argumentos ───────────────────────────────────────────────────────────────
@@ -128,7 +131,7 @@ async function correr(caso: CasoGolden, proveedor: ProveedorId, repeticion: numb
       jsonInvalidoPrimerIntento: a.jsonInvalidoPrimerIntento, puntajes,
       total: a.calculado.puntaje_total, nivel: a.calculado.nivel_id, citasInvalidadas: a.invalidadas.length,
       manipulacionDetectada: manipulacion.detectada, tokensEntrada: a.uso.entrada, tokensSalida: a.uso.salida,
-      modelo: a.etiquetaModelo,
+      modelo: a.etiquetaModelo, perfil: a.modelo.perfil_entrevistado,
     }
   } catch (e) {
     return {
@@ -175,6 +178,7 @@ function resumen(golden: CasoGolden[], corridas: Corrida[], proveedor: Proveedor
       return m
     }, {})).map(([k, v]) => `${k} ${v}`).join(', ') || '—',
     exactitudNivel: media(ok.map((c) => (c.nivel === porCaso.get(c.caso)!.nivel_esperado ? 1 : 0))),
+    exactitudPerfil: media(ok.filter((c) => porCaso.get(c.caso)!.perfil_esperado).map((c) => (c.perfil === porCaso.get(c.caso)!.perfil_esperado ? 1 : 0))),
     maeGlobal: media(Object.values(errPorPregunta).flat()),
     maePorPregunta: Object.fromEntries(PREGUNTAS.map((p) => [p, media(errPorPregunta[p])])) as Record<PreguntaId, number>,
     errorTotalMedio: media(ok.map((c) => Math.abs(c.total! - porCaso.get(c.caso)!.total_esperado))),
@@ -263,6 +267,7 @@ function escribirReporte(golden: CasoGolden[], corridas: Corrida[], proveedores:
       ['Corridas (fallidas)', (r) => `${r.corridas} (${r.fallidas})`],
       ['Fallidas por causa', (r) => r.fallidasPorCausa],
       ['Exactitud de nivel', (r) => pct(r.exactitudNivel)],
+      ['Exactitud del perfil del entrevistado', (r) => pct(r.exactitudPerfil)],
       ['MAE por pregunta (0–3)', (r) => f2(r.maeGlobal)],
       ['Error medio del total (puntos)', (r) => f2(r.errorTotalMedio)],
       ['Sesgo del total (modelo − esperado)', (r) => f2(r.sesgoTotal)],

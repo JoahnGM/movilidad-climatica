@@ -38,6 +38,10 @@ export default function ResultadoDiagnostico({ resultado, scores, ejemplo, fecha
   return (
     <article aria-label={`${t.articuloAria} ${resultado.municipio}`} className="flex flex-col gap-block">
       {ejemplo && <Banner variant="ejemplo">{idioma === 'en' ? BANNER_EJEMPLO_EN : BANNER_EJEMPLO}</Banner>}
+      {/* Quién respondió (plan-feedback §10.5): si no es funcionario, el resultado lo dice arriba. */}
+      {scores?.perfil_entrevistado && t.avisoPerfil[scores.perfil_entrevistado] && (
+        <Banner variant="info">{t.avisoPerfil[scores.perfil_entrevistado]}</Banner>
+      )}
 
       <div className="grid items-start gap-6 lg:grid-cols-2">
         <Reveal className="flex flex-col gap-6">

@@ -44,13 +44,14 @@ export default function Procesos() {
       </Specimen>
 
       <Specimen nombre="TituloIA" archivo="src/components/ds/efectos/TituloIA.tsx"
-        descripcion="Titular que se escribe con sugerencias fantasma estilo autocompletado de IA. Cada tramo se pinta con su estilo final desde el inicio."
+        descripcion={'Titular animado. efecto="suave" (el del hero): las palabras entran en cascada con fundido, leve subida y desenfoque que se aclara. efecto="escribir": teclea con sugerencias fantasma estilo autocompletado de IA.'}
         codigo={`<TituloIA tramos={[
   { escribe: 'Diag', fantasma: 'nostica tu territorio. ' },
   { escribe: 'Act', fantasma: 'úa con datos.', className: 'font-accent text-green' },
 ]} className="font-heading text-display font-semibold tracking-display" />`}
         usar={['El h1 del hero']} noUsar={['Más de una vez por página', 'Textos largos']}
-        a11y="El texto completo está siempre en el DOM (reserva el espacio, lo leen lectores y buscadores); la animación es aria-hidden. Con movimiento reducido aparece completo.">
+        a11y={'El texto completo está siempre en el DOM (no hay saltos de layout; lo leen lectores y buscadores). Con movimiento reducido: "suave" solo funde la opacidad y "escribir" aparece completo.'}>
+        <TituloIA as="p" efecto="suave" tramos={[{ escribe: 'Diag', fantasma: 'nostica tu territorio. ' }, { escribe: 'Act', fantasma: 'úa con datos.', className: 'font-accent text-green' }]} className="font-heading text-h1 font-semibold tracking-display text-foreground" />
         <TituloIA as="p" tramos={[{ escribe: 'Diag', fantasma: 'nostica tu territorio. ' }, { escribe: 'Act', fantasma: 'úa con datos.', className: 'font-accent text-green' }]} className="font-heading text-h1 font-semibold tracking-display text-foreground" />
         <Text variant="caption" tone="muted">Recarga la página para ver la animación.</Text>
       </Specimen>

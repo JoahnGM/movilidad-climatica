@@ -14,6 +14,7 @@ export default function EvidenciaPorPregunta({ scores, idioma = 'es' }: { scores
         <Badge tone={scores.confianza === 'alta' ? 'green' : scores.confianza === 'media' ? 'blue' : 'amber'} size="sm">
           {t.confianza[scores.confianza]}
         </Badge>
+        {scores.perfil_entrevistado && <Badge size="sm">{t.perfil[scores.perfil_entrevistado]}</Badge>}
         {scores.rubrica_version && <Badge size="sm">{t.rubrica} {scores.rubrica_version}</Badge>}
       </div>
       <Disclosure>

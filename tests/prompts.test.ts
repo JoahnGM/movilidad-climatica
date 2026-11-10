@@ -76,6 +76,15 @@ describe('Agentes 1 y 3', () => {
     expect(PROMPT_AGENTE_1).toContain('[ENTREVISTA_COMPLETA]')
     expect(PROMPT_AGENTE_1).toMatch(/No pidas nombres de personas/)
   })
+  it('el Agente 1 no asume que la persona trabaja en una alcaldía (plan-feedback §10.5)', () => {
+    expect(PROMPT_AGENTE_1).toMatch(/No des por hecho que la persona trabaja en una alcaldía/)
+    expect(PROMPT_AGENTE_1).toMatch(/municipio o (un )?departamento/)
+    expect(PROMPT_AGENTE_1).not.toMatch(/con funcionarios públicos municipales\./)
+  })
+  it('el Agente 2 pide el perfil sin deducirlo', () => {
+    expect(PROMPT_AGENTE_2).toContain('"perfil_entrevistado"')
+    expect(PROMPT_AGENTE_2).toMatch(/Nunca lo deduzcas/)
+  })
   it('el Agente 3 pide rutas progresivas', () => {
     for (const campo of ['primer_paso', 'siguiente_paso', 'ruta_ampliada', 'para_quien']) expect(PROMPT_AGENTE_3).toContain(campo)
   })

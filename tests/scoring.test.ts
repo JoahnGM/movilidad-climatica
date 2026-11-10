@@ -113,11 +113,21 @@ describe('grounding de evidencias', () => {
 
 describe('ajustarConfianza', () => {
   it('solo baja la confianza', () => {
-    expect(ajustarConfianza('alta', 0, false)).toBe('alta')
-    expect(ajustarConfianza('alta', 1, false)).toBe('media')
-    expect(ajustarConfianza('alta', 3, false)).toBe('baja')
-    expect(ajustarConfianza('alta', 0, true)).toBe('baja')
-    expect(ajustarConfianza('baja', 0, false)).toBe('baja')
+    expect(ajustarConfianza('alta', 0, false, 'funcionario_municipal')).toBe('alta')
+    expect(ajustarConfianza('alta', 1, false, 'funcionario_municipal')).toBe('media')
+    expect(ajustarConfianza('alta', 3, false, 'funcionario_municipal')).toBe('baja')
+    expect(ajustarConfianza('alta', 0, true, 'funcionario_municipal')).toBe('baja')
+    expect(ajustarConfianza('baja', 0, false, 'funcionario_municipal')).toBe('baja')
+  })
+
+  it('acota la confianza según quién respondió', () => {
+    expect(ajustarConfianza('alta', 0, false, 'funcionario_departamental')).toBe('alta')
+    expect(ajustarConfianza('alta', 0, false, 'externo')).toBe('media')
+    expect(ajustarConfianza('alta', 0, false, 'no_mencionado')).toBe('media')
+    expect(ajustarConfianza('alta', 0, false, 'ciudadano')).toBe('baja')
+    // el perfil nunca sube la confianza
+    expect(ajustarConfianza('baja', 0, false, 'funcionario_municipal')).toBe('baja')
+    expect(ajustarConfianza('media', 3, false, 'externo')).toBe('baja')
   })
 })
 
